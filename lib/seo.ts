@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
-const SITE_URL = 'https://vapevaultau.com.au'
-const SITE_NAME = 'VapeVault AU'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://vapevaultau.com.au'
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'VapeVault AU'
 const DEFAULT_DESCRIPTION =
   "Australia's premium online vape store — disposable vapes, pod systems, nicotine salts and e-liquids with fast Australian shipping."
 
