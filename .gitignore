@@ -44,3 +44,10 @@ category/*.html
 product/*.html
 robots.txt
 sitemap.xml
+
+# Claude Code local state
+.claude/
+
+# Import script artifacts
+scripts/import.log
+scripts/failed-images.json

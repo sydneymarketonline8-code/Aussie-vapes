@@ -13,7 +13,7 @@ export const CATEGORIES: Category[] = [
       { id: 'sub-002', slug: 'mid-range', name: 'Mid Range (5000–8000)', parentSlug: 'disposable-vapes' },
       { id: 'sub-003', slug: 'budget', name: 'Budget (Under 6000)', parentSlug: 'disposable-vapes' },
     ],
-    productCount: 4,
+    productCount: 1719,
     image: 'https://placehold.co/800x450/1c1c1c/06b6d4?text=Disposable+Vapes',
     seoTitle: 'Disposable Vapes Australia — Buy Online | VapeVault AU',
     seoDescription:
@@ -39,7 +39,7 @@ export const CATEGORIES: Category[] = [
       { id: 'sub-005', slug: 'draw-activated', name: 'Draw-Activated', parentSlug: 'pod-systems' },
       { id: 'sub-006', slug: 'advanced', name: 'Advanced / High-Wattage', parentSlug: 'pod-systems' },
     ],
-    productCount: 3,
+    productCount: 59,
     image: 'https://placehold.co/800x450/1c1c1c/06b6d4?text=Pod+Systems',
     seoTitle: 'Pod Systems Australia — Vape Kits & Starter Kits | VapeVault AU',
     seoDescription:
@@ -65,7 +65,7 @@ export const CATEGORIES: Category[] = [
       { id: 'sub-008', slug: 'menthol', name: 'Menthol & Iced', parentSlug: 'nicotine-salts' },
       { id: 'sub-009', slug: 'bundles', name: 'Bundles & Value Packs', parentSlug: 'nicotine-salts' },
     ],
-    productCount: 3,
+    productCount: 89,
     image: 'https://placehold.co/800x450/1c1c1c/06b6d4?text=Nicotine+Salts',
     seoTitle: 'Nicotine Salts Australia — E-Liquid for Pod Vapes | VapeVault AU',
     seoDescription:
@@ -90,7 +90,7 @@ export const CATEGORIES: Category[] = [
       { id: 'sub-010', slug: 'freebase', name: 'Freebase', parentSlug: 'e-liquids' },
       { id: 'sub-011', slug: 'high-vg', name: 'High VG', parentSlug: 'e-liquids' },
     ],
-    productCount: 1,
+    productCount: 84,
     image: 'https://placehold.co/800x450/1c1c1c/06b6d4?text=E-Liquids',
     seoTitle: 'E-Liquids Australia — Freebase Vape Juice Online | VapeVault AU',
     seoDescription:
@@ -114,7 +114,7 @@ export const CATEGORIES: Category[] = [
       { id: 'sub-012', slug: 'coils', name: 'Replacement Coils', parentSlug: 'accessories' },
       { id: 'sub-013', slug: 'cables', name: 'Cables & Chargers', parentSlug: 'accessories' },
     ],
-    productCount: 1,
+    productCount: 122,
     image: 'https://placehold.co/800x450/1c1c1c/06b6d4?text=Accessories',
     seoTitle: 'Vape Accessories Australia — Coils, Cables & More | VapeVault AU',
     seoDescription:
