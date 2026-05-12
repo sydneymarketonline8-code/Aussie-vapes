@@ -7,31 +7,34 @@ import clsx from 'clsx'
 
 const slides = [
   {
-    eyebrow: 'New Arrival',
-    heading: 'CloudBurst Pro 10,000',
-    subheading: 'Dual mesh coil. 15 flavours. 650mAh rechargeable. The ultimate Australian disposable.',
-    cta: { label: 'Shop Now', href: '/product/cloudburst-pro-10000' },
-    ctaSecondary: { label: 'All Disposables', href: '/category/disposable-vapes' },
-    badge: '10,000 Puffs',
-    accent: 'from-cyan-500/20 to-transparent',
+    eyebrow: 'Featured Disposable',
+    heading: 'IGET Bar Plus 6000',
+    subheading: 'Premium 6,000-puff rechargeable disposable. Mesh coil flavour, 20mg salt nic, fast Australia-wide shipping.',
+    cta: { label: 'Shop Now', href: '/category/disposable-vapes' },
+    ctaSecondary: { label: 'View All Brands', href: '/category/disposable-vapes' },
+    badge: 'From $32.95',
+    bg: 'linear-gradient(135deg, #fef3f3 0%, #ffffff 60%)',
+    accent: '#ff0000',
   },
   {
     eyebrow: 'Best Seller',
-    heading: 'NovaPod X4 Kit',
-    subheading: 'Australia\'s favourite refillable pod — 1500mAh, 40W, OLED display, top-fill pod. Now on sale.',
-    cta: { label: 'Shop the Kit', href: '/product/novapod-x4-kit' },
-    ctaSecondary: { label: 'All Pod Systems', href: '/category/pod-systems' },
-    badge: 'On Sale — $79.95',
-    accent: 'from-blue-500/20 to-transparent',
+    heading: 'Alfakher Crown Bar 15,000',
+    subheading: 'The ultimate big-puff disposable. Adjustable airflow, mega capacity, 15+ flavour options in stock now.',
+    cta: { label: 'Shop the Range', href: '/category/disposable-vapes' },
+    ctaSecondary: { label: 'See Pack Deals', href: '/category/disposable-vapes' },
+    badge: 'Save 20% on 3-Packs',
+    bg: 'linear-gradient(135deg, #f4f8ff 0%, #ffffff 60%)',
+    accent: '#2fb5d2',
   },
   {
-    eyebrow: 'Restock Alert',
-    heading: 'SaltSurge 30mL',
-    subheading: 'Premium Australian nicotine salt. 12 flavours, 25mg & 50mg. The smoothest throat hit in the range.',
-    cta: { label: 'Shop Nic Salts', href: '/category/nicotine-salts' },
-    ctaSecondary: { label: 'View Product', href: '/product/saltsurge-30ml' },
-    badge: 'From $24.95',
-    accent: 'from-purple-500/20 to-transparent',
+    eyebrow: 'New Arrival',
+    heading: 'Lost Mary 7000 Puffs',
+    subheading: 'Sleek pocket-friendly design with USB-C charging. 7 fresh fruit & menthol profiles available.',
+    cta: { label: 'Discover Lost Mary', href: '/category/disposable-vapes' },
+    ctaSecondary: { label: 'All New Arrivals', href: '/new-arrivals' },
+    badge: 'Just Landed',
+    bg: 'linear-gradient(135deg, #f5fbf3 0%, #ffffff 60%)',
+    accent: '#4cbb6c',
   },
 ]
 
@@ -41,7 +44,7 @@ export default function HeroBanner() {
 
   useEffect(() => {
     if (paused) return
-    const id = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 5000)
+    const id = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 6000)
     return () => clearInterval(id)
   }, [paused])
 
@@ -52,59 +55,64 @@ export default function HeroBanner() {
 
   return (
     <section
-      className="relative overflow-hidden bg-surface-800 border-b border-surface-600"
+      className="relative overflow-hidden border-b border-line"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-label="Featured promotions"
+      style={{ background: slide.bg, transition: 'background 0.6s ease' }}
     >
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-grid opacity-60" />
-      <div className={clsx('absolute inset-0 bg-gradient-to-r', slide.accent, 'transition-all duration-700')} />
-
-      <div className="container-site relative py-16 sm:py-24 lg:py-32">
-        <div className="max-w-2xl">
+      <div className="container-site relative py-16 sm:py-24 lg:py-32 min-h-[480px]">
+        <div className="max-w-2xl relative z-10">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 mb-4">
-            <span className="h-px w-6 bg-brand" />
-            <span className="text-brand text-xs font-semibold uppercase tracking-widest">{slide.eyebrow}</span>
+          <div className="inline-flex items-center gap-2 mb-5">
+            <span className="h-px w-8" style={{ background: slide.accent }} />
+            <span
+              className="font-display text-xs font-bold uppercase tracking-[0.3em]"
+              style={{ color: slide.accent }}
+            >
+              {slide.eyebrow}
+            </span>
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-zinc-50 tracking-tight leading-none mb-4 transition-all duration-500">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-ink-dark tracking-tight leading-[1.05] mb-6 transition-all duration-500">
             {slide.heading}
           </h1>
 
           {/* Subheading */}
-          <p className="text-zinc-400 text-lg leading-relaxed mb-3 max-w-xl">{slide.subheading}</p>
+          <p className="text-body text-base sm:text-lg leading-relaxed mb-6 max-w-xl">{slide.subheading}</p>
 
           {/* Badge */}
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-brand/40 bg-brand/10 text-brand text-sm font-semibold mb-8">
+          <div
+            className="inline-flex items-center px-4 py-1.5 rounded-sm font-display font-bold text-sm uppercase tracking-wider mb-8 text-white"
+            style={{ background: slide.accent }}
+          >
             {slide.badge}
           </div>
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-3">
-            <Link href={slide.cta.href} className="btn-primary text-base px-7 py-3.5">
+            <Link href={slide.cta.href} className="btn-primary text-base px-8 py-3.5">
               {slide.cta.label}
             </Link>
-            <Link href={slide.ctaSecondary.href} className="btn-secondary text-base px-7 py-3.5">
+            <Link href={slide.ctaSecondary.href} className="btn-secondary text-base px-8 py-3.5">
               {slide.ctaSecondary.label}
             </Link>
           </div>
         </div>
 
         {/* Nav arrows */}
-        <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-2">
+        <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 hidden sm:flex flex-col gap-3">
           <button
             onClick={prev}
-            className="p-2 rounded-lg bg-surface-700/80 border border-surface-500 text-zinc-400 hover:text-brand hover:border-brand/50 transition-colors"
+            className="p-3 rounded-full bg-white border border-line text-ink shadow-sm hover:bg-ink hover:text-white hover:border-ink transition-colors"
             aria-label="Previous slide"
           >
             <ChevronLeftIcon className="h-4 w-4" />
           </button>
           <button
             onClick={next}
-            className="p-2 rounded-lg bg-surface-700/80 border border-surface-500 text-zinc-400 hover:text-brand hover:border-brand/50 transition-colors"
+            className="p-3 rounded-full bg-white border border-line text-ink shadow-sm hover:bg-ink hover:text-white hover:border-ink transition-colors"
             aria-label="Next slide"
           >
             <ChevronRightIcon className="h-4 w-4" />
@@ -112,14 +120,14 @@ export default function HeroBanner() {
         </div>
 
         {/* Dots */}
-        <div className="flex gap-2 mt-8">
+        <div className="flex gap-2 mt-10 absolute bottom-8 left-1/2 -translate-x-1/2 sm:relative sm:bottom-auto sm:left-auto sm:translate-x-0">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
               className={clsx(
-                'h-1 rounded-full transition-all duration-300',
-                i === current ? 'w-8 bg-brand' : 'w-3 bg-surface-500 hover:bg-surface-400'
+                'h-2 rounded-full transition-all duration-300',
+                i === current ? 'w-10 bg-ink' : 'w-2 bg-line hover:bg-mute'
               )}
               aria-label={`Slide ${i + 1}`}
             />

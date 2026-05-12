@@ -17,14 +17,14 @@ export default function StarRating({ rating, reviewCount, size = 'sm' }: StarRat
     <div className="flex items-center gap-1.5">
       <div className="flex items-center">
         {Array.from({ length: full }).map((_, i) => (
-          <StarIcon key={`f-${i}`} className={clsx(iconClass, 'text-amber-400')} />
+          <StarIcon key={`f-${i}`} className={clsx(iconClass, 'text-warning')} />
         ))}
         {Array.from({ length: empty }).map((_, i) => (
-          <StarOutline key={`e-${i}`} className={clsx(iconClass, 'text-surface-500')} />
+          <StarOutline key={`e-${i}`} className={clsx(iconClass, 'text-soft-300')} />
         ))}
       </div>
       {reviewCount !== undefined && (
-        <span className="text-xs text-zinc-500">({reviewCount.toLocaleString()})</span>
+        <span className="text-xs text-mute">({reviewCount.toLocaleString()})</span>
       )}
     </div>
   )

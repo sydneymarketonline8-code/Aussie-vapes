@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { ArrowRightIcon } from '@heroicons/react/20/solid'
 import { getRelatedProducts } from '@/lib/products'
 import ProductCard from './ProductCard'
 
@@ -9,24 +8,18 @@ interface RelatedProductsProps {
 }
 
 export default function RelatedProducts({ slugs, currentSlug }: RelatedProductsProps) {
-  const products = getRelatedProducts(slugs).filter((p) => p.slug !== currentSlug).slice(0, 4)
+  const products = getRelatedProducts(slugs).filter((p) => p.slug !== currentSlug).slice(0, 5)
   if (!products.length) return null
 
   return (
-    <section className="mt-16 pt-12 border-t border-surface-600">
-      <div className="flex items-end justify-between mb-6">
-        <div>
-          <h2 className="section-heading">You May Also Like</h2>
-          <p className="section-subheading">Customers who viewed this also loved these.</p>
-        </div>
-        <Link
-          href="/category/disposable-vapes"
-          className="hidden sm:flex items-center gap-1.5 text-sm text-brand hover:text-brand-light transition-colors font-medium"
-        >
-          Browse all <ArrowRightIcon className="h-4 w-4" />
+    <section className="mt-16 pt-12 border-t border-line">
+      <div className="section-heading-wrap">
+        <h2 className="section-heading">you may also like</h2>
+        <Link href="/category/disposable-vapes" className="font-display text-xs uppercase tracking-widest font-bold text-mute hover:text-price">
+          Browse All →
         </Link>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

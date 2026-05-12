@@ -20,8 +20,8 @@ interface SortDropdownProps {
 export default function SortDropdown({ value, onChange, totalCount }: SortDropdownProps) {
   return (
     <div className="flex items-center gap-4">
-      <p className="text-sm text-zinc-500 hidden sm:block">
-        {totalCount} product{totalCount !== 1 ? 's' : ''}
+      <p className="text-sm text-body hidden sm:block">
+        <span className="font-display font-bold text-ink">{totalCount.toLocaleString()}</span> product{totalCount !== 1 ? 's' : ''}
       </p>
       <div className="relative">
         <select
@@ -34,7 +34,7 @@ export default function SortDropdown({ value, onChange, totalCount }: SortDropdo
             <option key={value} value={value}>{label}</option>
           ))}
         </select>
-        <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500 pointer-events-none" />
+        <ChevronDownIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute pointer-events-none" />
       </div>
     </div>
   )

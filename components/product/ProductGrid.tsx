@@ -10,15 +10,15 @@ export default function ProductGrid({ products, emptyMessage = 'No products foun
   if (!products.length) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <p className="text-2xl mb-2">🔍</p>
-        <p className="text-zinc-400 font-medium">{emptyMessage}</p>
-        <p className="text-zinc-600 text-sm mt-1">Try adjusting your filters or search query.</p>
+        <p className="text-4xl mb-2">🔍</p>
+        <p className="font-display text-lg font-bold text-ink uppercase tracking-wider">{emptyMessage}</p>
+        <p className="text-mute text-sm mt-1">Try adjusting your filters or search query.</p>
       </div>
     )
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

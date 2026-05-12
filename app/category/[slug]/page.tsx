@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import FilterSidebar from '@/components/category/FilterSidebar'
 import SortDropdown from '@/components/category/SortDropdown'
@@ -11,7 +10,6 @@ import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategory } from '@/lib/products'
 import type { FilterState, SortOption } from '@/types'
 import { AdjustmentsHorizontalIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import clsx from 'clsx'
 import { use } from 'react'
 
 const DEFAULT_FILTERS: FilterState = {
@@ -54,16 +52,11 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
   return (
     <div>
       {/* Category hero banner */}
-      <div className="relative overflow-hidden bg-surface-800 border-b border-surface-600">
-        <div className="absolute inset-0">
-          <Image src={category.image} alt={category.name} fill className="object-cover opacity-20" unoptimized />
-          <div className="absolute inset-0 bg-gradient-to-r from-surface-800 via-surface-800/90 to-surface-800/60" />
-          <div className="absolute inset-0 bg-grid opacity-40" />
-        </div>
-        <div className="container-site relative py-12">
+      <div className="relative overflow-hidden bg-soft-100 border-b border-line">
+        <div className="container-site relative py-10">
           <Breadcrumb crumbs={[{ label: 'Home', href: '/' }, { label: category.name }]} />
-          <h1 className="text-3xl sm:text-4xl font-black text-zinc-50 mt-4 mb-3">{category.name}</h1>
-          <p className="text-zinc-400 max-w-2xl leading-relaxed">{category.longDescription}</p>
+          <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink mt-4 mb-3 lowercase">{category.name}</h1>
+          <p className="text-body max-w-2xl leading-relaxed text-sm">{category.longDescription}</p>
           {/* Subcategory pills */}
           {category.subcategories.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-5">
@@ -71,7 +64,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
                 <a
                   key={sub.id}
                   href={`?sub=${sub.slug}`}
-                  className="px-3 py-1.5 rounded-full text-xs font-medium border border-surface-500 text-zinc-400 hover:border-brand/50 hover:text-brand transition-colors bg-surface-700"
+                  className="px-4 py-1.5 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink hover:bg-ink hover:text-white transition-colors"
                 >
                   {sub.name}
                 </a>
@@ -83,7 +76,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
 
       <div className="container-site py-8">
         {/* Toolbar */}
-        <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-surface-600">
+        <div className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-line">
           <button
             onClick={() => setFilterDrawerOpen((o) => !o)}
             className="flex items-center gap-2 btn-secondary py-2 px-4 text-sm lg:hidden"
@@ -110,12 +103,12 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
       {/* Mobile filter drawer */}
       {filterDrawerOpen && (
         <div className="lg:hidden fixed inset-0 z-50 flex">
-          <div className="absolute inset-0 bg-black/60" onClick={() => setFilterDrawerOpen(false)} />
-          <div className="relative w-72 max-w-full bg-surface-800 h-full overflow-y-auto border-r border-surface-600 p-5 animate-slide-right">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setFilterDrawerOpen(false)} />
+          <div className="relative w-80 max-w-full bg-white h-full overflow-y-auto border-r border-line p-5 animate-slide-right">
             <div className="flex items-center justify-between mb-4">
-              <span className="font-semibold text-zinc-200">Filters</span>
-              <button onClick={() => setFilterDrawerOpen(false)}>
-                <XMarkIcon className="h-5 w-5 text-zinc-400" />
+              <span className="font-display font-bold uppercase tracking-wider text-ink">Filters</span>
+              <button onClick={() => setFilterDrawerOpen(false)} aria-label="Close filters">
+                <XMarkIcon className="h-5 w-5 text-ink" />
               </button>
             </div>
             <FilterSidebar filters={filters} onChange={setFilters} />
@@ -125,12 +118,12 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
 
       {/* Category SEO content */}
       <section className="container-site py-10 max-w-3xl">
-        <h2 className="text-xl font-bold text-zinc-200 mb-3">About {category.name} at VapeVault AU</h2>
-        <p className="text-zinc-500 text-sm leading-relaxed">{category.longDescription}</p>
+        <h2 className="font-display text-xl font-bold text-ink mb-3 lowercase">about {category.name.toLowerCase()} at vapevault au</h2>
+        <p className="text-body text-sm leading-relaxed">{category.longDescription}</p>
         {category.keywords.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {category.keywords.slice(0, 6).map((kw) => (
-              <span key={kw} className="px-2 py-1 text-xs bg-surface-700 text-zinc-500 rounded border border-surface-500">
+              <span key={kw} className="px-3 py-1 text-xs bg-soft-100 text-body rounded-sm border border-line font-display uppercase tracking-wider font-semibold">
                 {kw}
               </span>
             ))}

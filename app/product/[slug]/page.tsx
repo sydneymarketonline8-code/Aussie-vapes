@@ -77,59 +77,57 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             {/* Brand & name */}
             <div>
-              <p className="text-xs text-zinc-600 uppercase tracking-widest font-medium">{product.brand}</p>
-              <h1 className="text-3xl sm:text-4xl font-black text-zinc-50 mt-1 leading-tight">{product.name}</h1>
+              <p className="font-display text-xs text-mute uppercase tracking-[0.3em] font-semibold">{product.brand}</p>
+              <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink mt-2 leading-tight">{product.name}</h1>
             </div>
 
             {/* Rating */}
             <StarRating rating={product.rating} reviewCount={product.reviewCount} size="md" />
 
             {/* Price */}
-            <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-black text-zinc-50">${product.price.toFixed(2)}</span>
-              <span className="text-sm text-zinc-600">AUD</span>
+            <div className="flex items-baseline gap-3 py-3 border-y border-line">
+              <span className="font-display text-4xl font-bold text-price">${product.price.toFixed(2)}</span>
               {product.comparePrice && (
-                <span className="text-lg text-zinc-600 line-through">${product.comparePrice.toFixed(2)}</span>
+                <span className="text-lg text-mute line-through">${product.comparePrice.toFixed(2)}</span>
               )}
-              {discount && (
-                <span className="badge-sale">Save {discount}%</span>
-              )}
+              {discount && <span className="badge-sale">Save {discount}%</span>}
+              <span className="text-xs text-mute ml-auto">AUD</span>
             </div>
 
             {/* Short description */}
-            <p className="text-zinc-400 leading-relaxed">{product.shortDescription}</p>
+            <p className="text-body leading-relaxed">{product.shortDescription}</p>
 
             {/* Key features preview */}
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {product.features.slice(0, 4).map((f) => (
-                <li key={f} className="flex items-start gap-2 text-sm text-zinc-400">
-                  <CheckIcon className="h-4 w-4 text-brand flex-shrink-0 mt-0.5" />
+                <li key={f} className="flex items-start gap-2 text-sm text-body">
+                  <CheckIcon className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
                   {f}
                 </li>
               ))}
             </ul>
 
-            {/* Shipping notice */}
+            {/* Stock warning */}
             {product.stockCount !== undefined && product.stockCount < 20 && (
-              <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-amber-900/20 border border-amber-800/40">
-                <span className="text-amber-400 text-sm font-medium">
+              <div className="flex items-center gap-2 px-4 py-3 rounded-sm bg-warning/10 border border-warning/30">
+                <span className="text-warning text-sm font-display font-semibold uppercase tracking-wider">
                   ⚡ Only {product.stockCount} left — order soon
                 </span>
               </div>
             )}
 
-            <div className="flex items-center gap-2 text-sm text-zinc-500">
-              <TruckIcon className="h-4 w-4 text-brand" />
-              <span>Free shipping on this order (qualifies for $100+ threshold)</span>
+            <div className="flex items-center gap-2 text-sm text-body">
+              <TruckIcon className="h-4 w-4 text-success" />
+              <span>Free shipping on orders over $100 (Australia-wide)</span>
             </div>
 
             {/* Add to cart + variant selector */}
-            <div className="card p-5 mt-2">
+            <div className="bg-soft-100 border border-line rounded-sm p-5 mt-2">
               <AddToCart product={product} />
             </div>
 
             {/* SKU */}
-            <p className="text-xs text-zinc-700">SKU: {product.sku}</p>
+            <p className="text-xs text-mute">SKU: {product.sku}</p>
           </div>
         </div>
 
@@ -137,18 +135,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Description & features */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="card p-6">
-              <h2 className="text-lg font-bold text-zinc-100 mb-4">Product Description</h2>
-              <p className="text-zinc-400 leading-relaxed text-sm">{product.description}</p>
+            <div className="bg-white border border-line rounded-sm p-6">
+              <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">Product Description</h2>
+              <p className="text-body leading-relaxed text-sm">{product.description}</p>
             </div>
 
             {product.features.length > 0 && (
-              <div className="card p-6">
-                <h2 className="text-lg font-bold text-zinc-100 mb-4">Key Features</h2>
+              <div className="bg-white border border-line rounded-sm p-6">
+                <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">Key Features</h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {product.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-zinc-400">
-                      <CheckIcon className="h-4 w-4 text-brand flex-shrink-0 mt-0.5" />
+                    <li key={f} className="flex items-start gap-2 text-sm text-body">
+                      <CheckIcon className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
                       {f}
                     </li>
                   ))}
@@ -159,13 +157,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           {/* Specifications */}
           {Object.keys(product.specifications).length > 0 && (
-            <div className="card p-6 h-fit">
-              <h2 className="text-lg font-bold text-zinc-100 mb-4">Specifications</h2>
+            <div className="bg-white border border-line rounded-sm p-6 h-fit">
+              <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">Specifications</h2>
               <dl className="space-y-3">
                 {Object.entries(product.specifications).map(([key, value]) => (
-                  <div key={key} className="flex flex-col gap-0.5 pb-3 border-b border-surface-600 last:border-0 last:pb-0">
-                    <dt className="text-xs text-zinc-600 uppercase tracking-wide">{key}</dt>
-                    <dd className="text-sm text-zinc-300 font-medium">{value}</dd>
+                  <div key={key} className="flex flex-col gap-0.5 pb-3 border-b border-line last:border-0 last:pb-0">
+                    <dt className="font-display text-[11px] text-mute uppercase tracking-wider font-bold">{key}</dt>
+                    <dd className="text-sm text-ink font-semibold">{value}</dd>
                   </div>
                 ))}
               </dl>
@@ -174,8 +172,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
 
         {/* Regulatory notice */}
-        <div className="mt-8 p-4 rounded-xl bg-surface-700 border border-surface-500 text-xs text-zinc-600">
-          ⚠️ <strong className="text-zinc-500">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. VapeVault AU complies with all applicable Australian regulations.
+        <div className="mt-8 p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
+          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. VapeVault AU complies with all applicable Australian regulations.
         </div>
 
         {/* Related products */}

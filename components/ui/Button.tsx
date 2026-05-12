@@ -14,7 +14,7 @@ const variantMap: Record<Variant, string> = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   sale: 'btn-sale',
-  ghost: 'inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-zinc-400 hover:text-brand transition-colors',
+  ghost: 'inline-flex items-center justify-center gap-2 px-4 py-2 text-sm text-body hover:text-price transition-colors',
 }
 
 const sizeMap: Record<Size, string> = {

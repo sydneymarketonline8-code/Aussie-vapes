@@ -11,8 +11,8 @@ const map: Record<BadgeVariant, string> = {
   new: 'badge-new',
   sale: 'badge-sale',
   bestseller: 'badge-bestseller',
-  instock: 'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-900/60 text-green-400 border border-green-800',
-  outofstock: 'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-zinc-800 text-zinc-500',
+  instock: 'inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold uppercase tracking-wider bg-success/10 text-success border border-success/30 font-display',
+  outofstock: 'inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold uppercase tracking-wider bg-soft-200 text-mute border border-line font-display',
 }
 
 const label: Record<BadgeVariant, string> = {

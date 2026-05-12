@@ -7,6 +7,8 @@ import {
   ShoppingCartIcon,
   Bars3Icon,
   XMarkIcon,
+  HeartIcon,
+  UserIcon,
   ChevronDownIcon,
 } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
@@ -19,20 +21,14 @@ export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const megaRef = useRef<HTMLDivElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
+    const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  useEffect(() => {
-    if (searchOpen) searchRef.current?.focus()
-  }, [searchOpen])
 
   useEffect(() => {
     if (mobileOpen) document.body.style.overflow = 'hidden'
@@ -51,148 +47,187 @@ export default function Header() {
     <>
       <header
         className={clsx(
-          'sticky top-0 z-50 w-full transition-shadow duration-200',
-          scrolled ? 'shadow-xl shadow-black/40' : 'shadow-none',
-          'bg-surface-800 border-b border-surface-600'
+          'sticky top-0 z-50 w-full bg-white transition-shadow duration-200',
+          scrolled ? 'shadow-md' : 'border-b border-line',
         )}
       >
-        {/* Main header row */}
-        <div className="container-site flex items-center h-16 gap-4">
+        {/* Logo + Search + Account row */}
+        <div className="container-site grid grid-cols-2 lg:grid-cols-[auto,1fr,auto] items-center gap-6 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0" onClick={() => setMegaOpen(false)}>
-            <span className="text-xl font-black tracking-tight">
-              <span className="text-gradient">VapeVault</span>
-              <span className="text-zinc-400 font-light"> AU</span>
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
+              VAPEVAULT
+              <span className="block text-[10px] tracking-[0.3em] text-price font-semibold mt-1">
+                AUSTRALIA
+              </span>
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1 ml-6" ref={megaRef}>
+          {/* Search bar (desktop) */}
+          <form
+            onSubmit={handleSearchSubmit}
+            className="hidden lg:flex items-center max-w-xl w-full mx-auto relative border-2 border-ink rounded-sm overflow-hidden"
+          >
+            <input
+              ref={searchRef}
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search for vapes, brands, flavours…"
+              className="flex-1 px-4 py-2.5 text-sm bg-white text-body placeholder:text-mute focus:outline-none"
+            />
             <button
-              onMouseEnter={() => setMegaOpen(true)}
-              onMouseLeave={() => setMegaOpen(false)}
-              onClick={() => setMegaOpen((o) => !o)}
-              className={clsx('nav-link flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-surface-700 transition-colors', megaOpen && 'text-brand bg-surface-700')}
+              type="submit"
+              className="bg-ink hover:bg-ink-dark text-white px-5 py-2.5 transition-colors"
+              aria-label="Search"
             >
-              All Products <ChevronDownIcon className={clsx('h-3.5 w-3.5 transition-transform', megaOpen && 'rotate-180')} />
+              <MagnifyingGlassIcon className="h-5 w-5" />
             </button>
-            {CATEGORIES.slice(0, 4).map((cat) => (
-              <Link
-                key={cat.id}
-                href={`/category/${cat.slug}`}
-                className="nav-link px-3 py-2 rounded-lg hover:bg-surface-700 transition-colors"
-                onClick={() => setMegaOpen(false)}
-              >
-                {cat.name}
-              </Link>
-            ))}
-            <Link
-              href="/sale"
-              className="nav-link px-3 py-2 rounded-lg hover:bg-surface-700 transition-colors text-sale font-semibold"
-            >
-              Sale
-            </Link>
-          </nav>
+          </form>
 
-          {/* Right actions */}
-          <div className="flex items-center gap-1 ml-auto">
-            {/* Search */}
-            {searchOpen ? (
-              <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 animate-fade-in">
-                <input
-                  ref={searchRef}
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search vapes, brands..."
-                  className="input-base py-2 w-52 lg:w-72"
-                />
-                <button
-                  type="button"
-                  onClick={() => { setSearchOpen(false); setSearchQuery('') }}
-                  className="p-2 text-zinc-400 hover:text-zinc-200 transition-colors"
-                  aria-label="Close search"
-                >
-                  <XMarkIcon className="h-5 w-5" />
-                </button>
-              </form>
-            ) : (
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="p-2 text-zinc-400 hover:text-brand transition-colors rounded-lg hover:bg-surface-700"
-                aria-label="Open search"
-              >
-                <MagnifyingGlassIcon className="h-5 w-5" />
-              </button>
-            )}
+          {/* Account icons */}
+          <div className="flex items-center justify-end gap-1 lg:gap-3">
+            {/* Wishlist (desktop) */}
+            <Link
+              href="/wishlist"
+              className="hidden md:flex items-center gap-2 px-3 py-2 text-ink hover:text-price transition-colors group"
+            >
+              <HeartIcon className="h-6 w-6 stroke-[1.5]" />
+              <span className="hidden xl:flex flex-col leading-tight text-[11px] uppercase tracking-wider font-semibold font-display">
+                <span className="text-mute">Wish</span>
+                <span>List</span>
+              </span>
+            </Link>
+
+            {/* Account (desktop) */}
+            <Link
+              href="/account"
+              className="hidden md:flex items-center gap-2 px-3 py-2 text-ink hover:text-price transition-colors"
+            >
+              <UserIcon className="h-6 w-6 stroke-[1.5]" />
+              <span className="hidden xl:flex flex-col leading-tight text-[11px] uppercase tracking-wider font-semibold font-display">
+                <span className="text-mute">My</span>
+                <span>Account</span>
+              </span>
+            </Link>
 
             {/* Cart */}
             <button
               onClick={toggleCart}
-              className="relative p-2 text-zinc-400 hover:text-brand transition-colors rounded-lg hover:bg-surface-700"
+              className="relative flex items-center gap-2 px-3 py-2 text-ink hover:text-price transition-colors"
               aria-label={`Cart — ${itemCount} items`}
             >
-              <ShoppingCartIcon className="h-5 w-5" />
-              {itemCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 h-4.5 min-w-[18px] flex items-center justify-center rounded-full bg-brand text-surface-900 text-[10px] font-bold px-1">
-                  {itemCount > 99 ? '99+' : itemCount}
-                </span>
-              )}
+              <div className="relative">
+                <ShoppingCartIcon className="h-6 w-6 stroke-[1.5]" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-2 -right-2 h-5 min-w-[20px] flex items-center justify-center rounded-full bg-price text-white text-[10px] font-bold px-1.5">
+                    {itemCount > 99 ? '99+' : itemCount}
+                  </span>
+                )}
+              </div>
+              <span className="hidden xl:flex flex-col leading-tight text-[11px] uppercase tracking-wider font-semibold font-display">
+                <span className="text-mute">My</span>
+                <span>Cart</span>
+              </span>
             </button>
 
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen((o) => !o)}
-              className="lg:hidden p-2 text-zinc-400 hover:text-zinc-200 transition-colors rounded-lg hover:bg-surface-700"
+              className="lg:hidden p-2 text-ink"
               aria-label="Toggle menu"
+              title="Menu"
             >
-              {mobileOpen ? <XMarkIcon className="h-5 w-5" /> : <Bars3Icon className="h-5 w-5" />}
+              <Bars3Icon className="h-6 w-6" />
             </button>
           </div>
         </div>
 
-        {/* Mega menu */}
-        <div
-          onMouseEnter={() => setMegaOpen(true)}
-          onMouseLeave={() => setMegaOpen(false)}
-        >
-          <MegaMenu isOpen={megaOpen} />
-        </div>
+        {/* Mobile search */}
+        <form onSubmit={handleSearchSubmit} className="lg:hidden container-site pb-3">
+          <div className="flex items-center border-2 border-ink rounded-sm overflow-hidden">
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search…"
+              className="flex-1 px-3 py-2 text-sm bg-white text-body placeholder:text-mute focus:outline-none"
+            />
+            <button type="submit" className="bg-ink text-white px-4 py-2" aria-label="Search">
+              <MagnifyingGlassIcon className="h-4 w-4" />
+            </button>
+          </div>
+        </form>
+
+        {/* Mega nav strip (desktop) */}
+        <nav className="hidden lg:block border-t border-line bg-white">
+          <div className="container-site flex items-center justify-center gap-1">
+            <button
+              onMouseEnter={() => setMegaOpen(true)}
+              onMouseLeave={() => setMegaOpen(false)}
+              onClick={() => setMegaOpen((o) => !o)}
+              className={clsx(
+                'nav-link flex items-center gap-1 px-4 py-3.5 transition-colors',
+                megaOpen && 'text-price'
+              )}
+            >
+              All Categories <ChevronDownIcon className={clsx('h-3.5 w-3.5 transition-transform', megaOpen && 'rotate-180')} />
+            </button>
+            <Link href="/" className="nav-link px-4 py-3.5">Home</Link>
+            {CATEGORIES.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/category/${cat.slug}`}
+                className="nav-link px-4 py-3.5"
+              >
+                {cat.name}
+              </Link>
+            ))}
+            <Link href="/sale" className="nav-link px-4 py-3.5 text-price">Sale</Link>
+            <Link href="/contact" className="nav-link px-4 py-3.5">Contact</Link>
+          </div>
+          <div
+            onMouseEnter={() => setMegaOpen(true)}
+            onMouseLeave={() => setMegaOpen(false)}
+          >
+            <MegaMenu isOpen={megaOpen} />
+          </div>
+        </nav>
       </header>
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 flex">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <nav className="relative w-72 max-w-full bg-surface-800 h-full overflow-y-auto animate-slide-right border-r border-surface-600">
-            <div className="p-4 border-b border-surface-600 flex items-center justify-between">
-              <span className="text-lg font-black text-gradient">VapeVault AU</span>
-              <button onClick={() => setMobileOpen(false)} className="text-zinc-400 hover:text-zinc-200">
-                <XMarkIcon className="h-5 w-5" />
+        <div className="lg:hidden fixed inset-0 z-[60] flex">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
+          <nav className="relative w-80 max-w-full bg-white h-full overflow-y-auto animate-slide-right border-r border-line">
+            <div className="p-4 border-b border-line flex items-center justify-between bg-ink text-white">
+              <span className="font-display text-xl font-bold">VAPEVAULT AU</span>
+              <button onClick={() => setMobileOpen(false)} className="text-white hover:text-price">
+                <XMarkIcon className="h-6 w-6" />
               </button>
             </div>
-            <div className="p-4 space-y-1">
+            <div className="p-4 space-y-0">
+              <Link href="/" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Home</Link>
               {CATEGORIES.map((cat) => (
                 <Link
                   key={cat.id}
                   href={`/category/${cat.slug}`}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-3 py-3 rounded-lg text-zinc-300 hover:text-brand hover:bg-surface-700 transition-colors font-medium text-sm"
+                  className="flex items-center justify-between px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price"
                 >
-                  {cat.name}
-                  <span className="ml-1 text-xs text-zinc-600">({cat.productCount})</span>
+                  <span>{cat.name}</span>
+                  <span className="text-xs text-mute lowercase">({cat.productCount})</span>
                 </Link>
               ))}
-              <div className="pt-4 mt-4 border-t border-surface-600 space-y-1">
-                {[
-                  { label: '🔥 Best Sellers', href: '/' },
-                  { label: '💸 Sale', href: '/sale' },
-                  { label: '📦 Bulk Orders', href: '/bulk' },
-                ].map(({ label, href }) => (
-                  <Link key={href} href={href} onClick={() => setMobileOpen(false)} className="block px-3 py-3 rounded-lg text-zinc-400 hover:text-zinc-200 hover:bg-surface-700 transition-colors text-sm">
-                    {label}
-                  </Link>
-                ))}
+              <Link href="/sale" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-price font-display uppercase tracking-wider text-sm font-semibold border-b border-line">Sale</Link>
+              <Link href="/contact" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Contact</Link>
+              <div className="pt-4 mt-2 space-y-1">
+                <Link href="/account" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-3 py-2.5 text-body text-sm hover:text-ink">
+                  <UserIcon className="h-5 w-5" /> My Account
+                </Link>
+                <Link href="/wishlist" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 px-3 py-2.5 text-body text-sm hover:text-ink">
+                  <HeartIcon className="h-5 w-5" /> Wishlist
+                </Link>
               </div>
             </div>
           </nav>

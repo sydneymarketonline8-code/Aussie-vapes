@@ -35,10 +35,8 @@ export default function AddToCartButton({
         onClick={(e) => { e.preventDefault(); handleAdd() }}
         disabled={!product.inStock || added}
         className={clsx(
-          'w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-semibold transition-all duration-200',
-          added
-            ? 'bg-green-600 text-white'
-            : 'bg-brand text-surface-900 hover:bg-brand-dark',
+          'w-full flex items-center justify-center gap-2 py-2 px-3 rounded-sm text-xs font-bold uppercase tracking-wider transition-all duration-200 font-display',
+          added ? 'bg-success text-white' : 'bg-white text-ink hover:bg-ink hover:text-white',
           !product.inStock && 'opacity-50 cursor-not-allowed'
         )}
       >
@@ -56,12 +54,12 @@ export default function AddToCartButton({
       onClick={handleAdd}
       disabled={!product.inStock || added}
       className={clsx(
-        'flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95',
+        'flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-sm text-sm font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 font-display',
         added
-          ? 'bg-green-600 text-white'
+          ? 'bg-success text-white'
           : product.inStock
-          ? 'bg-brand text-surface-900 hover:bg-brand-dark'
-          : 'bg-surface-600 text-zinc-500 cursor-not-allowed'
+          ? 'bg-price text-white hover:bg-sale'
+          : 'bg-soft-200 text-mute cursor-not-allowed'
       )}
     >
       {added ? (

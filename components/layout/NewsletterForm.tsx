@@ -16,7 +16,7 @@ export default function NewsletterForm() {
 
   if (submitted) {
     return (
-      <div className="flex items-center gap-2 p-3 rounded-lg bg-brand/10 border border-brand/30 text-sm text-brand">
+      <div className="flex items-center gap-2 p-3 rounded-sm bg-success/10 border border-success/30 text-sm text-success">
         <CheckIcon className="h-4 w-4 flex-shrink-0" />
         Thanks! You&apos;re on the list.
       </div>
@@ -24,16 +24,16 @@ export default function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
-        className="input-base"
+        className="flex-1 bg-white border border-white rounded-sm px-4 py-3 text-sm text-body placeholder:text-mute focus:outline-none focus:border-price transition-colors"
         required
       />
-      <button type="submit" className="btn-primary w-full">
+      <button type="submit" className="btn-sale whitespace-nowrap">
         Subscribe
       </button>
     </form>

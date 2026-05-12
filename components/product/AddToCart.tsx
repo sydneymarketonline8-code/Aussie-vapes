@@ -19,18 +19,18 @@ export default function AddToCart({ product }: AddToCartProps) {
       {/* Flavour selector */}
       {product.flavours && product.flavours.length > 0 && (
         <div>
-          <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-2">
-            Flavour — <span className="text-zinc-200 normal-case tracking-normal">{selectedFlavour}</span>
+          <label className="block font-display text-xs font-bold text-ink uppercase tracking-widest mb-2">
+            Flavour — <span className="text-mute normal-case tracking-normal font-normal">{selectedFlavour}</span>
           </label>
           <div className="flex flex-wrap gap-2">
             {product.flavours.map((flavour) => (
               <button
                 key={flavour}
                 onClick={() => setSelectedFlavour(flavour)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                className={`px-3 py-1.5 rounded-sm text-xs font-medium border transition-colors ${
                   selectedFlavour === flavour
-                    ? 'border-brand bg-brand/10 text-brand'
-                    : 'border-surface-500 text-zinc-400 hover:border-brand/50 hover:text-zinc-200'
+                    ? 'border-ink bg-ink text-white'
+                    : 'border-line text-body bg-white hover:border-ink'
                 }`}
               >
                 {flavour}
@@ -43,18 +43,18 @@ export default function AddToCart({ product }: AddToCartProps) {
       {/* Nicotine strength selector */}
       {product.nicotineStrengths && product.nicotineStrengths.length > 0 && (
         <div>
-          <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-2">
-            Nicotine Strength — <span className="text-zinc-200 normal-case tracking-normal">{selectedNicotine}</span>
+          <label className="block font-display text-xs font-bold text-ink uppercase tracking-widest mb-2">
+            Nicotine Strength — <span className="text-mute normal-case tracking-normal font-normal">{selectedNicotine}</span>
           </label>
           <div className="flex gap-2">
             {product.nicotineStrengths.map((strength) => (
               <button
                 key={strength}
                 onClick={() => setSelectedNicotine(strength)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold border transition-colors ${
+                className={`px-4 py-2 rounded-sm text-sm font-semibold border transition-colors ${
                   selectedNicotine === strength
-                    ? 'border-brand bg-brand/10 text-brand'
-                    : 'border-surface-500 text-zinc-400 hover:border-brand/50 hover:text-zinc-200'
+                    ? 'border-ink bg-ink text-white'
+                    : 'border-line text-body bg-white hover:border-ink'
                 }`}
               >
                 {strength}
@@ -73,10 +73,10 @@ export default function AddToCart({ product }: AddToCartProps) {
         />
         <button
           onClick={() => setWishlisted((w) => !w)}
-          className={`p-3.5 rounded-xl border transition-colors ${
+          className={`p-3.5 rounded-sm border transition-colors ${
             wishlisted
-              ? 'border-sale bg-sale/10 text-sale'
-              : 'border-surface-500 text-zinc-400 hover:border-brand/50 hover:text-brand'
+              ? 'border-price bg-price/10 text-price'
+              : 'border-line bg-white text-ink hover:border-ink'
           }`}
           aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
         >
@@ -85,10 +85,10 @@ export default function AddToCart({ product }: AddToCartProps) {
       </div>
 
       {/* Trust row */}
-      <div className="flex flex-wrap gap-3 text-xs text-zinc-500">
-        <span className="flex items-center gap-1">🚚 Fast AU dispatch</span>
-        <span className="flex items-center gap-1">🔒 Secure checkout</span>
-        <span className="flex items-center gap-1">↩️ 30-day returns</span>
+      <div className="flex flex-wrap gap-4 text-xs text-mute font-display uppercase tracking-wider font-semibold">
+        <span className="flex items-center gap-1">🚚 Fast AU Dispatch</span>
+        <span className="flex items-center gap-1">🔒 Secure Checkout</span>
+        <span className="flex items-center gap-1">↩️ 30-Day Returns</span>
       </div>
     </div>
   )

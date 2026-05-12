@@ -17,18 +17,18 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
   return (
     <div className="flex flex-col gap-3">
       {/* Main image */}
-      <div className="relative aspect-square rounded-2xl overflow-hidden bg-surface-600 border border-surface-500">
+      <div className="relative aspect-square rounded-sm overflow-hidden bg-soft-100 border border-line">
         <Image
           src={images[selected]}
           alt={`${productName} — image ${selected + 1}`}
           fill
           priority
-          className="object-cover transition-opacity duration-300"
+          className="object-contain p-8 transition-opacity duration-300"
           sizes="(max-width: 1024px) 100vw, 50vw"
           unoptimized
         />
         {images.length > 1 && (
-          <span className="absolute bottom-3 right-3 text-xs bg-surface-900/80 text-zinc-300 px-2 py-1 rounded-full">
+          <span className="absolute bottom-3 right-3 text-xs bg-white text-ink px-2 py-1 rounded-sm border border-line shadow-sm">
             {selected + 1} / {images.length}
           </span>
         )}
@@ -42,10 +42,8 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
               key={i}
               onClick={() => setSelected(i)}
               className={clsx(
-                'relative h-16 w-16 flex-shrink-0 rounded-xl overflow-hidden border-2 transition-colors',
-                i === selected
-                  ? 'border-brand'
-                  : 'border-surface-500 hover:border-surface-400'
+                'relative h-16 w-16 flex-shrink-0 rounded-sm overflow-hidden border-2 transition-colors bg-soft-100',
+                i === selected ? 'border-ink' : 'border-line hover:border-ink/50'
               )}
               aria-label={`View image ${i + 1}`}
             >
@@ -53,7 +51,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
                 src={img}
                 alt={`${productName} thumbnail ${i + 1}`}
                 fill
-                className="object-cover"
+                className="object-contain p-1"
                 sizes="64px"
                 unoptimized
               />

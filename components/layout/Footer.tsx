@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline'
 import NewsletterForm from './NewsletterForm'
 
 const shop = [
@@ -10,43 +11,87 @@ const shop = [
   { label: 'Sale', href: '/sale' },
 ]
 
-const info = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Vaping Laws in Australia', href: '/vaping-laws-australia' },
-  { label: 'Nicotine FAQ', href: '/faq' },
-  { label: 'Beginners Guide', href: '/beginners-guide' },
-  { label: 'Blog', href: '/blog' },
+const support = [
   { label: 'Contact Us', href: '/contact' },
+  { label: 'Order Tracking', href: '/track' },
+  { label: 'Shipping Policy', href: '/shipping' },
+  { label: 'Returns & Refunds', href: '/returns' },
+  { label: 'Beginners Guide', href: '/beginners-guide' },
+  { label: 'FAQ', href: '/faq' },
+]
+
+const account = [
+  { label: 'My Account', href: '/account' },
+  { label: 'Wishlist', href: '/wishlist' },
+  { label: 'Order History', href: '/account/orders' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Vaping Laws AU', href: '/vaping-laws-australia' },
+  { label: 'Blog', href: '/blog' },
 ]
 
 const legal = [
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms of Service', href: '/terms' },
-  { label: 'Returns & Refunds', href: '/returns' },
-  { label: 'Shipping Policy', href: '/shipping' },
+  { label: 'Sitemap', href: '/sitemap.xml' },
 ]
 
 export default function Footer() {
   return (
-    <footer className="bg-surface-800 border-t border-surface-600 mt-20">
-      {/* Main footer grid */}
-      <div className="container-site py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand column */}
-        <div>
+    <footer className="mt-20 bg-soft-100 border-t border-line">
+      {/* Newsletter strip */}
+      <div className="bg-ink text-white">
+        <div className="container-site py-8 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+          <div>
+            <h3 className="font-display text-2xl font-bold uppercase tracking-wide">Subscribe & Save</h3>
+            <p className="text-sm text-white/70 mt-1">Get 10% off your first order plus exclusive deals straight to your inbox.</p>
+          </div>
+          <div className="lg:max-w-md w-full lg:ml-auto">
+            <NewsletterForm />
+          </div>
+        </div>
+      </div>
+
+      {/* Main grid */}
+      <div className="container-site py-14 grid grid-cols-2 lg:grid-cols-5 gap-10">
+        {/* Brand + contact */}
+        <div className="col-span-2">
           <Link href="/" className="inline-block mb-4">
-            <span className="text-xl font-black">
-              <span className="text-gradient">VapeVault</span>
-              <span className="text-zinc-400 font-light"> AU</span>
+            <span className="font-display text-2xl font-bold tracking-tight text-ink leading-none">
+              VAPEVAULT
+              <span className="block text-[10px] tracking-[0.3em] text-price font-semibold mt-1">
+                AUSTRALIA
+              </span>
             </span>
           </Link>
-          <p className="text-zinc-500 text-sm leading-relaxed mb-5">
+          <p className="text-body text-sm leading-relaxed mb-5 max-w-md">
             Australia&apos;s premium online vape destination. Disposable vapes, pod systems, nicotine salts and e-liquids — shipped fast from Australian stock.
           </p>
-          <div className="flex gap-3">
+
+          <ul className="space-y-2.5 text-sm">
+            <li className="flex items-start gap-2 text-body">
+              <MapPinIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
+              Sydney, NSW, Australia
+            </li>
+            <li className="flex items-start gap-2 text-body">
+              <PhoneIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
+              <a href="tel:+61000000000" className="hover:text-price">+61 0000 0000</a>
+            </li>
+            <li className="flex items-start gap-2 text-body">
+              <EnvelopeIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
+              <a href="mailto:info@vapevaultau.com.au" className="hover:text-price">info@vapevaultau.com.au</a>
+            </li>
+            <li className="flex items-start gap-2 text-body">
+              <ClockIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
+              Mon-Fri 9am–5pm AEST
+            </li>
+          </ul>
+
+          <div className="flex gap-3 mt-5">
             {[
               { label: 'Instagram', href: 'https://instagram.com', icon: '📸' },
               { label: 'Facebook', href: 'https://facebook.com', icon: '📘' },
               { label: 'TikTok', href: 'https://tiktok.com', icon: '🎵' },
+              { label: 'YouTube', href: 'https://youtube.com', icon: '▶' },
             ].map(({ label, href, icon }) => (
               <a
                 key={label}
@@ -54,7 +99,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="h-9 w-9 flex items-center justify-center rounded-lg bg-surface-700 hover:bg-surface-600 border border-surface-500 hover:border-brand/50 transition-colors text-base"
+                className="h-10 w-10 flex items-center justify-center rounded-sm bg-white border border-line hover:bg-ink hover:text-white hover:border-ink transition-colors text-base"
               >
                 {icon}
               </a>
@@ -64,11 +109,11 @@ export default function Footer() {
 
         {/* Shop column */}
         <div>
-          <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Shop</h3>
+          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-4 pb-2 border-b border-line">Shop</h3>
           <ul className="space-y-2.5">
             {shop.map(({ label, href }) => (
               <li key={href}>
-                <Link href={href} className="text-sm text-zinc-500 hover:text-brand transition-colors">
+                <Link href={href} className="text-sm text-body hover:text-price transition-colors">
                   {label}
                 </Link>
               </li>
@@ -76,13 +121,13 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Info column */}
+        {/* Support column */}
         <div>
-          <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Information</h3>
+          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-4 pb-2 border-b border-line">Support</h3>
           <ul className="space-y-2.5">
-            {info.map(({ label, href }) => (
+            {support.map(({ label, href }) => (
               <li key={href}>
-                <Link href={href} className="text-sm text-zinc-500 hover:text-brand transition-colors">
+                <Link href={href} className="text-sm text-body hover:text-price transition-colors">
                   {label}
                 </Link>
               </li>
@@ -90,40 +135,46 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Newsletter column */}
+        {/* Account column */}
         <div>
-          <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">Stay in the Loop</h3>
-          <p className="text-sm text-zinc-500 mb-4">Get exclusive deals, new arrivals and restocks delivered to your inbox.</p>
-          <NewsletterForm />
-          <p className="text-zinc-600 text-xs mt-2">No spam. Unsubscribe any time.</p>
+          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-4 pb-2 border-b border-line">Account</h3>
+          <ul className="space-y-2.5">
+            {account.map(({ label, href }) => (
+              <li key={href}>
+                <Link href={href} className="text-sm text-body hover:text-price transition-colors">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Trust badges strip */}
-      <div className="border-t border-surface-600">
-        <div className="container-site py-4 flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-600">
-          {['🔒 Secure SSL Checkout', '🚚 Fast AU Dispatch', '✅ Age Verified Store', '🇦🇺 Australian Owned', '📦 Easy Returns'].map((t) => (
+      {/* Trust badges */}
+      <div className="border-t border-line bg-white">
+        <div className="container-site py-5 flex flex-wrap items-center justify-center gap-6 text-xs text-mute font-display uppercase tracking-wider font-semibold">
+          {['🔒 Secure SSL Checkout', '🚚 Fast AU Dispatch', '✅ Age Verified Store', '🇦🇺 Australian Owned', '📦 Easy Returns', '💳 Multiple Payment Options'].map((t) => (
             <span key={t}>{t}</span>
           ))}
         </div>
       </div>
 
-      {/* Legal bottom strip */}
-      <div className="border-t border-surface-600 bg-surface-950">
+      {/* Bottom strip */}
+      <div className="border-t border-line bg-ink text-white">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-zinc-600 text-center sm:text-left">
+          <p className="text-xs text-white/70 text-center sm:text-left">
             © {new Date().getFullYear()} VapeVault AU. All rights reserved. ABN: 00 000 000 000
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {legal.map(({ label, href }) => (
-              <Link key={href} href={href} className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
+              <Link key={href} href={href} className="text-xs text-white/70 hover:text-price transition-colors">
                 {label}
               </Link>
             ))}
           </div>
         </div>
-        <div className="container-site pb-3">
-          <p className="text-[10px] text-zinc-700 text-center">
+        <div className="container-site pb-4">
+          <p className="text-[10px] text-white/50 text-center leading-relaxed">
             ⚠️ Nicotine products are highly addictive and not risk-free. For adult use only (18+). VapeVault AU does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
           </p>
         </div>
