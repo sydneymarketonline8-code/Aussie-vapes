@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, use } from 'react'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import FilterSidebar from '@/components/category/FilterSidebar'
 import SortDropdown from '@/components/category/SortDropdown'
@@ -10,7 +11,9 @@ import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategory } from '@/lib/products'
 import type { FilterState, SortOption } from '@/types'
 import { AdjustmentsHorizontalIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { use } from 'react'
+import { CheckCircleIcon } from '@heroicons/react/24/solid'
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
 const DEFAULT_FILTERS: FilterState = {
   priceMin: 0,
@@ -49,30 +52,132 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
     return result
   }, [allProducts, filters, sort])
 
+  const minPrice = allProducts.length ? Math.min(...allProducts.map((p) => p.price)) : 0
+  const maxPrice = allProducts.length ? Math.max(...allProducts.map((p) => p.price)) : 0
+  const avgRating =
+    allProducts.length > 0
+      ? allProducts.reduce((s, p) => s + p.rating, 0) / allProducts.length
+      : 4.7
+
+  // JSON-LD structured data
+  const breadcrumbJson = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: category.name, item: `${SITE_URL}/category/${category.slug}` },
+    ],
+  }
+  const itemListJson = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: category.name,
+    description: category.description,
+    url: `${SITE_URL}/category/${category.slug}`,
+    numberOfItems: allProducts.length,
+    itemListElement: allProducts.slice(0, 20).map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.name,
+      url: `${SITE_URL}/product/${p.slug}`,
+    })),
+  }
+  const faqJson = category.faqs && {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: category.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  }
+
   return (
-    <div>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJson) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJson) }} />
+      {faqJson && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }} />
+      )}
+
       {/* Category hero banner */}
-      <div className="relative overflow-hidden bg-soft-100 border-b border-line">
-        <div className="container-site relative py-10">
+      <section className="relative overflow-hidden bg-soft-100 border-b border-line">
+        <div className="container-site relative py-10 lg:py-14">
           <Breadcrumb crumbs={[{ label: 'Home', href: '/' }, { label: category.name }]} />
-          <h1 className="font-display text-3xl sm:text-4xl font-bold text-ink mt-4 mb-3 lowercase">{category.name}</h1>
-          <p className="text-body max-w-2xl leading-relaxed text-sm">{category.longDescription}</p>
-          {/* Subcategory pills */}
-          {category.subcategories.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-5">
-              {category.subcategories.map((sub) => (
-                <a
-                  key={sub.id}
-                  href={`?sub=${sub.slug}`}
-                  className="px-4 py-1.5 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink hover:bg-ink hover:text-white transition-colors"
-                >
-                  {sub.name}
-                </a>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end mt-5">
+            <div className="lg:col-span-2">
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
+                {category.productCount.toLocaleString()} Products In Stock
+              </p>
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.05] mb-3 lowercase">
+                {category.name}
+              </h1>
+              {category.intro && (
+                <p className="text-body text-base leading-relaxed max-w-2xl mb-3">{category.intro}</p>
+              )}
+              <p className="text-body text-sm leading-relaxed max-w-2xl">{category.description}</p>
+              {/* Subcategory pills */}
+              {category.subcategories.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-5">
+                  {category.subcategories.map((sub) => (
+                    <a
+                      key={sub.id}
+                      href={`?sub=${sub.slug}`}
+                      className="px-4 py-1.5 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink hover:bg-ink hover:text-white transition-colors"
+                    >
+                      {sub.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Stats card */}
+            <div className="bg-white border border-line rounded-sm p-6 shadow-sm hidden lg:block">
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <p className="font-display text-3xl font-bold text-ink">{allProducts.length.toLocaleString()}</p>
+                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">In Stock</p>
+                </div>
+                <div>
+                  <p className="font-display text-3xl font-bold text-ink">${minPrice.toFixed(0)}+</p>
+                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">From</p>
+                </div>
+              </div>
+              <div className="mt-5 pt-5 border-t border-line text-center">
+                <p className="font-display text-2xl font-bold text-ink">★ {avgRating.toFixed(1)}</p>
+                <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">Average Rating</p>
+              </div>
+              <div className="mt-5 pt-5 border-t border-line space-y-2 text-xs text-body">
+                <div className="flex items-center gap-2">
+                  <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
+                  Authentic AU stock
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
+                  Same-day Sydney dispatch
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Highlights strip */}
+      {category.highlights && category.highlights.length > 0 && (
+        <section className="bg-white border-b border-line">
+          <div className="container-site py-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {category.highlights.map((h) => (
+                <div key={h} className="flex items-start gap-2 text-xs text-body">
+                  <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
+                  <span>{h}</span>
+                </div>
               ))}
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </section>
+      )}
 
       <div className="container-site py-8">
         {/* Toolbar */}
@@ -89,7 +194,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
 
         <div className="flex gap-8">
           {/* Desktop filter sidebar */}
-          <div className="hidden lg:block w-56 flex-shrink-0">
+          <div className="hidden lg:block w-60 flex-shrink-0">
             <FilterSidebar filters={filters} onChange={setFilters} />
           </div>
 
@@ -116,20 +221,85 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
         </div>
       )}
 
-      {/* Category SEO content */}
-      <section className="container-site py-10 max-w-3xl">
-        <h2 className="font-display text-xl font-bold text-ink mb-3 lowercase">about {category.name.toLowerCase()} at vapevault au</h2>
-        <p className="text-body text-sm leading-relaxed">{category.longDescription}</p>
-        {category.keywords.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {category.keywords.slice(0, 6).map((kw) => (
-              <span key={kw} className="px-3 py-1 text-xs bg-soft-100 text-body rounded-sm border border-line font-display uppercase tracking-wider font-semibold">
-                {kw}
-              </span>
-            ))}
+      {/* Long-form SEO content */}
+      <section className="bg-soft-100 border-t border-line py-14">
+        <div className="container-site grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              <h2 className="font-display text-2xl lg:text-3xl font-bold text-ink mb-4 lowercase">
+                about {category.name.toLowerCase()} at aussievapes
+              </h2>
+              <p className="text-body leading-relaxed">{category.longDescription}</p>
+            </div>
+
+            {category.buyerGuide && category.buyerGuide.length > 0 && (
+              <div>
+                <h2 className="font-display text-2xl font-bold text-ink mb-5 lowercase">
+                  {category.name.toLowerCase()} buyer&apos;s guide
+                </h2>
+                <div className="space-y-5">
+                  {category.buyerGuide.map((g) => (
+                    <article key={g.title} className="bg-white border-l-4 border-price p-5 rounded-sm">
+                      <h3 className="font-display text-lg font-bold text-ink mb-2">{g.title}</h3>
+                      <p className="text-body text-sm leading-relaxed">{g.body}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+
+          {/* Keyword cloud sidebar */}
+          <aside className="lg:sticky lg:top-24 h-fit">
+            <div className="bg-white border border-line rounded-sm p-6">
+              <h3 className="font-display text-base font-bold text-ink uppercase tracking-wider mb-4 pb-3 border-b border-line">
+                Popular Searches
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {category.keywords.map((kw) => (
+                  <Link
+                    key={kw}
+                    href={`/search?q=${encodeURIComponent(kw)}`}
+                    className="px-3 py-1 text-xs bg-soft-100 hover:bg-ink hover:text-white text-body rounded-sm border border-line transition-colors font-display"
+                  >
+                    {kw}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </aside>
+        </div>
       </section>
-    </div>
+
+      {/* FAQ */}
+      {category.faqs && category.faqs.length > 0 && (
+        <section className="bg-white border-t border-line py-14">
+          <div className="container-site max-w-3xl">
+            <div className="text-center mb-10">
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
+                Frequently Asked Questions
+              </p>
+              <h2 className="font-display text-3xl font-bold text-ink lowercase">
+                {category.name.toLowerCase()} faq
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {category.faqs.map((faq, i) => (
+                <details key={i} className="group bg-soft-100 border border-line rounded-sm overflow-hidden">
+                  <summary className="cursor-pointer list-none p-5 flex items-start justify-between gap-4 font-display font-bold text-ink hover:bg-soft-200 transition-colors">
+                    <span>{faq.question}</span>
+                    <span className="font-display text-price text-xl group-open:rotate-45 transition-transform flex-shrink-0">
+                      +
+                    </span>
+                  </summary>
+                  <div className="p-5 pt-0 text-body leading-relaxed text-sm">{faq.answer}</div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   )
 }

@@ -28,18 +28,32 @@ export interface Product {
   nicotineStrengths?: string[]
 }
 
+export interface CategoryFaq {
+  question: string
+  answer: string
+}
+
+export interface CategoryBuyerGuide {
+  title: string
+  body: string
+}
+
 export interface Category {
   id: string
   slug: string
   name: string
   description: string
   longDescription: string
+  intro?: string
   subcategories: Subcategory[]
   productCount: number
   image: string
   seoTitle: string
   seoDescription: string
   keywords: string[]
+  faqs?: CategoryFaq[]
+  buyerGuide?: CategoryBuyerGuide[]
+  highlights?: string[]
 }
 
 export interface Subcategory {

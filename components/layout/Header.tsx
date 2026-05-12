@@ -56,9 +56,9 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
-              VAPEVAULT
-              <span className="block text-[10px] tracking-[0.3em] text-price font-semibold mt-1">
-                AUSTRALIA
+              AUSSIE<span className="text-price">VAPES</span>
+              <span className="block text-[10px] tracking-[0.3em] text-mute font-semibold mt-1">
+                AUSTRALIA&apos;S #1 ONLINE VAPE STORE
               </span>
             </span>
           </Link>
@@ -183,6 +183,7 @@ export default function Header() {
                 {cat.name}
               </Link>
             ))}
+            <Link href="/brands" className="nav-link px-4 py-3.5">Brands</Link>
             <Link href="/sale" className="nav-link px-4 py-3.5 text-price">Sale</Link>
             <Link href="/contact" className="nav-link px-4 py-3.5">Contact</Link>
           </div>
@@ -201,8 +202,8 @@ export default function Header() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
           <nav className="relative w-80 max-w-full bg-white h-full overflow-y-auto animate-slide-right border-r border-line">
             <div className="p-4 border-b border-line flex items-center justify-between bg-ink text-white">
-              <span className="font-display text-xl font-bold">VAPEVAULT AU</span>
-              <button onClick={() => setMobileOpen(false)} className="text-white hover:text-price">
+              <span className="font-display text-xl font-bold">AUSSIE<span className="text-price">VAPES</span></span>
+              <button onClick={() => setMobileOpen(false)} className="text-white hover:text-price" aria-label="Close menu">
                 <XMarkIcon className="h-6 w-6" />
               </button>
             </div>
@@ -219,6 +220,7 @@ export default function Header() {
                   <span className="text-xs text-mute lowercase">({cat.productCount})</span>
                 </Link>
               ))}
+              <Link href="/brands" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Brands</Link>
               <Link href="/sale" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-price font-display uppercase tracking-wider text-sm font-semibold border-b border-line">Sale</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Contact</Link>
               <div className="pt-4 mt-2 space-y-1">

@@ -11,7 +11,7 @@ import StarRating from '@/components/ui/StarRating'
 import Badge from '@/components/ui/Badge'
 import { CheckIcon, TruckIcon } from '@heroicons/react/24/outline'
 
-const SITE_URL = 'https://vapevaultau.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
 export async function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }))
@@ -173,7 +173,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         {/* Regulatory notice */}
         <div className="mt-8 p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
-          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. VapeVault AU complies with all applicable Australian regulations.
+          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. AussieVapes complies with all applicable Australian regulations.
         </div>
 
         {/* Related products */}

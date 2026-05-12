@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-const STORAGE_KEY = 'vapevault-age-verified'
+const STORAGE_KEY = 'aussievapes-age-verified'
 
 export default function AgeGate() {
   const [show, setShow] = useState(false)

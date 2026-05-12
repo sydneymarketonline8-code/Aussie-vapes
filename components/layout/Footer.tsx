@@ -51,20 +51,38 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Top brands strip */}
+      <div className="border-t border-line bg-white">
+        <div className="container-site py-6">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Top Brands</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {['IGET', 'Alfakher', 'HQD', 'Gunnpod', 'Lost Mary', 'Vozol', 'RELX', 'Elux', 'Mr Fog', 'AliBarBar', 'JNR', 'Serein'].map((b) => (
+              <a
+                key={b}
+                href={`/brand/${b.toLowerCase().replace(/\s+/g, '-')}`}
+                className="font-display text-sm font-bold uppercase tracking-wider text-ink hover:text-price transition-colors"
+              >
+                {b}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Main grid */}
       <div className="container-site py-14 grid grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Brand + contact */}
         <div className="col-span-2">
           <Link href="/" className="inline-block mb-4">
             <span className="font-display text-2xl font-bold tracking-tight text-ink leading-none">
-              VAPEVAULT
-              <span className="block text-[10px] tracking-[0.3em] text-price font-semibold mt-1">
-                AUSTRALIA
+              AUSSIE<span className="text-price">VAPES</span>
+              <span className="block text-[10px] tracking-[0.3em] text-mute font-semibold mt-1">
+                AUSTRALIA&apos;S #1 ONLINE VAPE STORE
               </span>
             </span>
           </Link>
           <p className="text-body text-sm leading-relaxed mb-5 max-w-md">
-            Australia&apos;s premium online vape destination. Disposable vapes, pod systems, nicotine salts and e-liquids — shipped fast from Australian stock.
+            AussieVapes is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and more — shipped same-day from our Sydney warehouse.
           </p>
 
           <ul className="space-y-2.5 text-sm">
@@ -78,7 +96,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-2 text-body">
               <EnvelopeIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
-              <a href="mailto:info@vapevaultau.com.au" className="hover:text-price">info@vapevaultau.com.au</a>
+              <a href="mailto:info@aussievapes.com.au" className="hover:text-price">info@aussievapes.com.au</a>
             </li>
             <li className="flex items-start gap-2 text-body">
               <ClockIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
@@ -163,7 +181,7 @@ export default function Footer() {
       <div className="border-t border-line bg-ink text-white">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/70 text-center sm:text-left">
-            © {new Date().getFullYear()} VapeVault AU. All rights reserved. ABN: 00 000 000 000
+            © {new Date().getFullYear()} AussieVapes. All rights reserved. ABN: 00 000 000 000
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {legal.map(({ label, href }) => (
@@ -175,7 +193,7 @@ export default function Footer() {
         </div>
         <div className="container-site pb-4">
           <p className="text-[10px] text-white/50 text-center leading-relaxed">
-            ⚠️ Nicotine products are highly addictive and not risk-free. For adult use only (18+). VapeVault AU does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
+            ⚠️ Nicotine products are highly addictive and not risk-free. For adult use only (18+). AussieVapes does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
           </p>
         </div>
       </div>
