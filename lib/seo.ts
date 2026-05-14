@@ -2,35 +2,62 @@ import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'AussieVapes'
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Aussie Vapes'
 const DEFAULT_DESCRIPTION =
-  "Australia's #1 online vape store — disposable vapes, pod systems, nicotine salts and e-liquids with fast Australian shipping from Sydney."
+  "Aussie Vapes is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $100."
+
+// Principal keyword cluster — "Aussie Vapes" topical authority targeting
+export const AUSSIE_VAPES_KEYWORDS = [
+  'aussie vapes',
+  'aussie vapes online',
+  'aussie vapes australia',
+  'aussie vape',
+  'aussie vape store',
+  'aussie vape shop',
+  'aussie vapes shop',
+  'best aussie vapes',
+  'aussie vapes near me',
+  'aussie vapes free shipping',
+  'aussie vapes sydney',
+  'aussie vapes melbourne',
+  'aussie vapes brisbane',
+  'aussie vapes perth',
+  'aussie vapes adelaide',
+  'buy aussie vapes online',
+  'cheap aussie vapes',
+  'aussie disposable vapes',
+  'aussie pod systems',
+  'aussie nicotine salts',
+  'aussie e-liquid',
+]
+
+const VAPE_PRODUCT_KEYWORDS = [
+  'australian vapes',
+  'vape australia',
+  'vapes australia',
+  'online vape store australia',
+  'buy vape online australia',
+  'disposable vape australia',
+  'pod systems australia',
+  'nicotine salts australia',
+  'e-liquid australia',
+  'vape shop australia',
+  'iget bar australia',
+  'alfakher crown bar australia',
+  'hqd australia',
+  'gunnpod australia',
+  'lost mary australia',
+]
 
 export function buildSiteMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `${SITE_NAME} | Australia's Largest Online Vape Store`,
-      template: `%s | ${SITE_NAME}`,
+      default: `Aussie Vapes — Australia's #1 Online Vape Store`,
+      template: `%s | Aussie Vapes`,
     },
     description: DEFAULT_DESCRIPTION,
-    keywords: [
-      'aussie vapes',
-      'australian vapes',
-      'vape australia',
-      'online vape store australia',
-      'buy vape online australia',
-      'disposable vape australia',
-      'pod systems australia',
-      'nicotine salts australia',
-      'e-liquid australia',
-      'vape shop australia',
-      'iget bar australia',
-      'alfakher crown bar australia',
-      'hqd australia',
-      'gunnpod australia',
-      'lost mary australia',
-    ],
+    keywords: [...AUSSIE_VAPES_KEYWORDS, ...VAPE_PRODUCT_KEYWORDS],
     authors: [{ name: SITE_NAME }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
@@ -44,13 +71,15 @@ export function buildSiteMetadata(): Metadata {
       locale: 'en_AU',
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `${SITE_NAME} | Australia's Largest Online Vape Store`,
+      title: `Aussie Vapes — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     twitter: {
       card: 'summary_large_image',
       site: '@AussieVapes',
       creator: '@AussieVapes',
+      title: `Aussie Vapes — Australia's #1 Online Vape Store`,
+      description: DEFAULT_DESCRIPTION,
     },
     alternates: { canonical: SITE_URL },
   }
@@ -215,11 +244,17 @@ export function breadcrumbJsonLd(crumbs: { name: string; url: string }[]) {
 export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_NAME,
+    '@type': 'OnlineStore',
+    name: 'Aussie Vapes',
+    alternateName: ['AussieVapes', 'Aussie Vapes Australia', 'Aussie Vapes Online'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: DEFAULT_DESCRIPTION,
+    slogan: "Australia's #1 Online Vape Store",
+    areaServed: {
+      '@type': 'Country',
+      name: 'Australia',
+    },
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'AU',
@@ -236,5 +271,23 @@ export function organizationJsonLd() {
       'https://www.instagram.com/aussievapes',
       'https://www.facebook.com/aussievapes',
     ],
+  }
+}
+
+export function websiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Aussie Vapes',
+    alternateName: 'AussieVapes',
+    url: SITE_URL,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   }
 }

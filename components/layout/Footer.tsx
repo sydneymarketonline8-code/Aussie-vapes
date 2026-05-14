@@ -42,8 +42,8 @@ export default function Footer() {
       <div className="bg-ink text-white">
         <div className="container-site py-8 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
           <div>
-            <h3 className="font-display text-2xl font-bold uppercase tracking-wide">Subscribe & Save</h3>
-            <p className="text-sm text-white/70 mt-1">Get 10% off your first order plus exclusive deals straight to your inbox.</p>
+            <h3 className="font-display text-2xl font-bold uppercase tracking-wide">Join the Aussie Vapes Club</h3>
+            <p className="text-sm text-white/70 mt-1">Get 10% off your first Aussie Vapes order plus exclusive deals straight to your inbox.</p>
           </div>
           <div className="lg:max-w-md w-full lg:ml-auto">
             <NewsletterForm />
@@ -54,13 +54,14 @@ export default function Footer() {
       {/* Top brands strip */}
       <div className="border-t border-line bg-white">
         <div className="container-site py-6">
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Top Brands</p>
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Top Brands At Aussie Vapes</p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {['IGET', 'Alfakher', 'HQD', 'Gunnpod', 'Lost Mary', 'Vozol', 'RELX', 'Elux', 'Mr Fog', 'AliBarBar', 'JNR', 'Serein'].map((b) => (
               <a
                 key={b}
                 href={`/brand/${b.toLowerCase().replace(/\s+/g, '-')}`}
                 className="font-display text-sm font-bold uppercase tracking-wider text-ink hover:text-price transition-colors"
+                title={`${b} at Aussie Vapes`}
               >
                 {b}
               </a>
@@ -75,14 +76,14 @@ export default function Footer() {
         <div className="col-span-2">
           <Link href="/" className="inline-block mb-4">
             <span className="font-display text-2xl font-bold tracking-tight text-ink leading-none">
-              AUSSIE<span className="text-price">VAPES</span>
+              AUSSIE <span className="text-price">VAPES</span>
               <span className="block text-[10px] tracking-[0.3em] text-mute font-semibold mt-1">
                 AUSTRALIA&apos;S #1 ONLINE VAPE STORE
               </span>
             </span>
           </Link>
           <p className="text-body text-sm leading-relaxed mb-5 max-w-md">
-            AussieVapes is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and more — shipped same-day from our Sydney warehouse.
+            <strong>Aussie Vapes</strong> is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ more brands — shipped same-day from our Sydney warehouse, free across Australia on orders over $100.
           </p>
 
           <ul className="space-y-2.5 text-sm">
@@ -181,7 +182,7 @@ export default function Footer() {
       <div className="border-t border-line bg-ink text-white">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/70 text-center sm:text-left">
-            © {new Date().getFullYear()} AussieVapes. All rights reserved. ABN: 00 000 000 000
+            © {new Date().getFullYear()} Aussie Vapes. All rights reserved. ABN: 00 000 000 000 — Australia&apos;s #1 Online Vape Store
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {legal.map(({ label, href }) => (
@@ -193,7 +194,7 @@ export default function Footer() {
         </div>
         <div className="container-site pb-4">
           <p className="text-[10px] text-white/50 text-center leading-relaxed">
-            ⚠️ Nicotine products are highly addictive and not risk-free. For adult use only (18+). AussieVapes does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
+            ⚠️ Nicotine products are highly addictive and not risk-free. For adult use only (18+). Aussie Vapes does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
           </p>
         </div>
       </div>

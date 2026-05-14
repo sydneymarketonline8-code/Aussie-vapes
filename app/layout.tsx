@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer'
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartDrawer from '@/components/cart/CartDrawer'
 import AgeGate from '@/components/ui/AgeGate'
-import { buildSiteMetadata, organizationJsonLd } from '@/lib/seo'
+import { buildSiteMetadata, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = buildSiteMetadata()
 
@@ -17,6 +17,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#ffffff" />

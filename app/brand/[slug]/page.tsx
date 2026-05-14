@@ -86,7 +86,7 @@ export default async function BrandPage({
         <div className="container-site py-10 lg:py-16">
           <Breadcrumb
             crumbs={[
-              { label: 'Home', href: '/' },
+              { label: 'Aussie Vapes', href: '/' },
               { label: 'Brands', href: '/brands' },
               { label: brand.displayName },
             ]}
@@ -100,7 +100,7 @@ export default async function BrandPage({
                 {brand.origin} · Authentic AU Stock
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink-dark leading-[1.05] mb-3">
-                {brand.displayName} <span className="text-mute">Australia</span>
+                {brand.displayName} <span className="text-mute">at Aussie Vapes</span>
               </h1>
               <p
                 className="font-display text-lg font-semibold mb-5"
@@ -318,7 +318,7 @@ export default async function BrandPage({
       {/* Compliance footer */}
       <div className="container-site py-6">
         <div className="p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
-          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. AussieVapes complies with all applicable Australian regulations.
+          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Aussie Vapes complies with all applicable Australian regulations.
         </div>
       </div>
     </>

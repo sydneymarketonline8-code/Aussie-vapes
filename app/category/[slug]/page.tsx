@@ -262,7 +262,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="font-display text-2xl lg:text-3xl font-bold text-ink mb-4 lowercase">
-                about {category.name.toLowerCase()} at aussievapes
+                about {category.name.toLowerCase()} at aussie vapes
               </h2>
               <p className="text-body leading-relaxed">{category.longDescription}</p>
             </div>
