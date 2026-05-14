@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import BrandProductGrid from '@/components/brand/BrandProductGrid'
 import { BRANDS, getBrandBySlug, getProductsByBrand, getBrandSublines } from '@/lib/brands'
@@ -174,7 +175,9 @@ export default async function BrandPage({
         {products.length === 0 ? (
           <p className="text-mute text-center py-16">No {brand.displayName} products currently in stock. Check back soon.</p>
         ) : (
-          <BrandProductGrid products={products} sublines={sublines} accentColor={brand.accentColor} />
+          <Suspense fallback={<div className="h-96" />}>
+            <BrandProductGrid products={products} sublines={sublines} accentColor={brand.accentColor} brandSlug={brand.slug} />
+          </Suspense>
         )}
       </section>
 

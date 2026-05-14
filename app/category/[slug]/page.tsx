@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { notFound } from 'next/navigation'
+import { useState, useMemo, useEffect } from 'react'
+import { notFound, useSearchParams, useRouter, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import FilterSidebar from '@/components/category/FilterSidebar'
 import SortDropdown from '@/components/category/SortDropdown'
 import ProductGrid from '@/components/product/ProductGrid'
+import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategory } from '@/lib/products'
 import type { FilterState, SortOption } from '@/types'
@@ -28,11 +29,27 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   const category = getCategoryBySlug(slug)
   if (!category) notFound()
 
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+  const currentPage = parsePage(searchParams.get('page') ?? undefined)
+
   const allProducts = getProductsByCategory(slug)
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS)
   const [sort, setSort] = useState<SortOption>('featured')
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false)
   const [activeSub, setActiveSub] = useState<string | null>(null)
+
+  // Reset to page 1 when filters/sort/sub change (avoids landing on empty pages)
+  useEffect(() => {
+    if (currentPage > 1) {
+      const p = new URLSearchParams(Array.from(searchParams.entries()))
+      p.delete('page')
+      const qs = p.toString()
+      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters, sort, activeSub])
 
   // Counts per subcategory
   const subcategoryCounts = useMemo(() => {
@@ -235,7 +252,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
           {/* Products */}
           <div className="flex-1 min-w-0">
-            <ProductGrid products={filtered} emptyMessage={`No ${category.name} match your filters.`} />
+            <ProductGrid products={paginate(filtered, currentPage, PAGE_SIZE)} emptyMessage={`No ${category.name} match your filters.`} />
+            <Pagination
+              currentPage={currentPage}
+              totalItems={filtered.length}
+              basePath={`/category/${category.slug}`}
+            />
           </div>
         </div>
       </div>

@@ -2,25 +2,43 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGrid from '@/components/product/ProductGrid'
+import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import { getSaleProducts } from '@/lib/products'
 
-export const metadata: Metadata = {
-  title: 'Aussie Vapes Sale — Discounted Disposables & Pod Systems',
-  description:
-    "Save big on authentic Australian vapes. Aussie Vapes Sale features discounted disposables, pod systems, nicotine salts and e-liquids — same-day Sydney dispatch.",
-  keywords: [
-    'aussie vapes sale',
-    'cheap aussie vapes',
-    'discount vapes australia',
-    'vape sale australia',
-    'aussie vapes discount',
-    'vape clearance australia',
-  ],
-  alternates: { canonical: '/sale' },
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}): Promise<Metadata> {
+  const sp = await searchParams
+  const page = parsePage(sp.page)
+  const suffix = page > 1 ? ` — Page ${page}` : ''
+  const canonical = page > 1 ? `/sale?page=${page}` : '/sale'
+  return {
+    title: `Aussie Vapes Sale${suffix} — Discounted Disposables & Pod Systems`,
+    description:
+      "Save big on authentic Australian vapes. Aussie Vapes Sale features discounted disposables, pod systems, nicotine salts and e-liquids — same-day Sydney dispatch.",
+    keywords: [
+      'aussie vapes sale',
+      'cheap aussie vapes',
+      'discount vapes australia',
+      'vape sale australia',
+      'aussie vapes discount',
+      'vape clearance australia',
+    ],
+    alternates: { canonical },
+  }
 }
 
-export default function SalePage() {
+export default async function SalePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
+  const sp = await searchParams
+  const currentPage = parsePage(sp.page)
   const products = getSaleProducts()
+  const paged = paginate(products, currentPage, PAGE_SIZE)
 
   return (
     <>
@@ -62,7 +80,8 @@ export default function SalePage() {
                 Updated daily
               </span>
             </div>
-            <ProductGrid products={products} />
+            <ProductGrid products={paged} />
+            <Pagination currentPage={currentPage} totalItems={products.length} basePath="/sale" />
           </>
         )}
       </section>

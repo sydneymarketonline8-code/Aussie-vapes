@@ -1,28 +1,47 @@
 import type { Metadata } from 'next'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGrid from '@/components/product/ProductGrid'
+import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import { getNewArrivals, PRODUCTS } from '@/lib/products'
 
-export const metadata: Metadata = {
-  title: 'Aussie Vapes New Arrivals — Latest Disposables & Pod Systems',
-  description:
-    "The newest products at Aussie Vapes. Fresh disposable vapes, pod systems and e-liquids landing weekly in our Sydney warehouse. Same-day AU dispatch.",
-  keywords: [
-    'aussie vapes new arrivals',
-    'new vapes australia',
-    'latest disposable vapes australia',
-    'aussie vapes new products',
-    'newest vapes australia',
-  ],
-  alternates: { canonical: '/new-arrivals' },
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}): Promise<Metadata> {
+  const sp = await searchParams
+  const page = parsePage(sp.page)
+  const suffix = page > 1 ? ` — Page ${page}` : ''
+  const canonical = page > 1 ? `/new-arrivals?page=${page}` : '/new-arrivals'
+  return {
+    title: `Aussie Vapes New Arrivals${suffix} — Latest Disposables & Pod Systems`,
+    description:
+      "The newest products at Aussie Vapes. Fresh disposable vapes, pod systems and e-liquids landing weekly in our Sydney warehouse. Same-day AU dispatch.",
+    keywords: [
+      'aussie vapes new arrivals',
+      'new vapes australia',
+      'latest disposable vapes australia',
+      'aussie vapes new products',
+      'newest vapes australia',
+    ],
+    alternates: { canonical },
+  }
 }
 
-export default function NewArrivalsPage() {
-  // Treat isNew + first 40 products as "new arrivals" — fall back to top 40 if not enough flagged
+export default async function NewArrivalsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>
+}) {
+  const sp = await searchParams
+  const currentPage = parsePage(sp.page)
+
   let products = getNewArrivals()
   if (products.length < 20) {
-    products = PRODUCTS.slice(0, 40)
+    // Treat the first slice of the catalogue as the "new arrivals" pool
+    products = PRODUCTS.slice(0, 240)
   }
+  const paged = paginate(products, currentPage, PAGE_SIZE)
 
   return (
     <>
@@ -49,7 +68,8 @@ export default function NewArrivalsPage() {
             Refreshed weekly
           </span>
         </div>
-        <ProductGrid products={products} />
+        <ProductGrid products={paged} />
+        <Pagination currentPage={currentPage} totalItems={products.length} basePath="/new-arrivals" />
       </section>
     </>
   )

@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { searchProducts } from '@/lib/products'
 import ProductGrid from '@/components/product/ProductGrid'
+import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
@@ -13,7 +14,9 @@ import { CATEGORIES } from '@/lib/categories'
 function SearchResults() {
   const searchParams = useSearchParams()
   const query = searchParams.get('q') ?? ''
+  const currentPage = parsePage(searchParams.get('page') ?? undefined)
   const results = useMemo(() => (query.trim() ? searchProducts(query) : []), [query])
+  const paged = useMemo(() => paginate(results, currentPage, PAGE_SIZE), [results, currentPage])
 
   return (
     <div className="container-site py-10">
@@ -50,7 +53,15 @@ function SearchResults() {
           </p>
 
           {results.length > 0 ? (
-            <ProductGrid products={results} />
+            <>
+              <ProductGrid products={paged} />
+              <Pagination
+                currentPage={currentPage}
+                totalItems={results.length}
+                basePath="/search"
+                extraQuery={{ q: query }}
+              />
+            </>
           ) : (
             <div className="text-center py-10">
               <p className="text-body mb-6">

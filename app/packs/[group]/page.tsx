@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductCard from '@/components/product/ProductCard'
+import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import { PACK_GROUPS, getPackGroupBySlug, getPacksByGroup, extractPackSize } from '@/lib/packs'
 import { breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
@@ -15,19 +16,25 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ group: string }>
+  searchParams: Promise<{ page?: string }>
 }): Promise<Metadata> {
   const { group } = await params
+  const sp = await searchParams
+  const page = parsePage(sp.page)
   const g = getPackGroupBySlug(group)
   if (!g) return {}
+  const titleSuffix = page > 1 ? ` — Page ${page}` : ''
+  const canonical = page > 1 ? `/packs/${g.slug}?page=${page}` : `/packs/${g.slug}`
   return {
-    title: g.seoTitle,
+    title: `${g.seoTitle}${titleSuffix}`,
     description: g.seoDescription,
     keywords: g.keywords,
-    alternates: { canonical: `/packs/${g.slug}` },
+    alternates: { canonical },
     openGraph: {
-      title: g.seoTitle,
+      title: `${g.seoTitle}${titleSuffix}`,
       description: g.seoDescription,
     },
   }
@@ -35,16 +42,21 @@ export async function generateMetadata({
 
 export default async function PackGroupPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ group: string }>
+  searchParams: Promise<{ page?: string }>
 }) {
   const { group } = await params
+  const sp = await searchParams
+  const currentPage = parsePage(sp.page)
   const g = getPackGroupBySlug(group)
   if (!g) notFound()
 
-  const products = getPacksByGroup(group).sort((a, b) => extractPackSize(a.name) - extractPackSize(b.name))
+  const allProducts = getPacksByGroup(group).sort((a, b) => extractPackSize(a.name) - extractPackSize(b.name))
+  const products = paginate(allProducts, currentPage, PAGE_SIZE)
 
-  // Group by pack size for nicer presentation
+  // Group by pack size for nicer presentation (on the current page slice)
   const bySize = new Map<number, typeof products>()
   for (const p of products) {
     const size = extractPackSize(p.name)
@@ -65,10 +77,10 @@ export default async function PackGroupPage({
     name: g.name,
     description: g.description,
     url: `${SITE_URL}/packs/${g.slug}`,
-    numberOfItems: products.length,
-    itemListElement: products.slice(0, 20).map((p, i) => ({
+    numberOfItems: allProducts.length,
+    itemListElement: products.map((p, i) => ({
       '@type': 'ListItem',
-      position: i + 1,
+      position: (currentPage - 1) * PAGE_SIZE + i + 1,
       name: p.name,
       url: `${SITE_URL}/product/${p.slug}`,
     })),
@@ -121,27 +133,36 @@ export default async function PackGroupPage({
         </div>
       </section>
 
-      {/* Sub-group filter pills by pack size */}
-      {sizeKeys.length > 1 && (
-        <section className="bg-white border-b border-line">
-          <div className="container-site py-6">
-            <p className="font-display text-[11px] uppercase tracking-[0.3em] text-mute font-bold mb-3">
-              Filter by Pack Size
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {sizeKeys.map((size) => (
-                <a
-                  key={size}
-                  href={`#size-${size}`}
-                  className="px-4 py-2 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink hover:bg-ink hover:text-white transition-colors"
-                >
-                  {size}-Pack <span className="opacity-70 ml-1">({bySize.get(size)?.length ?? 0})</span>
-                </a>
-              ))}
+      {/* Sub-group filter pills by pack size — counts across all pages */}
+      {(() => {
+        const allSizes = new Map<number, number>()
+        for (const p of allProducts) {
+          const s = extractPackSize(p.name)
+          allSizes.set(s, (allSizes.get(s) || 0) + 1)
+        }
+        const keys = Array.from(allSizes.keys()).sort((a, b) => a - b)
+        if (keys.length <= 1) return null
+        return (
+          <section className="bg-white border-b border-line">
+            <div className="container-site py-6">
+              <p className="font-display text-[11px] uppercase tracking-[0.3em] text-mute font-bold mb-3">
+                Pack Sizes In This Collection
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {keys.map((size) => (
+                  <a
+                    key={size}
+                    href={`#size-${size}`}
+                    className="px-4 py-2 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink hover:bg-ink hover:text-white transition-colors"
+                  >
+                    {size}-Pack <span className="opacity-70 ml-1">({allSizes.get(size)})</span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      })()}
 
       {/* Products grouped by pack size */}
       <section className="container-site py-10">
@@ -151,21 +172,28 @@ export default async function PackGroupPage({
             <Link href="/packs" className="text-price font-semibold hover:underline">full Aussie Vape Packs range</Link>.
           </p>
         ) : (
-          sizeKeys.map((size) => (
-            <div key={size} id={`size-${size}`} className="mb-12 scroll-mt-24">
-              <div className="section-heading-wrap">
-                <h2 className="section-heading">{size}-pack aussie vapes</h2>
-                <span className="font-display text-xs uppercase tracking-widest font-bold text-mute">
-                  {bySize.get(size)?.length ?? 0} products
-                </span>
+          <>
+            {sizeKeys.map((size) => (
+              <div key={size} id={`size-${size}`} className="mb-12 scroll-mt-24">
+                <div className="section-heading-wrap">
+                  <h2 className="section-heading">{size}-pack aussie vapes</h2>
+                  <span className="font-display text-xs uppercase tracking-widest font-bold text-mute">
+                    {bySize.get(size)?.length ?? 0} on this page
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
+                  {bySize.get(size)!.map((p) => (
+                    <ProductCard key={p.id} product={p} />
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
-                {bySize.get(size)!.map((p) => (
-                  <ProductCard key={p.id} product={p} />
-                ))}
-              </div>
-            </div>
-          ))
+            ))}
+            <Pagination
+              currentPage={currentPage}
+              totalItems={allProducts.length}
+              basePath={`/packs/${g.slug}`}
+            />
+          </>
         )}
       </section>
 
