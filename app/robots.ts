@@ -8,7 +8,22 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/'],
+        disallow: [
+          '/cart',
+          '/checkout',
+          '/account',
+          '/wishlist',
+          '/track',
+          '/search?',
+          '/admin/',
+          '/api/',
+          '/_next/',
+        ],
+      },
+      // Googlebot-Image — allow image crawling explicitly
+      {
+        userAgent: 'Googlebot-Image',
+        allow: ['/products/', '/'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

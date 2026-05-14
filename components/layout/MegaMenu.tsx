@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
+import { BRANDS } from '@/lib/brands'
 import clsx from 'clsx'
 
 interface MegaMenuProps {
@@ -9,6 +10,9 @@ interface MegaMenuProps {
 }
 
 export default function MegaMenu({ isOpen }: MegaMenuProps) {
+  // Top 12 brands by product count would be ideal but compute is expensive on every render — use curated featured list
+  const featuredBrands = BRANDS.slice(0, 12)
+
   return (
     <div
       className={clsx(
@@ -19,46 +23,100 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
       )}
     >
       <div className="container-site py-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {CATEGORIES.map((cat) => (
-            <div key={cat.id}>
-              <Link
-                href={`/category/${cat.slug}`}
-                className="block font-display font-bold text-sm text-ink mb-3 hover:text-price transition-colors uppercase tracking-wider"
-              >
-                {cat.name}
-              </Link>
-              <p className="text-xs text-mute mb-3 leading-relaxed">{cat.description}</p>
-              <ul className="space-y-1">
-                {cat.subcategories.map((sub) => (
-                  <li key={sub.id}>
-                    <Link
-                      href={`/category/${cat.slug}?sub=${sub.slug}`}
-                      className="mega-menu-item"
-                    >
-                      {sub.name}
-                    </Link>
-                  </li>
-                ))}
-                <li>
+        <div className="grid grid-cols-12 gap-8">
+          {/* Categories column */}
+          <div className="col-span-12 lg:col-span-3">
+            <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
+              Shop By Category
+            </p>
+            <ul className="space-y-2">
+              {CATEGORIES.map((cat) => (
+                <li key={cat.id}>
                   <Link
                     href={`/category/${cat.slug}`}
-                    className="block mt-2 px-3 py-2 text-xs font-semibold text-price hover:underline"
+                    className="font-display font-bold text-sm text-ink hover:text-price uppercase tracking-wider block py-1"
                   >
-                    View all {cat.name} →
+                    {cat.name}
+                    <span className="text-mute font-normal text-xs normal-case tracking-normal ml-1">
+                      ({cat.productCount.toLocaleString()})
+                    </span>
                   </Link>
                 </li>
+              ))}
+              <li className="pt-2 border-t border-line mt-3">
+                <Link href="/new-arrivals" className="text-xs text-success font-display uppercase tracking-wider font-bold">
+                  New Arrivals →
+                </Link>
+              </li>
+              <li>
+                <Link href="/sale" className="text-xs text-price font-display uppercase tracking-wider font-bold">
+                  Sale →
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Brands column (wide) */}
+          <div className="col-span-12 lg:col-span-6">
+            <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
+              Top Aussie Vapes Brands
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1">
+              {featuredBrands.map((b) => (
+                <Link
+                  key={b.slug}
+                  href={`/brand/${b.slug}`}
+                  className="font-display font-bold text-sm text-ink hover:text-price uppercase tracking-wider block py-1"
+                  style={{ color: b.accentColor }}
+                >
+                  {b.displayName}
+                </Link>
+              ))}
+            </div>
+            <Link
+              href="/brands"
+              className="inline-block mt-3 text-xs text-ink font-display uppercase tracking-wider font-bold hover:text-price"
+            >
+              See All {BRANDS.length} Aussie Vapes Brands →
+            </Link>
+          </div>
+
+          {/* Locations + Resources */}
+          <div className="col-span-12 lg:col-span-3 space-y-4">
+            <div>
+              <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
+                Aussie Vapes Locations
+              </p>
+              <ul className="space-y-1.5">
+                <li><Link href="/aussie-vapes/sydney" className="text-sm text-body hover:text-price">Aussie Vapes Sydney</Link></li>
+                <li><Link href="/aussie-vapes/melbourne" className="text-sm text-body hover:text-price">Aussie Vapes Melbourne</Link></li>
+                <li><Link href="/aussie-vapes/brisbane" className="text-sm text-body hover:text-price">Aussie Vapes Brisbane</Link></li>
+                <li><Link href="/aussie-vapes/perth" className="text-sm text-body hover:text-price">Aussie Vapes Perth</Link></li>
+                <li><Link href="/aussie-vapes/adelaide" className="text-sm text-body hover:text-price">Aussie Vapes Adelaide</Link></li>
               </ul>
             </div>
-          ))}
+
+            <div className="pt-3 border-t border-line">
+              <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
+                Resources
+              </p>
+              <ul className="space-y-1.5">
+                <li><Link href="/beginners-guide" className="text-sm text-body hover:text-price">Beginner&apos;s Guide</Link></li>
+                <li><Link href="/vaping-laws-australia" className="text-sm text-body hover:text-price">AU Vaping Laws</Link></li>
+                <li><Link href="/faq" className="text-sm text-body hover:text-price">FAQ</Link></li>
+                <li><Link href="/blog" className="text-sm text-body hover:text-price">Blog</Link></li>
+              </ul>
+            </div>
+          </div>
         </div>
 
+        {/* Bottom CTA strip */}
         <div className="mt-6 pt-6 border-t border-line grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { label: 'Best Sellers', href: '/category/disposable-vapes' },
-            { label: 'New Arrivals', href: '/new-arrivals' },
-            { label: 'On Sale', href: '/sale' },
-            { label: 'Bulk Orders', href: '/bulk' },
+            { label: 'Bulk & Wholesale', href: '/bulk' },
+            { label: 'Track Order', href: '/track' },
+            { label: 'Shipping Info', href: '/shipping' },
+            { label: 'Contact Support', href: '/contact' },
           ].map(({ label, href }) => (
             <Link
               key={href}

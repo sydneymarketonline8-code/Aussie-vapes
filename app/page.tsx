@@ -6,7 +6,7 @@ import TrustBadges from '@/components/home/TrustBadges'
 import StarOfTheWeek from '@/components/home/StarOfTheWeek'
 import BrandShowcase from '@/components/home/BrandShowcase'
 import Testimonials from '@/components/home/Testimonials'
-import { buildSiteMetadata } from '@/lib/seo'
+import { buildSiteMetadata, localBusinessJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
   ...buildSiteMetadata(),
@@ -19,6 +19,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
+      />
       <HeroBanner />
       <TrustBadges />
       <CategoryGrid />

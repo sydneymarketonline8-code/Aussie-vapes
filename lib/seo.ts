@@ -291,3 +291,55 @@ export function websiteJsonLd() {
     },
   }
 }
+
+export function localBusinessJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OnlineStore',
+    '@id': `${SITE_URL}/#store`,
+    name: 'Aussie Vapes',
+    alternateName: ['AussieVapes', 'Aussie Vapes Australia'],
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    image: `${SITE_URL}/logo.png`,
+    description: DEFAULT_DESCRIPTION,
+    priceRange: '$15 - $60',
+    paymentAccepted: ['Visa', 'Mastercard', 'American Express', 'PayPal'],
+    currenciesAccepted: 'AUD',
+    areaServed: {
+      '@type': 'Country',
+      name: 'Australia',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'AU',
+      addressRegion: 'NSW',
+      addressLocality: 'Sydney',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+61-0000-0000',
+      contactType: 'customer service',
+      email: 'info@aussievapes.com.au',
+      areaServed: 'AU',
+      availableLanguage: 'en-AU',
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+    sameAs: [
+      'https://www.instagram.com/aussievapes',
+      'https://www.facebook.com/aussievapes',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '10000',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  }
+}

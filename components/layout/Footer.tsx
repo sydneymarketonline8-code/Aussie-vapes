@@ -23,16 +23,25 @@ const support = [
 const account = [
   { label: 'My Account', href: '/account' },
   { label: 'Wishlist', href: '/wishlist' },
-  { label: 'Order History', href: '/account/orders' },
-  { label: 'About Us', href: '/about' },
+  { label: 'About Aussie Vapes', href: '/about' },
   { label: 'Vaping Laws AU', href: '/vaping-laws-australia' },
+  { label: 'Bulk & Wholesale', href: '/bulk' },
   { label: 'Blog', href: '/blog' },
+]
+
+const locations = [
+  { label: 'Aussie Vapes Sydney', href: '/aussie-vapes/sydney' },
+  { label: 'Aussie Vapes Melbourne', href: '/aussie-vapes/melbourne' },
+  { label: 'Aussie Vapes Brisbane', href: '/aussie-vapes/brisbane' },
+  { label: 'Aussie Vapes Perth', href: '/aussie-vapes/perth' },
+  { label: 'Aussie Vapes Adelaide', href: '/aussie-vapes/adelaide' },
+  { label: 'All Locations', href: '/aussie-vapes' },
 ]
 
 const legal = [
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms of Service', href: '/terms' },
-  { label: 'Sitemap', href: '/sitemap.xml' },
+  { label: 'Sitemap', href: '/sitemap-html' },
 ]
 
 export default function Footer() {
@@ -166,6 +175,24 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+
+      {/* Locations strip */}
+      <div className="border-t border-line bg-white">
+        <div className="container-site py-6">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Aussie Vapes Locations</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            {locations.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className="font-display text-sm font-bold uppercase tracking-wider text-ink hover:text-price transition-colors"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
 
