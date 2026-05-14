@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
 import { BRANDS } from '@/lib/brands'
+import { PACK_GROUPS } from '@/lib/packs'
 import clsx from 'clsx'
 
 interface MegaMenuProps {
@@ -81,30 +82,39 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
             </Link>
           </div>
 
-          {/* Locations + Resources */}
+          {/* Packs + Locations */}
           <div className="col-span-12 lg:col-span-3 space-y-4">
             <div>
               <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
-                Aussie Vapes Locations
+                Aussie Vape Packs
               </p>
               <ul className="space-y-1.5">
-                <li><Link href="/aussie-vapes/sydney" className="text-sm text-body hover:text-price">Aussie Vapes Sydney</Link></li>
-                <li><Link href="/aussie-vapes/melbourne" className="text-sm text-body hover:text-price">Aussie Vapes Melbourne</Link></li>
-                <li><Link href="/aussie-vapes/brisbane" className="text-sm text-body hover:text-price">Aussie Vapes Brisbane</Link></li>
-                <li><Link href="/aussie-vapes/perth" className="text-sm text-body hover:text-price">Aussie Vapes Perth</Link></li>
-                <li><Link href="/aussie-vapes/adelaide" className="text-sm text-body hover:text-price">Aussie Vapes Adelaide</Link></li>
+                <li>
+                  <Link href="/packs" className="text-sm font-display font-bold uppercase tracking-wider text-ink hover:text-price">
+                    All Aussie Vape Packs →
+                  </Link>
+                </li>
+                {PACK_GROUPS.map((g) => (
+                  <li key={g.slug}>
+                    <Link href={`/packs/${g.slug}`} className="text-sm text-body hover:text-price">
+                      {g.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div className="pt-3 border-t border-line">
               <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
-                Resources
+                Aussie Vapes Locations &amp; Resources
               </p>
               <ul className="space-y-1.5">
+                <li><Link href="/aussie-vapes/sydney" className="text-sm text-body hover:text-price">Aussie Vapes Sydney</Link></li>
+                <li><Link href="/aussie-vapes/melbourne" className="text-sm text-body hover:text-price">Aussie Vapes Melbourne</Link></li>
+                <li><Link href="/aussie-vapes/brisbane" className="text-sm text-body hover:text-price">Aussie Vapes Brisbane</Link></li>
                 <li><Link href="/beginners-guide" className="text-sm text-body hover:text-price">Beginner&apos;s Guide</Link></li>
                 <li><Link href="/vaping-laws-australia" className="text-sm text-body hover:text-price">AU Vaping Laws</Link></li>
                 <li><Link href="/faq" className="text-sm text-body hover:text-price">FAQ</Link></li>
-                <li><Link href="/blog" className="text-sm text-body hover:text-price">Blog</Link></li>
               </ul>
             </div>
           </div>

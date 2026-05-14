@@ -3,6 +3,7 @@ import { PRODUCTS } from '@/lib/products'
 import { CATEGORIES } from '@/lib/categories'
 import { BRANDS } from '@/lib/brands'
 import { CITIES } from '@/lib/cities'
+import { PACK_GROUPS } from '@/lib/packs'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -13,12 +14,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const tier1: MetadataRoute.Sitemap = [
     { url: SITE_URL, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
     { url: `${SITE_URL}/brands`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${SITE_URL}/packs`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${SITE_URL}/aussie-vapes`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE_URL}/sale`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${SITE_URL}/new-arrivals`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
     { url: `${SITE_URL}/sitemap-html`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 },
   ]
+
+  // Tier 2 — Pack group pages
+  const packRoutes: MetadataRoute.Sitemap = PACK_GROUPS.map((g) => ({
+    url: `${SITE_URL}/packs/${g.slug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }))
 
   // Tier 2 — Categories
   const categoryRoutes: MetadataRoute.Sitemap = CATEGORIES.map((cat) => ({
@@ -72,6 +82,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...tier1,
     ...categoryRoutes,
     ...brandRoutes,
+    ...packRoutes,
     ...cityRoutes,
     ...infoRoutes,
     ...productRoutes,

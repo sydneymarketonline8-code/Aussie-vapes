@@ -189,6 +189,7 @@ export default function Header() {
               </Link>
             ))}
             <Link href="/brands" className="nav-link px-4 py-3.5">Brands</Link>
+            <Link href="/packs" className="nav-link px-4 py-3.5">Packs</Link>
             <Link href="/sale" className="nav-link px-4 py-3.5 text-price">Sale</Link>
             <Link href="/contact" className="nav-link px-4 py-3.5">Contact</Link>
           </div>
@@ -226,6 +227,7 @@ export default function Header() {
                 </Link>
               ))}
               <Link href="/brands" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Brands</Link>
+              <Link href="/packs" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Packs</Link>
               <Link href="/sale" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-price font-display uppercase tracking-wider text-sm font-semibold border-b border-line">Sale</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="block px-3 py-3 text-ink font-display uppercase tracking-wider text-sm font-semibold border-b border-line hover:text-price">Contact</Link>
               <div className="pt-4 mt-2 space-y-1">

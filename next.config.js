@@ -105,6 +105,19 @@ const nextConfig = {
       { source: '/new', destination: '/new-arrivals', permanent: true },
       { source: '/latest', destination: '/new-arrivals', permanent: true },
 
+      // Packs shortcuts
+      { source: '/pack', destination: '/packs', permanent: true },
+      { source: '/vape-packs', destination: '/packs', permanent: true },
+      { source: '/aussie-vape-packs', destination: '/packs', permanent: true },
+      { source: '/aussie-vapes-packs', destination: '/packs', permanent: true },
+      { source: '/bundles', destination: '/packs/bundle-deals', permanent: true },
+      { source: '/bundle-deals', destination: '/packs/bundle-deals', permanent: true },
+      { source: '/multi-buy', destination: '/packs/multi-buy-packs', permanent: true },
+      { source: '/multibuy', destination: '/packs/multi-buy-packs', permanent: true },
+      { source: '/bulk-packs', destination: '/packs/bulk-vape-packs', permanent: true },
+      { source: '/disposable-vape-packs', destination: '/packs/disposable-vape-packs', permanent: true },
+      { source: '/brand-packs', destination: '/packs/brand-packs', permanent: true },
+
       // Common WooCommerce / WordPress legacy patterns
       { source: '/product-category/:slug', destination: '/category/:slug', permanent: true },
       { source: '/shop/:slug', destination: '/product/:slug', permanent: true },

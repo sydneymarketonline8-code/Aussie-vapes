@@ -5,6 +5,7 @@ import FeaturedProducts from '@/components/home/FeaturedProducts'
 import TrustBadges from '@/components/home/TrustBadges'
 import StarOfTheWeek from '@/components/home/StarOfTheWeek'
 import BrandShowcase from '@/components/home/BrandShowcase'
+import PacksSection from '@/components/home/PacksSection'
 import Testimonials from '@/components/home/Testimonials'
 import { buildSiteMetadata, localBusinessJsonLd } from '@/lib/seo'
 
@@ -26,6 +27,7 @@ export default function HomePage() {
       <HeroBanner />
       <TrustBadges />
       <CategoryGrid />
+      <PacksSection />
       <StarOfTheWeek />
       <FeaturedProducts />
       <BrandShowcase />

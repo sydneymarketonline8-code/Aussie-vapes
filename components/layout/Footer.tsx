@@ -7,7 +7,7 @@ const shop = [
   { label: 'Pod Systems', href: '/category/pod-systems' },
   { label: 'Nicotine Salts', href: '/category/nicotine-salts' },
   { label: 'E-Liquids', href: '/category/e-liquids' },
-  { label: 'Accessories', href: '/category/accessories' },
+  { label: 'Aussie Vape Packs', href: '/packs' },
   { label: 'Sale', href: '/sale' },
 ]
 
@@ -56,6 +56,33 @@ export default function Footer() {
           </div>
           <div className="lg:max-w-md w-full lg:ml-auto">
             <NewsletterForm />
+          </div>
+        </div>
+      </div>
+
+      {/* Packs strip */}
+      <div className="border-t border-line bg-ink text-white">
+        <div className="container-site py-6">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold text-center mb-3">Aussie Vape Packs</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link href="/packs" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
+              All Vape Packs
+            </Link>
+            <Link href="/packs/disposable-vape-packs" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
+              Disposable Vape Packs
+            </Link>
+            <Link href="/packs/multi-buy-packs" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
+              Multi-Buy Packs
+            </Link>
+            <Link href="/packs/bundle-deals" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
+              Bundle Deals
+            </Link>
+            <Link href="/packs/brand-packs" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
+              Brand Packs
+            </Link>
+            <Link href="/packs/bulk-vape-packs" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
+              Bulk Vape Packs
+            </Link>
           </div>
         </div>
       </div>
