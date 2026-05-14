@@ -32,9 +32,20 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS)
   const [sort, setSort] = useState<SortOption>('featured')
   const [filterDrawerOpen, setFilterDrawerOpen] = useState(false)
+  const [activeSub, setActiveSub] = useState<string | null>(null)
+
+  // Counts per subcategory
+  const subcategoryCounts = useMemo(() => {
+    const counts = new Map<string, number>()
+    for (const p of allProducts) {
+      if (p.subcategory) counts.set(p.subcategory, (counts.get(p.subcategory) || 0) + 1)
+    }
+    return counts
+  }, [allProducts])
 
   const filtered = useMemo(() => {
     let result = allProducts.filter((p) => {
+      if (activeSub && p.subcategory !== activeSub) return false
       if (p.price < filters.priceMin || p.price > filters.priceMax) return false
       if (filters.inStockOnly && !p.inStock) return false
       if (filters.brands.length && !filters.brands.includes(p.brand)) return false
@@ -50,7 +61,7 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
       default: result = [...result].sort((a, b) => (b.isBestSeller ? 1 : 0) - (a.isBestSeller ? 1 : 0))
     }
     return result
-  }, [allProducts, filters, sort])
+  }, [allProducts, filters, sort, activeSub])
 
   const minPrice = allProducts.length ? Math.min(...allProducts.map((p) => p.price)) : 0
   const maxPrice = allProducts.length ? Math.max(...allProducts.map((p) => p.price)) : 0
@@ -116,18 +127,42 @@ export default function CategoryPage({ params }: { params: Promise<{ slug: strin
                 <p className="text-body text-base leading-relaxed max-w-2xl mb-3">{category.intro}</p>
               )}
               <p className="text-body text-sm leading-relaxed max-w-2xl">{category.description}</p>
-              {/* Subcategory pills */}
+              {/* Subcategory pills — interactive filters */}
               {category.subcategories.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-5">
-                  {category.subcategories.map((sub) => (
-                    <a
-                      key={sub.id}
-                      href={`?sub=${sub.slug}`}
-                      className="px-4 py-1.5 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink hover:bg-ink hover:text-white transition-colors"
+                <div className="mt-5">
+                  <p className="font-display text-[11px] uppercase tracking-[0.3em] text-mute font-bold mb-2">
+                    Shop by Sub-Category
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setActiveSub(null)}
+                      className={`px-4 py-2 rounded-sm text-xs font-display font-bold uppercase tracking-wider border transition-colors ${
+                        activeSub === null
+                          ? 'border-ink bg-ink text-white'
+                          : 'border-line text-body bg-white hover:border-ink'
+                      }`}
                     >
-                      {sub.name}
-                    </a>
-                  ))}
+                      All <span className="opacity-70 ml-1">({allProducts.length.toLocaleString()})</span>
+                    </button>
+                    {category.subcategories.map((sub) => {
+                      const count = subcategoryCounts.get(sub.slug) ?? 0
+                      const isActive = activeSub === sub.slug
+                      return (
+                        <button
+                          key={sub.id}
+                          onClick={() => setActiveSub(isActive ? null : sub.slug)}
+                          disabled={count === 0}
+                          className={`px-4 py-2 rounded-sm text-xs font-display font-bold uppercase tracking-wider border transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                            isActive
+                              ? 'border-ink bg-ink text-white'
+                              : 'border-line text-body bg-white hover:border-ink'
+                          }`}
+                        >
+                          {sub.name} <span className="opacity-70 ml-1">({count})</span>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
               )}
             </div>

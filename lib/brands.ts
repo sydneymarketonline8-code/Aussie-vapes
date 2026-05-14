@@ -1297,3 +1297,118 @@ export function getBrandProductCounts(): { slug: string; count: number }[] {
   }
   return Array.from(counts.entries()).map(([slug, count]) => ({ slug, count }))
 }
+
+export interface BrandSubline {
+  slug: string
+  label: string
+  productSlugs: string[]
+  count: number
+  puffCount: number
+}
+
+const STOP_TOKENS = new Set([
+  'VAPE',
+  'VAPES',
+  'PUFF',
+  'PUFFS',
+  'DISPOSABLE',
+  'DISPOSABLES',
+  'AUSTRALIA',
+])
+
+function slugifySubline(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-+/g, '-')
+}
+
+function extractPuffCount(name: string): number | null {
+  const m = name.match(/(\d{3,6})\s*(?:k|K)?\s*PUFFS?/i)
+  if (m) return parseInt(m[1], 10)
+  return null
+}
+
+function longestCommonTokenPrefix(names: string[]): string[] {
+  if (!names.length) return []
+  const tokenized = names.map((n) =>
+    n
+      .replace(/[–—-]/g, ' ')
+      .split(/\s+/)
+      .filter((t) => t.length > 0)
+  )
+  const minLen = Math.min(...tokenized.map((t) => t.length))
+  const lcp: string[] = []
+  for (let i = 0; i < minLen; i++) {
+    const token = tokenized[0][i].toUpperCase()
+    if (tokenized.every((t) => t[i].toUpperCase() === token)) {
+      lcp.push(tokenized[0][i])
+    } else break
+  }
+  return lcp
+}
+
+/**
+ * Auto-detect sub-lines for a brand by grouping products on puff count and
+ * building a label from the longest-common name prefix within each group.
+ */
+export function getBrandSublines(brandSlug: string): BrandSubline[] {
+  const products = getProductsByBrand(brandSlug)
+  const brand = getBrandBySlug(brandSlug)
+  if (!brand) return []
+
+  // Group products by puff count (skipping non-puff items)
+  const groups = new Map<number, Product[]>()
+  for (const p of products) {
+    const puffs = extractPuffCount(p.name)
+    if (!puffs) continue
+    if (!groups.has(puffs)) groups.set(puffs, [])
+    groups.get(puffs)!.push(p)
+  }
+
+  const sublines: BrandSubline[] = []
+  for (const [puffs, productsInGroup] of Array.from(groups.entries())) {
+    if (productsInGroup.length < 2) continue
+
+    const lcp = longestCommonTokenPrefix(productsInGroup.map((p) => p.name))
+    // Strip the puff-count suffix and trailing stop-words from the LCP
+    let labelTokens = lcp.filter((t) => {
+      const u = t.toUpperCase().replace(/[^A-Z0-9]/g, '')
+      if (/^\d{3,6}$/.test(u)) return false
+      return true
+    })
+
+    // Filter trailing low-value tokens like "BAR" alone shouldn't anchor a label
+    while (labelTokens.length > 1 && STOP_TOKENS.has(labelTokens[labelTokens.length - 1].toUpperCase())) {
+      labelTokens.pop()
+    }
+
+    if (!labelTokens.length) {
+      labelTokens = [brand.displayName]
+    }
+
+    const formattedLabel = labelTokens
+      .map((t) => {
+        if (t.length <= 3 && /^[A-Z]+$/.test(t)) return t.toUpperCase()
+        return t
+          .toLowerCase()
+          .split('')
+          .map((ch, i) => (i === 0 ? ch.toUpperCase() : ch))
+          .join('')
+      })
+      .join(' ')
+
+    const label = `${formattedLabel} ${puffs >= 1000 ? `${puffs.toLocaleString()}` : puffs} Puffs`
+
+    sublines.push({
+      slug: slugifySubline(`${brand.slug}-${puffs}`),
+      label,
+      productSlugs: productsInGroup.map((p) => p.slug),
+      count: productsInGroup.length,
+      puffCount: puffs,
+    })
+  }
+
+  return sublines.sort((a, b) => a.puffCount - b.puffCount)
+}

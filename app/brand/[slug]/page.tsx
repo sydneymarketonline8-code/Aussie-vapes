@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
-import ProductCard from '@/components/product/ProductCard'
-import { BRANDS, getBrandBySlug, getProductsByBrand } from '@/lib/brands'
+import BrandProductGrid from '@/components/brand/BrandProductGrid'
+import { BRANDS, getBrandBySlug, getProductsByBrand, getBrandSublines } from '@/lib/brands'
 import {
   buildBrandMetadata,
   brandItemListJsonLd,
@@ -40,6 +40,7 @@ export default async function BrandPage({
   if (!brand) notFound()
 
   const products = getProductsByBrand(slug)
+  const sublines = getBrandSublines(slug)
   const productCount = products.length
   const featured = products.slice(0, 5)
   const avgRating =
@@ -173,11 +174,7 @@ export default async function BrandPage({
         {products.length === 0 ? (
           <p className="text-mute text-center py-16">No {brand.displayName} products currently in stock. Check back soon.</p>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <BrandProductGrid products={products} sublines={sublines} accentColor={brand.accentColor} />
         )}
       </section>
 
