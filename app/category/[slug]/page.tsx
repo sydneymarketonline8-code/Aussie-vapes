@@ -60,6 +60,52 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
     return counts
   }, [allProducts])
 
+  // Compute available brands dynamically from products in this category.
+  // We exclude bogus brand values that came from import (generic words like the
+  // category name itself, e.g. "Disposable Vapes", "Accessories"). Sort by count desc.
+  const availableBrands = useMemo(() => {
+    const counts = new Map<string, number>()
+    for (const p of allProducts) {
+      const b = (p.brand || '').trim()
+      if (!b) continue
+      const lower = b.toLowerCase()
+      // Skip generic category-like brand values
+      if (
+        lower === 'accessories' ||
+        lower === 'disposable vapes' ||
+        lower === 'pouches' ||
+        lower === 'cigarettes' ||
+        lower === 'vaporizers' ||
+        lower === 'kits' ||
+        lower === 'lower nicotine vapes' ||
+        lower === 'nicotine-free vapes'
+      ) {
+        continue
+      }
+      counts.set(b, (counts.get(b) || 0) + 1)
+    }
+    return Array.from(counts.entries()).map(([value, count]) => ({ value, count }))
+  }, [allProducts])
+
+  // Tags that actually exist in this category's products
+  const availableTags = useMemo(() => {
+    const set = new Set<string>()
+    for (const p of allProducts) for (const t of p.tags) set.add(t)
+    const allowed = [
+      'disposable',
+      'rechargeable',
+      'pod-system',
+      'nic-salt',
+      'bestseller',
+      'new',
+      'bundle',
+      'high-puff',
+      'mid-range',
+      'budget',
+    ]
+    return allowed.filter((t) => set.has(t))
+  }, [allProducts])
+
   const filtered = useMemo(() => {
     let result = allProducts.filter((p) => {
       if (activeSub && p.subcategory !== activeSub) return false
@@ -247,7 +293,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
         <div className="flex gap-8">
           {/* Desktop filter sidebar */}
           <div className="hidden lg:block w-60 flex-shrink-0">
-            <FilterSidebar filters={filters} onChange={setFilters} />
+            <FilterSidebar
+              filters={filters}
+              onChange={setFilters}
+              availableBrands={availableBrands}
+              availableTags={availableTags}
+            />
           </div>
 
           {/* Products */}
@@ -273,7 +324,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
                 <XMarkIcon className="h-5 w-5 text-ink" />
               </button>
             </div>
-            <FilterSidebar filters={filters} onChange={setFilters} />
+            <FilterSidebar
+              filters={filters}
+              onChange={setFilters}
+              availableBrands={availableBrands}
+              availableTags={availableTags}
+            />
           </div>
         </div>
       )}
