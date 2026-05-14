@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, use } from 'react'
+import { useState, useMemo } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
@@ -23,8 +23,8 @@ const DEFAULT_FILTERS: FilterState = {
   tags: [],
 }
 
-export default function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params)
+export default function CategoryPage({ params }: { params: { slug: string } }) {
+  const { slug } = params
   const category = getCategoryBySlug(slug)
   if (!category) notFound()
 
