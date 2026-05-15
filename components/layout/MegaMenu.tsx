@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
 import { BRANDS } from '@/lib/brands'
 import { PACK_GROUPS } from '@/lib/packs'
+import { PUFF_RANGES } from '@/lib/puff-ranges'
 import clsx from 'clsx'
 
 interface MegaMenuProps {
@@ -80,6 +81,25 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
             >
               See All {BRANDS.length} Aussie Vapes Brands →
             </Link>
+
+            {/* Shop by Puff Count strip */}
+            <div className="mt-5 pt-4 border-t border-line">
+              <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
+                Shop by Puff Count
+              </p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                {PUFF_RANGES.map((r) => (
+                  <Link
+                    key={r.slug}
+                    href={`/puffs/${r.slug}`}
+                    className="font-display text-sm font-semibold text-body hover:text-price py-1 flex items-center gap-2"
+                  >
+                    <span>{r.icon}</span>
+                    <span>{r.shortName} Puffs</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Packs + Locations */}

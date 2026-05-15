@@ -105,6 +105,16 @@ const nextConfig = {
       { source: '/new', destination: '/new-arrivals', permanent: true },
       { source: '/latest', destination: '/new-arrivals', permanent: true },
 
+      // Puff-count shortcuts
+      { source: '/puff', destination: '/puffs', permanent: true },
+      { source: '/puff-count', destination: '/puffs', permanent: true },
+      { source: '/shop-by-puff', destination: '/puffs', permanent: true },
+      { source: '/by-puff-count', destination: '/puffs', permanent: true },
+      { source: '/starter-vapes', destination: '/puffs/starter-vapes', permanent: true },
+      { source: '/mid-range-vapes', destination: '/puffs/mid-range-vapes', permanent: true },
+      { source: '/high-puff-vapes', destination: '/puffs/high-puff-vapes', permanent: true },
+      { source: '/ultra-puff-vapes', destination: '/puffs/ultra-puff-vapes', permanent: true },
+
       // Packs shortcuts
       { source: '/pack', destination: '/packs', permanent: true },
       { source: '/vape-packs', destination: '/packs', permanent: true },

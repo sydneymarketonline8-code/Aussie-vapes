@@ -9,6 +9,8 @@ import AddToCart from '@/components/product/AddToCart'
 import RelatedProducts from '@/components/product/RelatedProducts'
 import ProductFaq, { buildProductFaqs } from '@/components/product/ProductFaq'
 import ProductInternalLinks from '@/components/product/ProductInternalLinks'
+import ProductSidebar from '@/components/product/ProductSidebar'
+import ProductQuickSpecs from '@/components/product/ProductQuickSpecs'
 import StarRating from '@/components/ui/StarRating'
 import Badge from '@/components/ui/Badge'
 import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
@@ -92,6 +94,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* Rating */}
             <StarRating rating={product.rating} reviewCount={product.reviewCount} size="md" />
 
+            {/* Quick spec chips — Puff Count, Nicotine, Battery, Flavour */}
+            <ProductQuickSpecs product={product} />
+
             {/* Price */}
             <div className="flex items-baseline gap-3 py-3 border-y border-line">
               <span className="font-display text-4xl font-bold text-price">${product.price.toFixed(2)}</span>
@@ -139,10 +144,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        {/* Full product details */}
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Description & features */}
-          <div className="lg:col-span-2 space-y-8">
+        {/* Lower content: main column + persistent shop-by sidebar */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1fr,300px] gap-8">
+          {/* Main column */}
+          <div className="space-y-8 min-w-0">
             <div className="bg-white border border-line rounded-sm p-6">
               <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">Product Description</h2>
               <p className="text-body leading-relaxed text-sm">{product.description}</p>
@@ -161,29 +166,53 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </ul>
               </div>
             )}
+
+            {/* Specifications */}
+            {Object.keys(product.specifications).length > 0 && (
+              <div className="bg-white border border-line rounded-sm p-6">
+                <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">Specifications</h2>
+                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {Object.entries(product.specifications).map(([key, value]) => (
+                    <div key={key} className="flex flex-col gap-0.5 pb-3 border-b border-line">
+                      <dt className="font-display text-[11px] text-mute uppercase tracking-wider font-bold">{key}</dt>
+                      <dd className="text-sm text-ink font-semibold">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
+
+            {/* Flavours showcase (if available) */}
+            {product.flavours && product.flavours.length > 0 && (
+              <div className="bg-white border border-line rounded-sm p-6">
+                <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">
+                  Available Flavours ({product.flavours.length})
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {product.flavours.map((f) => (
+                    <span
+                      key={f}
+                      className="px-3 py-1.5 text-sm bg-soft-100 text-body rounded-sm border border-line font-display"
+                    >
+                      {f}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Product FAQ */}
+            <ProductFaq product={product} categoryName={category?.name} />
+
+            {/* Internal links block */}
+            <ProductInternalLinks product={product} />
           </div>
 
-          {/* Specifications */}
-          {Object.keys(product.specifications).length > 0 && (
-            <div className="bg-white border border-line rounded-sm p-6 h-fit">
-              <h2 className="font-display text-xl font-bold text-ink mb-4 uppercase tracking-wide">Specifications</h2>
-              <dl className="space-y-3">
-                {Object.entries(product.specifications).map(([key, value]) => (
-                  <div key={key} className="flex flex-col gap-0.5 pb-3 border-b border-line last:border-0 last:pb-0">
-                    <dt className="font-display text-[11px] text-mute uppercase tracking-wider font-bold">{key}</dt>
-                    <dd className="text-sm text-ink font-semibold">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          )}
+          {/* Shop-by sidebar (sticky on lg+) */}
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <ProductSidebar currentProduct={product} />
+          </div>
         </div>
-
-        {/* Product FAQ */}
-        <ProductFaq product={product} categoryName={category?.name} />
-
-        {/* Internal links block */}
-        <ProductInternalLinks product={product} />
 
         {/* Regulatory notice with external authority references */}
         <div className="mt-8 p-5 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
