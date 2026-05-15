@@ -17,7 +17,7 @@ export default function CartDrawer() {
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
-  const freeShippingThreshold = 100
+  const freeShippingThreshold = 300
   const remaining = Math.max(0, freeShippingThreshold - subtotal)
   const progress = Math.min(100, (subtotal / freeShippingThreshold) * 100)
 

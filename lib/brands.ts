@@ -41,7 +41,7 @@ export const BRANDS: Brand[] = [
       'Authentic AU stock with scratch-and-check authenticity codes',
       'Same-day dispatch from Sydney before 2pm AEST',
       '20mg salt nicotine, TGA-compliant prescription model',
-      'Free shipping on IGET orders over $100',
+      'Free shipping on IGET orders over $300',
     ],
     bestKnownFor: 'The IGET Bar Plus 6000 — the perfect balance of flavour, battery life and value',
     faqs: [
@@ -63,7 +63,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'Do you ship IGET vapes Australia-wide?',
         answer:
-          'Yes. Aussie Vapes ships IGET disposables to every Australian state and territory via discreet, plain-packaging courier. Free standard shipping on orders over $100, express options at checkout, and same-day dispatch from Sydney on weekday orders placed before 2pm AEST.',
+          'Yes. Aussie Vapes ships IGET disposables to every Australian state and territory via discreet, plain-packaging courier. Free standard shipping on orders over $300, express options at checkout, and same-day dispatch from Sydney on weekday orders placed before 2pm AEST.',
       },
       {
         question: 'How long does an IGET disposable actually last?',
@@ -162,7 +162,7 @@ export const BRANDS: Brand[] = [
       'Premium build quality + design-focused form factor',
       'Cleaner, less sweet flavour profiles ideal for ex-smokers',
       'Authentic AU stock, scratch-verify codes',
-      'Free shipping on AU orders over $100',
+      'Free shipping on AU orders over $300',
     ],
     bestKnownFor: 'HQD Cuvie Slick 20,000 — the sleekest long-puff disposable on the market',
     faqs: [

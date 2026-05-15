@@ -4,7 +4,7 @@ const badges = [
   {
     icon: TruckIcon,
     title: 'Free AU Shipping',
-    body: 'On all orders over $100. Express options at checkout.',
+    body: 'On all orders over $300. Express options at checkout.',
   },
   {
     icon: ShieldCheckIcon,

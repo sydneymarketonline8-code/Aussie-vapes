@@ -130,7 +130,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-body text-sm leading-relaxed mb-5 max-w-md">
-            <strong>Aussie Vapes</strong> is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ more brands — shipped same-day from our Sydney warehouse, free across Australia on orders over $100.
+            <strong>Aussie Vapes</strong> is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ more brands — shipped same-day from our Sydney warehouse, free across Australia on orders over $300.
           </p>
 
           <ul className="space-y-2.5 text-sm">

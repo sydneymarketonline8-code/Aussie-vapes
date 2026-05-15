@@ -30,7 +30,7 @@ export const CITIES: City[] = [
       'Same-day delivery to most Sydney metro postcodes (order before 11am AEST)',
       '1-2 business days standard',
       'Direct dispatch from Sydney warehouse — no interstate handoff',
-      'Free shipping across all of Sydney over $100',
+      'Free shipping across all of Sydney over $300',
       'Pickup by appointment for B2B / wholesale orders',
     ],
     faqs: [
@@ -60,11 +60,11 @@ export const CITIES: City[] = [
     introCopy:
       "Aussie Vapes ships to every Melbourne postcode with reliable 2-4 day standard delivery and 1-2 day express. Same fast service, same Sydney warehouse, same authentic stock.",
     longDescription:
-      "Aussie Vapes is the largest online vape store serving Melbourne customers. Even though we dispatch from Sydney, our courier partnerships deliver to Melbourne metro postcodes in 2-4 business days standard, or 1-2 days via express. Melbourne vapers get the same deep brand range, same authenticity guarantee, same 30-day returns and same free shipping over $100 as our Sydney customers. We cover every Melbourne postcode from the CBD and Inner suburbs (St Kilda, Fitzroy, Richmond, Brunswick) through to outer Melbourne, the Mornington Peninsula, Geelong, Bendigo and Ballarat. Authentic IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, RELX and 35+ more brands — Aussie Vapes Melbourne is the smarter way to buy vapes in Victoria.",
+      "Aussie Vapes is the largest online vape store serving Melbourne customers. Even though we dispatch from Sydney, our courier partnerships deliver to Melbourne metro postcodes in 2-4 business days standard, or 1-2 days via express. Melbourne vapers get the same deep brand range, same authenticity guarantee, same 30-day returns and same free shipping over $300 as our Sydney customers. We cover every Melbourne postcode from the CBD and Inner suburbs (St Kilda, Fitzroy, Richmond, Brunswick) through to outer Melbourne, the Mornington Peninsula, Geelong, Bendigo and Ballarat. Authentic IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, RELX and 35+ more brands — Aussie Vapes Melbourne is the smarter way to buy vapes in Victoria.",
     highlights: [
       '2-4 business days standard to Melbourne metro',
       '1-2 business days express to Melbourne CBD',
-      'Free shipping to all Melbourne postcodes over $100',
+      'Free shipping to all Melbourne postcodes over $300',
       'Discreet plain-packaging delivery',
       'Authentic AU stock with scratch authentication codes',
     ],
@@ -94,11 +94,11 @@ export const CITIES: City[] = [
     introCopy:
       "Aussie Vapes delivers to every Brisbane and Queensland postcode in 2-4 days standard. From the CBD to the Gold Coast and Sunshine Coast — fast, discreet, authentic.",
     longDescription:
-      "Aussie Vapes is the trusted online vape store for Brisbane, the Gold Coast, the Sunshine Coast, and all of Queensland. Standard delivery to Brisbane metro postcodes is 2-4 business days; express is 1-2 days. Aussie Vapes Brisbane customers get the full Aussie Vapes range — IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, and 35+ more brands — all dispatched same-day from our Sydney warehouse. Free standard shipping on orders over $100 applies to every QLD postcode, including Brisbane, Gold Coast, Sunshine Coast, Townsville, Cairns and regional Queensland.",
+      "Aussie Vapes is the trusted online vape store for Brisbane, the Gold Coast, the Sunshine Coast, and all of Queensland. Standard delivery to Brisbane metro postcodes is 2-4 business days; express is 1-2 days. Aussie Vapes Brisbane customers get the full Aussie Vapes range — IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, and 35+ more brands — all dispatched same-day from our Sydney warehouse. Free standard shipping on orders over $300 applies to every QLD postcode, including Brisbane, Gold Coast, Sunshine Coast, Townsville, Cairns and regional Queensland.",
     highlights: [
       '2-4 business days standard to Brisbane metro',
       '1-2 business days express',
-      'Free shipping to all QLD postcodes over $100',
+      'Free shipping to all QLD postcodes over $300',
       'Discreet plain-packaging',
       'Same-day Sydney dispatch on weekday orders before 2pm AEST',
     ],
@@ -126,11 +126,11 @@ export const CITIES: City[] = [
     introCopy:
       "Aussie Vapes delivers to Perth and every Western Australian postcode. Standard 4-7 days, express 3-4 days — same authentic stock, same trusted service.",
     longDescription:
-      "Aussie Vapes serves Perth and Western Australia with reliable Australia-wide courier partnerships. While WA delivery takes slightly longer than east-coast cities due to distance, Aussie Vapes Perth customers receive the same authentic stock, same brand range and same prices as customers in Sydney or Melbourne. Standard Perth delivery is 4-7 business days; express drops that to 3-4. Free standard shipping on orders over $100 applies to every WA postcode — Perth metro, Fremantle, Mandurah, Bunbury, regional WA and Northwest WA.",
+      "Aussie Vapes serves Perth and Western Australia with reliable Australia-wide courier partnerships. While WA delivery takes slightly longer than east-coast cities due to distance, Aussie Vapes Perth customers receive the same authentic stock, same brand range and same prices as customers in Sydney or Melbourne. Standard Perth delivery is 4-7 business days; express drops that to 3-4. Free standard shipping on orders over $300 applies to every WA postcode — Perth metro, Fremantle, Mandurah, Bunbury, regional WA and Northwest WA.",
     highlights: [
       '4-7 business days standard to Perth metro',
       '3-4 business days express',
-      'Free shipping to all WA postcodes over $100',
+      'Free shipping to all WA postcodes over $300',
       'Authentic AU stock — no grey market',
       'Discreet plain-packaging delivery',
     ],
@@ -162,7 +162,7 @@ export const CITIES: City[] = [
     highlights: [
       '3-5 business days standard to Adelaide metro',
       '2-3 business days express',
-      'Free shipping to all SA postcodes over $100',
+      'Free shipping to all SA postcodes over $300',
       '40+ brands including IGET, Alfakher, HQD, Gunnpod',
       'Authentic AU stock with scratch authentication codes',
     ],

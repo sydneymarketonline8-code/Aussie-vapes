@@ -52,7 +52,7 @@ const FAQS = [
   {
     question: 'Do Aussie Vapes packs qualify for free shipping?',
     answer:
-      "Yes — Aussie Vapes offers free standard shipping on all Australian orders over $100. Almost every pack on Aussie Vapes is over the threshold, so you'll get free shipping automatically.",
+      "Yes — Aussie Vapes offers free standard shipping on all Australian orders over $300. Almost every pack on Aussie Vapes is over the threshold, so you'll get free shipping automatically.",
   },
   {
     question: 'Can I buy vape packs for a business or event?',

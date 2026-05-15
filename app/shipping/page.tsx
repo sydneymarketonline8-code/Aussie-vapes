@@ -4,7 +4,7 @@ import InfoPageShell from '@/components/layout/InfoPageShell'
 export const metadata: Metadata = {
   title: 'Aussie Vapes Shipping Policy — Same-Day AU Dispatch',
   description:
-    "Aussie Vapes ships authentic vapes Australia-wide. Free shipping over $100. Same-day Sydney dispatch on weekday orders before 2pm AEST. Standard & express options.",
+    "Aussie Vapes ships authentic vapes Australia-wide. Free shipping over $300. Same-day Sydney dispatch on weekday orders before 2pm AEST. Standard & express options.",
   keywords: ['aussie vapes shipping', 'aussie vapes delivery', 'vape shipping australia', 'free vape shipping aus', 'same day vape delivery sydney'],
   alternates: { canonical: '/shipping' },
 }
@@ -14,18 +14,18 @@ export default function ShippingPage() {
     <InfoPageShell
       eyebrow="Aussie Vapes Shipping"
       title="aussie vapes shipping policy"
-      intro="Every Aussie Vapes order ships discreetly from our Sydney warehouse. Same-day weekday dispatch on orders placed before 2pm AEST, free standard shipping on orders over $100, and express delivery options to every state and territory."
+      intro="Every Aussie Vapes order ships discreetly from our Sydney warehouse. Same-day weekday dispatch on orders placed before 2pm AEST, free standard shipping on orders over $300, and express delivery options to every state and territory."
       sections={[
         {
           heading: 'shipping rates',
           paragraphs: [
-            'Aussie Vapes offers free standard shipping on all Australian orders over $100. Below that threshold, standard shipping is a flat $9.95 to anywhere in Australia.',
+            'Aussie Vapes offers free standard shipping on all Australian orders over $300. Below that threshold, standard shipping is a flat $9.95 to anywhere in Australia.',
             'Express shipping is available at checkout for $14.95 — typically 1-3 business days to metro Sydney, Melbourne, Brisbane, Adelaide and Perth, slightly longer to regional and remote areas.',
           ],
           list: [
-            'Standard: $9.95 (FREE over $100) — 3–7 business days',
+            'Standard: $9.95 (FREE over $300) — 3–7 business days',
             'Express: $14.95 — 1–3 business days to metro',
-            'Same-day Sydney metro: Free over $100 (order before 11am AEST weekday)',
+            'Same-day Sydney metro: Free over $300 (order before 11am AEST weekday)',
           ],
         },
         {

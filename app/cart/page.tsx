@@ -11,7 +11,7 @@ export default function CartPage() {
   const { state, removeItem, updateQuantity, subtotal, itemCount } = useCart()
   const { items } = state
 
-  const shipping = subtotal >= 100 ? 0 : 9.95
+  const shipping = subtotal >= 300 ? 0 : 9.95
   const total = subtotal + shipping
 
   return (
@@ -122,7 +122,7 @@ export default function CartPage() {
                 </div>
                 {shipping > 0 && (
                   <p className="text-xs text-mute">
-                    Add ${(100 - subtotal).toFixed(2)} more for free shipping
+                    Add ${(300 - subtotal).toFixed(2)} more for free shipping
                   </p>
                 )}
                 <div className="divider" />

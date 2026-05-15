@@ -121,7 +121,7 @@ export default async function PackGroupPage({
               <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-body max-w-md">
                 <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Authentic AU stock</li>
                 <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Same-day Sydney dispatch</li>
-                <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Free shipping over $100</li>
+                <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Free shipping over $300</li>
                 <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />30-day return guarantee</li>
               </ul>
             </div>

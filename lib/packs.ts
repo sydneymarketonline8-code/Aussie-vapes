@@ -52,7 +52,7 @@ export const PACK_GROUPS: PackGroup[] = [
     shortDescription: 'Multi-device packs of authentic Australian disposable vapes — save more, vape longer.',
     description: 'Every pack-format disposable vape stocked at Aussie Vapes. Save 10-25% per device vs single-unit pricing.',
     longDescription:
-      "The Aussie Vapes Disposable Vape Packs collection brings together every pack-format disposable in our catalogue. Whether you're after a Crown Bar 15000 5-pack, an IGET Bar 10-pack, or a Lost Mary multi-buy, this is the fastest way to compare per-device pricing across 40+ brands. All Aussie Vapes pack-format disposables are TGA-compliant 20mg salt nicotine and ship same-day from our Sydney warehouse. Free shipping over $100 — and a pack will almost always qualify.",
+      "The Aussie Vapes Disposable Vape Packs collection brings together every pack-format disposable in our catalogue. Whether you're after a Crown Bar 15000 5-pack, an IGET Bar 10-pack, or a Lost Mary multi-buy, this is the fastest way to compare per-device pricing across 40+ brands. All Aussie Vapes pack-format disposables are TGA-compliant 20mg salt nicotine and ship same-day from our Sydney warehouse. Free shipping over $300 — and a pack will almost always qualify.",
     seoTitle: 'Disposable Vape Packs Australia — Save On Multi-Buy | Aussie Vapes',
     seoDescription:
       "Buy disposable vape packs online in Australia. 2-pack, 3-pack, 5-pack, 10-pack & bulk multi-buy bundles from IGET, Alfakher, HQD, Gunnpod & more. Aussie Vapes.",

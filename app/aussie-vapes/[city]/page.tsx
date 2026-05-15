@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!c) return {}
   return {
     title: `Aussie Vapes ${c.name} — Buy Vapes ${c.name} ${c.state} | Authentic AU Stock`,
-    description: `Aussie Vapes delivers authentic disposable vapes, pod systems and e-liquids to ${c.name}, ${c.state}. ${c.deliveryWindow}. Free shipping over $100. Same-day Sydney dispatch.`,
+    description: `Aussie Vapes delivers authentic disposable vapes, pod systems and e-liquids to ${c.name}, ${c.state}. ${c.deliveryWindow}. Free shipping over $300. Same-day Sydney dispatch.`,
     keywords: c.keywords,
     alternates: { canonical: `/aussie-vapes/${c.slug}` },
     openGraph: {
@@ -105,7 +105,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 <p className="font-display text-lg font-bold text-ink mb-1">{c.deliveryWindow.split(',')[0]}</p>
                 <p className="text-xs text-body mb-4">{c.deliveryWindow.split(',').slice(1).join(',').trim()}</p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-body border-t border-line pt-3">
-                  <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Free shipping over $100</li>
+                  <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Free shipping over $300</li>
                   <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Same-day Sydney dispatch</li>
                   <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Discreet plain packaging</li>
                   <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Authentic AU stock</li>

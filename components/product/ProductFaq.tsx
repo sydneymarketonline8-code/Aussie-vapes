@@ -81,7 +81,7 @@ export function buildProductFaqs(product: Product, categoryName?: string): Produ
   faqs.push({
     question: `Where can I buy the ${product.name} in Australia?`,
     answer:
-      `Aussie Vapes is the largest authorised AU stockist of ${product.brand} products. Every ${product.name} sold by Aussie Vapes is sourced through authorised distribution channels, carries the brand's authenticity verification code, and is dispatched same-day from our Sydney warehouse on weekday orders before 2pm AEST. Free shipping on orders over $100.`,
+      `Aussie Vapes is the largest authorised AU stockist of ${product.brand} products. Every ${product.name} sold by Aussie Vapes is sourced through authorised distribution channels, carries the brand's authenticity verification code, and is dispatched same-day from our Sydney warehouse on weekday orders before 2pm AEST. Free shipping on orders over $300.`,
   })
 
   // 7. AU compliance

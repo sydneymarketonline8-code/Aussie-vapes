@@ -84,7 +84,7 @@ export default function AussieVapesHubPage() {
           <p className="text-body text-sm leading-relaxed mb-6">
             Wherever you are in Australia — Aussie Vapes ships authentic, TGA-compliant vape products to your door.
             All orders dispatch same-day from our Sydney warehouse on weekday orders before 2pm AEST. Free shipping
-            on orders over $100 to every Australian postcode.
+            on orders over $300 to every Australian postcode.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href="/category/disposable-vapes" className="btn-primary">Shop Disposables</Link>

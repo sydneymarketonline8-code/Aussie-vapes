@@ -4,7 +4,7 @@ import type { Product, Category } from '@/types'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Aussie Vapes'
 const DEFAULT_DESCRIPTION =
-  "Aussie Vapes is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $100."
+  "Aussie Vapes is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
 
 // Principal keyword cluster — "Aussie Vapes" topical authority targeting
 export const AUSSIE_VAPES_KEYWORDS = [

@@ -20,7 +20,7 @@ export default function CheckoutPage() {
     ageConfirmed: false,
   })
 
-  const shipping = subtotal >= 100 ? 0 : 9.95
+  const shipping = subtotal >= 300 ? 0 : 9.95
   const total = subtotal + shipping
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
@@ -160,7 +160,7 @@ export default function CheckoutPage() {
                 <div className="space-y-2">
                   <label className={labelClass}>Shipping method</label>
                   {[
-                    { id: 'standard', label: 'Standard Post (3–7 business days)', price: subtotal >= 100 ? 'FREE' : '$9.95' },
+                    { id: 'standard', label: 'Standard Post (3–7 business days)', price: subtotal >= 300 ? 'FREE' : '$9.95' },
                     { id: 'express', label: 'Express Post (1–3 business days)', price: '$14.95' },
                   ].map((opt) => (
                     <label key={opt.id} className="flex items-center justify-between p-3 rounded-sm border border-line bg-white hover:border-ink cursor-pointer transition-colors">

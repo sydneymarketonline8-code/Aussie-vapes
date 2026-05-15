@@ -132,7 +132,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             <div className="flex items-center gap-2 text-sm text-body">
               <TruckIcon className="h-4 w-4 text-success" />
-              <span>Free shipping on orders over $100 (Australia-wide)</span>
+              <span>Free shipping on orders over $300 (Australia-wide)</span>
             </div>
 
             {/* Add to cart + variant selector */}

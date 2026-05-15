@@ -55,7 +55,7 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
       {
         question: 'Do you offer free shipping?',
         answer:
-          'Yes — Aussie Vapes offers free standard shipping on all Australian orders over $100. Below that, standard shipping is $9.95 flat.',
+          'Yes — Aussie Vapes offers free standard shipping on all Australian orders over $300. Below that, standard shipping is $9.95 flat.',
       },
       {
         question: 'Where does Aussie Vapes ship to?',

@@ -14,7 +14,7 @@ export const CATEGORIES: Category[] = [
       '1,700+ authentic disposable vapes in stock',
       '30+ brands including IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol, RELX',
       'Same-day Sydney dispatch on orders before 2pm AEST',
-      'Free shipping on AU orders over $100',
+      'Free shipping on AU orders over $300',
       'Authenticity codes on every device',
       '30-day return policy on unopened products',
     ],
@@ -27,7 +27,7 @@ export const CATEGORIES: Category[] = [
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=Disposable+Vapes',
     seoTitle: 'Disposable Vapes Australia — 1,700+ In Stock | Aussie Vapes',
     seoDescription:
-      'Aussie Vapes stocks 1,700+ disposable vapes online in Australia. IGET, Alfakher, HQD, Gunnpod, Lost Mary & 35+ brands. Same-day Sydney shipping, free over $100.',
+      'Aussie Vapes stocks 1,700+ disposable vapes online in Australia. IGET, Alfakher, HQD, Gunnpod, Lost Mary & 35+ brands. Same-day Sydney shipping, free over $300.',
     keywords: [
       'aussie vapes disposable',
       'aussie disposable vapes',
@@ -87,7 +87,7 @@ export const CATEGORIES: Category[] = [
       {
         question: 'Do you ship disposable vapes Australia-wide?',
         answer:
-          'Yes. Aussie Vapes ships to every Australian state and territory using discreet plain-packaging couriers. Free shipping on orders over $100. Express options available at checkout. Same-day Sydney dispatch on weekday orders placed before 2pm AEST.',
+          'Yes. Aussie Vapes ships to every Australian state and territory using discreet plain-packaging couriers. Free shipping on orders over $300. Express options available at checkout. Same-day Sydney dispatch on weekday orders placed before 2pm AEST.',
       },
       {
         question: "What's the difference between 20mg and 50mg disposables?",
