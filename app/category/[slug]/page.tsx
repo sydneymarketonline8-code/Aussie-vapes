@@ -9,7 +9,7 @@ import SortDropdown from '@/components/category/SortDropdown'
 import ProductGrid from '@/components/product/ProductGrid'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import HeroCollage from '@/components/ui/HeroCollage'
-import { getCategoryBySlug } from '@/lib/categories'
+import { getCategoryBySlug, resolveSubcategory } from '@/lib/categories'
 import { getProductsByCategory } from '@/lib/products'
 import type { FilterState, SortOption } from '@/types'
 import { AdjustmentsHorizontalIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -52,14 +52,24 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, sort, activeSub])
 
-  // Counts per subcategory
+  // Counts per *resolved* subcategory (accessories get pattern-matched from product
+  // names because the imported subcategory field is unreliable for that category).
   const subcategoryCounts = useMemo(() => {
     const counts = new Map<string, number>()
     for (const p of allProducts) {
-      if (p.subcategory) counts.set(p.subcategory, (counts.get(p.subcategory) || 0) + 1)
+      const sub = resolveSubcategory(p)
+      if (sub) counts.set(sub, (counts.get(sub) || 0) + 1)
     }
     return counts
   }, [allProducts])
+
+  // Dynamic list of subcategories to show in the sidebar — only those that
+  // actually have products in the current category.
+  const availableSubcategories = useMemo(() => {
+    return category.subcategories
+      .map((s) => ({ slug: s.slug, name: s.name, count: subcategoryCounts.get(s.slug) ?? 0 }))
+      .filter((s) => s.count > 0)
+  }, [category.subcategories, subcategoryCounts])
 
   // Compute available brands dynamically from products in this category.
   // We exclude bogus brand values that came from import (generic words like the
@@ -109,7 +119,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   const filtered = useMemo(() => {
     let result = allProducts.filter((p) => {
-      if (activeSub && p.subcategory !== activeSub) return false
+      if (activeSub && resolveSubcategory(p) !== activeSub) return false
       if (p.price < filters.priceMin || p.price > filters.priceMax) return false
       if (filters.inStockOnly && !p.inStock) return false
       if (filters.brands.length && !filters.brands.includes(p.brand)) return false
@@ -297,6 +307,9 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
               onChange={setFilters}
               availableBrands={availableBrands}
               availableTags={availableTags}
+              availableSubcategories={availableSubcategories}
+              activeSubcategory={activeSub}
+              onSubcategoryChange={setActiveSub}
             />
           </div>
 
@@ -328,6 +341,9 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
               onChange={setFilters}
               availableBrands={availableBrands}
               availableTags={availableTags}
+              availableSubcategories={availableSubcategories}
+              activeSubcategory={activeSub}
+              onSubcategoryChange={setActiveSub}
             />
           </div>
         </div>

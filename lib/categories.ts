@@ -337,9 +337,13 @@ export const CATEGORIES: Category[] = [
       'Lifestyle accessories',
     ],
     subcategories: [
-      { id: 'sub-012', slug: 'coils', name: 'Replacement Coils', parentSlug: 'accessories' },
-      { id: 'sub-013', slug: 'cables', name: 'Cables & Chargers', parentSlug: 'accessories' },
-      { id: 'sub-014', slug: 'pouches', name: 'Nicotine Pouches', parentSlug: 'accessories' },
+      { id: 'sub-012', slug: 'nicotine-pouches', name: 'Nicotine Pouches', parentSlug: 'accessories' },
+      { id: 'sub-013', slug: 'caffeine-pouches', name: 'Caffeine Pouches', parentSlug: 'accessories' },
+      { id: 'sub-014', slug: 'cigarettes', name: 'Cigarettes', parentSlug: 'accessories' },
+      { id: 'sub-015', slug: 'cream-chargers', name: 'Cream Chargers', parentSlug: 'accessories' },
+      { id: 'sub-016', slug: 'coils', name: 'Replacement Coils', parentSlug: 'accessories' },
+      { id: 'sub-017', slug: 'cables', name: 'Cables & Chargers', parentSlug: 'accessories' },
+      { id: 'sub-018', slug: 'lifestyle', name: 'Lifestyle & Apparel', parentSlug: 'accessories' },
     ],
     productCount: 122,
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=Accessories',
@@ -385,4 +389,50 @@ export function getCategoryBySlug(slug: string): Category | undefined {
 
 export function getAllCategorySlugs(): string[] {
   return CATEGORIES.map((c) => c.slug)
+}
+
+/**
+ * Resolve a product's *effective* subcategory slug. For accessories the raw
+ * product.subcategory is unreliable (most got auto-imported as 'coils'), so we
+ * pattern-match on the product name. For everything else we trust the field.
+ */
+export function resolveSubcategory(product: { name: string; subcategory?: string; tags?: string[]; category: string }): string | undefined {
+  if (product.category !== 'accessories') return product.subcategory
+
+  const name = (product.name || '').toLowerCase()
+  const tags = (product.tags || []).map((t) => t.toLowerCase())
+
+  if (
+    tags.includes('cigarettes') ||
+    /\b(marlboro|manchester|esse|euro|double happiness|camel|winfield|peter jackson|benson|rothmans|kent)\b/i.test(
+      name
+    )
+  ) {
+    return 'cigarettes'
+  }
+
+  if (/cream\s*charger|whip\s*charger|n2o|mosa|supremewhip/i.test(name)) {
+    return 'cream-chargers'
+  }
+
+  if (/berserker|caffeine pouch|mojo pouch/i.test(name)) {
+    return 'caffeine-pouches'
+  }
+
+  if (
+    /\b(velo|zyn|ammo|dope|goat|snatch|xtrime|zimo|juice\s*head|sesh|killa)\b/i.test(name) ||
+    /\bnicotine\s*pouch/i.test(name) ||
+    /\bpouch(es)?\b/i.test(name)
+  ) {
+    return 'nicotine-pouches'
+  }
+
+  if (/coil|atomiser|atomizer/i.test(name)) return 'coils'
+  if (/cable|charger\b|usb-?c/i.test(name)) return 'cables'
+
+  if (/cap\b|hat|watch|sunglasses|t-?shirt|hoodie|jacket|beanie|cup|mug|sticker/i.test(name)) {
+    return 'lifestyle'
+  }
+
+  return product.subcategory ?? 'lifestyle'
 }

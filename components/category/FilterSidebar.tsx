@@ -14,6 +14,12 @@ export interface BrandOption {
   count: number
 }
 
+export interface SubcategoryOption {
+  slug: string
+  name: string
+  count: number
+}
+
 interface FilterSidebarProps {
   filters: FilterState
   onChange: (filters: FilterState) => void
@@ -23,6 +29,12 @@ interface FilterSidebarProps {
   availableTags?: string[]
   /** Cap brand list at this many — show "show all" otherwise. */
   brandLimit?: number
+  /** Subcategories present in the current category, with product counts. */
+  availableSubcategories?: SubcategoryOption[]
+  /** Currently-active subcategory slug (null = no filter). */
+  activeSubcategory?: string | null
+  /** Subcategory change handler. */
+  onSubcategoryChange?: (slug: string | null) => void
 }
 
 function AccordionSection({ title, children, defaultOpen = true }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) {
@@ -50,6 +62,9 @@ export default function FilterSidebar({
   availableBrands = [],
   availableTags = DEFAULT_TAGS,
   brandLimit = 12,
+  availableSubcategories = [],
+  activeSubcategory = null,
+  onSubcategoryChange,
 }: FilterSidebarProps) {
   const [showAllBrands, setShowAllBrands] = useState(false)
 
@@ -87,6 +102,43 @@ export default function FilterSidebar({
           </button>
         ) : null}
       </div>
+
+      {availableSubcategories.length > 0 && (
+        <AccordionSection title={`Sub-Category (${availableSubcategories.length})`}>
+          <div className="space-y-2">
+            <label className="flex items-center justify-between gap-2 cursor-pointer text-sm">
+              <span className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="subcategory"
+                  checked={activeSubcategory == null}
+                  onChange={() => onSubcategoryChange?.(null)}
+                  className="rounded-sm border-line bg-white text-ink focus:ring-ink"
+                />
+                <span className="text-body font-display font-semibold">All Sub-Categories</span>
+              </span>
+              <span className="text-xs text-mute">
+                {availableSubcategories.reduce((s, x) => s + x.count, 0)}
+              </span>
+            </label>
+            {availableSubcategories.map((s) => (
+              <label key={s.slug} className="flex items-center justify-between gap-2 cursor-pointer text-sm">
+                <span className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="subcategory"
+                    checked={activeSubcategory === s.slug}
+                    onChange={() => onSubcategoryChange?.(s.slug)}
+                    className="rounded-sm border-line bg-white text-ink focus:ring-ink"
+                  />
+                  <span className="text-body">{s.name}</span>
+                </span>
+                <span className="text-xs text-mute">{s.count}</span>
+              </label>
+            ))}
+          </div>
+        </AccordionSection>
+      )}
 
       <AccordionSection title="Price Range">
         <div className="flex items-center gap-2">
