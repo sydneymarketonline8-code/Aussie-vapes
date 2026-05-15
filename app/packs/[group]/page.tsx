@@ -217,7 +217,7 @@ export default async function PackGroupPage({
                     href={`/packs/${other.slug}`}
                     className="bg-white border border-line rounded-sm p-4 hover:border-ink transition-all flex items-center gap-3"
                   >
-                    <span className="text-2xl">{other.icon}</span>
+                    <other.icon className="h-7 w-7 text-ink flex-shrink-0" />
                     <div>
                       <p className="font-display text-sm font-bold uppercase tracking-wider text-ink">
                         {other.name}

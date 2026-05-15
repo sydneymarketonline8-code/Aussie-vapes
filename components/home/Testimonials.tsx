@@ -37,8 +37,13 @@ export default function Testimonials() {
       <div className="container-site">
         <div className="section-heading-wrap">
           <h2 className="section-heading">product reviews</h2>
-          <span className="font-display text-xs uppercase tracking-widest font-bold text-success">
-            ★★★★★ 4.8 / 5 — 10,000+ reviews
+          <span className="font-display text-xs uppercase tracking-widest font-bold text-success inline-flex items-center gap-1.5">
+            <span className="flex gap-0.5">
+              {Array.from({ length: 5 }, (_, i) => (
+                <StarIcon key={i} className="h-3.5 w-3.5 text-warning" />
+              ))}
+            </span>
+            4.8 / 5 — 10,000+ reviews
           </span>
         </div>
 

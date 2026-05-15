@@ -1,5 +1,14 @@
+import type { ComponentType, SVGProps } from 'react'
+import {
+  SparklesIcon,
+  ScaleIcon,
+  FireIcon,
+  TrophyIcon,
+} from '@heroicons/react/24/outline'
 import { PRODUCTS } from './products'
 import type { Product } from '@/types'
+
+type HeroIcon = ComponentType<SVGProps<SVGSVGElement> & { title?: string; titleId?: string }>
 
 export interface PuffRange {
   slug: string
@@ -12,7 +21,7 @@ export interface PuffRange {
   seoTitle: string
   seoDescription: string
   keywords: string[]
-  icon: string
+  icon: HeroIcon
 }
 
 export const PUFF_RANGES: PuffRange[] = [
@@ -35,7 +44,7 @@ export const PUFF_RANGES: PuffRange[] = [
       'aussie vapes starter',
       '2000 puff vape australia',
     ],
-    icon: '🌱',
+    icon: SparklesIcon,
   },
   {
     slug: 'mid-range-vapes',
@@ -56,7 +65,7 @@ export const PUFF_RANGES: PuffRange[] = [
       '6000 puff vape australia',
       'aussie vapes mid range',
     ],
-    icon: '⚖️',
+    icon: ScaleIcon,
   },
   {
     slug: 'high-puff-vapes',
@@ -78,7 +87,7 @@ export const PUFF_RANGES: PuffRange[] = [
       '12000 puff vape australia',
       'aussie vapes high puff',
     ],
-    icon: '💪',
+    icon: FireIcon,
   },
   {
     slug: 'ultra-puff-vapes',
@@ -100,7 +109,7 @@ export const PUFF_RANGES: PuffRange[] = [
       'longest lasting disposable vape australia',
       'aussie vapes ultra puff',
     ],
-    icon: '🏁',
+    icon: TrophyIcon,
   },
 ]
 

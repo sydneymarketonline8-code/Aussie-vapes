@@ -1,5 +1,16 @@
 import Link from 'next/link'
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline'
+import {
+  PhoneIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  ClockIcon,
+  LockClosedIcon,
+  TruckIcon,
+  ShieldCheckIcon,
+  ArrowUturnLeftIcon,
+  CreditCardIcon,
+  CheckBadgeIcon,
+} from '@heroicons/react/24/outline'
 import NewsletterForm from './NewsletterForm'
 
 const shop = [
@@ -143,20 +154,55 @@ export default function Footer() {
 
           <div className="flex gap-3 mt-5">
             {[
-              { label: 'Instagram', href: 'https://instagram.com', icon: '📸' },
-              { label: 'Facebook', href: 'https://facebook.com', icon: '📘' },
-              { label: 'TikTok', href: 'https://tiktok.com', icon: '🎵' },
-              { label: 'YouTube', href: 'https://youtube.com', icon: '▶' },
-            ].map(({ label, href, icon }) => (
+              {
+                label: 'Instagram',
+                href: 'https://instagram.com',
+                svg: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Facebook',
+                href: 'https://facebook.com',
+                svg: (
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M13.5 21v-7h2.4l.4-3h-2.8V9c0-.9.3-1.5 1.5-1.5h1.5V4.9c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8v3h2.6v7h2.9z" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'TikTok',
+                href: 'https://tiktok.com',
+                svg: (
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M16.5 3h-3v12a2.5 2.5 0 1 1-2.5-2.5h.5V9.5h-.5a5.5 5.5 0 1 0 5.5 5.5V9.2c1 .6 2.2 1 3.5 1V7.2A4.7 4.7 0 0 1 16.5 3z" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'YouTube',
+                href: 'https://youtube.com',
+                svg: (
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                    <path d="M21.6 7.3a2.5 2.5 0 0 0-1.7-1.7C18.3 5.2 12 5.2 12 5.2s-6.3 0-7.9.4A2.5 2.5 0 0 0 2.4 7.3 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.7 2.5 2.5 0 0 0 1.7 1.7c1.6.4 7.9.4 7.9.4s6.3 0 7.9-.4a2.5 2.5 0 0 0 1.7-1.7A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.7zM10 15V9l5 3-5 3z" />
+                  </svg>
+                ),
+              },
+            ].map(({ label, href, svg }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="h-10 w-10 flex items-center justify-center rounded-sm bg-white border border-line hover:bg-ink hover:text-white hover:border-ink transition-colors text-base"
+                title={label}
+                className="h-10 w-10 flex items-center justify-center rounded-sm bg-white border border-line text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors"
               >
-                {icon}
+                {svg}
               </a>
             ))}
           </div>
@@ -225,9 +271,19 @@ export default function Footer() {
 
       {/* Trust badges */}
       <div className="border-t border-line bg-white">
-        <div className="container-site py-5 flex flex-wrap items-center justify-center gap-6 text-xs text-mute font-display uppercase tracking-wider font-semibold">
-          {['🔒 Secure SSL Checkout', '🚚 Fast AU Dispatch', '✅ Age Verified Store', '🇦🇺 Australian Owned', '📦 Easy Returns', '💳 Multiple Payment Options'].map((t) => (
-            <span key={t}>{t}</span>
+        <div className="container-site py-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-mute font-display uppercase tracking-wider font-semibold">
+          {[
+            { Icon: LockClosedIcon, label: 'Secure SSL Checkout' },
+            { Icon: TruckIcon, label: 'Fast AU Dispatch' },
+            { Icon: ShieldCheckIcon, label: 'Age Verified Store' },
+            { Icon: CheckBadgeIcon, label: 'Australian Owned' },
+            { Icon: ArrowUturnLeftIcon, label: 'Easy Returns' },
+            { Icon: CreditCardIcon, label: 'Multiple Payment Options' },
+          ].map(({ Icon, label }) => (
+            <span key={label} className="inline-flex items-center gap-1.5">
+              <Icon className="h-4 w-4 text-ink" />
+              {label}
+            </span>
           ))}
         </div>
       </div>
@@ -248,7 +304,7 @@ export default function Footer() {
         </div>
         <div className="container-site pb-4">
           <p className="text-[10px] text-white/50 text-center leading-relaxed">
-            ⚠️ Nicotine products are highly addictive and not risk-free. For adult use only (18+). Aussie Vapes does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
+            Nicotine products are highly addictive and not risk-free. For adult use only (18+). Aussie Vapes does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
           </p>
         </div>
       </div>

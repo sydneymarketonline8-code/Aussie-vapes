@@ -94,7 +94,7 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
                     href={`/puffs/${r.slug}`}
                     className="font-display text-sm font-semibold text-body hover:text-price py-1 flex items-center gap-2"
                   >
-                    <span>{r.icon}</span>
+                    <r.icon className="h-4 w-4 text-ink" />
                     <span>{r.shortName} Puffs</span>
                   </Link>
                 ))}

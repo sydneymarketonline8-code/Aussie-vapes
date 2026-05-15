@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { ShieldExclamationIcon } from '@heroicons/react/24/outline'
 
 const STORAGE_KEY = 'aussievapes-age-verified'
 
@@ -26,7 +27,9 @@ export default function AgeGate() {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
       <div className="bg-white border border-line rounded-sm p-8 max-w-md w-full text-center shadow-2xl">
-        <div className="text-5xl mb-4">🔞</div>
+        <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-price/10 flex items-center justify-center">
+          <ShieldExclamationIcon className="h-9 w-9 text-price" />
+        </div>
         <h1 className="font-display text-2xl font-bold text-ink mb-2 uppercase tracking-wide">Age Verification Required</h1>
         <p className="text-body text-sm mb-6 leading-relaxed">
           This website sells nicotine products. You must be <strong className="text-ink">18 years or older</strong> and hold a valid Australian prescription for nicotine-containing products where required by law.

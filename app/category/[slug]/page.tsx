@@ -13,7 +13,7 @@ import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategory } from '@/lib/products'
 import type { FilterState, SortOption } from '@/types'
 import { AdjustmentsHorizontalIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import { CheckCircleIcon, StarIcon } from '@heroicons/react/24/solid'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -250,7 +250,10 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
               <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">From</p>
             </div>
             <div>
-              <p className="font-display text-2xl font-bold text-ink">★ {avgRating.toFixed(1)}</p>
+              <p className="font-display text-2xl font-bold text-ink inline-flex items-center justify-center gap-1">
+                <StarIcon className="h-5 w-5 text-warning" />
+                {avgRating.toFixed(1)}
+              </p>
               <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">Avg Rating</p>
             </div>
           </div>

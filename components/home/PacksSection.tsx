@@ -43,7 +43,7 @@ export default function PacksSection() {
                 href={`/packs/${g.slug}`}
                 className="bg-white/5 hover:bg-white border border-white/10 hover:border-white rounded-sm p-4 transition-all flex flex-col items-center text-center group"
               >
-                <span className="text-3xl mb-2">{g.icon}</span>
+                <g.icon className="h-8 w-8 mb-2 text-white" />
                 <p className="font-display text-xs font-bold uppercase tracking-wider text-white group-hover:text-ink transition-colors">
                   {g.name}
                 </p>

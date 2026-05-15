@@ -23,7 +23,7 @@ const badges = [
   },
   {
     icon: StarIcon,
-    title: '4.8★ Rated Store',
+    title: '4.8/5 Rated Store',
     body: '10,000+ verified customer reviews.',
   },
 ]

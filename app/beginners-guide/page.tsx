@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -159,7 +160,10 @@ export default function BeginnersGuidePage() {
           </section>
 
           <section className="bg-warning/10 border-l-4 border-warning p-5 rounded-sm">
-            <h2 className="font-display text-lg font-bold text-ink mb-2">⚠️ AU Legal Reminder</h2>
+            <h2 className="font-display text-lg font-bold text-ink mb-2 flex items-center gap-2">
+              <ExclamationTriangleIcon className="h-5 w-5 text-warning" />
+              AU Legal Reminder
+            </h2>
             <p className="text-sm text-body leading-relaxed">
               Nicotine vaping products require a valid Australian prescription. You confirm prescription status at
               Aussie Vapes checkout. Vaping is for adults 18+ only — Aussie Vapes does not sell to minors.

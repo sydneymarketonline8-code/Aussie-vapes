@@ -140,7 +140,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <dt className="font-display text-[11px] uppercase tracking-wider text-mute font-bold">Customer Rating</dt>
-                <dd className="font-display font-semibold text-ink">★ 4.8 / 5</dd>
+                <dd className="font-display font-semibold text-ink">4.8 / 5</dd>
               </div>
               <div>
                 <dt className="font-display text-[11px] uppercase tracking-wider text-mute font-bold">Reviews</dt>

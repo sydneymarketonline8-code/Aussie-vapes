@@ -69,7 +69,7 @@ export default function ProductSidebar({ currentProduct }: ProductSidebarProps) 
                 className="flex items-center justify-between gap-2 text-sm hover:bg-soft-100 -mx-2 px-2 py-1.5 rounded-sm transition-colors"
               >
                 <span className="flex items-center gap-2">
-                  <span>{r.icon}</span>
+                  <r.icon className="h-4 w-4 text-ink" />
                   <span className="font-display font-semibold text-ink">{r.shortName}</span>
                 </span>
                 <span className="text-xs text-mute">{puffCounts[r.slug] ?? 0}</span>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { HeartIcon } from '@heroicons/react/24/outline'
+import { HeartIcon, TruckIcon, LockClosedIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline'
 import type { Product } from '@/types'
 import AddToCartButton from './AddToCartButton'
 
@@ -86,9 +86,15 @@ export default function AddToCart({ product }: AddToCartProps) {
 
       {/* Trust row */}
       <div className="flex flex-wrap gap-4 text-xs text-mute font-display uppercase tracking-wider font-semibold">
-        <span className="flex items-center gap-1">🚚 Fast AU Dispatch</span>
-        <span className="flex items-center gap-1">🔒 Secure Checkout</span>
-        <span className="flex items-center gap-1">↩️ 30-Day Returns</span>
+        <span className="flex items-center gap-1.5">
+          <TruckIcon className="h-4 w-4" /> Fast AU Dispatch
+        </span>
+        <span className="flex items-center gap-1.5">
+          <LockClosedIcon className="h-4 w-4" /> Secure Checkout
+        </span>
+        <span className="flex items-center gap-1.5">
+          <ArrowUturnLeftIcon className="h-4 w-4" /> 30-Day Returns
+        </span>
       </div>
     </div>
   )

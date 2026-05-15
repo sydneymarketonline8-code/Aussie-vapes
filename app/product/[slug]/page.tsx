@@ -13,7 +13,7 @@ import ProductSidebar from '@/components/product/ProductSidebar'
 import ProductQuickSpecs from '@/components/product/ProductQuickSpecs'
 import StarRating from '@/components/ui/StarRating'
 import Badge from '@/components/ui/Badge'
-import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIcon, BoltIcon } from '@heroicons/react/24/outline'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -123,8 +123,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* Stock warning */}
             {product.stockCount !== undefined && product.stockCount < 20 && (
               <div className="flex items-center gap-2 px-4 py-3 rounded-sm bg-warning/10 border border-warning/30">
+                <BoltIcon className="h-5 w-5 text-warning flex-shrink-0" />
                 <span className="text-warning text-sm font-display font-semibold uppercase tracking-wider">
-                  ⚡ Only {product.stockCount} left — order soon
+                  Only {product.stockCount} left — order soon
                 </span>
               </div>
             )}
@@ -216,11 +217,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         {/* Regulatory notice with external authority references */}
         <div className="mt-8 p-5 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
-          <p className="mb-2">
-            ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products
-            require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping
-            Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years
-            or older. Aussie Vapes complies with all applicable Australian regulations.
+          <p className="mb-2 flex items-start gap-2">
+            <ExclamationTriangleIcon className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
+            <span>
+              <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products
+              require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping
+              Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years
+              or older. Aussie Vapes complies with all applicable Australian regulations.
+            </span>
           </p>
           <p className="text-mute mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="font-display uppercase tracking-wider font-bold text-[10px]">Further reading:</span>

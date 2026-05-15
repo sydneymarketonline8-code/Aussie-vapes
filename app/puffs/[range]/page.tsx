@@ -76,8 +76,9 @@ export default async function PuffRangePage({
               <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
                 {allProducts.length.toLocaleString()} Aussie Vapes In This Range
               </p>
-              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.05] mb-3">
-                {r.icon} {r.name}
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.05] mb-3 flex items-center gap-3">
+                <r.icon className="h-10 w-10 text-price" />
+                {r.name}
               </h1>
               <p className="text-body leading-relaxed">{r.description}</p>
               <div className="flex flex-wrap gap-2 mt-5">
@@ -85,9 +86,10 @@ export default async function PuffRangePage({
                   <Link
                     key={other.slug}
                     href={`/puffs/${other.slug}`}
-                    className="px-4 py-2 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-sm text-xs font-display font-bold uppercase tracking-wider border border-line text-body bg-white hover:border-ink transition-colors"
                   >
-                    {other.icon} {other.shortName}
+                    <other.icon className="h-4 w-4" />
+                    {other.shortName}
                   </Link>
                 ))}
               </div>

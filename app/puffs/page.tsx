@@ -46,7 +46,7 @@ export default function PuffsIndexPage() {
               href={`/puffs/${r.slug}`}
               className="group bg-white border border-line rounded-sm p-6 hover:border-ink hover:shadow-md transition-all flex flex-col"
             >
-              <span className="text-5xl mb-3">{r.icon}</span>
+              <r.icon className="h-12 w-12 text-ink mb-3" />
               <h2 className="font-display text-lg font-bold text-ink uppercase tracking-wide group-hover:text-price transition-colors mb-1">
                 {r.shortName}
               </h2>

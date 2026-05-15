@@ -161,7 +161,7 @@ export default function PacksLandingPage() {
                 className="group bg-white border border-line rounded-sm p-6 hover:shadow-md hover:border-ink transition-all flex flex-col"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="text-4xl">{g.icon}</span>
+                  <g.icon className="h-10 w-10 text-ink" />
                   <span className="font-display text-xs uppercase tracking-wider text-mute font-bold">
                     {count} products
                   </span>

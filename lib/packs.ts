@@ -1,5 +1,15 @@
+import type { ComponentType, SVGProps } from 'react'
+import {
+  Squares2X2Icon,
+  CubeIcon,
+  GiftIcon,
+  TagIcon,
+  TruckIcon,
+} from '@heroicons/react/24/outline'
 import { PRODUCTS } from './products'
 import type { Product } from '@/types'
+
+type HeroIcon = ComponentType<SVGProps<SVGSVGElement> & { title?: string; titleId?: string }>
 
 export interface PackGroup {
   slug: string
@@ -12,7 +22,7 @@ export interface PackGroup {
   longDescription: string
   matcher: (p: Product) => boolean
   accentColor: string
-  icon: string
+  icon: HeroIcon
 }
 
 const PACK_REGEX = /(\d+)[\s-]*(?:pack|items?)\b|bundle|combo|multi[\s-]buy/i
@@ -37,7 +47,7 @@ export const PACK_GROUPS: PackGroup[] = [
   {
     slug: 'disposable-vape-packs',
     name: 'Disposable Vape Packs',
-    icon: '💨',
+    icon: Squares2X2Icon,
     accentColor: '#ff0000',
     shortDescription: 'Multi-device packs of authentic Australian disposable vapes — save more, vape longer.',
     description: 'Every pack-format disposable vape stocked at Aussie Vapes. Save 10-25% per device vs single-unit pricing.',
@@ -63,7 +73,7 @@ export const PACK_GROUPS: PackGroup[] = [
   {
     slug: 'multi-buy-packs',
     name: 'Multi-Buy Packs',
-    icon: '📦',
+    icon: CubeIcon,
     accentColor: '#4cbb6c',
     shortDescription: '2-pack and 3-pack bundles — perfect for personal stock-up or sharing with mates.',
     description: 'Smaller multi-buy packs ideal for personal stockpiling, gifting, or testing different flavours.',
@@ -85,7 +95,7 @@ export const PACK_GROUPS: PackGroup[] = [
   {
     slug: 'bundle-deals',
     name: 'Bundle Deals',
-    icon: '🎁',
+    icon: GiftIcon,
     accentColor: '#ff9a52',
     shortDescription: 'Discounted bundles where multiple devices are paired at a special price.',
     description: 'The best discounts at Aussie Vapes — pack-format products where the bundle savings are deepest.',
@@ -108,7 +118,7 @@ export const PACK_GROUPS: PackGroup[] = [
   {
     slug: 'brand-packs',
     name: 'Brand Packs',
-    icon: '🏷️',
+    icon: TagIcon,
     accentColor: '#2fb5d2',
     shortDescription: 'Pack-format devices from the major Aussie Vapes brands — IGET, Alfakher, HQD, Gunnpod & more.',
     description: 'Curated brand-specific pack selection from the heavy hitters of the Australian disposable vape market.',
@@ -136,7 +146,7 @@ export const PACK_GROUPS: PackGroup[] = [
   {
     slug: 'bulk-vape-packs',
     name: 'Bulk Vape Packs',
-    icon: '🚚',
+    icon: TruckIcon,
     accentColor: '#1f1f1f',
     shortDescription: '10-pack, 20-pack, 50-pack and 100-pack cartons — bulk pricing for heavy users and resellers.',
     description: 'Wholesale-style bulk packs (10+ devices) with the deepest per-unit discounts at Aussie Vapes.',

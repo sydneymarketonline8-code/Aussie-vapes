@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { XMarkIcon, TrashIcon, PlusIcon, MinusIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon, TrashIcon, PlusIcon, MinusIcon, ShoppingBagIcon, CheckBadgeIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
 import clsx from 'clsx'
 
@@ -67,7 +67,10 @@ export default function CartDrawer() {
               {remaining > 0 ? (
                 <span>Add <strong className="text-price">${remaining.toFixed(2)}</strong> for free shipping</span>
               ) : (
-                <span className="text-success font-bold">🎉 Free shipping unlocked!</span>
+                <span className="text-success font-bold inline-flex items-center gap-1.5">
+                  <CheckBadgeIcon className="h-4 w-4" />
+                  Free shipping unlocked!
+                </span>
               )}
             </div>
             <div className="h-1.5 bg-line rounded-full overflow-hidden">

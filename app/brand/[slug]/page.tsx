@@ -12,8 +12,8 @@ import {
   breadcrumbJsonLd,
   faqJsonLd,
 } from '@/lib/seo'
-import { CheckCircleIcon } from '@heroicons/react/24/solid'
-import { StarIcon } from '@heroicons/react/24/solid'
+import { CheckCircleIcon, StarIcon } from '@heroicons/react/24/solid'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -319,8 +319,11 @@ export default async function BrandPage({
 
       {/* Compliance footer */}
       <div className="container-site py-6">
-        <div className="p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
-          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Aussie Vapes complies with all applicable Australian regulations.
+        <div className="p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed flex items-start gap-2">
+          <ExclamationTriangleIcon className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
+          <span>
+            <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Aussie Vapes complies with all applicable Australian regulations.
+          </span>
         </div>
       </div>
     </>

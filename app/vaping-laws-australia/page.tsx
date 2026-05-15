@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import { ScaleIcon } from '@heroicons/react/24/outline'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -144,7 +145,10 @@ export default function VapingLawsPage() {
           </section>
 
           <section className="bg-soft-100 border border-line p-5 rounded-sm">
-            <h2 className="font-display text-lg font-bold text-ink mb-2">⚖️ Disclaimer</h2>
+            <h2 className="font-display text-lg font-bold text-ink mb-2 flex items-center gap-2">
+              <ScaleIcon className="h-5 w-5 text-mute" />
+              Disclaimer
+            </h2>
             <p className="text-sm text-body leading-relaxed">
               This Aussie Vapes guide is general information only and is not legal advice. Australian vaping laws are
               subject to change and vary by state and territory. For specific legal guidance, consult an Australian
