@@ -1,15 +1,17 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getProductBySlug, PRODUCTS } from '@/lib/products'
-import { buildProductMetadata, productJsonLd, breadcrumbJsonLd } from '@/lib/seo'
+import { buildProductMetadata, productJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo'
 import { getCategoryBySlug } from '@/lib/categories'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGallery from '@/components/product/ProductGallery'
 import AddToCart from '@/components/product/AddToCart'
 import RelatedProducts from '@/components/product/RelatedProducts'
+import ProductFaq, { buildProductFaqs } from '@/components/product/ProductFaq'
+import ProductInternalLinks from '@/components/product/ProductInternalLinks'
 import StarRating from '@/components/ui/StarRating'
 import Badge from '@/components/ui/Badge'
-import { CheckIcon, TruckIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -35,10 +37,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     : null
 
   const crumbs = [
-    { name: 'Home', url: `${SITE_URL}/` },
+    { name: 'Aussie Vapes', url: `${SITE_URL}/` },
     { name: category?.name ?? 'Shop', url: `${SITE_URL}/category/${product.category}` },
     { name: product.name, url: `${SITE_URL}/product/${product.slug}` },
   ]
+
+  const productFaqs = buildProductFaqs(product, category?.name)
 
   return (
     <>
@@ -50,12 +54,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd(crumbs)) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(productFaqs)) }}
+      />
 
       <div className="container-site py-8">
         {/* Breadcrumb */}
         <Breadcrumb
           crumbs={[
-            { label: 'Home', href: '/' },
+            { label: 'Aussie Vapes', href: '/' },
             { label: category?.name ?? 'Shop', href: `/category/${product.category}` },
             { label: product.name },
           ]}
@@ -171,9 +179,39 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           )}
         </div>
 
-        {/* Regulatory notice */}
-        <div className="mt-8 p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
-          ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Aussie Vapes complies with all applicable Australian regulations.
+        {/* Product FAQ */}
+        <ProductFaq product={product} categoryName={category?.name} />
+
+        {/* Internal links block */}
+        <ProductInternalLinks product={product} />
+
+        {/* Regulatory notice with external authority references */}
+        <div className="mt-8 p-5 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed">
+          <p className="mb-2">
+            ⚠️ <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products
+            require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping
+            Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years
+            or older. Aussie Vapes complies with all applicable Australian regulations.
+          </p>
+          <p className="text-mute mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span className="font-display uppercase tracking-wider font-bold text-[10px]">Further reading:</span>
+            <a
+              href="https://www.tga.gov.au/products/unapproved-therapeutic-goods/vaping-hub"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-price"
+            >
+              TGA vaping hub <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+            </a>
+            <a
+              href="https://www.health.gov.au/topics/smoking-vaping-and-tobacco/about-vaping"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="inline-flex items-center gap-1 hover:text-price"
+            >
+              AU Dept. of Health <ArrowTopRightOnSquareIcon className="h-3 w-3" />
+            </a>
+          </p>
         </div>
 
         {/* Related products */}
