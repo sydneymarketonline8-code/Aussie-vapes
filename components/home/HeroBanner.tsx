@@ -51,8 +51,8 @@ export default function HeroBanner({ slides }: HeroBannerProps) {
       <div className="container-site relative py-14 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr,auto] gap-12 items-center min-h-[420px]">
           {/* Copy */}
-          <div className="relative z-10 max-w-xl">
-            <div className="inline-flex items-center gap-2 mb-5">
+          <div key={`copy-${current}`} className="relative z-10 max-w-xl">
+            <div className="inline-flex items-center gap-2 mb-5 animate-fade-up">
               <span className="h-px w-8" style={{ background: slide.accent }} />
               <span
                 className="font-display text-xs font-bold uppercase tracking-[0.3em]"
@@ -62,20 +62,22 @@ export default function HeroBanner({ slides }: HeroBannerProps) {
               </span>
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-ink-dark tracking-tight leading-[1.05] mb-6 transition-all duration-500">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-ink-dark tracking-tight leading-[1.05] mb-6 animate-fade-up-delay-1">
               {slide.heading}
             </h1>
 
-            <p className="text-body text-base sm:text-lg leading-relaxed mb-6">{slide.subheading}</p>
+            <p className="text-body text-base sm:text-lg leading-relaxed mb-6 animate-fade-up-delay-2">
+              {slide.subheading}
+            </p>
 
             <div
-              className="inline-flex items-center px-4 py-1.5 rounded-sm font-display font-bold text-sm uppercase tracking-wider mb-8 text-white"
+              className="inline-flex items-center px-4 py-1.5 rounded-sm font-display font-bold text-sm uppercase tracking-wider mb-8 text-white animate-fade-up-delay-3"
               style={{ background: slide.accent }}
             >
               {slide.badge}
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 animate-fade-up-delay-4">
               <Link href={slide.cta.href} className="btn-primary text-base px-8 py-3.5">
                 {slide.cta.label}
               </Link>
@@ -86,7 +88,7 @@ export default function HeroBanner({ slides }: HeroBannerProps) {
           </div>
 
           {/* Product collage */}
-          <div className="w-full lg:w-[420px]">
+          <div key={`collage-${current}`} className="w-full lg:w-[420px] animate-zoom-in">
             <HeroCollage products={slide.products} accentColor={slide.accent} />
           </div>
         </div>

@@ -31,7 +31,7 @@ export default function HeroCollage({ products, accentColor = '#3b3b3b', classNa
       {/* Hero product */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div
-          className="relative w-[72%] aspect-square rounded-sm bg-white border border-line shadow-xl overflow-hidden"
+          className="relative w-[72%] aspect-square rounded-sm bg-white border border-line shadow-xl overflow-hidden animate-float-slow"
           style={{ transform: 'rotate(-2deg)' }}
         >
           <Image
@@ -49,8 +49,8 @@ export default function HeroCollage({ products, accentColor = '#3b3b3b', classNa
       {/* Floating products — positioned around the hero card */}
       {rest[0] && (
         <div
-          className="absolute top-0 right-0 w-[38%] aspect-square rounded-sm bg-white border border-line shadow-lg overflow-hidden"
-          style={{ transform: 'rotate(6deg)' }}
+          className="absolute top-0 right-0 w-[38%] aspect-square rounded-sm bg-white border border-line shadow-lg overflow-hidden animate-float"
+          style={{ transform: 'rotate(6deg)', animationDelay: '0.5s' }}
         >
           <Image
             src={rest[0].images[0]}
@@ -59,13 +59,15 @@ export default function HeroCollage({ products, accentColor = '#3b3b3b', classNa
             className="object-contain p-3"
             sizes="(max-width: 1024px) 160px, 180px"
             unoptimized
+            loading="lazy"
+            decoding="async"
           />
         </div>
       )}
       {rest[1] && (
         <div
-          className="absolute bottom-2 left-0 w-[34%] aspect-square rounded-sm bg-white border border-line shadow-lg overflow-hidden"
-          style={{ transform: 'rotate(-8deg)' }}
+          className="absolute bottom-2 left-0 w-[34%] aspect-square rounded-sm bg-white border border-line shadow-lg overflow-hidden animate-float"
+          style={{ transform: 'rotate(-8deg)', animationDelay: '1s' }}
         >
           <Image
             src={rest[1].images[0]}
@@ -74,13 +76,15 @@ export default function HeroCollage({ products, accentColor = '#3b3b3b', classNa
             className="object-contain p-3"
             sizes="(max-width: 1024px) 140px, 160px"
             unoptimized
+            loading="lazy"
+            decoding="async"
           />
         </div>
       )}
       {rest[2] && (
         <div
-          className="absolute bottom-0 right-4 w-[30%] aspect-square rounded-sm bg-white border border-line shadow-md overflow-hidden hidden sm:block"
-          style={{ transform: 'rotate(4deg)' }}
+          className="absolute bottom-0 right-4 w-[30%] aspect-square rounded-sm bg-white border border-line shadow-md overflow-hidden hidden sm:block animate-float-slow"
+          style={{ transform: 'rotate(4deg)', animationDelay: '1.5s' }}
         >
           <Image
             src={rest[2].images[0]}
@@ -89,13 +93,15 @@ export default function HeroCollage({ products, accentColor = '#3b3b3b', classNa
             className="object-contain p-2"
             sizes="(max-width: 1024px) 120px, 140px"
             unoptimized
+            loading="lazy"
+            decoding="async"
           />
         </div>
       )}
       {rest[3] && (
         <div
-          className="absolute top-12 left-0 w-[28%] aspect-square rounded-sm bg-white border border-line shadow-md overflow-hidden hidden sm:block"
-          style={{ transform: 'rotate(-3deg)' }}
+          className="absolute top-12 left-0 w-[28%] aspect-square rounded-sm bg-white border border-line shadow-md overflow-hidden hidden sm:block animate-float"
+          style={{ transform: 'rotate(-3deg)', animationDelay: '2s' }}
         >
           <Image
             src={rest[3].images[0]}
@@ -104,6 +110,8 @@ export default function HeroCollage({ products, accentColor = '#3b3b3b', classNa
             className="object-contain p-2"
             sizes="(max-width: 1024px) 110px, 130px"
             unoptimized
+            loading="lazy"
+            decoding="async"
           />
         </div>
       )}

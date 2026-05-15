@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Dosis, Exo_2 } from 'next/font/google'
 import './globals.css'
 import { CartProvider } from '@/context/CartContext'
 import Header from '@/components/layout/Header'
@@ -8,11 +9,27 @@ import CartDrawer from '@/components/cart/CartDrawer'
 import AgeGate from '@/components/ui/AgeGate'
 import { buildSiteMetadata, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
+const dosis = Dosis({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-display',
+  display: 'swap',
+  preload: true,
+})
+
+const exo2 = Exo_2({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+  display: 'swap',
+  preload: true,
+})
+
 export const metadata: Metadata = buildSiteMetadata()
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className="scroll-smooth">
+    <html lang="en-AU" className={`${dosis.variable} ${exo2.variable} scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"

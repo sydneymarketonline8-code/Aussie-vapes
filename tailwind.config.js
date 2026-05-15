@@ -46,6 +46,30 @@ module.exports = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(28px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        zoomIn: {
+          '0%': { opacity: '0', transform: 'scale(0.94)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0) rotate(var(--tw-rotate, 0deg))' },
+          '50%': { transform: 'translateY(-6px) rotate(var(--tw-rotate, 0deg))' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.6' },
+        },
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
@@ -55,6 +79,17 @@ module.exports = {
         'slide-down': 'slideDown 0.2s ease-out',
         'slide-right': 'slideRight 0.25s ease-out',
         'fade-in': 'fadeIn 0.3s ease-out',
+        'fade-up': 'fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'fade-up-delay-1': 'fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both',
+        'fade-up-delay-2': 'fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both',
+        'fade-up-delay-3': 'fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both',
+        'fade-up-delay-4': 'fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both',
+        'slide-up': 'slideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'zoom-in': 'zoomIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both',
+        float: 'float 4s ease-in-out infinite',
+        'float-slow': 'float 6s ease-in-out infinite',
+        shimmer: 'shimmer 1.8s linear infinite',
+        'pulse-soft': 'pulseSoft 2.4s ease-in-out infinite',
         marquee: 'marquee 30s linear infinite',
       },
     },

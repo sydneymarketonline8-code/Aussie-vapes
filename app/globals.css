@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&family=Exo+2:wght@300;400;500;600;700;800&display=swap');
+/* Fonts are loaded via next/font/google in app/layout.tsx — no @import needed */
 
 :root {
   --color-primary: #3b3b3b;
@@ -26,13 +26,13 @@
 
   body {
     @apply bg-white text-body antialiased;
-    font-family: 'Exo 2', Helvetica, Arial, sans-serif;
+    font-family: var(--font-body, 'Exo 2'), Helvetica, Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Dosis', Helvetica, Arial, sans-serif;
+    font-family: var(--font-display, 'Dosis'), Helvetica, Arial, sans-serif;
     font-weight: 700;
     color: var(--color-primary);
     line-height: 1.2;
@@ -74,17 +74,17 @@
   /* Buttons */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-ink text-white font-semibold text-sm tracking-wider uppercase transition-all duration-200 hover:bg-ink-dark active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-white border border-ink text-ink font-semibold text-sm tracking-wider uppercase transition-all duration-200 hover:bg-ink hover:text-white active:scale-95;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   .btn-sale {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-price text-white font-semibold text-sm tracking-wider uppercase transition-all duration-200 hover:bg-sale active:scale-95;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   /* Card */
@@ -98,27 +98,27 @@
   /* Form input */
   .input-base {
     @apply w-full bg-white border border-line rounded-sm px-4 py-3 text-sm text-body placeholder-mute focus:outline-none focus:border-ink transition-colors;
-    font-family: 'Exo 2', sans-serif;
+    font-family: var(--font-body, 'Exo 2'), sans-serif;
   }
 
   /* Badges */
   .badge-new {
     @apply inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold bg-success text-white uppercase tracking-wider;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
   .badge-sale {
     @apply inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold bg-price text-white uppercase tracking-wider;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
   .badge-bestseller {
     @apply inline-flex items-center px-2 py-0.5 rounded-sm text-[11px] font-bold bg-warning text-white uppercase tracking-wider;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   /* Section heading — Dosis 700 lowercase, like podmodturkey */
   .section-heading {
     @apply text-2xl sm:text-[28px] font-bold text-ink lowercase tracking-tight relative inline-block pb-2;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
   .section-heading::after {
     content: '';
@@ -136,7 +136,7 @@
   /* Pricing */
   .price-current {
     @apply text-base font-bold text-price;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   .price-compare {
@@ -154,7 +154,7 @@
   /* Nav link */
   .nav-link {
     @apply text-sm font-semibold text-ink uppercase tracking-wider transition-colors hover:text-price;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   .mega-menu-item {
@@ -169,7 +169,7 @@
   /* Top announcement bar */
   .topbar {
     @apply bg-ink text-white text-xs;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 
   /* Product card styled to match podmodturkey product-type-1 */
@@ -179,13 +179,13 @@
 
   .product-card-title {
     @apply text-[15px] font-semibold text-ink line-clamp-2 leading-snug;
-    font-family: 'Dosis', sans-serif;
+    font-family: var(--font-display, 'Dosis'), sans-serif;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Dosis', Helvetica, Arial, sans-serif;
+    font-family: var(--font-display, 'Dosis'), Helvetica, Arial, sans-serif;
   }
 
   .scrollbar-hide {
