@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer'
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartDrawer from '@/components/cart/CartDrawer'
 import AgeGate from '@/components/ui/AgeGate'
+import PublicChrome from '@/components/layout/PublicChrome'
 import { buildSiteMetadata, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
 const dosis = Dosis({
@@ -44,12 +45,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen flex flex-col">
         <CartProvider>
-          <AgeGate />
-          <AnnouncementBar />
-          <Header />
+          <PublicChrome>
+            <AgeGate />
+            <AnnouncementBar />
+            <Header />
+          </PublicChrome>
           <main className="flex-1">{children}</main>
-          <Footer />
-          <CartDrawer />
+          <PublicChrome>
+            <Footer />
+            <CartDrawer />
+          </PublicChrome>
         </CartProvider>
       </body>
     </html>
