@@ -5,6 +5,7 @@ import FeaturedProducts from '@/components/home/FeaturedProducts'
 import TrustBadges from '@/components/home/TrustBadges'
 import StarOfTheWeek from '@/components/home/StarOfTheWeek'
 import BrandShowcase from '@/components/home/BrandShowcase'
+import FeaturedBrandSections from '@/components/home/FeaturedBrandSections'
 import PacksSection from '@/components/home/PacksSection'
 import Testimonials from '@/components/home/Testimonials'
 import { getProductsByBrand } from '@/lib/brands'
@@ -86,6 +87,7 @@ export default function HomePage() {
       <CategoryGrid />
       <PacksSection />
       <StarOfTheWeek />
+      <FeaturedBrandSections />
       <FeaturedProducts />
       <BrandShowcase />
       <Testimonials />
