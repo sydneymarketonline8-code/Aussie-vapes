@@ -8,6 +8,7 @@ import FilterSidebar from '@/components/category/FilterSidebar'
 import SortDropdown from '@/components/category/SortDropdown'
 import ProductGrid from '@/components/product/ProductGrid'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategory } from '@/lib/products'
 import type { FilterState, SortOption } from '@/types'
@@ -230,32 +231,27 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
               )}
             </div>
 
-            {/* Stats card */}
-            <div className="bg-white border border-line rounded-sm p-6 shadow-sm hidden lg:block">
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                  <p className="font-display text-3xl font-bold text-ink">{allProducts.length.toLocaleString()}</p>
-                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">In Stock</p>
-                </div>
-                <div>
-                  <p className="font-display text-3xl font-bold text-ink">${minPrice.toFixed(0)}+</p>
-                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">From</p>
-                </div>
-              </div>
-              <div className="mt-5 pt-5 border-t border-line text-center">
-                <p className="font-display text-2xl font-bold text-ink">★ {avgRating.toFixed(1)}</p>
-                <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">Average Rating</p>
-              </div>
-              <div className="mt-5 pt-5 border-t border-line space-y-2 text-xs text-body">
-                <div className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
-                  Authentic AU stock
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
-                  Same-day Sydney dispatch
-                </div>
-              </div>
+            {/* Product collage hero image */}
+            <div className="hidden lg:block">
+              <HeroCollage
+                products={allProducts.filter((p) => p.isBestSeller).slice(0, 5).concat(allProducts).slice(0, 5)}
+              />
+            </div>
+          </div>
+
+          {/* Inline stats row */}
+          <div className="mt-8 pt-6 border-t border-line grid grid-cols-3 gap-4 text-center max-w-xl">
+            <div>
+              <p className="font-display text-2xl font-bold text-ink">{allProducts.length.toLocaleString()}</p>
+              <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">In Stock</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl font-bold text-ink">${minPrice.toFixed(0)}+</p>
+              <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">From</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl font-bold text-ink">★ {avgRating.toFixed(1)}</p>
+              <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">Avg Rating</p>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductCard from '@/components/product/ProductCard'
 import { PACK_GROUPS, getAllPacks, getPackGroupCounts, getFeaturedPacks } from '@/lib/packs'
 import { breadcrumbJsonLd, faqJsonLd } from '@/lib/seo'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
@@ -94,23 +95,32 @@ export default function PacksLandingPage() {
       <section className="bg-ink text-white border-b border-line">
         <div className="container-site py-14">
           <Breadcrumb crumbs={[{ label: 'Aussie Vapes', href: '/' }, { label: 'Vape Packs' }]} />
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-5 mb-3">
-            {allPacks.length.toLocaleString()} Pack-Format Products
-          </p>
-          <h1 className="font-display text-4xl lg:text-6xl font-bold leading-[1.05] uppercase mb-4">
-            Aussie Vape Packs
-          </h1>
-          <p className="text-white/80 max-w-2xl leading-relaxed text-lg">
-            Save more, vape longer. The complete Aussie Vapes pack collection — disposable vape packs, multi-buy
-            bundles, bulk cartons and brand pack deals. Save up to <strong className="text-price">25% per device</strong>{' '}
-            vs single-unit pricing with same-day Sydney dispatch.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-5">
+            <div>
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-3">
+                {allPacks.length.toLocaleString()} Pack-Format Products
+              </p>
+              <h1 className="font-display text-4xl lg:text-6xl font-bold leading-[1.05] uppercase mb-4">
+                Aussie Vape Packs
+              </h1>
+              <p className="text-white/80 leading-relaxed text-lg">
+                Save more, vape longer. The complete Aussie Vapes pack collection — disposable vape packs, multi-buy
+                bundles, bulk cartons and brand pack deals. Save up to{' '}
+                <strong className="text-price">25% per device</strong> vs single-unit pricing with same-day Sydney
+                dispatch.
+              </p>
+              <div className="flex flex-wrap gap-3 mt-7">
+                <Link href="/packs/disposable-vape-packs" className="btn-sale">Shop Disposable Vape Packs</Link>
+                <Link href="/packs/bulk-vape-packs" className="btn-secondary bg-white border-white text-ink hover:bg-price hover:border-price hover:text-white">
+                  Bulk Cartons →
+                </Link>
+              </div>
+            </div>
 
-          <div className="flex flex-wrap gap-3 mt-7">
-            <Link href="/packs/disposable-vape-packs" className="btn-sale">Shop Disposable Vape Packs</Link>
-            <Link href="/packs/bulk-vape-packs" className="btn-secondary bg-white border-white text-ink hover:bg-price hover:border-price hover:text-white">
-              Bulk Cartons →
-            </Link>
+            {/* Pack collage */}
+            <div className="w-full">
+              <HeroCollage products={featured.slice(0, 5)} accentColor="#ff0000" />
+            </div>
           </div>
         </div>
       </section>

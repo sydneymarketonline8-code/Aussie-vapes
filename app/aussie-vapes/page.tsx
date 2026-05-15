@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { CITIES } from '@/lib/cities'
+import { getFeaturedProducts } from '@/lib/products'
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
 export const metadata: Metadata = {
@@ -22,22 +24,30 @@ export const metadata: Metadata = {
 }
 
 export default function AussieVapesHubPage() {
+  const featured = getFeaturedProducts().slice(0, 5)
   return (
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
           <Breadcrumb crumbs={[{ label: 'Aussie Vapes', href: '/' }, { label: 'Locations' }]} />
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
-            Aussie Vapes Australia-Wide
-          </p>
-          <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
-            aussie vapes near you
-          </h1>
-          <p className="text-body max-w-2xl leading-relaxed">
-            Aussie Vapes is Australia&apos;s #1 online vape store, shipping authentic products to every state and
-            territory. Find your city below for local delivery times, free shipping thresholds, and Aussie Vapes
-            recommendations.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
+            <div>
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
+                Aussie Vapes Australia-Wide
+              </p>
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
+                aussie vapes near you
+              </h1>
+              <p className="text-body leading-relaxed">
+                Aussie Vapes is Australia&apos;s #1 online vape store, shipping authentic products to every state and
+                territory. Find your city below for local delivery times, free shipping thresholds, and Aussie Vapes
+                recommendations.
+              </p>
+            </div>
+            <div className="w-full">
+              <HeroCollage products={featured} accentColor="#ff0000" />
+            </div>
+          </div>
         </div>
       </section>
 

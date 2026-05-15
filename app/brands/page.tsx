@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { BRANDS, getProductsByBrand } from '@/lib/brands'
+import { getFeaturedProducts } from '@/lib/products'
 
 export const metadata: Metadata = {
   title: 'Aussie Vapes Brands — Shop By Brand In Australia | Aussie Vapes',
@@ -29,21 +31,29 @@ export const metadata: Metadata = {
 export default function BrandsIndexPage() {
   const withCounts = BRANDS.map((b) => ({ ...b, count: getProductsByBrand(b.slug).length }))
     .sort((a, b) => b.count - a.count)
+  const featured = getFeaturedProducts().slice(0, 5)
 
   return (
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
           <Breadcrumb crumbs={[{ label: 'Home', href: '/' }, { label: 'Brands' }]} />
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-            {BRANDS.length}+ Vape Brands At Aussie Vapes
-          </p>
-          <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">aussie vapes — shop by brand</h1>
-          <p className="text-body max-w-2xl leading-relaxed">
-            <strong>Aussie Vapes</strong> is Australia&apos;s largest authorised stockist of the world&apos;s leading vape brands.
-            Browse every brand carried at Aussie Vapes — IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol and 35+ more —
-            all authentic, all in stock, all dispatched same-day from Sydney.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
+            <div>
+              <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
+                {BRANDS.length}+ Vape Brands At Aussie Vapes
+              </p>
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">aussie vapes — shop by brand</h1>
+              <p className="text-body leading-relaxed">
+                <strong>Aussie Vapes</strong> is Australia&apos;s largest authorised stockist of the world&apos;s leading vape brands.
+                Browse every brand carried at Aussie Vapes — IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol and 35+ more —
+                all authentic, all in stock, all dispatched same-day from Sydney.
+              </p>
+            </div>
+            <div className="w-full">
+              <HeroCollage products={featured} accentColor="#ff0000" />
+            </div>
+          </div>
         </div>
       </section>
 

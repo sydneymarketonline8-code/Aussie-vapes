@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductCard from '@/components/product/ProductCard'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { CITIES, getCityBySlug } from '@/lib/cities'
 import { getFeaturedProducts } from '@/lib/products'
 import { faqJsonLd, breadcrumbJsonLd } from '@/lib/seo'
@@ -86,27 +87,35 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               { label: `Aussie Vapes ${c.name}` },
             ]}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end mt-5">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-5">
+            <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
                 {c.state} · {c.population} · Postcodes {c.postcodeRange}
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.05] mb-3">
                 Aussie Vapes {c.name}
               </h1>
-              <p className="text-body text-base leading-relaxed max-w-2xl">{c.introCopy}</p>
+              <p className="text-body text-base leading-relaxed">{c.introCopy}</p>
+
+              {/* Delivery card inline */}
+              <div className="mt-6 bg-white border border-line rounded-sm p-5 max-w-md">
+                <p className="font-display text-xs uppercase tracking-wider text-mute font-bold mb-1">
+                  Delivery To {c.name}
+                </p>
+                <p className="font-display text-lg font-bold text-ink mb-1">{c.deliveryWindow.split(',')[0]}</p>
+                <p className="text-xs text-body mb-4">{c.deliveryWindow.split(',').slice(1).join(',').trim()}</p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-body border-t border-line pt-3">
+                  <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Free shipping over $100</li>
+                  <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Same-day Sydney dispatch</li>
+                  <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Discreet plain packaging</li>
+                  <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Authentic AU stock</li>
+                </ul>
+              </div>
             </div>
 
-            <div className="bg-white border border-line rounded-sm p-6 shadow-sm">
-              <p className="font-display text-xs uppercase tracking-wider text-mute font-bold mb-3">Delivery To {c.name}</p>
-              <p className="font-display text-2xl font-bold text-ink mb-1">{c.deliveryWindow.split(',')[0]}</p>
-              <p className="text-xs text-body mb-5">{c.deliveryWindow.split(',').slice(1).join(',').trim()}</p>
-              <ul className="space-y-2 text-xs text-body border-t border-line pt-4">
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Free shipping over $100</li>
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Same-day Sydney dispatch</li>
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Discreet plain packaging</li>
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Authentic AU stock</li>
-              </ul>
+            {/* Featured product collage — what Aussie Vapes ships to this city */}
+            <div className="w-full">
+              <HeroCollage products={featured} accentColor="#ff0000" />
             </div>
           </div>
         </div>

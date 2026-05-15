@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductCard from '@/components/product/ProductCard'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { PACK_GROUPS, getPackGroupBySlug, getPacksByGroup, extractPackSize } from '@/lib/packs'
 import { breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
@@ -104,30 +105,29 @@ export default async function PackGroupPage({
               { label: g.name },
             ]}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end mt-6">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-6">
+            <div>
               <p
                 className="font-display text-xs uppercase tracking-[0.3em] font-bold mb-3"
                 style={{ color: g.accentColor }}
               >
-                {products.length.toLocaleString()} Aussie Vape Packs In Stock
+                {allProducts.length.toLocaleString()} Aussie Vape Packs In Stock
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink-dark leading-[1.05] mb-3 lowercase">
                 {g.name.toLowerCase()}
               </h1>
-              <p className="text-body text-base leading-relaxed max-w-2xl">{g.shortDescription}</p>
+              <p className="text-body text-base leading-relaxed">{g.shortDescription}</p>
+
+              <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-body max-w-md">
+                <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Authentic AU stock</li>
+                <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Same-day Sydney dispatch</li>
+                <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />Free shipping over $100</li>
+                <li className="flex items-center gap-1.5"><CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />30-day return guarantee</li>
+              </ul>
             </div>
 
-            <div className="bg-white border border-line rounded-sm p-6 shadow-sm">
-              <p className="font-display text-xs uppercase tracking-wider text-mute font-bold mb-3">In This Collection</p>
-              <p className="font-display text-3xl font-bold text-ink mb-1">{products.length}</p>
-              <p className="text-xs text-body mb-5">pack-format products</p>
-              <ul className="space-y-2 text-xs text-body border-t border-line pt-4">
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Authentic AU stock</li>
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Same-day Sydney dispatch</li>
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />Free shipping over $100</li>
-                <li className="flex items-center gap-2"><CheckCircleIcon className="h-4 w-4 text-success" />30-day return guarantee</li>
-              </ul>
+            <div className="w-full">
+              <HeroCollage products={allProducts.slice(0, 5)} accentColor={g.accentColor} />
             </div>
           </div>
         </div>

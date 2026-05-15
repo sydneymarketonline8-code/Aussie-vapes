@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import HeroBanner from '@/components/home/HeroBanner'
+import HeroBanner, { type HeroSlide } from '@/components/home/HeroBanner'
 import CategoryGrid from '@/components/home/CategoryGrid'
 import FeaturedProducts from '@/components/home/FeaturedProducts'
 import TrustBadges from '@/components/home/TrustBadges'
@@ -7,7 +7,10 @@ import StarOfTheWeek from '@/components/home/StarOfTheWeek'
 import BrandShowcase from '@/components/home/BrandShowcase'
 import PacksSection from '@/components/home/PacksSection'
 import Testimonials from '@/components/home/Testimonials'
+import { getProductsByBrand } from '@/lib/brands'
+import { getFeaturedProducts, getNewArrivals, PRODUCTS } from '@/lib/products'
 import { buildSiteMetadata, localBusinessJsonLd } from '@/lib/seo'
+import type { Product } from '@/types'
 
 export const metadata: Metadata = {
   ...buildSiteMetadata(),
@@ -17,14 +20,68 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
+function pickHeroProducts(candidates: Product[], count = 5): Product[] {
+  // Prefer products with an image, then a brand match
+  return candidates.filter((p) => p.images?.[0]).slice(0, count)
+}
+
 export default function HomePage() {
+  const igetProducts = getProductsByBrand('iget')
+  const alfakherProducts = getProductsByBrand('alfakher')
+  const lostMaryProducts = getProductsByBrand('lost-mary')
+
+  const slides: HeroSlide[] = [
+    {
+      eyebrow: 'Featured Disposable',
+      heading: 'IGET Bar Plus 6000',
+      subheading:
+        'Premium 6,000-puff rechargeable disposable. Mesh coil flavour, 20mg salt nic, fast Australia-wide shipping from Aussie Vapes.',
+      cta: { label: 'Shop IGET', href: '/brand/iget' },
+      ctaSecondary: { label: 'All Disposables', href: '/category/disposable-vapes' },
+      badge: 'From $32.95',
+      bg: 'linear-gradient(135deg, #fef3f3 0%, #ffffff 60%)',
+      accent: '#ff0000',
+      products: pickHeroProducts(igetProducts.length ? igetProducts : getFeaturedProducts()),
+    },
+    {
+      eyebrow: 'Best Seller',
+      heading: 'Alfakher Crown Bar 15,000',
+      subheading:
+        'The ultimate big-puff disposable. Adjustable airflow, mega capacity, 15+ flavour options always in stock at Aussie Vapes.',
+      cta: { label: 'Shop Alfakher', href: '/brand/alfakher' },
+      ctaSecondary: { label: 'See Pack Deals', href: '/packs/bundle-deals' },
+      badge: 'Save 20% on 3-Packs',
+      bg: 'linear-gradient(135deg, #f4f8ff 0%, #ffffff 60%)',
+      accent: '#2fb5d2',
+      products: pickHeroProducts(alfakherProducts.length ? alfakherProducts : getFeaturedProducts()),
+    },
+    {
+      eyebrow: 'New Arrival',
+      heading: 'Lost Mary — Just Landed',
+      subheading:
+        'Sleek pocket-friendly design with USB-C charging. Fresh fruit & menthol profiles, exclusive to Aussie Vapes.',
+      cta: { label: 'Discover Lost Mary', href: '/brand/lost-mary' },
+      ctaSecondary: { label: 'All New Arrivals', href: '/new-arrivals' },
+      badge: 'Just Landed',
+      bg: 'linear-gradient(135deg, #f5fbf3 0%, #ffffff 60%)',
+      accent: '#4cbb6c',
+      products: pickHeroProducts(
+        lostMaryProducts.length
+          ? lostMaryProducts
+          : getNewArrivals().length
+          ? getNewArrivals()
+          : PRODUCTS.slice(0, 5)
+      ),
+    },
+  ]
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
       />
-      <HeroBanner />
+      <HeroBanner slides={slides} />
       <TrustBadges />
       <CategoryGrid />
       <PacksSection />

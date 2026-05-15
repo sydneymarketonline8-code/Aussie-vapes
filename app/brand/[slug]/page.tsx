@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import BrandProductGrid from '@/components/brand/BrandProductGrid'
+import HeroCollage from '@/components/ui/HeroCollage'
 import { BRANDS, getBrandBySlug, getProductsByBrand, getBrandSublines } from '@/lib/brands'
 import {
   buildBrandMetadata,
@@ -92,8 +93,8 @@ export default async function BrandPage({
               { label: brand.displayName },
             ]}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end mt-6">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-6">
+            <div>
               <p
                 className="font-display text-xs uppercase tracking-[0.3em] font-bold mb-3"
                 style={{ color: brand.accentColor }}
@@ -109,55 +110,53 @@ export default async function BrandPage({
               >
                 {brand.tagline}
               </p>
-              <p className="text-body text-base leading-relaxed max-w-2xl">{brand.shortDescription}</p>
-            </div>
+              <p className="text-body text-base leading-relaxed">{brand.shortDescription}</p>
 
-            {/* Stats card */}
-            <div className="bg-white border border-line rounded-sm p-6 shadow-sm">
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                  <p className="font-display text-3xl font-bold text-ink">{productCount}</p>
-                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">
-                    Products
-                  </p>
+              {/* Inline stats */}
+              <div className="mt-6 grid grid-cols-3 gap-3 max-w-md">
+                <div className="bg-white border border-line rounded-sm p-3 text-center">
+                  <p className="font-display text-xl font-bold text-ink">{productCount}</p>
+                  <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">Products</p>
                 </div>
-                <div>
-                  <p className="font-display text-3xl font-bold text-ink">
+                <div className="bg-white border border-line rounded-sm p-3 text-center">
+                  <p className="font-display text-xl font-bold text-ink">
                     {minPrice === maxPrice ? `$${minPrice.toFixed(0)}` : `$${minPrice.toFixed(0)}+`}
                   </p>
-                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold mt-1">
-                    From
-                  </p>
+                  <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">From</p>
                 </div>
-                <div className="col-span-2 border-t border-line pt-4 mt-2">
-                  <div className="flex items-center justify-center gap-1 mb-1">
+                <div className="bg-white border border-line rounded-sm p-3 text-center">
+                  <div className="flex items-center justify-center gap-0.5 mb-0.5">
                     {Array.from({ length: 5 }, (_, i) => (
                       <StarIcon
                         key={i}
-                        className={i < Math.round(avgRating) ? 'h-4 w-4 text-warning' : 'h-4 w-4 text-soft-300'}
+                        className={i < Math.round(avgRating) ? 'h-3 w-3 text-warning' : 'h-3 w-3 text-soft-300'}
                       />
                     ))}
-                    <span className="font-display text-sm font-bold text-ink ml-1">{avgRating.toFixed(1)}</span>
                   </div>
-                  <p className="text-xs text-mute uppercase tracking-wider font-display font-semibold">
-                    Average Rating
-                  </p>
+                  <p className="font-display text-base font-bold text-ink">{avgRating.toFixed(1)}</p>
+                  <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold">Rating</p>
                 </div>
               </div>
-              <div className="mt-5 pt-5 border-t border-line space-y-2 text-xs text-body">
-                <div className="flex items-center gap-2">
+
+              <ul className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-body">
+                <li className="flex items-center gap-1.5">
                   <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
                   Authentic AU stock
-                </div>
-                <div className="flex items-center gap-2">
+                </li>
+                <li className="flex items-center gap-1.5">
                   <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
                   Same-day Sydney dispatch
-                </div>
-                <div className="flex items-center gap-2">
+                </li>
+                <li className="flex items-center gap-1.5">
                   <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
                   Free shipping over $100
-                </div>
-              </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Brand product collage */}
+            <div className="w-full">
+              <HeroCollage products={featured} accentColor={brand.accentColor} />
             </div>
           </div>
         </div>
