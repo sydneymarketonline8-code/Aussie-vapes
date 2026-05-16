@@ -7,13 +7,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
+const ERROR_COPY: Record<string, string> = {
+  credentials: 'Incorrect email or password — try again.',
+  forbidden: 'That account exists but does not have admin access. Contact the site owner.',
+  config: 'Authentication is not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local.',
+}
+
 export default async function AdminLoginPage({
   searchParams,
 }: {
   searchParams: Promise<{ error?: string; next?: string }>
 }) {
   const sp = await searchParams
-  const error = sp.error === '1'
+  const errorMessage = sp.error ? ERROR_COPY[sp.error] ?? ERROR_COPY.credentials : null
   const next = sp.next ?? '/admin'
 
   return (
@@ -43,33 +49,52 @@ export default async function AdminLoginPage({
             </p>
           </div>
 
-          {error && (
+          {errorMessage && (
             <div className="mb-4 px-4 py-3 rounded-sm bg-price/10 border border-price/30 text-price text-sm">
-              Incorrect password — try again.
+              {errorMessage}
             </div>
           )}
 
           <input type="hidden" name="next" value={next} />
 
-          <label htmlFor="admin-password" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">
-            Admin password
-          </label>
-          <input
-            id="admin-password"
-            name="password"
-            type="password"
-            required
-            autoFocus
-            placeholder="Enter password"
-            className="input-base"
-          />
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="admin-email" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">
+                Email
+              </label>
+              <input
+                id="admin-email"
+                name="email"
+                type="email"
+                required
+                autoFocus
+                autoComplete="email"
+                placeholder="admin@aussievapes.com.au"
+                className="input-base"
+              />
+            </div>
+            <div>
+              <label htmlFor="admin-password" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">
+                Password
+              </label>
+              <input
+                id="admin-password"
+                name="password"
+                type="password"
+                required
+                autoComplete="current-password"
+                placeholder="Enter password"
+                className="input-base"
+              />
+            </div>
+          </div>
 
           <button type="submit" className="btn-primary w-full mt-5">
             Sign In to Admin
           </button>
 
           <p className="text-xs text-mute text-center mt-4">
-            Forgot the password? Contact the Aussie Vapes site owner.
+            Access is granted by setting <code className="font-mono">profiles.role = &apos;admin&apos;</code> in Supabase.
           </p>
         </form>
 
