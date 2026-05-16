@@ -6,7 +6,7 @@ import Image from 'next/image'
 import type { Product } from '@/types'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
-const PAGE_SIZE = 25
+const PAGE_SIZE = 20
 
 interface AdminProductTableProps {
   products: Product[]
@@ -17,6 +17,7 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
   const [category, setCategory] = useState<string>('all')
   const [stock, setStock] = useState<'all' | 'in' | 'low' | 'out'>('all')
   const [page, setPage] = useState(1)
+  const [selected, setSelected] = useState<Set<string>>(new Set())
 
   const categories = useMemo(() => {
     const set = new Set(products.map((p) => p.category))
@@ -42,8 +43,74 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
   const safePage = Math.min(page, totalPages)
   const slice = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
 
+  const allOnPageSelected = slice.length > 0 && slice.every((p) => selected.has(p.id))
+  const someSelected = selected.size > 0
+
+  function toggleOne(id: string) {
+    setSelected((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  function togglePage() {
+    setSelected((prev) => {
+      const next = new Set(prev)
+      if (allOnPageSelected) {
+        slice.forEach((p) => next.delete(p.id))
+      } else {
+        slice.forEach((p) => next.add(p.id))
+      }
+      return next
+    })
+  }
+
   return (
     <div className="bg-white border border-line rounded-sm">
+      {/* Bulk action bar */}
+      {someSelected && (
+        <div className="flex items-center justify-between gap-3 px-4 py-2.5 bg-ink text-white text-sm">
+          <span className="font-display font-bold uppercase tracking-wider text-xs">
+            {selected.size} selected
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              disabled
+              title="Requires backend"
+              className="px-3 py-1.5 rounded-sm bg-white/10 text-white/60 font-display text-xs font-bold uppercase tracking-wider cursor-not-allowed"
+            >
+              Set Active
+            </button>
+            <button
+              type="button"
+              disabled
+              title="Requires backend"
+              className="px-3 py-1.5 rounded-sm bg-white/10 text-white/60 font-display text-xs font-bold uppercase tracking-wider cursor-not-allowed"
+            >
+              Set Draft
+            </button>
+            <button
+              type="button"
+              disabled
+              title="Requires backend"
+              className="px-3 py-1.5 rounded-sm bg-price/80 text-white/80 font-display text-xs font-bold uppercase tracking-wider cursor-not-allowed"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelected(new Set())}
+              className="px-3 py-1.5 rounded-sm bg-white/10 text-white font-display text-xs font-bold uppercase tracking-wider hover:bg-white/20"
+            >
+              Clear
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Toolbar */}
       <div className="flex flex-wrap items-center gap-3 p-4 border-b border-line">
         <div className="relative flex-1 min-w-[220px]">
@@ -97,6 +164,15 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
         <table className="w-full text-sm">
           <thead className="bg-soft-50 text-mute font-display uppercase tracking-wider text-[10px]">
             <tr>
+              <th className="px-4 py-2.5 text-left w-10">
+                <input
+                  type="checkbox"
+                  aria-label="Select all on page"
+                  checked={allOnPageSelected}
+                  onChange={togglePage}
+                  className="rounded-sm border-line text-ink focus:ring-ink"
+                />
+              </th>
               <th className="px-4 py-2.5 text-left">Product</th>
               <th className="px-4 py-2.5 text-left">SKU</th>
               <th className="px-4 py-2.5 text-left">Category</th>
@@ -108,7 +184,16 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
           </thead>
           <tbody className="divide-y divide-line">
             {slice.map((p) => (
-              <tr key={p.id} className="hover:bg-soft-50">
+              <tr key={p.id} className={selected.has(p.id) ? 'bg-soft-100' : 'hover:bg-soft-50'}>
+                <td className="px-4 py-2">
+                  <input
+                    type="checkbox"
+                    aria-label={`Select ${p.name}`}
+                    checked={selected.has(p.id)}
+                    onChange={() => toggleOne(p.id)}
+                    className="rounded-sm border-line text-ink focus:ring-ink"
+                  />
+                </td>
                 <td className="px-4 py-2">
                   <div className="flex items-center gap-3">
                     <div className="relative h-10 w-10 flex-shrink-0 bg-soft-100 border border-line rounded-sm overflow-hidden">
@@ -152,19 +237,19 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
                   <span className="font-display text-ink">{p.rating.toFixed(1)}</span>
                   <span className="text-[10px] text-mute ml-1">({p.reviewCount})</span>
                 </td>
-                <td className="px-4 py-2 text-right">
+                <td className="px-4 py-2 text-right whitespace-nowrap">
                   <Link
                     href={`/admin/products/${p.slug}`}
                     className="font-display text-xs uppercase tracking-widest font-bold text-price hover:underline"
                   >
-                    View
+                    Edit
                   </Link>
                 </td>
               </tr>
             ))}
             {slice.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-4 py-12 text-center text-mute text-sm">
+                <td colSpan={8} className="px-4 py-12 text-center text-mute text-sm">
                   No products match your filters.
                 </td>
               </tr>
@@ -177,7 +262,7 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
       {totalPages > 1 && (
         <div className="flex items-center justify-between px-4 py-3 border-t border-line">
           <p className="text-xs text-mute font-display">
-            Page {safePage} of {totalPages}
+            Page {safePage} of {totalPages} · {PAGE_SIZE} per page
           </p>
           <div className="flex gap-2">
             <button
