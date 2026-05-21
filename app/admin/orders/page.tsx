@@ -1,16 +1,19 @@
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import OrdersTable from '@/components/admin/OrdersTable'
-import { ORDERS } from '@/lib/admin-mock-data'
+import { listAdminOrders } from '@/lib/admin-orders'
 
-export default function AdminOrdersPage() {
+export const dynamic = 'force-dynamic'
+
+export default async function AdminOrdersPage() {
+  const orders = await listAdminOrders()
   return (
     <>
       <AdminTopbar
         title="Orders"
-        subtitle={`${ORDERS.length} orders · last 14 days`}
+        subtitle={`${orders.length} order${orders.length === 1 ? '' : 's'} · most recent first`}
       />
       <div className="px-8 py-8">
-        <OrdersTable orders={ORDERS} />
+        <OrdersTable orders={orders} />
       </div>
     </>
   )

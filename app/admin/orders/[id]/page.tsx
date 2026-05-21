@@ -3,10 +3,12 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import {
-  getOrderById,
+  getAdminOrderById,
   ORDER_STATUS_FLOW,
   type OrderStatus,
-} from '@/lib/admin-mock-data'
+  type PaymentStatus,
+} from '@/lib/admin-orders'
+import { StatusSelect, MarkPaidButton } from './OrderActions'
 import {
   ArrowLeftIcon,
   ClockIcon,
@@ -18,6 +20,8 @@ import {
   PrinterIcon,
 } from '@heroicons/react/24/outline'
 
+export const dynamic = 'force-dynamic'
+
 const STATUS_LABEL: Record<OrderStatus, string> = {
   pending: 'Pending',
   confirmed: 'Confirmed',
@@ -25,6 +29,7 @@ const STATUS_LABEL: Record<OrderStatus, string> = {
   shipped: 'Shipped',
   delivered: 'Delivered',
   cancelled: 'Cancelled',
+  refunded: 'Refunded',
 }
 
 const STATUS_ICON: Record<OrderStatus, typeof ClockIcon> = {
@@ -34,6 +39,25 @@ const STATUS_ICON: Record<OrderStatus, typeof ClockIcon> = {
   shipped: TruckIcon,
   delivered: HomeIcon,
   cancelled: ClockIcon,
+  refunded: ClockIcon,
+}
+
+const PAYMENT_LABEL: Record<PaymentStatus, string> = {
+  pending: 'Awaiting payment',
+  authorized: 'Authorised',
+  captured: 'Paid',
+  failed: 'Failed',
+  refunded: 'Refunded',
+  partially_refunded: 'Partially refunded',
+}
+
+const PAYMENT_TONE: Record<PaymentStatus, string> = {
+  pending: 'text-amber-700',
+  authorized: 'text-info',
+  captured: 'text-success',
+  failed: 'text-sale',
+  refunded: 'text-mute',
+  partially_refunded: 'text-mute',
 }
 
 export default async function AdminOrderDetailPage({
@@ -42,11 +66,13 @@ export default async function AdminOrderDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const order = getOrderById(id)
+  const order = await getAdminOrderById(id)
   if (!order) notFound()
 
   const statusIndex = ORDER_STATUS_FLOW.indexOf(order.status)
-  const isCancelled = order.status === 'cancelled'
+  const isCancelled = order.status === 'cancelled' || order.status === 'refunded'
+  const paymentTone = PAYMENT_TONE[order.paymentStatus]
+  const paymentLabel = PAYMENT_LABEL[order.paymentStatus]
 
   return (
     <>
@@ -64,19 +90,17 @@ export default async function AdminOrderDetailPage({
             <button
               type="button"
               disabled
-              title="Requires backend"
+              title="Coming soon"
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-sm border border-line bg-white text-mute font-display text-xs font-bold uppercase tracking-wider cursor-not-allowed"
             >
               <PrinterIcon className="h-4 w-4" /> Invoice
             </button>
-            <button
-              type="button"
-              disabled
-              title="Requires backend"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-sm bg-ink text-white font-display text-xs font-bold uppercase tracking-wider cursor-not-allowed"
+            <a
+              href={`mailto:${order.customerEmail}?subject=${encodeURIComponent('Your order ' + order.number)}`}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-sm bg-ink text-white font-display text-xs font-bold uppercase tracking-wider"
             >
               <EnvelopeIcon className="h-4 w-4" /> Email Customer
-            </button>
+            </a>
           </div>
         }
       />
@@ -88,27 +112,12 @@ export default async function AdminOrderDetailPage({
             <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink">
               Order Progress
             </h3>
-            <form className="flex items-center gap-2">
-              <label htmlFor="status" className="font-display text-[11px] uppercase tracking-wider text-mute font-bold">
-                Update Status
-              </label>
-              <select
-                id="status"
-                disabled
-                defaultValue={order.status}
-                title="Requires backend"
-                className="bg-white border border-line rounded-sm px-3 py-1.5 text-xs text-body focus:outline-none disabled:bg-soft-50 disabled:text-mute disabled:cursor-not-allowed"
-              >
-                {(Object.keys(STATUS_LABEL) as OrderStatus[]).map((s) => (
-                  <option key={s} value={s}>{STATUS_LABEL[s]}</option>
-                ))}
-              </select>
-            </form>
+            <StatusSelect orderId={order.id} current={order.status} />
           </div>
 
           {isCancelled ? (
             <div className="px-4 py-3 rounded-sm bg-price/10 border border-price/30 text-price text-sm font-display font-bold uppercase tracking-wider">
-              Order Cancelled
+              {order.status === 'refunded' ? 'Order Refunded' : 'Order Cancelled'}
             </div>
           ) : (
             <ol className="flex items-center justify-between gap-2">
@@ -163,24 +172,30 @@ export default async function AdminOrderDetailPage({
                 {order.items.map((it, i) => (
                   <li key={`${it.productSlug}-${i}`} className="flex items-center gap-4 px-5 py-4">
                     <div className="relative h-14 w-14 flex-shrink-0 bg-soft-100 border border-line rounded-sm overflow-hidden">
-                      <Image
-                        src={it.productImage}
-                        alt={it.productName}
-                        fill
-                        sizes="56px"
-                        className="object-contain p-1"
-                        unoptimized
-                      />
+                      {it.productImage ? (
+                        <Image
+                          src={it.productImage}
+                          alt={it.productName}
+                          fill
+                          sizes="56px"
+                          className="object-contain p-1"
+                          unoptimized
+                        />
+                      ) : (
+                        <div className="h-full w-full flex items-center justify-center text-mute text-[10px]">no img</div>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <Link
-                        href={`/admin/products/${it.productSlug}`}
+                        href={`/product/${it.productSlug}`}
                         className="font-display font-semibold text-ink hover:text-price line-clamp-2"
                       >
                         {it.productName}
                       </Link>
                       <p className="text-xs text-mute mt-0.5">
                         ${it.unitPrice.toFixed(2)} × {it.quantity}
+                        {it.selectedFlavour && <> · {it.selectedFlavour}</>}
+                        {it.selectedNicotine && <> · {it.selectedNicotine}</>}
                       </p>
                     </div>
                     <div className="font-display font-bold text-ink">
@@ -188,6 +203,9 @@ export default async function AdminOrderDetailPage({
                     </div>
                   </li>
                 ))}
+                {order.items.length === 0 && (
+                  <li className="px-5 py-6 text-center text-mute text-sm">No line items.</li>
+                )}
               </ul>
               <div className="px-5 py-4 border-t border-line bg-soft-50 space-y-1 text-sm">
                 <div className="flex justify-between text-body">
@@ -213,68 +231,33 @@ export default async function AdminOrderDetailPage({
               </div>
             </div>
 
-            {/* Tracking */}
+            {/* Tracking — placeholder until we wire the update action */}
             <div className="bg-white border border-line rounded-sm p-5">
               <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-3 flex items-center gap-2">
                 <TruckIcon className="h-4 w-4 text-mute" />
                 Tracking
               </h3>
-              <form className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                 <div>
-                  <label className="block font-display text-[10px] uppercase tracking-widest font-bold text-mute mb-1">
-                    Carrier
-                  </label>
-                  <select
-                    disabled
-                    defaultValue={order.tracking?.carrier ?? ''}
-                    title="Requires backend"
-                    className="w-full bg-white border border-line rounded-sm px-3 py-2 text-sm text-body disabled:bg-soft-50 disabled:text-mute"
-                  >
-                    <option value="">Select carrier…</option>
-                    <option value="AusPost">AusPost</option>
-                    <option value="Sendle">Sendle</option>
-                    <option value="Couriers Please">Couriers Please</option>
-                    <option value="Aramex">Aramex</option>
-                  </select>
+                  <dt className="font-display text-[10px] uppercase tracking-widest font-bold text-mute mb-1">Carrier</dt>
+                  <dd className="text-body">{order.tracking.carrier ?? <span className="text-mute">Not assigned</span>}</dd>
                 </div>
                 <div>
-                  <label className="block font-display text-[10px] uppercase tracking-widest font-bold text-mute mb-1">
-                    Tracking Number
-                  </label>
-                  <input
-                    type="text"
-                    disabled
-                    defaultValue={order.tracking?.number ?? ''}
-                    placeholder="e.g. AU1234567890"
-                    className="w-full bg-white border border-line rounded-sm px-3 py-2 text-sm text-body disabled:bg-soft-50 disabled:text-mute"
-                  />
+                  <dt className="font-display text-[10px] uppercase tracking-widest font-bold text-mute mb-1">Tracking #</dt>
+                  <dd className="font-mono text-body">{order.tracking.number ?? <span className="text-mute font-sans">Not assigned</span>}</dd>
                 </div>
-                <div className="sm:col-span-2">
-                  <button
-                    type="button"
-                    disabled
-                    title="Requires backend"
-                    className="px-4 py-2 rounded-sm bg-price/70 text-white font-display text-xs font-bold uppercase tracking-wider cursor-not-allowed"
-                  >
-                    Save & Notify Customer
-                  </button>
-                </div>
-              </form>
+              </dl>
             </div>
 
-            {/* Internal notes */}
-            <div className="bg-white border border-line rounded-sm p-5">
-              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-3">
-                Internal Notes
-              </h3>
-              <textarea
-                rows={4}
-                disabled
-                defaultValue={order.notes ?? ''}
-                placeholder="Visible only to staff — not shown to the customer."
-                className="w-full bg-white border border-line rounded-sm px-3 py-2 text-sm text-body disabled:bg-soft-50 disabled:text-mute"
-              />
-            </div>
+            {/* Internal notes — read-only for now */}
+            {order.internalNotes && (
+              <div className="bg-white border border-line rounded-sm p-5">
+                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-3">
+                  Internal Notes
+                </h3>
+                <p className="text-sm text-body whitespace-pre-wrap">{order.internalNotes}</p>
+              </div>
+            )}
           </div>
 
           {/* Customer + shipping */}
@@ -283,19 +266,21 @@ export default async function AdminOrderDetailPage({
               <h3 className="font-display text-xs font-bold uppercase tracking-widest text-mute mb-3">
                 Customer
               </h3>
-              <Link
-                href={`/admin/customers/${order.customerId}`}
-                className="font-display font-bold text-ink hover:text-price block"
-              >
-                {order.customerName}
-              </Link>
+              <p className="font-display font-bold text-ink">{order.customerName}</p>
               <p className="text-xs text-mute mt-0.5">{order.customerEmail}</p>
-              <Link
-                href={`/admin/customers/${order.customerId}`}
-                className="mt-3 inline-block font-display text-[11px] uppercase tracking-widest font-bold text-price hover:underline"
-              >
-                View customer →
-              </Link>
+              {order.customerPhone && (
+                <p className="text-xs text-mute">{order.customerPhone}</p>
+              )}
+              {order.profileId ? (
+                <Link
+                  href={`/admin/customers/${order.profileId}`}
+                  className="mt-3 inline-block font-display text-[11px] uppercase tracking-widest font-bold text-price hover:underline"
+                >
+                  View customer →
+                </Link>
+              ) : (
+                <p className="mt-3 text-[11px] font-display uppercase tracking-widest font-bold text-mute">Guest checkout</p>
+              )}
             </div>
 
             <div className="bg-white border border-line rounded-sm p-5">
@@ -303,9 +288,15 @@ export default async function AdminOrderDetailPage({
                 Shipping Address
               </h3>
               <address className="not-italic text-sm text-body leading-relaxed">
-                <strong className="text-ink font-display">{order.shippingAddress.name}</strong>
+                <strong className="text-ink font-display">{order.shippingAddress.recipient}</strong>
                 <br />
                 {order.shippingAddress.line1}
+                {order.shippingAddress.line2 && (
+                  <>
+                    <br />
+                    {order.shippingAddress.line2}
+                  </>
+                )}
                 <br />
                 {order.shippingAddress.suburb} {order.shippingAddress.state}{' '}
                 {order.shippingAddress.postcode}
@@ -318,13 +309,27 @@ export default async function AdminOrderDetailPage({
               <h3 className="font-display text-xs font-bold uppercase tracking-widest text-mute mb-3">
                 Payment
               </h3>
-              <p className="text-sm text-body">PayID or Bitcoin · <span className="text-mute">manual verification</span></p>
-              <p className="text-xs text-mute mt-1">
-                Match the reference code on the order to the incoming transfer, then mark this order as Paid.
+              <p className="text-sm text-body">
+                {order.paymentMethod === 'payid'
+                  ? 'PayID'
+                  : order.paymentMethod === 'bitcoin'
+                  ? 'Bitcoin (BTC)'
+                  : 'Not selected'}
+                {' · '}
+                <span className="text-mute">manual verification</span>
               </p>
-              <p className="text-xs text-amber-700 font-display font-bold uppercase tracking-wider mt-2">
-                ⌛ Awaiting payment · ${order.total.toFixed(2)}
+              {order.paymentReference && (
+                <p className="mt-1 text-xs">
+                  <span className="text-mute">Reference: </span>
+                  <span className="font-mono font-bold text-price">{order.paymentReference}</span>
+                </p>
+              )}
+              <p className={`text-xs ${paymentTone} font-display font-bold uppercase tracking-wider mt-2`}>
+                {order.paymentStatus === 'captured' ? '✓' : '⌛'} {paymentLabel} · ${order.total.toFixed(2)}
               </p>
+              {order.paymentStatus !== 'captured' && order.paymentStatus !== 'refunded' && (
+                <MarkPaidButton orderId={order.id} paymentReference={order.paymentReference} />
+              )}
             </div>
           </aside>
         </div>

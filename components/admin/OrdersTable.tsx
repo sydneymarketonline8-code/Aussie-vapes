@@ -3,10 +3,11 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import {
-  type AdminOrder,
+  type AdminOrderSummary,
   type OrderStatus,
+  type PaymentStatus,
   ORDER_STATUS_FLOW,
-} from '@/lib/admin-mock-data'
+} from '@/lib/admin-orders-types'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 const STATUS_STYLES: Record<OrderStatus, string> = {
@@ -16,6 +17,7 @@ const STATUS_STYLES: Record<OrderStatus, string> = {
   shipped: 'bg-success/15 text-success',
   delivered: 'bg-success/15 text-success',
   cancelled: 'bg-price/15 text-price',
+  refunded: 'bg-price/15 text-price',
 }
 
 const STATUS_LABEL: Record<OrderStatus, string> = {
@@ -25,6 +27,25 @@ const STATUS_LABEL: Record<OrderStatus, string> = {
   shipped: 'Shipped',
   delivered: 'Delivered',
   cancelled: 'Cancelled',
+  refunded: 'Refunded',
+}
+
+const PAYMENT_LABEL: Record<PaymentStatus, string> = {
+  pending: 'Awaiting payment',
+  authorized: 'Authorised',
+  captured: 'Paid',
+  failed: 'Failed',
+  refunded: 'Refunded',
+  partially_refunded: 'Partial refund',
+}
+
+const PAYMENT_STYLES: Record<PaymentStatus, string> = {
+  pending: 'bg-amber-100 text-amber-800',
+  authorized: 'bg-info/15 text-info',
+  captured: 'bg-success/15 text-success',
+  failed: 'bg-price/15 text-price',
+  refunded: 'bg-soft-200 text-mute',
+  partially_refunded: 'bg-soft-200 text-mute',
 }
 
 const TABS: { key: 'all' | OrderStatus; label: string }[] = [
@@ -35,7 +56,7 @@ const TABS: { key: 'all' | OrderStatus; label: string }[] = [
 
 const PAGE_SIZE = 20
 
-export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
+export default function OrdersTable({ orders }: { orders: AdminOrderSummary[] }) {
   const [tab, setTab] = useState<'all' | OrderStatus>('all')
   const [q, setQ] = useState('')
   const [page, setPage] = useState(1)
@@ -51,7 +72,7 @@ export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
     return orders.filter((o) => {
       if (tab !== 'all' && o.status !== tab) return false
       if (term) {
-        const hay = `${o.number} ${o.customerName} ${o.customerEmail} ${o.id}`.toLowerCase()
+        const hay = `${o.number} ${o.customerName} ${o.customerEmail} ${o.paymentReference ?? ''}`.toLowerCase()
         if (!hay.includes(term)) return false
       }
       return true
@@ -103,7 +124,7 @@ export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
               setQ(e.target.value)
               setPage(1)
             }}
-            placeholder="Search order #, customer, email…"
+            placeholder="Search order #, customer, email, reference…"
             className="w-full bg-white border border-line rounded-sm pl-9 pr-3 py-2 text-sm text-body placeholder:text-mute focus:outline-none focus:border-ink"
           />
         </div>
@@ -118,6 +139,7 @@ export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
               <th className="px-5 py-2.5 text-left">Date</th>
               <th className="px-5 py-2.5 text-left">Customer</th>
               <th className="px-5 py-2.5 text-left">Status</th>
+              <th className="px-5 py-2.5 text-left">Payment</th>
               <th className="px-5 py-2.5 text-right">Items</th>
               <th className="px-5 py-2.5 text-right">Total</th>
               <th className="px-5 py-2.5"></th>
@@ -133,6 +155,9 @@ export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
                   >
                     {o.number}
                   </Link>
+                  {o.paymentReference && (
+                    <p className="text-[10px] text-mute font-mono mt-0.5">{o.paymentReference}</p>
+                  )}
                 </td>
                 <td className="px-5 py-3 text-xs text-body">
                   {new Date(o.placedAt).toLocaleString('en-AU', {
@@ -153,6 +178,18 @@ export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
                     {STATUS_LABEL[o.status]}
                   </span>
                 </td>
+                <td className="px-5 py-3">
+                  <span
+                    className={`inline-block px-2 py-0.5 rounded-sm text-[11px] font-display font-bold uppercase tracking-wider ${PAYMENT_STYLES[o.paymentStatus]}`}
+                  >
+                    {PAYMENT_LABEL[o.paymentStatus]}
+                  </span>
+                  {o.paymentMethod && (
+                    <p className="text-[10px] text-mute mt-0.5 uppercase tracking-wider">
+                      via {o.paymentMethod === 'payid' ? 'PayID' : 'BTC'}
+                    </p>
+                  )}
+                </td>
                 <td className="px-5 py-3 text-right text-body">{o.itemsCount}</td>
                 <td className="px-5 py-3 text-right font-display font-bold text-ink">
                   ${o.total.toFixed(2)}
@@ -169,7 +206,7 @@ export default function OrdersTable({ orders }: { orders: AdminOrder[] }) {
             ))}
             {slice.length === 0 && (
               <tr>
-                <td colSpan={7} className="px-5 py-12 text-center text-mute text-sm">
+                <td colSpan={8} className="px-5 py-12 text-center text-mute text-sm">
                   No orders match.
                 </td>
               </tr>
