@@ -49,13 +49,9 @@ export interface CreateOrderInput {
   items: CheckoutItemInput[]
 }
 
-export interface CreateOrderResult {
-  ok: true
-  reference: string
-} | {
-  ok: false
-  error: string
-}
+export type CreateOrderResult =
+  | { ok: true; reference: string }
+  | { ok: false; error: string }
 
 /**
  * Creates an order in Supabase with `payment_status = 'pending'` (Awaiting
