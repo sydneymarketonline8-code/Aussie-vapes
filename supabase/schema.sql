@@ -601,6 +601,7 @@ as $$
 declare
   new_id uuid;
   new_number text;
+  item jsonb;
 begin
   insert into public.orders (
     customer_email, customer_name, customer_phone,
@@ -626,6 +627,27 @@ begin
     payload->>'payment_reference'
   )
   returning id, number into new_id, new_number;
+
+  for item in select * from jsonb_array_elements(payload->'items')
+  loop
+    insert into public.order_items (
+      order_id, product_id, product_slug, product_name, product_image_url,
+      selected_flavour, selected_nicotine,
+      quantity, unit_price, line_total
+    ) values (
+      new_id,
+      nullif(item->>'product_id', '')::uuid,
+      item->>'product_slug',
+      item->>'product_name',
+      nullif(item->>'product_image_url', ''),
+      nullif(item->>'selected_flavour', ''),
+      nullif(item->>'selected_nicotine', ''),
+      (item->>'quantity')::int,
+      (item->>'unit_price')::numeric,
+      (item->>'quantity')::int * (item->>'unit_price')::numeric
+    );
+  end loop;
+
   return query select new_id, new_number;
 end;
 $$;

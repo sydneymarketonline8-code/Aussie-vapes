@@ -79,6 +79,17 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 
   const supabase = await createSupabaseServerClient()
 
+  const items = input.items.map((i) => ({
+    product_id: UUID_RE.test(i.productId) ? i.productId : '',
+    product_slug: i.productSlug,
+    product_name: i.productName,
+    product_image_url: i.productImageUrl ?? '',
+    selected_flavour: i.selectedFlavour ?? '',
+    selected_nicotine: i.selectedNicotine ?? '',
+    quantity: i.quantity,
+    unit_price: i.unitPrice,
+  }))
+
   const { data: rpcRows, error: orderError } = await supabase.rpc('create_guest_order', {
     payload: {
       customer_email: input.contact.email,
@@ -95,6 +106,7 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
       ship_country: input.shipping.country || 'Australia',
       payment_method: input.payment.method,
       payment_reference: reference,
+      items,
     },
   })
 
@@ -102,25 +114,6 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
   if (orderError || !created) {
     console.error('[createOrder] create_guest_order rpc failed', orderError)
     return { ok: false, error: 'Could not create order. Please try again.' }
-  }
-
-  const itemRows = input.items.map((i) => ({
-    order_id: created.order_id as string,
-    product_id: i.productId,
-    product_slug: i.productSlug,
-    product_name: i.productName,
-    product_image_url: i.productImageUrl ?? null,
-    selected_flavour: i.selectedFlavour ?? null,
-    selected_nicotine: i.selectedNicotine ?? null,
-    quantity: i.quantity,
-    unit_price: i.unitPrice,
-    line_total: i.unitPrice * i.quantity,
-  }))
-
-  const { error: itemsError } = await supabase.from('order_items').insert(itemRows)
-  if (itemsError) {
-    console.error('[createOrder] insert order_items failed', itemsError)
-    return { ok: false, error: 'Could not save order line items. Please try again.' }
   }
 
   await notifySalesPendingPayment({
@@ -134,6 +127,8 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 
   return { ok: true, reference }
 }
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 /** Convenience wrapper used by the checkout form: creates the order then redirects. */
 export async function createOrderAndRedirect(input: CreateOrderInput) {
