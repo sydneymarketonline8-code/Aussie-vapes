@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { getFeaturedProducts, getNewArrivals, getSaleProducts } from '@/lib/products'
 import ProductCard from '@/components/product/ProductCard'
 import type { Product } from '@/types'
 
@@ -36,11 +35,13 @@ function ProductSection({ title, products, viewAllHref, bg = 'white' }: ProductS
   )
 }
 
-export default function FeaturedProducts() {
-  const bestsellers = getFeaturedProducts()
-  const newArrivals = getNewArrivals()
-  const saleProducts = getSaleProducts()
+interface FeaturedProductsProps {
+  bestsellers: Product[]
+  newArrivals: Product[]
+  saleProducts: Product[]
+}
 
+export default function FeaturedProducts({ bestsellers, newArrivals, saleProducts }: FeaturedProductsProps) {
   return (
     <>
       <ProductSection

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { PRODUCTS } from '@/lib/products'
+import { getAllActiveProductSlugs } from '@/lib/storefront-products'
 import { CATEGORIES } from '@/lib/categories'
 import { BRANDS } from '@/lib/brands'
 import { CITIES } from '@/lib/cities'
@@ -8,7 +8,7 @@ import { PUFF_RANGES } from '@/lib/puff-ranges'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
 
   // Tier 1 — Top-level, daily/weekly change
@@ -81,8 +81,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // Tier 4 — Products (highest volume, lowest individual priority)
-  const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map((p) => ({
-    url: `${SITE_URL}/product/${p.slug}`,
+  const productSlugs = await getAllActiveProductSlugs()
+  const productRoutes: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
+    url: `${SITE_URL}/product/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.6,

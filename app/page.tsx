@@ -9,6 +9,11 @@ import FeaturedBrandSections from '@/components/home/FeaturedBrandSections'
 import PacksSection from '@/components/home/PacksSection'
 import Testimonials from '@/components/home/Testimonials'
 import { getProductsByBrand } from '@/lib/brands'
+import {
+  getFeaturedProducts as getDbFeatured,
+  getNewArrivalProducts as getDbNewArrivals,
+  getSaleProducts as getDbSale,
+} from '@/lib/storefront-products'
 import { getFeaturedProducts, getNewArrivals, PRODUCTS } from '@/lib/products'
 import { buildSiteMetadata, localBusinessJsonLd } from '@/lib/seo'
 import type { Product } from '@/types'
@@ -26,7 +31,13 @@ function pickHeroProducts(candidates: Product[], count = 5): Product[] {
   return candidates.filter((p) => p.images?.[0]).slice(0, count)
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [bestsellers, newArrivals, saleProducts] = await Promise.all([
+    getDbFeatured(10),
+    getDbNewArrivals(10),
+    getDbSale(10),
+  ])
+
   const igetProducts = getProductsByBrand('iget')
   const alfakherProducts = getProductsByBrand('alfakher')
   const lostMaryProducts = getProductsByBrand('lost-mary')
@@ -86,9 +97,14 @@ export default function HomePage() {
       <TrustBadges />
       <CategoryGrid />
       <PacksSection />
-      <StarOfTheWeek />
+      <StarOfTheWeek star={bestsellers[0] ?? null} />
       <FeaturedBrandSections />
-      <FeaturedProducts />
+      <FeaturedProducts
+        bestsellers={bestsellers}
+        newArrivals={newArrivals}
+        saleProducts={saleProducts}
+      />
+
       <BrandShowcase />
       <Testimonials />
 

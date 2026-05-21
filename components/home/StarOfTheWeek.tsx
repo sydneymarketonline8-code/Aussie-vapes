@@ -1,13 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getFeaturedProducts } from '@/lib/products'
 import AddToCartButton from '@/components/product/AddToCartButton'
 import StarRating from '@/components/ui/StarRating'
 import { CheckIcon } from '@heroicons/react/20/solid'
+import type { Product } from '@/types'
 
-export default function StarOfTheWeek() {
-  const products = getFeaturedProducts()
-  const star = products[0]
+export default function StarOfTheWeek({ star }: { star: Product | null }) {
   if (!star) return null
 
   const discount = star.comparePrice

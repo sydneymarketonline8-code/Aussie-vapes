@@ -1,22 +1,23 @@
-'use client'
-
-import { useMemo } from 'react'
-import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
-import { searchProducts } from '@/lib/products'
+import { searchActiveProducts } from '@/lib/storefront-products'
 import ProductGrid from '@/components/product/ProductGrid'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import Link from 'next/link'
 import { CATEGORIES } from '@/lib/categories'
 
-function SearchResults() {
-  const searchParams = useSearchParams()
-  const query = searchParams.get('q') ?? ''
-  const currentPage = parsePage(searchParams.get('page') ?? undefined)
-  const results = useMemo(() => (query.trim() ? searchProducts(query) : []), [query])
-  const paged = useMemo(() => paginate(results, currentPage, PAGE_SIZE), [results, currentPage])
+export const dynamic = 'force-dynamic'
+
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; page?: string }>
+}) {
+  const sp = await searchParams
+  const query = (sp.q ?? '').trim()
+  const currentPage = parsePage(sp.page)
+  const results = query ? await searchActiveProducts(query, 240) : []
+  const paged = paginate(results, currentPage, PAGE_SIZE)
 
   return (
     <div className="container-site py-10">
@@ -100,13 +101,5 @@ function SearchResults() {
         </div>
       )}
     </div>
-  )
-}
-
-export default function SearchPage() {
-  return (
-    <Suspense fallback={<div className="container-site py-20 text-mute">Loading search...</div>}>
-      <SearchResults />
-    </Suspense>
   )
 }

@@ -163,3 +163,47 @@ export async function getAllActiveProductSlugs(): Promise<string[]> {
   }
   return (data ?? []).map((p) => p.slug)
 }
+
+function baseSelect() {
+  return getSupabasePublicClient()
+    .from('products')
+    .select(SELECT_COLUMNS)
+    .eq('status', 'active')
+    .is('deleted_at', null)
+}
+
+async function runRows(query: PromiseLike<{ data: unknown; error: unknown }>): Promise<Product[]> {
+  const { data, error } = await query
+  if (error) {
+    console.error('[storefront-products] query failed', error)
+    return []
+  }
+  return ((data ?? []) as ProductRow[]).map((row) => rowToProduct(row))
+}
+
+export async function getProductsByCategorySlug(slug: string): Promise<Product[]> {
+  const supabase = getSupabasePublicClient()
+  const { data: cat } = await supabase.from('categories').select('id').eq('slug', slug).maybeSingle()
+  if (!cat) return []
+  return runRows(baseSelect().eq('category_id', cat.id))
+}
+
+export async function getFeaturedProducts(limit = 8): Promise<Product[]> {
+  return runRows(baseSelect().eq('is_best_seller', true).limit(limit))
+}
+
+export async function getNewArrivalProducts(limit = 8): Promise<Product[]> {
+  return runRows(baseSelect().eq('is_new', true).limit(limit))
+}
+
+export async function getSaleProducts(limit?: number): Promise<Product[]> {
+  const q = baseSelect().eq('is_sale', true)
+  return runRows(limit ? q.limit(limit) : q)
+}
+
+/** Trigram-search against the maintained search_text column. */
+export async function searchActiveProducts(query: string, limit = 60): Promise<Product[]> {
+  const term = query.trim()
+  if (!term) return []
+  return runRows(baseSelect().ilike('search_text', `%${term}%`).limit(limit))
+}
