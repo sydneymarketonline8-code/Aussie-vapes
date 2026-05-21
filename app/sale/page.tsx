@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGrid from '@/components/product/ProductGrid'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
-import { getSaleProducts } from '@/lib/products'
+import { getSaleProducts } from '@/lib/storefront-products'
 
 export async function generateMetadata({
   searchParams,
@@ -37,7 +37,7 @@ export default async function SalePage({
 }) {
   const sp = await searchParams
   const currentPage = parsePage(sp.page)
-  const products = getSaleProducts()
+  const products = await getSaleProducts()
   const paged = paginate(products, currentPage, PAGE_SIZE)
 
   return (

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGrid from '@/components/product/ProductGrid'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
-import { getNewArrivals, PRODUCTS } from '@/lib/products'
+import { getNewArrivalProducts } from '@/lib/storefront-products'
 
 export async function generateMetadata({
   searchParams,
@@ -36,11 +36,7 @@ export default async function NewArrivalsPage({
   const sp = await searchParams
   const currentPage = parsePage(sp.page)
 
-  let products = getNewArrivals()
-  if (products.length < 20) {
-    // Treat the first slice of the catalogue as the "new arrivals" pool
-    products = PRODUCTS.slice(0, 240)
-  }
+  const products = await getNewArrivalProducts(240)
   const paged = paginate(products, currentPage, PAGE_SIZE)
 
   return (

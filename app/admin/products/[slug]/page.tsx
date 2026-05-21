@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import ProductForm from '@/components/admin/ProductForm'
-import { getProductBySlug } from '@/lib/products'
+import { getProductBySlug } from '@/lib/storefront-products'
 import {
   ArrowLeftIcon,
   ArrowTopRightOnSquareIcon,
@@ -14,7 +14,7 @@ export default async function AdminProductDetailPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const product = getProductBySlug(slug)
+  const product = await getProductBySlug(slug)
   if (!product) notFound()
 
   return (

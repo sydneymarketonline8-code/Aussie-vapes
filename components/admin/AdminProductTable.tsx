@@ -3,13 +3,13 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { Product } from '@/types'
+import type { AdminProductRow } from '@/lib/admin-products-types'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 const PAGE_SIZE = 20
 
 interface AdminProductTableProps {
-  products: Product[]
+  products: AdminProductRow[]
 }
 
 export default function AdminProductTable({ products }: AdminProductTableProps) {
@@ -197,15 +197,17 @@ export default function AdminProductTable({ products }: AdminProductTableProps) 
                 <td className="px-4 py-2">
                   <div className="flex items-center gap-3">
                     <div className="relative h-10 w-10 flex-shrink-0 bg-soft-100 border border-line rounded-sm overflow-hidden">
-                      <Image
-                        src={p.images[0]}
-                        alt={p.name}
-                        fill
-                        sizes="40px"
-                        className="object-contain p-0.5"
-                        unoptimized
-                        loading="lazy"
-                      />
+                      {p.imageUrl ? (
+                        <Image
+                          src={p.imageUrl}
+                          alt={p.name}
+                          fill
+                          sizes="40px"
+                          className="object-contain p-0.5"
+                          unoptimized
+                          loading="lazy"
+                        />
+                      ) : null}
                     </div>
                     <div className="min-w-0">
                       <p className="font-display font-semibold text-ink line-clamp-1">{p.name}</p>

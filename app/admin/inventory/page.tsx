@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import AdminStatCard from '@/components/admin/AdminStatCard'
-import { PRODUCTS } from '@/lib/products'
+import { listAdminProducts, getInventoryStats } from '@/lib/admin-products'
 import {
   ArchiveBoxIcon,
   ExclamationTriangleIcon,
@@ -11,13 +11,14 @@ import {
   CurrencyDollarIcon,
 } from '@heroicons/react/24/outline'
 
-export default function AdminInventoryPage() {
-  const inStock = PRODUCTS.filter((p) => p.inStock)
-  const out = PRODUCTS.filter((p) => !p.inStock)
-  const lowStock = PRODUCTS.filter((p) => p.stockCount != null && p.stockCount < 20)
-  const totalUnits = PRODUCTS.reduce((s, p) => s + (p.stockCount ?? 0), 0)
-  const totalValue = PRODUCTS.reduce((s, p) => s + p.price * (p.stockCount ?? 0), 0)
-  const lowStockSorted = [...lowStock].sort((a, b) => (a.stockCount ?? 0) - (b.stockCount ?? 0))
+export const dynamic = 'force-dynamic'
+
+export default async function AdminInventoryPage() {
+  const products = await listAdminProducts()
+  const stats = await getInventoryStats(products)
+  const lowStockSorted = products
+    .filter((p) => p.stockCount != null && p.stockCount < 20)
+    .sort((a, b) => (a.stockCount ?? 0) - (b.stockCount ?? 0))
 
   return (
     <>
@@ -25,29 +26,14 @@ export default function AdminInventoryPage() {
 
       <div className="px-8 py-8 space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          <AdminStatCard label="Total SKUs" value={PRODUCTS.length.toLocaleString()} Icon={ArchiveBoxIcon} />
-          <AdminStatCard
-            label="In Stock"
-            value={inStock.length.toLocaleString()}
-            Icon={CheckCircleIcon}
-            accent="#4cbb6c"
-          />
-          <AdminStatCard
-            label="Out of Stock"
-            value={out.length.toLocaleString()}
-            Icon={XCircleIcon}
-            accent="#ff0000"
-          />
-          <AdminStatCard
-            label="Low Stock (<20)"
-            value={lowStock.length.toLocaleString()}
-            Icon={ExclamationTriangleIcon}
-            accent="#ff9a52"
-          />
+          <AdminStatCard label="Total SKUs" value={stats.totalSkus.toLocaleString()} Icon={ArchiveBoxIcon} />
+          <AdminStatCard label="In Stock" value={stats.inStock.toLocaleString()} Icon={CheckCircleIcon} accent="#4cbb6c" />
+          <AdminStatCard label="Out of Stock" value={stats.outOfStock.toLocaleString()} Icon={XCircleIcon} accent="#ff0000" />
+          <AdminStatCard label="Low Stock (<20)" value={stats.lowStock.toLocaleString()} Icon={ExclamationTriangleIcon} accent="#ff9a52" />
           <AdminStatCard
             label="Inventory Value"
-            value={`$${Math.round(totalValue).toLocaleString()}`}
-            delta={`${totalUnits.toLocaleString()} total units`}
+            value={`$${Math.round(stats.totalValue).toLocaleString()}`}
+            delta={`${stats.totalUnits.toLocaleString()} total units`}
             Icon={CurrencyDollarIcon}
             accent="#3b3b3b"
           />
@@ -57,7 +43,7 @@ export default function AdminInventoryPage() {
           <div className="flex items-center justify-between px-5 py-4 border-b border-line">
             <h3 className="font-display text-base font-bold text-ink uppercase tracking-wide flex items-center gap-2">
               <ExclamationTriangleIcon className="h-4 w-4 text-warning" />
-              Low-Stock Items ({lowStock.length})
+              Low-Stock Items ({lowStockSorted.length})
             </h3>
             <span className="font-display text-xs uppercase tracking-widest font-bold text-mute">
               Sorted lowest first
@@ -86,15 +72,17 @@ export default function AdminInventoryPage() {
                       <td className="px-4 py-2">
                         <div className="flex items-center gap-3">
                           <div className="relative h-10 w-10 flex-shrink-0 bg-soft-100 border border-line rounded-sm overflow-hidden">
-                            <Image
-                              src={p.images[0]}
-                              alt={p.name}
-                              fill
-                              sizes="40px"
-                              className="object-contain p-0.5"
-                              unoptimized
-                              loading="lazy"
-                            />
+                            {p.imageUrl ? (
+                              <Image
+                                src={p.imageUrl}
+                                alt={p.name}
+                                fill
+                                sizes="40px"
+                                className="object-contain p-0.5"
+                                unoptimized
+                                loading="lazy"
+                              />
+                            ) : null}
                           </div>
                           <p className="font-display font-semibold text-ink line-clamp-1">{p.name}</p>
                         </div>
