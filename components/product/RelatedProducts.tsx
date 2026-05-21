@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getRelatedProducts } from '@/lib/products'
+import { getProductsBySlugs } from '@/lib/storefront-products'
 import ProductCard from './ProductCard'
 
 interface RelatedProductsProps {
@@ -7,8 +7,8 @@ interface RelatedProductsProps {
   currentSlug: string
 }
 
-export default function RelatedProducts({ slugs, currentSlug }: RelatedProductsProps) {
-  const products = getRelatedProducts(slugs).filter((p) => p.slug !== currentSlug).slice(0, 5)
+export default async function RelatedProducts({ slugs, currentSlug }: RelatedProductsProps) {
+  const products = (await getProductsBySlugs(slugs)).filter((p) => p.slug !== currentSlug).slice(0, 5)
   if (!products.length) return null
 
   return (

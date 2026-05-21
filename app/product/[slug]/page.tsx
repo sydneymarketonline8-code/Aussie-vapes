@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getProductBySlug, PRODUCTS } from '@/lib/products'
+import {
+  getProductBySlug,
+  getAllActiveProductSlugs,
+} from '@/lib/storefront-products'
 import { buildProductMetadata, productJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo'
 import { getCategoryBySlug } from '@/lib/categories'
 import Breadcrumb from '@/components/ui/Breadcrumb'
@@ -18,19 +21,20 @@ import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIco
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
 export async function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }))
+  const slugs = await getAllActiveProductSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const product = getProductBySlug(slug)
+  const product = await getProductBySlug(slug)
   if (!product) return {}
   return buildProductMetadata(product)
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const product = getProductBySlug(slug)
+  const product = await getProductBySlug(slug)
   if (!product) notFound()
 
   const category = getCategoryBySlug(product.category)
