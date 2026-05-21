@@ -41,13 +41,8 @@ export async function login(formData: FormData) {
     redirect(buildLoginUrl('credentials', next))
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', signIn.user.id)
-    .single()
+  const { data: role } = await supabase.rpc('get_user_role', { uid: signIn.user.id })
 
-  const role = profile?.role
   if (role !== 'admin' && role !== 'staff') {
     await supabase.auth.signOut()
     redirect(buildLoginUrl('forbidden', next))
@@ -79,13 +74,9 @@ export async function isAdmin(): Promise<boolean> {
   } = await supabase.auth.getUser()
   if (!user) return false
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { data: role } = await supabase.rpc('get_user_role', { uid: user.id })
 
-  return profile?.role === 'admin' || profile?.role === 'staff'
+  return role === 'admin' || role === 'staff'
 }
 
 /** Returns the signed-in admin's profile, or null if none. */

@@ -188,7 +188,7 @@ npx vercel --prod
 2. **robots.txt** — Update `Sitemap:` URL from `example.com` to real domain
 3. **sitemap.xml** — Replace with `app/sitemap.ts` using Next.js `MetadataRoute.Sitemap`
 4. **Images** — Replace all `placehold.co` image URLs with real CDN URLs; remove `unoptimized` prop from `<Image>`
-5. **Payment** — Integrate Stripe: `npm install stripe @stripe/react-stripe-js @stripe/stripe-js`
+5. **Payment** — Manual PayID + Bitcoin only. Orders are created with `payment_status = 'pending'` and confirmed by the sales team via each order's unique `payment_reference`. Configure addresses via `PAYID_ADDRESS`, `PAYID_NAME`, `BTC_WALLET_ADDRESS`. Pending-payment alerts post to `SLACK_SALES_WEBHOOK_URL` when set.
 6. **Age gate** — Currently uses `sessionStorage`; for production consider a cookie-based solution with server-side enforcement
 
 ---

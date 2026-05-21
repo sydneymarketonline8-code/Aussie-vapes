@@ -1,26 +1,33 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShieldCheckIcon, ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { ShieldCheckIcon, ArrowLeftIcon, BanknotesIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import { PAYMENT_METHODS, type PaymentMethod } from '@/lib/payment'
+import { createOrder, type CheckoutItemInput } from './actions'
+import { useRouter } from 'next/navigation'
 
 type Step = 'contact' | 'shipping' | 'payment'
 
 export default function CheckoutPage() {
-  const { state, subtotal } = useCart()
+  const router = useRouter()
+  const { state, subtotal, clearCart } = useCart()
   const { items } = state
   const [step, setStep] = useState<Step>('contact')
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('payid')
+  const [shippingMethod, setShippingMethod] = useState<'standard' | 'express'>('standard')
+  const [submitting, startTransition] = useTransition()
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [form, setForm] = useState({
     email: '', firstName: '', lastName: '', phone: '',
     address: '', suburb: '', state: '', postcode: '', country: 'Australia',
-    cardNumber: '', cardExpiry: '', cardCvc: '', cardName: '',
     ageConfirmed: false,
   })
 
-  const shipping = subtotal >= 300 ? 0 : 9.95
+  const shipping = shippingMethod === 'express' ? 14.95 : subtotal >= 300 ? 0 : 9.95
   const total = subtotal + shipping
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
@@ -29,6 +36,48 @@ export default function CheckoutPage() {
       ...f,
       [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
     }))
+  }
+
+  function handlePlaceOrder() {
+    setSubmitError(null)
+    const orderItems: CheckoutItemInput[] = items.map((i) => ({
+      productId: i.product.id,
+      productSlug: i.product.slug,
+      productName: i.product.name,
+      productImageUrl: i.product.images?.[0],
+      selectedFlavour: i.selectedFlavour,
+      selectedNicotine: i.selectedNicotine,
+      quantity: i.quantity,
+      unitPrice: i.product.price,
+    }))
+
+    startTransition(async () => {
+      const result = await createOrder({
+        contact: {
+          email: form.email,
+          firstName: form.firstName,
+          lastName: form.lastName,
+          phone: form.phone || undefined,
+        },
+        shipping: {
+          address: form.address,
+          suburb: form.suburb,
+          state: form.state,
+          postcode: form.postcode,
+          country: form.country,
+          method: shippingMethod,
+        },
+        payment: { method: paymentMethod },
+        items: orderItems,
+      })
+
+      if (!result.ok) {
+        setSubmitError(result.error)
+        return
+      }
+      clearCart()
+      router.push(`/checkout/success/${result.reference}`)
+    })
   }
 
   const fieldClass = 'input-base'
@@ -101,7 +150,6 @@ export default function CheckoutPage() {
                   <input type="tel" name="phone" value={form.phone} onChange={handleChange} className={fieldClass} placeholder="+61 4xx xxx xxx" />
                 </div>
 
-                {/* Age confirmation */}
                 <label className="flex items-start gap-3 cursor-pointer p-3 rounded-sm border border-line hover:border-ink transition-colors bg-soft-100">
                   <input
                     type="checkbox"
@@ -156,16 +204,22 @@ export default function CheckoutPage() {
                   </select>
                 </div>
 
-                {/* Shipping options */}
                 <div className="space-y-2">
                   <label className={labelClass}>Shipping method</label>
                   {[
-                    { id: 'standard', label: 'Standard Post (3–7 business days)', price: subtotal >= 300 ? 'FREE' : '$9.95' },
-                    { id: 'express', label: 'Express Post (1–3 business days)', price: '$14.95' },
+                    { id: 'standard' as const, label: 'Standard Post (3–7 business days)', price: subtotal >= 300 ? 'FREE' : '$9.95' },
+                    { id: 'express' as const, label: 'Express Post (1–3 business days)', price: '$14.95' },
                   ].map((opt) => (
                     <label key={opt.id} className="flex items-center justify-between p-3 rounded-sm border border-line bg-white hover:border-ink cursor-pointer transition-colors">
                       <div className="flex items-center gap-2">
-                        <input type="radio" name="shippingMethod" value={opt.id} defaultChecked={opt.id === 'standard'} className="text-ink focus:ring-ink" />
+                        <input
+                          type="radio"
+                          name="shippingMethod"
+                          value={opt.id}
+                          checked={shippingMethod === opt.id}
+                          onChange={() => setShippingMethod(opt.id)}
+                          className="text-ink focus:ring-ink"
+                        />
                         <span className="text-sm text-body">{opt.label}</span>
                       </div>
                       <span className="font-display text-sm font-bold text-ink">{opt.price}</span>
@@ -192,36 +246,66 @@ export default function CheckoutPage() {
             {/* Step 3: Payment */}
             {step === 'payment' && (
               <div className="bg-white border border-line rounded-sm p-6 space-y-4">
-                <h2 className="font-display text-xl font-bold text-ink uppercase tracking-wide">Payment</h2>
+                <h2 className="font-display text-xl font-bold text-ink uppercase tracking-wide">Payment Method</h2>
                 <div className="flex items-center gap-2 p-3 rounded-sm bg-soft-100 border border-line text-xs text-body">
                   <ShieldCheckIcon className="h-4 w-4 text-success" />
-                  Your payment information is encrypted and secure. We never store card details.
-                </div>
-                <div className={fieldGroup}>
-                  <label className={labelClass}>Card number *</label>
-                  <input type="text" name="cardNumber" value={form.cardNumber} onChange={handleChange} className={fieldClass} placeholder="4242 4242 4242 4242" maxLength={19} required />
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className={fieldGroup}>
-                    <label className={labelClass}>Expiry (MM/YY) *</label>
-                    <input type="text" name="cardExpiry" value={form.cardExpiry} onChange={handleChange} className={fieldClass} placeholder="12/27" maxLength={5} required />
-                  </div>
-                  <div className={fieldGroup}>
-                    <label className={labelClass}>CVC *</label>
-                    <input type="text" name="cardCvc" value={form.cardCvc} onChange={handleChange} className={fieldClass} placeholder="123" maxLength={4} required />
-                  </div>
-                </div>
-                <div className={fieldGroup}>
-                  <label className={labelClass}>Name on card *</label>
-                  <input type="text" name="cardName" value={form.cardName} onChange={handleChange} className={fieldClass} required />
+                  Choose how you&apos;d like to pay. We&apos;ll send payment instructions on the next screen and dispatch your order once payment lands.
                 </div>
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {PAYMENT_METHODS.map((m) => {
+                    const selected = paymentMethod === m.id
+                    const Icon = m.id === 'payid' ? BanknotesIcon : CurrencyDollarIcon
+                    return (
+                      <button
+                        type="button"
+                        key={m.id}
+                        onClick={() => setPaymentMethod(m.id)}
+                        className={`text-left p-4 rounded-sm border-2 transition-colors ${
+                          selected ? 'border-ink bg-soft-100' : 'border-line bg-white hover:border-ink/50'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 mb-1">
+                          <Icon className="h-5 w-5 text-ink" />
+                          <span className="font-display font-bold text-ink uppercase tracking-wide">{m.label}</span>
+                          {selected && (
+                            <span className="ml-auto inline-block bg-success text-white text-[10px] font-bold uppercase px-1.5 py-0.5 rounded-sm tracking-wider">
+                              Selected
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-xs text-mute">{m.tagline}</p>
+                      </button>
+                    )
+                  })}
+                </div>
+
+                <div className="rounded-sm bg-soft-100 border border-line p-4 text-sm text-body">
+                  <p className="font-display text-xs font-bold uppercase tracking-wider text-ink mb-2">What happens next</p>
+                  <ol className="list-decimal list-inside space-y-1 text-xs">
+                    <li>We&apos;ll create your order and show you the {paymentMethod === 'payid' ? 'PayID details' : 'BTC wallet address + QR code'}.</li>
+                    <li>Send payment using the unique reference code on that screen.</li>
+                    <li>We&apos;ll email confirmation and dispatch once payment is received (usually within hours).</li>
+                  </ol>
+                </div>
+
+                {submitError && (
+                  <div className="p-3 rounded-sm bg-sale/10 border border-sale text-sm text-sale">
+                    {submitError}
+                  </div>
+                )}
+
                 <div className="flex gap-3">
-                  <button type="button" onClick={() => setStep('shipping')} className="btn-secondary flex items-center gap-1">
+                  <button type="button" onClick={() => setStep('shipping')} className="btn-secondary flex items-center gap-1" disabled={submitting}>
                     <ArrowLeftIcon className="h-4 w-4" /> Back
                   </button>
-                  <button type="submit" className="btn-sale flex-1 font-bold">
-                    Pay ${total.toFixed(2)} AUD
+                  <button
+                    type="button"
+                    onClick={handlePlaceOrder}
+                    disabled={submitting}
+                    className="btn-sale flex-1 font-bold disabled:opacity-60"
+                  >
+                    {submitting ? 'Placing order…' : `Place Order — $${total.toFixed(2)} AUD`}
                   </button>
                 </div>
 

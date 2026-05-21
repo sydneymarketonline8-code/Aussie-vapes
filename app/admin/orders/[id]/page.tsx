@@ -318,9 +318,12 @@ export default async function AdminOrderDetailPage({
               <h3 className="font-display text-xs font-bold uppercase tracking-widest text-mute mb-3">
                 Payment
               </h3>
-              <p className="text-sm text-body">Stripe · ending 4242 <span className="text-mute">(mock)</span></p>
-              <p className="text-xs text-success font-display font-bold uppercase tracking-wider mt-2">
-                ✓ Captured ${order.total.toFixed(2)}
+              <p className="text-sm text-body">PayID or Bitcoin · <span className="text-mute">manual verification</span></p>
+              <p className="text-xs text-mute mt-1">
+                Match the reference code on the order to the incoming transfer, then mark this order as Paid.
+              </p>
+              <p className="text-xs text-amber-700 font-display font-bold uppercase tracking-wider mt-2">
+                ⌛ Awaiting payment · ${order.total.toFixed(2)}
               </p>
             </div>
           </aside>

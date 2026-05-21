@@ -41,6 +41,7 @@ create type public.review_status    as enum ('pending', 'approved', 'rejected');
 create type public.coupon_type      as enum ('percentage', 'fixed');
 create type public.product_status   as enum ('draft', 'active', 'archived');
 create type public.address_kind     as enum ('shipping', 'billing');
+create type public.payment_method   as enum ('payid', 'bitcoin');
 
 -- ============================================================================
 -- AUTH / PROFILES
@@ -211,12 +212,7 @@ create table public.products (
   seo_title         text,
   seo_description   text,
 
-  search_text       text generated always as (
-    coalesce(name,'')        || ' ' ||
-    coalesce(sku,'')         || ' ' ||
-    coalesce(short_description,'') || ' ' ||
-    array_to_string(tags, ' ')
-  ) stored,
+  search_text       text not null default '',
 
   created_at        timestamptz not null default now(),
   updated_at        timestamptz not null default now(),
@@ -228,6 +224,26 @@ create index products_brand_idx        on public.products(brand_id);
 create index products_status_idx       on public.products(status) where deleted_at is null;
 create index products_low_stock_idx    on public.products(stock_count) where stock_count is not null and stock_count < 20;
 create index products_search_trgm_idx  on public.products using gin (search_text gin_trgm_ops);
+
+-- Maintain products.search_text via trigger. A GENERATED column can't be used
+-- here because array_to_string() is STABLE, not IMMUTABLE.
+create or replace function public.products_set_search_text()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.search_text :=
+    coalesce(new.name, '')              || ' ' ||
+    coalesce(new.sku, '')               || ' ' ||
+    coalesce(new.short_description, '') || ' ' ||
+    coalesce(array_to_string(new.tags, ' '), '');
+  return new;
+end;
+$$;
+
+create trigger products_search_text_sync
+  before insert or update of name, sku, short_description, tags on public.products
+  for each row execute function public.products_set_search_text();
 
 create trigger products_updated_at
   before update on public.products
@@ -321,7 +337,8 @@ create table public.orders (
   carrier           text,
   tracking_number   text,
 
-  stripe_payment_intent_id text,
+  payment_method    public.payment_method,
+  payment_reference text unique,
   internal_notes    text,
 
   placed_at         timestamptz not null default now(),

@@ -29,12 +29,8 @@ export async function middleware(req: NextRequest) {
   if (isLoginRoute) {
     // If already signed in as an admin, skip the login page and go to /admin.
     if (user) {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', user.id)
-        .single()
-      if (profile?.role === 'admin' || profile?.role === 'staff') {
+      const { data: role } = await supabase.rpc('get_user_role', { uid: user.id })
+      if (role === 'admin' || role === 'staff') {
         const url = req.nextUrl.clone()
         url.pathname = '/admin'
         url.searchParams.delete('next')
@@ -52,13 +48,9 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single()
+  const { data: role } = await supabase.rpc('get_user_role', { uid: user.id })
 
-  if (profile?.role !== 'admin' && profile?.role !== 'staff') {
+  if (role !== 'admin' && role !== 'staff') {
     const url = req.nextUrl.clone()
     url.pathname = '/admin/login'
     url.searchParams.set('error', 'forbidden')
