@@ -1,20 +1,19 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import AdminTopbar from '@/components/admin/AdminTopbar'
-import {
-  getCustomerById,
-  getOrdersByCustomer,
-  type OrderStatus,
-} from '@/lib/admin-mock-data'
-import { ArrowLeftIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import { getAdminCustomerById } from '@/lib/admin-customers'
+import { ArrowLeftIcon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
-const STATUS_STYLES: Record<OrderStatus, string> = {
+export const dynamic = 'force-dynamic'
+
+const STATUS_STYLES: Record<string, string> = {
   pending: 'bg-warning/15 text-warning',
   confirmed: 'bg-info/15 text-info',
   processing: 'bg-info/15 text-info',
   shipped: 'bg-success/15 text-success',
   delivered: 'bg-success/15 text-success',
   cancelled: 'bg-price/15 text-price',
+  refunded: 'bg-price/15 text-price',
 }
 
 export default async function AdminCustomerDetailPage({
@@ -23,14 +22,16 @@ export default async function AdminCustomerDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const customer = getCustomerById(id)
+  const customer = await getAdminCustomerById(id)
   if (!customer) notFound()
-  const orders = getOrdersByCustomer(id)
+
+  const fullName = `${customer.firstName} ${customer.lastName}`.trim() || '(no name)'
+  const aov = customer.ordersCount > 0 ? customer.totalSpent / customer.ordersCount : 0
 
   return (
     <>
       <AdminTopbar
-        title={`${customer.firstName} ${customer.lastName}`}
+        title={fullName}
         subtitle={customer.email}
         actions={
           <Link
@@ -52,10 +53,17 @@ export default async function AdminCustomerDetailPage({
               <EnvelopeIcon className="h-4 w-4 text-mute" />
               {customer.email}
             </p>
-            <p className="flex items-center gap-2 text-sm text-body mt-1.5">
-              <MapPinIcon className="h-4 w-4 text-mute" />
-              {customer.city}, {customer.state}
-            </p>
+            {customer.phone && (
+              <p className="flex items-center gap-2 text-sm text-body mt-1.5">
+                <PhoneIcon className="h-4 w-4 text-mute" />
+                {customer.phone}
+              </p>
+            )}
+            {(customer.role === 'admin' || customer.role === 'staff') && (
+              <p className="mt-2 inline-block text-[10px] font-display font-bold uppercase tracking-wider bg-ink text-white px-1.5 py-0.5 rounded-sm">
+                {customer.role}
+              </p>
+            )}
           </div>
           <div className="grid grid-cols-3 gap-2 pt-3 border-t border-line">
             <div className="text-center">
@@ -68,9 +76,7 @@ export default async function AdminCustomerDetailPage({
             </div>
             <div className="text-center">
               <p className="font-display text-[10px] uppercase tracking-widest font-bold text-mute">AOV</p>
-              <p className="font-display text-xl font-bold text-ink mt-1">
-                ${customer.ordersCount > 0 ? (customer.totalSpent / customer.ordersCount).toFixed(0) : '0'}
-              </p>
+              <p className="font-display text-xl font-bold text-ink mt-1">${aov.toFixed(0)}</p>
             </div>
           </div>
           <div className="pt-3 border-t border-line text-xs text-mute font-display uppercase tracking-wider">
@@ -81,14 +87,14 @@ export default async function AdminCustomerDetailPage({
         <div className="lg:col-span-2 bg-white border border-line rounded-sm">
           <div className="px-5 py-4 border-b border-line">
             <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink">
-              Order History ({orders.length})
+              Order History ({customer.orders.length})
             </h3>
           </div>
-          {orders.length === 0 ? (
+          {customer.orders.length === 0 ? (
             <p className="px-5 py-12 text-center text-mute text-sm">No orders yet.</p>
           ) : (
             <ul className="divide-y divide-line">
-              {orders.map((o) => (
+              {customer.orders.map((o) => (
                 <li key={o.id}>
                   <Link
                     href={`/admin/orders/${o.id}`}
@@ -104,7 +110,7 @@ export default async function AdminCustomerDetailPage({
                     </div>
                     <div className="flex items-center gap-4">
                       <span
-                        className={`inline-block px-2 py-0.5 rounded-sm text-[11px] font-display font-bold uppercase tracking-wider ${STATUS_STYLES[o.status]}`}
+                        className={`inline-block px-2 py-0.5 rounded-sm text-[11px] font-display font-bold uppercase tracking-wider ${STATUS_STYLES[o.status] ?? 'bg-soft-200 text-mute'}`}
                       >
                         {o.status}
                       </span>

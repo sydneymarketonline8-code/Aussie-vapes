@@ -1,22 +1,19 @@
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import CustomersTable from '@/components/admin/CustomersTable'
-import { CUSTOMERS, ORDERS } from '@/lib/admin-mock-data'
+import { listAdminCustomers } from '@/lib/admin-customers'
 
-export default function AdminCustomersPage() {
-  const ordersByCustomer = ORDERS.reduce<Record<string, typeof ORDERS>>((acc, o) => {
-    if (!acc[o.customerId]) acc[o.customerId] = []
-    acc[o.customerId].push(o)
-    return acc
-  }, {})
+export const dynamic = 'force-dynamic'
 
+export default async function AdminCustomersPage() {
+  const customers = await listAdminCustomers()
   return (
     <>
       <AdminTopbar
         title="Customers"
-        subtitle={`${CUSTOMERS.length} registered customers`}
+        subtitle={`${customers.length} registered customer${customers.length === 1 ? '' : 's'}`}
       />
       <div className="px-8 py-8">
-        <CustomersTable customers={CUSTOMERS} ordersByCustomer={ordersByCustomer} />
+        <CustomersTable customers={customers} />
       </div>
     </>
   )

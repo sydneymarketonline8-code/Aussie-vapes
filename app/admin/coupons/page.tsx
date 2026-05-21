@@ -1,8 +1,11 @@
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import CouponsModule from '@/components/admin/CouponsModule'
-import { COUPONS } from '@/lib/admin-mock-data'
+import { listAdminCoupons } from '@/lib/admin-coupons'
 
-export default function AdminCouponsPage() {
+export const dynamic = 'force-dynamic'
+
+export default async function AdminCouponsPage() {
+  const coupons = await listAdminCoupons()
   return (
     <>
       <AdminTopbar
@@ -10,7 +13,7 @@ export default function AdminCouponsPage() {
         subtitle="Discount codes and promotional rules"
       />
       <div className="px-8 py-8">
-        <CouponsModule coupons={COUPONS} />
+        <CouponsModule coupons={coupons} />
       </div>
     </>
   )

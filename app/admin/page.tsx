@@ -6,8 +6,7 @@ import {
   getDashboardKpis,
   getRecentOrders,
   getLowStockProducts,
-  type OrderStatus,
-} from '@/lib/admin-mock-data'
+} from '@/lib/admin-dashboard'
 import {
   CurrencyDollarIcon,
   ShoppingBagIcon,
@@ -18,36 +17,42 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/24/outline'
 
+export const dynamic = 'force-dynamic'
+
 function formatAUD(n: number, opts: Intl.NumberFormatOptions = {}): string {
   return `$${n.toLocaleString('en-AU', { minimumFractionDigits: 0, maximumFractionDigits: 0, ...opts })}`
 }
 
-const STATUS_STYLES: Record<OrderStatus, string> = {
+const STATUS_STYLES: Record<string, string> = {
   pending: 'bg-warning/15 text-warning',
   confirmed: 'bg-info/15 text-info',
   processing: 'bg-info/15 text-info',
   shipped: 'bg-success/15 text-success',
   delivered: 'bg-success/15 text-success',
   cancelled: 'bg-price/15 text-price',
+  refunded: 'bg-price/15 text-price',
 }
 
-const STATUS_LABEL: Record<OrderStatus, string> = {
+const STATUS_LABEL: Record<string, string> = {
   pending: 'Pending',
   confirmed: 'Confirmed',
   processing: 'Processing',
   shipped: 'Shipped',
   delivered: 'Delivered',
   cancelled: 'Cancelled',
+  refunded: 'Refunded',
 }
 
-export default function AdminDashboardPage() {
-  const kpis = getDashboardKpis()
-  const recent = getRecentOrders(10)
-  const lowStock = getLowStockProducts(20).slice(0, 8)
+export default async function AdminDashboardPage() {
+  const [kpis, recent, lowStock] = await Promise.all([
+    getDashboardKpis(),
+    getRecentOrders(10),
+    getLowStockProducts(8),
+  ])
 
   return (
     <>
-      <AdminTopbar title="Dashboard" subtitle="Aussie Vapes — May 2026 operational overview" />
+      <AdminTopbar title="Dashboard" subtitle="Aussie Vapes — operational overview" />
 
       <div className="px-8 py-8 space-y-8">
         {/* KPI cards */}
@@ -88,7 +93,6 @@ export default function AdminDashboardPage() {
 
         {/* Recent orders + Low stock */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Recent orders */}
           <div className="lg:col-span-2 bg-white border border-line rounded-sm">
             <div className="flex items-center justify-between px-5 py-4 border-b border-line">
               <h3 className="font-display text-base font-bold text-ink uppercase tracking-wide flex items-center gap-2">
@@ -113,6 +117,13 @@ export default function AdminDashboardPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-line">
+                  {recent.length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="px-5 py-8 text-center text-mute text-sm">
+                        No orders yet.
+                      </td>
+                    </tr>
+                  )}
                   {recent.map((o) => (
                     <tr key={o.id} className="hover:bg-soft-50">
                       <td className="px-5 py-3">
@@ -130,13 +141,17 @@ export default function AdminDashboardPage() {
                       </td>
                       <td className="px-5 py-3">
                         <p className="font-display font-semibold text-ink">{o.customerName}</p>
-                        <p className="text-[11px] text-mute">{o.shippingAddress.suburb}, {o.shippingAddress.state}</p>
+                        {(o.customerCity || o.customerState) && (
+                          <p className="text-[11px] text-mute">
+                            {[o.customerCity, o.customerState].filter(Boolean).join(', ')}
+                          </p>
+                        )}
                       </td>
                       <td className="px-5 py-3">
                         <span
-                          className={`inline-block px-2 py-0.5 rounded-sm text-[11px] font-display font-bold uppercase tracking-wider ${STATUS_STYLES[o.status]}`}
+                          className={`inline-block px-2 py-0.5 rounded-sm text-[11px] font-display font-bold uppercase tracking-wider ${STATUS_STYLES[o.status] ?? 'bg-soft-200 text-mute'}`}
                         >
-                          {STATUS_LABEL[o.status]}
+                          {STATUS_LABEL[o.status] ?? o.status}
                         </span>
                       </td>
                       <td className="px-5 py-3 text-right font-display font-bold text-ink">
@@ -149,7 +164,6 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          {/* Low stock */}
           <div className="bg-white border border-line rounded-sm">
             <div className="flex items-center justify-between px-5 py-4 border-b border-line">
               <h3 className="font-display text-base font-bold text-ink uppercase tracking-wide flex items-center gap-2">
@@ -174,18 +188,20 @@ export default function AdminDashboardPage() {
                       className="flex items-center gap-3 px-5 py-3 hover:bg-soft-50 transition-colors"
                     >
                       <div className="relative h-10 w-10 flex-shrink-0 bg-soft-100 border border-line rounded-sm overflow-hidden">
-                        <Image
-                          src={p.images[0]}
-                          alt={p.name}
-                          fill
-                          sizes="40px"
-                          className="object-contain p-1"
-                          unoptimized
-                        />
+                        {p.imageUrl ? (
+                          <Image
+                            src={p.imageUrl}
+                            alt={p.name}
+                            fill
+                            sizes="40px"
+                            className="object-contain p-1"
+                            unoptimized
+                          />
+                        ) : null}
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-display text-sm font-semibold text-ink line-clamp-1">{p.name}</p>
-                        <p className="text-[11px] text-mute">{p.brand}</p>
+                        {p.brandName && <p className="text-[11px] text-mute">{p.brandName}</p>}
                       </div>
                       <span className="font-display font-bold text-warning text-sm whitespace-nowrap">
                         {p.stockCount} left
