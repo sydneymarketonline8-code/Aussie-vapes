@@ -7,15 +7,16 @@ import { type PaymentMethod } from '@/lib/payment'
 import { notifySalesPendingPayment } from '@/lib/notify'
 
 /**
- * Generates an order payment reference like `PAY-7F2K9Q`. Six chars of
- * Crockford-style base32 (no I, L, O, U) gives ~1 in a billion collisions
- * per pair and stays short enough for a bank-transfer description field.
+ * Generates an order payment reference like `PAY-7F2K9QH3DR`. 10 chars of
+ * Crockford-style base32 (no I, L, O, U) gives 32^10 ≈ 1.1e15 possibilities —
+ * brute-forcing the success URL is infeasible. Short enough to still fit in
+ * a bank-transfer description field.
  */
 function generatePaymentReference(): string {
   const alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'
-  const bytes = randomBytes(6)
+  const bytes = randomBytes(10)
   let code = ''
-  for (let i = 0; i < 6; i++) code += alphabet[bytes[i] % alphabet.length]
+  for (let i = 0; i < 10; i++) code += alphabet[bytes[i] % alphabet.length]
   return `PAY-${code}`
 }
 
@@ -78,16 +79,11 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 
   const supabase = await createSupabaseServerClient()
 
-  const { data: order, error: orderError } = await supabase
-    .from('orders')
-    .insert({
+  const { data: rpcRows, error: orderError } = await supabase.rpc('create_guest_order', {
+    payload: {
       customer_email: input.contact.email,
       customer_name: fullName,
-      customer_phone: input.contact.phone || null,
-      status: 'pending',
-      payment_status: 'pending',
-      payment_method: input.payment.method,
-      payment_reference: reference,
+      customer_phone: input.contact.phone ?? '',
       subtotal,
       shipping: shippingCost,
       total,
@@ -97,17 +93,19 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
       ship_state: input.shipping.state,
       ship_postcode: input.shipping.postcode,
       ship_country: input.shipping.country || 'Australia',
-    })
-    .select('id, number, total, customer_email, customer_name')
-    .single()
+      payment_method: input.payment.method,
+      payment_reference: reference,
+    },
+  })
 
-  if (orderError || !order) {
-    console.error('[createOrder] insert orders failed', orderError)
+  const created = Array.isArray(rpcRows) ? rpcRows[0] : null
+  if (orderError || !created) {
+    console.error('[createOrder] create_guest_order rpc failed', orderError)
     return { ok: false, error: 'Could not create order. Please try again.' }
   }
 
   const itemRows = input.items.map((i) => ({
-    order_id: order.id,
+    order_id: created.order_id as string,
     product_id: i.productId,
     product_slug: i.productSlug,
     product_name: i.productName,
@@ -126,12 +124,12 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
   }
 
   await notifySalesPendingPayment({
-    orderNumber: order.number,
+    orderNumber: created.order_number as string,
     reference,
     method: input.payment.method,
-    totalAud: Number(order.total),
-    customerEmail: order.customer_email,
-    customerName: order.customer_name,
+    totalAud: total,
+    customerEmail: input.contact.email,
+    customerName: fullName,
   })
 
   return { ok: true, reference }

@@ -21,11 +21,11 @@ export default async function CheckoutSuccessPage({
   params: { reference: string }
 }) {
   const supabase = await createSupabaseServerClient()
-  const { data: order } = await supabase
-    .from('orders')
-    .select('number, total, customer_email, payment_method, payment_reference, payment_status')
-    .eq('payment_reference', params.reference)
-    .single<OrderForSuccess>()
+  const { data: rows, error } = await supabase.rpc('get_order_for_payment', {
+    ref: params.reference,
+  })
+  if (error) console.error('[checkout success] get_order_for_payment failed', error)
+  const order = Array.isArray(rows) ? (rows[0] as OrderForSuccess | undefined) : null
 
   if (!order || !order.payment_method) notFound()
 

@@ -395,10 +395,14 @@ create table public.order_status_history (
 
 create index order_status_history_order_idx on public.order_status_history(order_id, created_at);
 
--- Auto-log status changes.
+-- Auto-log status changes. SECURITY DEFINER so it works even when the
+-- inserting role (e.g. anon during guest checkout) can't write to
+-- order_status_history directly.
 create or replace function public.log_order_status_change()
 returns trigger
 language plpgsql
+security definer
+set search_path = public
 as $$
 begin
   if tg_op = 'INSERT' or new.status is distinct from old.status then
@@ -584,3 +588,75 @@ where p.deleted_at is null
   and p.stock_count is not null
   and p.stock_count < p.low_stock_threshold
 order by p.stock_count asc;
+
+-- ============================================================================
+-- GUEST CHECKOUT RPCs (SECURITY DEFINER — bypass RLS for unauthenticated buyers)
+-- ============================================================================
+create or replace function public.create_guest_order(payload jsonb)
+returns table (order_id uuid, order_number text)
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  new_id uuid;
+  new_number text;
+begin
+  insert into public.orders (
+    customer_email, customer_name, customer_phone,
+    status, payment_status,
+    subtotal, shipping, total,
+    ship_recipient, ship_line1, ship_suburb, ship_state, ship_postcode, ship_country,
+    payment_method, payment_reference
+  ) values (
+    payload->>'customer_email',
+    payload->>'customer_name',
+    nullif(payload->>'customer_phone', ''),
+    'pending', 'pending',
+    (payload->>'subtotal')::numeric,
+    (payload->>'shipping')::numeric,
+    (payload->>'total')::numeric,
+    payload->>'ship_recipient',
+    payload->>'ship_line1',
+    payload->>'ship_suburb',
+    payload->>'ship_state',
+    payload->>'ship_postcode',
+    coalesce(payload->>'ship_country', 'Australia'),
+    (payload->>'payment_method')::public.payment_method,
+    payload->>'payment_reference'
+  )
+  returning id, number into new_id, new_number;
+  return query select new_id, new_number;
+end;
+$$;
+
+revoke all on function public.create_guest_order(jsonb) from public;
+grant execute on function public.create_guest_order(jsonb) to anon, authenticated;
+
+create or replace function public.get_order_for_payment(ref text)
+returns table (
+  number text,
+  total numeric,
+  customer_email text,
+  payment_method text,
+  payment_reference text,
+  payment_status text
+)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select
+    o.number,
+    o.total,
+    o.customer_email,
+    o.payment_method::text,
+    o.payment_reference,
+    o.payment_status::text
+  from public.orders o
+  where o.payment_reference = ref;
+$$;
+
+revoke all on function public.get_order_for_payment(text) from public;
+grant execute on function public.get_order_for_payment(text) to anon, authenticated;
