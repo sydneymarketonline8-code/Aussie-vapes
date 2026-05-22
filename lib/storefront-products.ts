@@ -51,6 +51,23 @@ const SELECT_COLUMNS = `
   product_images ( url, position )
 `
 
+// Lighter SELECT for listing pages — skips the big text fields
+// (description, features, specifications, full SEO). Category pages
+// for popular categories load 1700+ products at once, so dropping the
+// big-text fields keeps the payload manageable (and avoids hitting
+// Vercel's 10s function timeout on the Hobby plan).
+const LIST_SELECT_COLUMNS = `
+  id, slug, name, sku, price, compare_price,
+  short_description, tags,
+  flavours, nicotine_strengths,
+  in_stock, stock_count, rating, review_count,
+  is_new, is_best_seller, is_sale,
+  brand:brand_id ( display_name ),
+  category:category_id ( slug ),
+  subcategory:subcategory_id ( slug ),
+  product_images ( url, position )
+`
+
 function pickOne<T>(v: T | T[] | null | undefined): T | null {
   if (!v) return null
   return Array.isArray(v) ? v[0] ?? null : v
@@ -165,12 +182,16 @@ export async function getAllActiveProductSlugs(): Promise<string[]> {
   return (data ?? []).map((p) => p.slug)
 }
 
-function baseSelect() {
+function baseSelect(columns: string = SELECT_COLUMNS) {
   return getSupabasePublicClient()
     .from('products')
-    .select(SELECT_COLUMNS)
+    .select(columns)
     .eq('status', 'active')
     .is('deleted_at', null)
+}
+
+function listSelect() {
+  return baseSelect(LIST_SELECT_COLUMNS)
 }
 
 async function runRows(query: PromiseLike<{ data: unknown; error: unknown }>): Promise<Product[]> {
@@ -187,19 +208,19 @@ export async function getProductsByCategorySlug(slug: string): Promise<Product[]
   const { data: cat } = await supabase.from('categories').select('id').eq('slug', slug).maybeSingle()
   if (!cat) return []
   // PostgREST caps at 1000 rows by default; explicit range to clear that.
-  return runRows(baseSelect().eq('category_id', cat.id).range(0, 9999))
+  return runRows(listSelect().eq('category_id', cat.id).range(0, 9999))
 }
 
 export async function getFeaturedProducts(limit = 8): Promise<Product[]> {
-  return runRows(baseSelect().eq('is_best_seller', true).limit(limit))
+  return runRows(listSelect().eq('is_best_seller', true).limit(limit))
 }
 
 export async function getNewArrivalProducts(limit = 8): Promise<Product[]> {
-  return runRows(baseSelect().eq('is_new', true).limit(limit))
+  return runRows(listSelect().eq('is_new', true).limit(limit))
 }
 
 export async function getSaleProducts(limit?: number): Promise<Product[]> {
-  const q = baseSelect().eq('is_sale', true)
+  const q = listSelect().eq('is_sale', true)
   return runRows(limit ? q.limit(limit) : q)
 }
 
@@ -207,7 +228,7 @@ export async function getProductsByBrandSlug(slug: string): Promise<Product[]> {
   const supabase = getSupabasePublicClient()
   const { data: brand } = await supabase.from('brands').select('id').eq('slug', slug).maybeSingle()
   if (!brand) return []
-  return runRows(baseSelect().eq('brand_id', brand.id).range(0, 9999))
+  return runRows(listSelect().eq('brand_id', brand.id).range(0, 9999))
 }
 
 /** Counts of active products grouped by category slug. */
@@ -267,5 +288,5 @@ export async function getProductCountsByBrandSlug(): Promise<Map<string, number>
 export async function searchActiveProducts(query: string, limit = 60): Promise<Product[]> {
   const term = query.trim()
   if (!term) return []
-  return runRows(baseSelect().ilike('search_text', `%${term}%`).limit(limit))
+  return runRows(listSelect().ilike('search_text', `%${term}%`).limit(limit))
 }
