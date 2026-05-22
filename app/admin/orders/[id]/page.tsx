@@ -8,7 +8,7 @@ import {
   type OrderStatus,
   type PaymentStatus,
 } from '@/lib/admin-orders'
-import { StatusSelect, MarkPaidButton } from './OrderActions'
+import { StatusSelect, MarkPaidButton, TrackingForm, NotesEditor } from './OrderActions'
 import {
   ArrowLeftIcon,
   ClockIcon,
@@ -231,33 +231,26 @@ export default async function AdminOrderDetailPage({
               </div>
             </div>
 
-            {/* Tracking — placeholder until we wire the update action */}
+            {/* Tracking */}
             <div className="bg-white border border-line rounded-sm p-5">
               <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-3 flex items-center gap-2">
                 <TruckIcon className="h-4 w-4 text-mute" />
                 Tracking
               </h3>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                <div>
-                  <dt className="font-display text-[10px] uppercase tracking-widest font-bold text-mute mb-1">Carrier</dt>
-                  <dd className="text-body">{order.tracking.carrier ?? <span className="text-mute">Not assigned</span>}</dd>
-                </div>
-                <div>
-                  <dt className="font-display text-[10px] uppercase tracking-widest font-bold text-mute mb-1">Tracking #</dt>
-                  <dd className="font-mono text-body">{order.tracking.number ?? <span className="text-mute font-sans">Not assigned</span>}</dd>
-                </div>
-              </dl>
+              <TrackingForm
+                orderId={order.id}
+                initialCarrier={order.tracking.carrier}
+                initialNumber={order.tracking.number}
+              />
             </div>
 
-            {/* Internal notes — read-only for now */}
-            {order.internalNotes && (
-              <div className="bg-white border border-line rounded-sm p-5">
-                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-3">
-                  Internal Notes
-                </h3>
-                <p className="text-sm text-body whitespace-pre-wrap">{order.internalNotes}</p>
-              </div>
-            )}
+            {/* Internal notes */}
+            <div className="bg-white border border-line rounded-sm p-5">
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink mb-3">
+                Internal Notes
+              </h3>
+              <NotesEditor orderId={order.id} initialNotes={order.internalNotes} />
+            </div>
           </div>
 
           {/* Customer + shipping */}

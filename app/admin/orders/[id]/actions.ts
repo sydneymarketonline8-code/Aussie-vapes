@@ -27,6 +27,47 @@ export async function markOrderPaid(orderId: string) {
   return { ok: true }
 }
 
+export async function updateOrderTracking(
+  orderId: string,
+  carrier: string,
+  trackingNumber: string,
+) {
+  if (!(await isAdmin())) return { ok: false as const, error: 'Not authorised' }
+
+  const supabase = await createSupabaseServerClient()
+  const { error } = await supabase
+    .from('orders')
+    .update({
+      carrier: carrier.trim() || null,
+      tracking_number: trackingNumber.trim() || null,
+    })
+    .eq('id', orderId)
+
+  if (error) {
+    console.error('[updateOrderTracking] failed', error)
+    return { ok: false as const, error: error.message }
+  }
+  revalidatePath(`/admin/orders/${orderId}`)
+  return { ok: true as const }
+}
+
+export async function updateOrderNotes(orderId: string, notes: string) {
+  if (!(await isAdmin())) return { ok: false as const, error: 'Not authorised' }
+
+  const supabase = await createSupabaseServerClient()
+  const { error } = await supabase
+    .from('orders')
+    .update({ internal_notes: notes.trim() ? notes : null })
+    .eq('id', orderId)
+
+  if (error) {
+    console.error('[updateOrderNotes] failed', error)
+    return { ok: false as const, error: error.message }
+  }
+  revalidatePath(`/admin/orders/${orderId}`)
+  return { ok: true as const }
+}
+
 export async function updateOrderStatus(orderId: string, status: OrderStatus) {
   if (!(await isAdmin())) return { ok: false, error: 'Not authorised' }
 

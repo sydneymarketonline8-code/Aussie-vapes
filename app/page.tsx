@@ -8,13 +8,12 @@ import BrandShowcase from '@/components/home/BrandShowcase'
 import FeaturedBrandSections from '@/components/home/FeaturedBrandSections'
 import PacksSection from '@/components/home/PacksSection'
 import Testimonials from '@/components/home/Testimonials'
-import { getProductsByBrand } from '@/lib/brands'
 import {
   getFeaturedProducts as getDbFeatured,
   getNewArrivalProducts as getDbNewArrivals,
   getSaleProducts as getDbSale,
+  getProductsByBrandSlug,
 } from '@/lib/storefront-products'
-import { getFeaturedProducts, getNewArrivals, PRODUCTS } from '@/lib/products'
 import { buildSiteMetadata, localBusinessJsonLd } from '@/lib/seo'
 import type { Product } from '@/types'
 
@@ -32,15 +31,14 @@ function pickHeroProducts(candidates: Product[], count = 5): Product[] {
 }
 
 export default async function HomePage() {
-  const [bestsellers, newArrivals, saleProducts] = await Promise.all([
+  const [bestsellers, newArrivals, saleProducts, igetProducts, alfakherProducts, lostMaryProducts] = await Promise.all([
     getDbFeatured(10),
     getDbNewArrivals(10),
     getDbSale(10),
+    getProductsByBrandSlug('iget'),
+    getProductsByBrandSlug('alfakher'),
+    getProductsByBrandSlug('lost-mary'),
   ])
-
-  const igetProducts = getProductsByBrand('iget')
-  const alfakherProducts = getProductsByBrand('alfakher')
-  const lostMaryProducts = getProductsByBrand('lost-mary')
 
   const slides: HeroSlide[] = [
     {
@@ -53,7 +51,7 @@ export default async function HomePage() {
       badge: 'From $32.95',
       bg: 'linear-gradient(135deg, #fef3f3 0%, #ffffff 60%)',
       accent: '#ff0000',
-      products: pickHeroProducts(igetProducts.length ? igetProducts : getFeaturedProducts()),
+      products: pickHeroProducts(igetProducts.length ? igetProducts : bestsellers),
     },
     {
       eyebrow: 'Best Seller',
@@ -65,7 +63,7 @@ export default async function HomePage() {
       badge: 'Save 20% on 3-Packs',
       bg: 'linear-gradient(135deg, #f4f8ff 0%, #ffffff 60%)',
       accent: '#2fb5d2',
-      products: pickHeroProducts(alfakherProducts.length ? alfakherProducts : getFeaturedProducts()),
+      products: pickHeroProducts(alfakherProducts.length ? alfakherProducts : bestsellers),
     },
     {
       eyebrow: 'New Arrival',
@@ -80,9 +78,9 @@ export default async function HomePage() {
       products: pickHeroProducts(
         lostMaryProducts.length
           ? lostMaryProducts
-          : getNewArrivals().length
-          ? getNewArrivals()
-          : PRODUCTS.slice(0, 5)
+          : newArrivals.length
+          ? newArrivals
+          : bestsellers,
       ),
     },
   ]
