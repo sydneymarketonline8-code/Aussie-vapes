@@ -3,10 +3,14 @@ import { notFound } from 'next/navigation'
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import ProductForm from '@/components/admin/ProductForm'
 import { getProductBySlug } from '@/lib/storefront-products'
+import { getSupabasePublicClient } from '@/lib/supabase/public'
+import type { ProductImageRow } from '@/components/admin/ProductImagesManager'
 import {
   ArrowLeftIcon,
   ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/24/outline'
+
+export const dynamic = 'force-dynamic'
 
 export default async function AdminProductDetailPage({
   params,
@@ -16,6 +20,16 @@ export default async function AdminProductDetailPage({
   const { slug } = await params
   const product = await getProductBySlug(slug)
   if (!product) notFound()
+
+  // Fetch the image rows separately — Product only carries URLs, but the
+  // images manager needs the row ids to delete and reorder.
+  const supabase = getSupabasePublicClient()
+  const { data: imageRows } = await supabase
+    .from('product_images')
+    .select('id, url, position')
+    .eq('product_id', product.id)
+    .order('position', { ascending: true })
+  const productImages: ProductImageRow[] = (imageRows ?? []) as ProductImageRow[]
 
   return (
     <>
@@ -43,7 +57,7 @@ export default async function AdminProductDetailPage({
       />
 
       <div className="px-8 py-8">
-        <ProductForm mode="edit" product={product} />
+        <ProductForm mode="edit" product={product} productImages={productImages} />
       </div>
     </>
   )

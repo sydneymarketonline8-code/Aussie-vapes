@@ -2,7 +2,6 @@
 
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import type { Product } from '@/types'
 import {
   DocumentTextIcon,
@@ -15,6 +14,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { updateProduct, type UpdateProductInput } from '@/app/admin/products/[slug]/actions'
+import ProductImagesManager, { type ProductImageRow } from './ProductImagesManager'
 
 type TabKey = 'general' | 'pricing' | 'inventory' | 'images' | 'specs' | 'seo'
 
@@ -30,6 +30,7 @@ const TABS: { key: TabKey; label: string; Icon: typeof DocumentTextIcon }[] = [
 interface ProductFormProps {
   product?: Product
   mode: 'create' | 'edit'
+  productImages?: ProductImageRow[]
 }
 
 interface FormState {
@@ -92,7 +93,7 @@ function splitLines(s: string): string[] {
   return s.split('\n').map((x) => x.trim()).filter(Boolean)
 }
 
-export default function ProductForm({ product, mode }: ProductFormProps) {
+export default function ProductForm({ product, mode, productImages = [] }: ProductFormProps) {
   const router = useRouter()
   const [tab, setTab] = useState<TabKey>('general')
   const [form, setForm] = useState<FormState>(initialState(product))
@@ -326,34 +327,11 @@ export default function ProductForm({ product, mode }: ProductFormProps) {
         )}
 
         {tab === 'images' && (
-          <div>
-            <label className={labelCls}>Product Images <span className="text-mute normal-case text-[10px]">(read-only — upload coming soon)</span></label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {(product?.images ?? []).map((src, i) => (
-                <div
-                  key={`${src}-${i}`}
-                  className="relative aspect-square bg-soft-100 border border-line rounded-sm overflow-hidden group"
-                >
-                  <Image
-                    src={src}
-                    alt={`Image ${i + 1}`}
-                    fill
-                    sizes="160px"
-                    className="object-contain p-2"
-                    unoptimized
-                  />
-                  {i === 0 && (
-                    <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded-sm bg-ink text-white text-[9px] font-display font-bold uppercase tracking-wider">
-                      Primary
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-mute mt-3">
-              The first image is used as the thumbnail on product cards, search results and the cart.
-            </p>
-          </div>
+          product?.id ? (
+            <ProductImagesManager productId={product.id} images={productImages} />
+          ) : (
+            <p className="text-sm text-mute">Save the product first, then upload images.</p>
+          )
         )}
 
         {tab === 'specs' && (
