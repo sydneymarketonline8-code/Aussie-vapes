@@ -9,6 +9,25 @@
 -- Run once. Idempotent.
 -- ============================================================================
 
+-- Ensure public.is_admin() exists. Normally lives in rls.sql; redefined here
+-- so this migration is self-contained even if rls.sql wasn't applied.
+create or replace function public.is_admin()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select exists (
+    select 1
+    from public.profiles
+    where id = auth.uid()
+      and role in ('admin', 'staff')
+  );
+$$;
+revoke all on function public.is_admin() from public;
+grant execute on function public.is_admin() to authenticated, anon;
+
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
 values (
   'product-images',
