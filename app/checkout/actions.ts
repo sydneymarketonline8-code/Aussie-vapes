@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { type PaymentMethod } from '@/lib/payment'
 import { notifySalesPendingPayment } from '@/lib/notify'
+import { sendOrderConfirmationEmail } from '@/lib/order-emails'
 
 /**
  * Generates an order payment reference like `PAY-7F2K9QH3DR`. 10 chars of
@@ -116,14 +117,24 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
     return { ok: false, error: 'Could not create order. Please try again.' }
   }
 
-  await notifySalesPendingPayment({
-    orderNumber: created.order_number as string,
-    reference,
-    method: input.payment.method,
-    totalAud: total,
-    customerEmail: input.contact.email,
-    customerName: fullName,
-  })
+  await Promise.all([
+    notifySalesPendingPayment({
+      orderNumber: created.order_number as string,
+      reference,
+      method: input.payment.method,
+      totalAud: total,
+      customerEmail: input.contact.email,
+      customerName: fullName,
+    }),
+    sendOrderConfirmationEmail({
+      to: input.contact.email,
+      customerName: fullName,
+      orderNumber: created.order_number as string,
+      reference,
+      method: input.payment.method,
+      totalAud: total,
+    }),
+  ])
 
   return { ok: true, reference }
 }

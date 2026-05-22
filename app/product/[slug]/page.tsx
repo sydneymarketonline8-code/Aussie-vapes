@@ -10,6 +10,8 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductGallery from '@/components/product/ProductGallery'
 import AddToCart from '@/components/product/AddToCart'
 import RelatedProducts from '@/components/product/RelatedProducts'
+import ProductReviews from '@/components/product/ProductReviews'
+import { listApprovedReviews } from '@/lib/storefront-reviews'
 import ProductFaq, { buildProductFaqs } from '@/components/product/ProductFaq'
 import ProductInternalLinks from '@/components/product/ProductInternalLinks'
 import ProductSidebar from '@/components/product/ProductSidebar'
@@ -37,6 +39,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = await getProductBySlug(slug)
   if (!product) notFound()
 
+  const reviews = await listApprovedReviews(product.id)
   const category = getCategoryBySlug(product.category)
   const discount = product.comparePrice
     ? Math.round(((product.comparePrice - product.price) / product.comparePrice) * 100)
@@ -252,6 +255,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
 
         {/* Related products */}
+        <ProductReviews
+          productId={product.id}
+          productSlug={product.slug}
+          productName={product.name}
+          reviews={reviews}
+        />
         <RelatedProducts slugs={product.relatedProductSlugs} currentSlug={product.slug} />
       </div>
     </>
