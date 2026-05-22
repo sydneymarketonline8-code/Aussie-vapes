@@ -1,7 +1,9 @@
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import { BRANDS } from '@/lib/brands'
 import { CATEGORIES } from '@/lib/categories'
-import { PRODUCTS } from '@/lib/products'
+import { getActiveProductCount } from '@/lib/storefront-products'
+
+export const dynamic = 'force-dynamic'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
@@ -16,7 +18,8 @@ function Row({ k, v, mono }: { k: string; v: string; mono?: boolean }) {
   )
 }
 
-export default function AdminSettingsPage() {
+export default async function AdminSettingsPage() {
+  const productCount = await getActiveProductCount()
   return (
     <>
       <AdminTopbar title="Settings" subtitle="Aussie Vapes site configuration" />
@@ -40,7 +43,7 @@ export default function AdminSettingsPage() {
             Catalogue
           </h3>
           <dl>
-            <Row k="Total Products" v={PRODUCTS.length.toLocaleString()} />
+            <Row k="Total Products" v={productCount.toLocaleString()} />
             <Row k="Brands" v={String(BRANDS.length)} />
             <Row k="Categories" v={String(CATEGORIES.length)} />
             <Row k="Free Shipping Over" v="$300 AUD" />

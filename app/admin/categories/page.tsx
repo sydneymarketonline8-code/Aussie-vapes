@@ -1,17 +1,23 @@
 import AdminTopbar from '@/components/admin/AdminTopbar'
 import { CATEGORIES } from '@/lib/categories'
-import { getProductsByCategory } from '@/lib/products'
+import { getProductsByCategorySlug } from '@/lib/storefront-products'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 
-export default function AdminCategoriesPage() {
+export const dynamic = 'force-dynamic'
+
+export default async function AdminCategoriesPage() {
+  const categoriesWithStats = await Promise.all(
+    CATEGORIES.map(async (cat) => {
+      const products = await getProductsByCategorySlug(cat.slug)
+      return { cat, total: products.length, inStock: products.filter((p) => p.inStock).length }
+    }),
+  )
   return (
     <>
       <AdminTopbar title="Categories" subtitle={`${CATEGORIES.length} top-level categories on Aussie Vapes`} />
 
       <div className="px-8 py-8 space-y-5">
-        {CATEGORIES.map((cat) => {
-          const products = getProductsByCategory(cat.slug)
-          const inStock = products.filter((p) => p.inStock).length
+        {categoriesWithStats.map(({ cat, total, inStock }) => {
           return (
             <div key={cat.id} className="bg-white border border-line rounded-sm p-6">
               <div className="flex items-start justify-between gap-4 mb-4">
@@ -33,7 +39,7 @@ export default function AdminCategoriesPage() {
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-line pt-4">
-                <Stat label="Total" value={products.length} />
+                <Stat label="Total" value={total} />
                 <Stat label="In Stock" value={inStock} accent="success" />
                 <Stat label="Subcategories" value={cat.subcategories.length} />
                 <Stat label="Keywords" value={cat.keywords.length} />

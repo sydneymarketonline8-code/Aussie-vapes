@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import HeroCollage from '@/components/ui/HeroCollage'
 import { CITIES } from '@/lib/cities'
-import { getFeaturedProducts } from '@/lib/products'
+import { getFeaturedProducts } from '@/lib/storefront-products'
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
 export const metadata: Metadata = {
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/aussie-vapes' },
 }
 
-export default function AussieVapesHubPage() {
-  const featured = getFeaturedProducts().slice(0, 5)
+export default async function AussieVapesHubPage() {
+  const featured = await getFeaturedProducts(5)
   return (
     <>
       <section className="bg-soft-100 border-b border-line">

@@ -1,20 +1,23 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { CATEGORIES } from '@/lib/categories'
-import { getProductsByCategory } from '@/lib/products'
+import { getProductsByCategorySlug } from '@/lib/storefront-products'
 
-export default function CategoryGrid() {
+export default async function CategoryGrid() {
   // Pick the highest-rated, in-stock product per category for the hero image
-  const categoryWithImage = CATEGORIES.map((cat) => {
-    const products = getProductsByCategory(cat.slug).filter((p) => p.images?.[0])
-    const hero =
-      [...products]
-        .sort((a, b) => (b.isBestSeller ? 1 : 0) - (a.isBestSeller ? 1 : 0) || b.rating - a.rating)[0] ?? null
-    const supporting = products
-      .filter((p) => p.id !== hero?.id)
-      .slice(0, 2)
-    return { cat, hero, supporting }
-  })
+  const categoryWithImage = await Promise.all(
+    CATEGORIES.map(async (cat) => {
+      const all = await getProductsByCategorySlug(cat.slug)
+      const products = all.filter((p) => p.images?.[0])
+      const hero =
+        [...products]
+          .sort((a, b) => (b.isBestSeller ? 1 : 0) - (a.isBestSeller ? 1 : 0) || b.rating - a.rating)[0] ?? null
+      const supporting = products
+        .filter((p) => p.id !== hero?.id)
+        .slice(0, 2)
+      return { cat, hero, supporting, count: all.length }
+    }),
+  )
 
   return (
     <section className="py-14 bg-soft-100">
@@ -27,7 +30,7 @@ export default function CategoryGrid() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {categoryWithImage.map(({ cat, hero, supporting }) => (
+          {categoryWithImage.map(({ cat, hero, supporting, count }) => (
             <Link
               key={cat.id}
               href={`/category/${cat.slug}`}
@@ -79,7 +82,7 @@ export default function CategoryGrid() {
                 <h3 className="font-display text-sm font-bold uppercase tracking-wider text-ink group-hover:text-price transition-colors leading-tight">
                   {cat.name}
                 </h3>
-                <p className="text-xs text-mute">{cat.productCount.toLocaleString()} products</p>
+                <p className="text-xs text-mute">{count.toLocaleString()} products</p>
                 <span className="font-display text-[10px] uppercase tracking-widest text-price font-semibold opacity-0 group-hover:opacity-100 transition-opacity mt-1">
                   Shop Now →
                 </span>

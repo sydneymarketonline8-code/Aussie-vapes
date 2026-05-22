@@ -208,6 +208,39 @@ export async function getProductsByBrandSlug(slug: string): Promise<Product[]> {
   return runRows(baseSelect().eq('brand_id', brand.id))
 }
 
+/** Counts of active products grouped by category slug. */
+export async function getProductCountsByCategorySlug(): Promise<Map<string, number>> {
+  const supabase = getSupabasePublicClient()
+  const { data: cats } = await supabase.from('categories').select('id, slug')
+  const idToSlug = new Map<string, string>()
+  for (const c of cats ?? []) idToSlug.set(c.id, c.slug)
+
+  const { data: rows } = await supabase
+    .from('products')
+    .select('category_id')
+    .eq('status', 'active')
+    .is('deleted_at', null)
+
+  const counts = new Map<string, number>()
+  for (const r of rows ?? []) {
+    const slug = r.category_id ? idToSlug.get(r.category_id as string) : undefined
+    if (!slug) continue
+    counts.set(slug, (counts.get(slug) ?? 0) + 1)
+  }
+  return counts
+}
+
+/** Total active product count — cheap COUNT query. */
+export async function getActiveProductCount(): Promise<number> {
+  const supabase = getSupabasePublicClient()
+  const { count } = await supabase
+    .from('products')
+    .select('id', { count: 'exact', head: true })
+    .eq('status', 'active')
+    .is('deleted_at', null)
+  return count ?? 0
+}
+
 /** Counts of active products grouped by brand slug. */
 export async function getProductCountsByBrandSlug(): Promise<Map<string, number>> {
   const supabase = getSupabasePublicClient()

@@ -5,7 +5,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import ProductCard from '@/components/product/ProductCard'
 import HeroCollage from '@/components/ui/HeroCollage'
 import { CITIES, getCityBySlug } from '@/lib/cities'
-import { getFeaturedProducts } from '@/lib/products'
+import { getFeaturedProducts } from '@/lib/storefront-products'
 import { faqJsonLd, breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
@@ -40,7 +40,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const c = getCityBySlug(city)
   if (!c) notFound()
 
-  const featured = getFeaturedProducts().slice(0, 5)
+  const featured = await getFeaturedProducts(5)
 
   const crumbs = [
     { name: 'Aussie Vapes', url: `${SITE_URL}/` },

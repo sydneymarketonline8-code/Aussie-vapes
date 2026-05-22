@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { requireAccount } from '@/lib/account-auth'
-import { getFeaturedProducts } from '@/lib/products'
+import { getFeaturedProducts } from '@/lib/storefront-products'
 import ProductCard from '@/components/product/ProductCard'
 import {
   ShoppingBagIcon,
@@ -19,7 +19,7 @@ export default async function AccountDashboardPage() {
     year: 'numeric',
   })
 
-  const recommended = getFeaturedProducts().slice(0, 4)
+  const recommended = await getFeaturedProducts(4)
 
   return (
     <div className="space-y-6">
