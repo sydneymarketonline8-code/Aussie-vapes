@@ -2,8 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import HeroCollage from '@/components/ui/HeroCollage'
-import { BRANDS, getProductsByBrand } from '@/lib/brands'
-import { getFeaturedProducts } from '@/lib/products'
+import { BRANDS } from '@/lib/brands'
+import {
+  getFeaturedProducts,
+  getProductCountsByBrandSlug,
+} from '@/lib/storefront-products'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Aussie Vapes Brands — Shop By Brand In Australia | Aussie Vapes',
@@ -28,10 +33,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BrandsIndexPage() {
-  const withCounts = BRANDS.map((b) => ({ ...b, count: getProductsByBrand(b.slug).length }))
+export default async function BrandsIndexPage() {
+  const [counts, featured] = await Promise.all([
+    getProductCountsByBrandSlug(),
+    getFeaturedProducts(5),
+  ])
+  const withCounts = BRANDS.map((b) => ({ ...b, count: counts.get(b.slug) ?? 0 }))
     .sort((a, b) => b.count - a.count)
-  const featured = getFeaturedProducts().slice(0, 5)
 
   return (
     <>

@@ -1352,11 +1352,22 @@ function longestCommonTokenPrefix(names: string[]): string[] {
 /**
  * Auto-detect sub-lines for a brand by grouping products on puff count and
  * building a label from the longest-common name prefix within each group.
+ *
+ * Pure version: takes the brand + product set. Use this when products come
+ * from somewhere other than the static lib/products.ts catalogue.
  */
+export function computeBrandSublines(brand: Brand, products: Product[]): BrandSubline[] {
+  return runBrandSublines(brand, products)
+}
+
 export function getBrandSublines(brandSlug: string): BrandSubline[] {
   const products = getProductsByBrand(brandSlug)
   const brand = getBrandBySlug(brandSlug)
   if (!brand) return []
+  return runBrandSublines(brand, products)
+}
+
+function runBrandSublines(brand: Brand, products: Product[]): BrandSubline[] {
 
   // Group products by puff count (skipping non-puff items)
   const groups = new Map<number, Product[]>()

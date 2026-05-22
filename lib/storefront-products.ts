@@ -201,6 +201,37 @@ export async function getSaleProducts(limit?: number): Promise<Product[]> {
   return runRows(limit ? q.limit(limit) : q)
 }
 
+export async function getProductsByBrandSlug(slug: string): Promise<Product[]> {
+  const supabase = getSupabasePublicClient()
+  const { data: brand } = await supabase.from('brands').select('id').eq('slug', slug).maybeSingle()
+  if (!brand) return []
+  return runRows(baseSelect().eq('brand_id', brand.id))
+}
+
+/** Counts of active products grouped by brand slug. */
+export async function getProductCountsByBrandSlug(): Promise<Map<string, number>> {
+  const supabase = getSupabasePublicClient()
+  // 1: brand_id → slug
+  const { data: brands } = await supabase.from('brands').select('id, slug')
+  const idToSlug = new Map<string, string>()
+  for (const b of brands ?? []) idToSlug.set(b.id, b.slug)
+
+  // 2: every active product's brand_id
+  const { data: rows } = await supabase
+    .from('products')
+    .select('brand_id')
+    .eq('status', 'active')
+    .is('deleted_at', null)
+
+  const counts = new Map<string, number>()
+  for (const r of rows ?? []) {
+    const slug = r.brand_id ? idToSlug.get(r.brand_id as string) : undefined
+    if (!slug) continue
+    counts.set(slug, (counts.get(slug) ?? 0) + 1)
+  }
+  return counts
+}
+
 /** Trigram-search against the maintained search_text column. */
 export async function searchActiveProducts(query: string, limit = 60): Promise<Product[]> {
   const term = query.trim()

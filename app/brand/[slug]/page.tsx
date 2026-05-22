@@ -5,7 +5,8 @@ import { Suspense } from 'react'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import BrandProductGrid from '@/components/brand/BrandProductGrid'
 import HeroCollage from '@/components/ui/HeroCollage'
-import { BRANDS, getBrandBySlug, getProductsByBrand, getBrandSublines } from '@/lib/brands'
+import { BRANDS, getBrandBySlug, computeBrandSublines } from '@/lib/brands'
+import { getProductsByBrandSlug } from '@/lib/storefront-products'
 import {
   buildBrandMetadata,
   brandItemListJsonLd,
@@ -41,8 +42,8 @@ export default async function BrandPage({
   const brand = getBrandBySlug(slug)
   if (!brand) notFound()
 
-  const products = getProductsByBrand(slug)
-  const sublines = getBrandSublines(slug)
+  const products = await getProductsByBrandSlug(slug)
+  const sublines = computeBrandSublines(brand, products)
   const productCount = products.length
   const featured = products.slice(0, 5)
   const avgRating =

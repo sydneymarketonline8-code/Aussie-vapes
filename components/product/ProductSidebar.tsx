@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Product } from '@/types'
-import { BRANDS, getBrandSlugForProduct } from '@/lib/brands'
-import { PRODUCTS, getFeaturedProducts } from '@/lib/products'
+import { BRANDS } from '@/lib/brands'
+import {
+  getFeaturedProducts,
+  getProductCountsByBrandSlug,
+} from '@/lib/storefront-products'
 import { PUFF_RANGES, getPuffRangeCounts, POPULAR_FLAVOURS } from '@/lib/puff-ranges'
 
 interface ProductSidebarProps {
@@ -10,19 +13,18 @@ interface ProductSidebarProps {
 }
 
 /** Sidebar with: Shop by Brand · Shop by Puff Count · Shop by Flavour · Best Sellers */
-export default function ProductSidebar({ currentProduct }: ProductSidebarProps) {
-  // Top brands by product count
-  const brandCounts = new Map<string, number>()
-  for (const p of PRODUCTS) {
-    const slug = getBrandSlugForProduct(p)
-    if (slug) brandCounts.set(slug, (brandCounts.get(slug) || 0) + 1)
-  }
-  const topBrands = BRANDS.map((b) => ({ ...b, count: brandCounts.get(b.slug) || 0 }))
+export default async function ProductSidebar({ currentProduct }: ProductSidebarProps) {
+  const [brandCounts, featured] = await Promise.all([
+    getProductCountsByBrandSlug(),
+    getFeaturedProducts(12),
+  ])
+
+  const topBrands = BRANDS.map((b) => ({ ...b, count: brandCounts.get(b.slug) ?? 0 }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 8)
 
   const puffCounts = getPuffRangeCounts()
-  const bestSellers = getFeaturedProducts()
+  const bestSellers = featured
     .filter((p) => p.id !== currentProduct.id && p.images?.[0])
     .slice(0, 5)
 
