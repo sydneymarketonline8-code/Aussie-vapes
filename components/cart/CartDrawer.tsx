@@ -5,11 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { XMarkIcon, TrashIcon, PlusIcon, MinusIcon, ShoppingBagIcon, CheckBadgeIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
+import { minimumOrderState, FREE_SHIPPING_THRESHOLD_AUD } from '@/lib/cart-rules'
 import clsx from 'clsx'
 
 export default function CartDrawer() {
   const { state, closeCart, removeItem, updateQuantity, itemCount, subtotal } = useCart()
   const { isOpen, items } = state
+  const minOrder = minimumOrderState(subtotal)
 
   useEffect(() => {
     if (isOpen) document.body.style.overflow = 'hidden'
@@ -17,7 +19,7 @@ export default function CartDrawer() {
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
-  const freeShippingThreshold = 300
+  const freeShippingThreshold = FREE_SHIPPING_THRESHOLD_AUD
   const remaining = Math.max(0, freeShippingThreshold - subtotal)
   const progress = Math.min(100, (subtotal / freeShippingThreshold) * 100)
 
@@ -170,9 +172,27 @@ export default function CartDrawer() {
                 <span className="text-success font-bold">FREE</span>
               </div>
             )}
-            <Link href="/checkout" onClick={closeCart} className="btn-sale w-full text-center block">
-              Checkout — ${subtotal.toFixed(2)} AUD
-            </Link>
+            {!minOrder.met && (
+              <div className="rounded-sm bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900 font-display">
+                <strong className="uppercase tracking-wider">${minOrder.minimum} minimum order</strong>
+                {' · '}
+                Add <strong>${minOrder.remaining.toFixed(2)}</strong> more.
+              </div>
+            )}
+            {minOrder.met ? (
+              <Link href="/checkout" onClick={closeCart} className="btn-sale w-full text-center block">
+                Checkout — ${subtotal.toFixed(2)} AUD
+              </Link>
+            ) : (
+              <button
+                type="button"
+                disabled
+                title={`Minimum order is $${minOrder.minimum} AUD`}
+                className="btn-sale w-full text-center block opacity-60 cursor-not-allowed"
+              >
+                Add ${minOrder.remaining.toFixed(2)} to Checkout
+              </button>
+            )}
             <Link href="/cart" onClick={closeCart} className="btn-secondary w-full text-center block">
               View Full Cart
             </Link>

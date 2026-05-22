@@ -8,6 +8,7 @@ import { useCart } from '@/context/CartContext'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import { PAYMENT_METHODS, type PaymentMethod } from '@/lib/payment'
 import { createOrder, type CheckoutItemInput } from './actions'
+import { minimumOrderState, FREE_SHIPPING_THRESHOLD_AUD } from '@/lib/cart-rules'
 import { useRouter } from 'next/navigation'
 
 type Step = 'contact' | 'shipping' | 'payment'
@@ -27,8 +28,9 @@ export default function CheckoutPage() {
     ageConfirmed: false,
   })
 
-  const shipping = shippingMethod === 'express' ? 14.95 : subtotal >= 300 ? 0 : 9.95
+  const shipping = shippingMethod === 'express' ? 14.95 : subtotal >= FREE_SHIPPING_THRESHOLD_AUD ? 0 : 9.95
   const total = subtotal + shipping
+  const minOrder = minimumOrderState(subtotal)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     const { name, value, type } = e.target
@@ -89,6 +91,34 @@ export default function CheckoutPage() {
       <div className="container-site py-20 text-center">
         <p className="text-body mb-4">Your cart is empty.</p>
         <Link href="/" className="btn-primary">Start Shopping</Link>
+      </div>
+    )
+  }
+
+  if (!minOrder.met) {
+    return (
+      <div className="container-site py-20 max-w-xl">
+        <div className="bg-amber-50 border border-amber-200 rounded-sm p-8 text-center">
+          <p className="font-display text-xs uppercase tracking-[0.3em] font-bold text-amber-700 mb-2">
+            Minimum Order ${minOrder.minimum} AUD
+          </p>
+          <h1 className="font-display text-2xl font-bold text-ink mb-3 lowercase">
+            add ${minOrder.remaining.toFixed(2)} more to checkout
+          </h1>
+          <p className="text-body text-sm mb-6">
+            Your cart subtotal is currently <strong>${subtotal.toFixed(2)}</strong>. We have a ${minOrder.minimum} minimum order across Aussie Vapes — top up your cart to continue.
+          </p>
+          <div className="h-2 bg-amber-200/60 rounded-full overflow-hidden mb-6">
+            <div
+              className="h-full bg-amber-600 rounded-full transition-all duration-500"
+              style={{ width: `${minOrder.progress}%` }}
+            />
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link href="/cart" className="btn-secondary">Review Cart</Link>
+            <Link href="/" className="btn-primary">Continue Shopping</Link>
+          </div>
+        </div>
       </div>
     )
   }

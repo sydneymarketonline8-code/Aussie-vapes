@@ -6,13 +6,15 @@ import { TrashIcon, MinusIcon, PlusIcon, ShoppingBagIcon, ArrowLeftIcon } from '
 import { ShieldCheckIcon, TruckIcon, ArrowPathIcon } from '@heroicons/react/24/outline'
 import { useCart } from '@/context/CartContext'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import { minimumOrderState, FREE_SHIPPING_THRESHOLD_AUD } from '@/lib/cart-rules'
 
 export default function CartPage() {
   const { state, removeItem, updateQuantity, subtotal, itemCount } = useCart()
   const { items } = state
 
-  const shipping = subtotal >= 300 ? 0 : 9.95
+  const shipping = subtotal >= FREE_SHIPPING_THRESHOLD_AUD ? 0 : 9.95
   const total = subtotal + shipping
+  const minOrder = minimumOrderState(subtotal)
 
   return (
     <div className="container-site py-10">
@@ -132,9 +134,37 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <Link href="/checkout" className="btn-sale w-full block text-center">
-                Proceed to Checkout
-              </Link>
+              {!minOrder.met && (
+                <div className="rounded-sm bg-amber-50 border border-amber-200 p-3 text-xs text-amber-900">
+                  <p className="font-display font-bold uppercase tracking-wider mb-1">
+                    ${minOrder.minimum} minimum order
+                  </p>
+                  <p>
+                    Add <strong>${minOrder.remaining.toFixed(2)}</strong> more to checkout.
+                  </p>
+                  <div className="h-1.5 bg-amber-200/60 rounded-full overflow-hidden mt-2">
+                    <div
+                      className="h-full bg-amber-600 rounded-full transition-all duration-500"
+                      style={{ width: `${minOrder.progress}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {minOrder.met ? (
+                <Link href="/checkout" className="btn-sale w-full block text-center">
+                  Proceed to Checkout
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  disabled
+                  title={`Minimum order is $${minOrder.minimum} AUD`}
+                  className="btn-sale w-full block text-center opacity-60 cursor-not-allowed"
+                >
+                  Add ${minOrder.remaining.toFixed(2)} to Checkout
+                </button>
+              )}
 
               <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
                 <input

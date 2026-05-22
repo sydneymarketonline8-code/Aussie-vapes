@@ -15,7 +15,7 @@ export default function AnnouncementBar() {
           </a>
         </div>
         <div className="flex-1 md:flex-none text-center">
-          Free shipping on orders over $300 — Australia-wide
+          $250 minimum order · Free shipping over $300 — Australia-wide
         </div>
         <div className="hidden md:flex items-center gap-4">
           <a href="/store" className="hover:text-price transition-colors">Store Locator</a>

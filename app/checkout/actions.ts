@@ -6,6 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { type PaymentMethod } from '@/lib/payment'
 import { notifySalesPendingPayment } from '@/lib/notify'
 import { sendOrderConfirmationEmail } from '@/lib/order-emails'
+import { MIN_ORDER_AUD } from '@/lib/cart-rules'
 
 /**
  * Generates an order payment reference like `PAY-7F2K9QH3DR`. 10 chars of
@@ -70,6 +71,16 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
     (sum, i) => sum + i.unitPrice * i.quantity,
     0,
   )
+
+  // Strict server-side minimum-order enforcement. Client also blocks but this
+  // is the source of truth — anyone bypassing the client UI hits this check.
+  if (subtotal < MIN_ORDER_AUD) {
+    return {
+      ok: false,
+      error: `Minimum order is $${MIN_ORDER_AUD.toFixed(2)} AUD. Your subtotal is $${subtotal.toFixed(2)}.`,
+    }
+  }
+
   const shippingCost = input.shipping.method === 'express'
     ? 14.95
     : subtotal >= 300 ? 0 : 9.95
