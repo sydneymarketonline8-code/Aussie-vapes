@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import ProductImage from '@/components/ui/ProductImage'
 import { CATEGORIES } from '@/lib/categories'
 import { getProductsByCategorySlug } from '@/lib/storefront-products'
 
@@ -40,7 +40,7 @@ export default async function CategoryGrid() {
               <div className="relative aspect-[5/4] bg-soft-100 overflow-hidden">
                 {hero?.images?.[0] && (
                   <div className="absolute inset-0 flex items-center justify-center p-6">
-                    <Image
+                    <ProductImage
                       src={hero.images[0]}
                       alt={`${cat.name} — ${hero.name}`}
                       fill
@@ -53,7 +53,7 @@ export default async function CategoryGrid() {
                 {/* Floating supporting items */}
                 {supporting[0]?.images?.[0] && (
                   <div className="absolute top-2 right-2 w-12 h-12 rounded-sm bg-white border border-line shadow-sm overflow-hidden">
-                    <Image
+                    <ProductImage
                       src={supporting[0].images[0]}
                       alt=""
                       fill
@@ -65,7 +65,7 @@ export default async function CategoryGrid() {
                 )}
                 {supporting[1]?.images?.[0] && (
                   <div className="absolute bottom-2 left-2 w-12 h-12 rounded-sm bg-white border border-line shadow-sm overflow-hidden">
-                    <Image
+                    <ProductImage
                       src={supporting[1].images[0]}
                       alt=""
                       fill

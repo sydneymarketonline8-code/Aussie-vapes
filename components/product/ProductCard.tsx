@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import ProductImage from '@/components/ui/ProductImage'
 import type { Product } from '@/types'
 import StarRating from '@/components/ui/StarRating'
 import AddToCartButton from './AddToCartButton'
@@ -29,7 +29,7 @@ export default function ProductCard({ product, className }: ProductCardProps) {
         aria-label={product.name}
       >
         <div className="relative aspect-square">
-          <Image
+          <ProductImage
             src={product.images[0]}
             alt={product.name}
             fill
