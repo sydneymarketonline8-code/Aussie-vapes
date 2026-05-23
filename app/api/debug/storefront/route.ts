@@ -108,13 +108,21 @@ export async function GET() {
   // 8. Exact production category query — slim select, embedded joins, range
   {
     const start = Date.now()
-    const { data: cat } = await supabase
+    const catResp = await supabase
       .from('categories')
-      .select('id')
+      .select('id, slug')
       .eq('slug', 'disposable-vapes')
       .maybeSingle()
+    const cat = catResp.data
     if (!cat) {
-      out.fullCategoryQuery = { error: 'category lookup failed inside step 8', rows: 0 }
+      out.fullCategoryQuery = {
+        error: 'category lookup returned null in step 8',
+        catError: catResp.error?.message ?? null,
+        catErrorCode: (catResp.error as { code?: string } | null)?.code ?? null,
+        catStatus: catResp.status,
+        catStatusText: catResp.statusText,
+        rows: 0,
+      }
     } else {
       const SELECT = `
         id, slug, name, sku, price, compare_price,
@@ -146,13 +154,21 @@ export async function GET() {
   // 9. Same query without embedded joins (rules out join cost)
   {
     const start = Date.now()
-    const { data: cat } = await supabase
+    const catResp = await supabase
       .from('categories')
-      .select('id')
+      .select('id, slug')
       .eq('slug', 'disposable-vapes')
       .maybeSingle()
+    const cat = catResp.data
     if (!cat) {
-      out.flatCategoryQuery = { error: 'category lookup failed inside step 9', rows: 0 }
+      out.flatCategoryQuery = {
+        error: 'category lookup returned null in step 9',
+        catError: catResp.error?.message ?? null,
+        catErrorCode: (catResp.error as { code?: string } | null)?.code ?? null,
+        catStatus: catResp.status,
+        catStatusText: catResp.statusText,
+        rows: 0,
+      }
     } else {
       const { data, error } = await supabase
         .from('products')
