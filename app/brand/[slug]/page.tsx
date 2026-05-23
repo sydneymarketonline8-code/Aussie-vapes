@@ -18,6 +18,11 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
+// ISR — see comment in /product/[slug]/page.tsx. Same rationale: brand
+// pages render fast from a baked static HTML, but pick up admin product
+// edits (price, stock, new arrivals) within ~1 minute.
+export const revalidate = 60
+
 export async function generateStaticParams() {
   return BRANDS.map((b) => ({ slug: b.slug }))
 }

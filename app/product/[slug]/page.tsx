@@ -22,6 +22,12 @@ import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIco
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
 
+// ISR: product pages are statically generated for fast TTFB, but each one
+// regenerates on the next request after 60s. Admin edits (price, stock,
+// description, SEO title) reflect on the storefront within ~1 minute
+// without needing a Vercel rebuild.
+export const revalidate = 60
+
 export async function generateStaticParams() {
   const slugs = await getAllActiveProductSlugs()
   return slugs.map((slug) => ({ slug }))
