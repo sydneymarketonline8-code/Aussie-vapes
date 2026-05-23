@@ -93,25 +93,25 @@ function fuzzyMatch(target: string, idx: ReturnType<typeof buildIndex>): string 
   if (targetTokens.size === 0) return null
 
   const seen = new Map<string, number>() // filename → overlap count
-  for (const tok of targetTokens) {
+  Array.from(targetTokens).forEach((tok) => {
     const candidates = idx.partial.get(tok)
-    if (!candidates) continue
+    if (!candidates) return
     for (const f of candidates) {
       seen.set(f, (seen.get(f) ?? 0) + 1)
     }
-  }
+  })
 
   // Pick the highest-overlap file, but only if the overlap is high enough.
   // Threshold: at least 60% of the target's tokens must match.
   let bestFile: string | null = null
   let bestScore = 0
   const minScore = Math.max(2, Math.ceil(targetTokens.size * 0.6))
-  for (const [file, score] of seen) {
+  Array.from(seen).forEach(([file, score]) => {
     if (score > bestScore) {
       bestScore = score
       bestFile = file
     }
-  }
+  })
   if (bestFile && bestScore >= minScore) return bestFile
   return null
 }
@@ -182,14 +182,14 @@ async function main() {
     }
     const onDiskName = onDisk.get(stem)
     if (onDiskName) {
-      fixes.push({ id: row.id, from: row.url, to: `/products/${onDiskName}` })
+      fixes.push({ id: row.id, from: row.url, to: `https://www.aussievapes.com.au/products/${onDiskName}` })
       extensionFixed++
       continue
     }
     // Fuzzy fallback — try suffix strips + token overlap
     const fuzzy = fuzzyMatch(filename, idx)
     if (fuzzy) {
-      fixes.push({ id: row.id, from: row.url, to: `/products/${fuzzy}` })
+      fixes.push({ id: row.id, from: row.url, to: `https://www.aussievapes.com.au/products/${fuzzy}` })
       extensionFixed++
       continue
     }
@@ -208,13 +208,13 @@ async function main() {
   for (const p of productsWithoutImage) {
     const onDiskName = onDisk.get(p.slug.toLowerCase())
     if (onDiskName) {
-      inserts.push({ product_id: p.id, url: `/products/${onDiskName}`, position: 0 })
+      inserts.push({ product_id: p.id, url: `https://www.aussievapes.com.au/products/${onDiskName}`, position: 0 })
       backfilled++
       continue
     }
     const fuzzy = fuzzyMatch(p.slug, idx)
     if (fuzzy) {
-      inserts.push({ product_id: p.id, url: `/products/${fuzzy}`, position: 0 })
+      inserts.push({ product_id: p.id, url: `https://www.aussievapes.com.au/products/${fuzzy}`, position: 0 })
       backfilled++
       continue
     }
