@@ -59,6 +59,21 @@ function buildIndex(): {
   return { exact, partial }
 }
 
+// Tokens that genuinely distinguish one product from another. If the target
+// slug contains any of these and the candidate file doesn't (or vice versa),
+// the two products are different even though they share many other tokens.
+// (Previously the matcher would happily pair blackberry → blueberry images.)
+const DISCRIMINATING_TOKENS = new Set([
+  'blackberry', 'blueberry', 'cherry', 'strawberry', 'raspberry', 'cranberry',
+  'mango', 'pineapple', 'peach', 'apple', 'grape', 'banana', 'kiwi',
+  'watermelon', 'melon', 'orange', 'lemon', 'lime', 'passionfruit',
+  'guava', 'lychee', 'coconut', 'pomegranate', 'apricot',
+  'mint', 'menthol', 'ice', 'icy', 'cola', 'aloe', 'vera',
+  'tobacco', 'vanilla', 'caramel', 'chocolate', 'coffee',
+  'pink', 'purple', 'red', 'blue', 'green', 'black', 'white', 'gold', 'silver',
+  'disposable', 'rechargeable', 'pod', 'kit', 'coil', 'tank', 'mod',
+])
+
 /**
  * Try a sequence of slug transformations and partial matches to find a
  * file on disk that probably represents the same product as `target`.
@@ -84,7 +99,9 @@ function fuzzyMatch(target: string, idx: ReturnType<typeof buildIndex>): string 
     const stripped = stem.replace(re, '')
     if (stripped !== stem) {
       const hit = idx.exact.get(stripped)
-      if (hit) return hit
+      if (hit && tokensCompatible(stripped, basename(hit, extname(hit)).toLowerCase())) {
+        return hit
+      }
     }
   }
 
@@ -101,19 +118,34 @@ function fuzzyMatch(target: string, idx: ReturnType<typeof buildIndex>): string 
     }
   })
 
-  // Pick the highest-overlap file, but only if the overlap is high enough.
-  // Threshold: at least 60% of the target's tokens must match.
+  // Pick the highest-overlap file. Two-stage filter:
+  //   • at least 70% of the target's tokens must match (raised from 60%)
+  //   • discriminating tokens (flavour/colour/format) must match
   let bestFile: string | null = null
   let bestScore = 0
-  const minScore = Math.max(2, Math.ceil(targetTokens.size * 0.6))
+  const minScore = Math.max(2, Math.ceil(targetTokens.size * 0.7))
   Array.from(seen).forEach(([file, score]) => {
-    if (score > bestScore) {
-      bestScore = score
-      bestFile = file
-    }
+    if (score <= bestScore) return
+    const fileStem = basename(file, extname(file)).toLowerCase()
+    if (!tokensCompatible(stem, fileStem)) return
+    bestScore = score
+    bestFile = file
   })
   if (bestFile && bestScore >= minScore) return bestFile
   return null
+}
+
+/**
+ * Two filename stems are "compatible" if their discriminating-token sets
+ * (flavour, colour, format) are equal. Prevents pairing visually similar
+ * but semantically distinct products like blackberry vs blueberry.
+ */
+function tokensCompatible(a: string, b: string): boolean {
+  const aSet = new Set(a.split(/[-_]+/g).filter((t) => DISCRIMINATING_TOKENS.has(t)))
+  const bSet = new Set(b.split(/[-_]+/g).filter((t) => DISCRIMINATING_TOKENS.has(t)))
+  if (aSet.size !== bSet.size) return false
+  for (const t of Array.from(aSet)) if (!bSet.has(t)) return false
+  return true
 }
 
 async function pagedSelect<T>(
