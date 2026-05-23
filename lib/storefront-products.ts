@@ -205,9 +205,15 @@ async function runRows(query: PromiseLike<{ data: unknown; error: unknown }>): P
 
 export async function getProductsByCategorySlug(slug: string): Promise<Product[]> {
   const supabase = getSupabasePublicClient()
-  const { data: cat } = await supabase.from('categories').select('id').eq('slug', slug).maybeSingle()
+  // .limit(1) + index is more reliable than .maybeSingle() — we've seen
+  // intermittent null returns from maybeSingle late in a multi-query request.
+  const { data: cats } = await supabase
+    .from('categories')
+    .select('id, slug')
+    .eq('slug', slug)
+    .limit(1)
+  const cat = cats?.[0]
   if (!cat) return []
-  // PostgREST caps at 1000 rows by default; explicit range to clear that.
   return runRows(listSelect().eq('category_id', cat.id).range(0, 9999))
 }
 
@@ -226,7 +232,12 @@ export async function getSaleProducts(limit?: number): Promise<Product[]> {
 
 export async function getProductsByBrandSlug(slug: string): Promise<Product[]> {
   const supabase = getSupabasePublicClient()
-  const { data: brand } = await supabase.from('brands').select('id').eq('slug', slug).maybeSingle()
+  const { data: brands } = await supabase
+    .from('brands')
+    .select('id, slug')
+    .eq('slug', slug)
+    .limit(1)
+  const brand = brands?.[0]
   if (!brand) return []
   return runRows(listSelect().eq('brand_id', brand.id).range(0, 9999))
 }
