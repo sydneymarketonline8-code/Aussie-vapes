@@ -34,15 +34,86 @@ const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
 
 const PRODUCTS_DIR = join(process.cwd(), 'public', 'products')
 
-function buildIndex(): Map<string, string> {
-  // basename-without-extension (lowercase) → actual filename on disk
+function buildIndex(): {
+  exact: Map<string, string>
+  partial: Map<string, string[]>
+} {
+  // exact: basename-without-extension (lowercase) → actual filename on disk
+  // partial: word prefix bucket → all filenames containing that prefix.
+  //   Used by fuzzy match to find files that share most of the same words.
   const files = readdirSync(PRODUCTS_DIR)
-  const idx = new Map<string, string>()
+  const exact = new Map<string, string>()
+  const partial = new Map<string, string[]>()
   for (const f of files) {
     const stem = basename(f, extname(f)).toLowerCase()
-    if (!idx.has(stem)) idx.set(stem, f)
+    if (!exact.has(stem)) exact.set(stem, f)
+
+    // Bucket by every 3+ char token in the basename
+    for (const token of stem.split(/[-_]/g)) {
+      if (token.length < 3) continue
+      const list = partial.get(token) ?? []
+      list.push(f)
+      partial.set(token, list)
+    }
   }
-  return idx
+  return { exact, partial }
+}
+
+/**
+ * Try a sequence of slug transformations and partial matches to find a
+ * file on disk that probably represents the same product as `target`.
+ * Returns the actual filename (with extension) or null if nothing close.
+ */
+function fuzzyMatch(target: string, idx: ReturnType<typeof buildIndex>): string | null {
+  const stem = basename(target, extname(target)).toLowerCase()
+
+  // 1. Try a battery of known-good suffix strips
+  const stripPatterns = [
+    /-iget-australia$/,
+    /-iget$/,
+    /-australia$/,
+    /-\d+-?pack$/,         // -3-pack, -5-pack, -10pack
+    /-pack-\d+-items?$/,   // -pack-10-items
+    /-pack$/,
+    /-no-battery-base$/,
+    /-pod-only.*$/,
+    /-base$/,
+    /-bundle$/,
+  ]
+  for (const re of stripPatterns) {
+    const stripped = stem.replace(re, '')
+    if (stripped !== stem) {
+      const hit = idx.exact.get(stripped)
+      if (hit) return hit
+    }
+  }
+
+  // 2. Best-effort partial match: pick the file that shares the most tokens
+  const targetTokens = new Set(stem.split(/[-_]/g).filter((t) => t.length >= 3))
+  if (targetTokens.size === 0) return null
+
+  const seen = new Map<string, number>() // filename → overlap count
+  for (const tok of targetTokens) {
+    const candidates = idx.partial.get(tok)
+    if (!candidates) continue
+    for (const f of candidates) {
+      seen.set(f, (seen.get(f) ?? 0) + 1)
+    }
+  }
+
+  // Pick the highest-overlap file, but only if the overlap is high enough.
+  // Threshold: at least 60% of the target's tokens must match.
+  let bestFile: string | null = null
+  let bestScore = 0
+  const minScore = Math.max(2, Math.ceil(targetTokens.size * 0.6))
+  for (const [file, score] of seen) {
+    if (score > bestScore) {
+      bestScore = score
+      bestFile = file
+    }
+  }
+  if (bestFile && bestScore >= minScore) return bestFile
+  return null
 }
 
 async function pagedSelect<T>(
@@ -79,7 +150,8 @@ interface ProductRow {
 
 async function main() {
   console.log(`Scanning ${PRODUCTS_DIR}`)
-  const onDisk = buildIndex()
+  const idx = buildIndex()
+  const onDisk = idx.exact
   console.log(`  ${onDisk.size} unique image basenames available\n`)
 
   console.log('Fetching all product_images rows…')
@@ -112,10 +184,17 @@ async function main() {
     if (onDiskName) {
       fixes.push({ id: row.id, from: row.url, to: `/products/${onDiskName}` })
       extensionFixed++
-    } else {
-      stillBroken.push(row.url)
-      stillMissing++
+      continue
     }
+    // Fuzzy fallback — try suffix strips + token overlap
+    const fuzzy = fuzzyMatch(filename, idx)
+    if (fuzzy) {
+      fixes.push({ id: row.id, from: row.url, to: `/products/${fuzzy}` })
+      extensionFixed++
+      continue
+    }
+    stillBroken.push(row.url)
+    stillMissing++
   }
 
   // ─── Step 2: backfill image rows for products that have none
@@ -123,6 +202,7 @@ async function main() {
   const productsWithoutImage = products.filter((p) => !productsWithImage.has(p.id))
 
   const inserts: { product_id: string; url: string; position: number }[] = []
+  const stillNoProduct: string[] = []
   let backfilled = 0
   let noFileForProduct = 0
   for (const p of productsWithoutImage) {
@@ -130,9 +210,16 @@ async function main() {
     if (onDiskName) {
       inserts.push({ product_id: p.id, url: `/products/${onDiskName}`, position: 0 })
       backfilled++
-    } else {
-      noFileForProduct++
+      continue
     }
+    const fuzzy = fuzzyMatch(p.slug, idx)
+    if (fuzzy) {
+      inserts.push({ product_id: p.id, url: `/products/${fuzzy}`, position: 0 })
+      backfilled++
+      continue
+    }
+    stillNoProduct.push(p.slug)
+    noFileForProduct++
   }
 
   console.log('Existing image rows:')
@@ -174,15 +261,16 @@ async function main() {
     process.stdout.write('\n')
   }
 
-  if (stillBroken.length || noFileForProduct) {
+  if (stillBroken.length || stillNoProduct.length) {
     console.log()
-    console.log(`Still missing imagery (placeholder will render for these):`)
+    console.log('Still missing imagery (placeholder will render for these):')
     console.log(`  ${stillBroken.length} existing rows point at files not on disk`)
-    console.log(`  ${noFileForProduct} products have no image row and no slug-matched file`)
-    if (stillBroken.length) {
+    console.log(`  ${stillNoProduct.length} products have no image row and nothing close on disk`)
+    if (stillNoProduct.length) {
       console.log()
-      console.log('First 10 broken-row URLs:')
-      for (const url of stillBroken.slice(0, 10)) console.log(`  ${url}`)
+      console.log('Product slugs without imagery (drop a file named <slug>.jpg in public/products/ then re-run):')
+      for (const s of stillNoProduct.slice(0, 30)) console.log(`  ${s}`)
+      if (stillNoProduct.length > 30) console.log(`  …and ${stillNoProduct.length - 30} more`)
     }
   } else {
     console.log()
