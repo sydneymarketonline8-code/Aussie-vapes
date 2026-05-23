@@ -90,7 +90,9 @@ function rowToProduct(row: ProductRow, relatedSlugs: string[] = []): Product {
     sku: row.sku,
     price: Number(row.price),
     comparePrice: row.compare_price != null ? Number(row.compare_price) : undefined,
-    images: images.length ? images : ['/products/placeholder.webp'],
+    // No fake placeholder URL — let the ProductImage component render its
+    // own clean fallback when the array is empty.
+    images: images.length ? images : [],
     category: category?.slug ?? '',
     subcategory: subcategory?.slug,
     tags: row.tags ?? [],
