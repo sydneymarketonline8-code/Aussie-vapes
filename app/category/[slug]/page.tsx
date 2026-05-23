@@ -18,6 +18,16 @@ export default async function CategoryPage({
 
   const allProducts = await getProductsByCategorySlug(slug)
 
+  // Temporary diagnostic — visible in HTML view-source so we can see
+  // server-side image counts when client-side rendering looks broken.
+  // Remove once image rendering is confirmed working.
+  const _dbg = {
+    cat: slug,
+    products: allProducts.length,
+    withImages: allProducts.filter((p) => p.images.length > 0).length,
+    sample: allProducts.slice(0, 3).map((p) => ({ slug: p.slug, img: p.images[0] ?? null })),
+  }
+
   const breadcrumbJson = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -57,6 +67,7 @@ export default async function CategoryPage({
       {faqJson && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJson) }} />
       )}
+      <meta name="x-debug-category" content={JSON.stringify(_dbg)} />
       <CategoryView category={category} allProducts={allProducts} />
     </>
   )
