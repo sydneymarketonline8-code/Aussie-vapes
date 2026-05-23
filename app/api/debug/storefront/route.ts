@@ -4,10 +4,9 @@ import { getSupabasePublicClient } from '@/lib/supabase/public'
 export const dynamic = 'force-dynamic'
 
 /**
- * Diagnostic endpoint that runs the exact storefront queries server-side
- * and returns row counts + any errors as JSON. Useful when the page renders
- * with 0 products and you want to know if it's the data layer, the query,
- * a timeout, or something else.
+ * Diagnostic endpoint — verbose. Returns every query result, every error,
+ * and tries the slug lookup three different ways so we can see exactly
+ * which form is failing.
  *
  * Delete after the storefront is stable.
  */
@@ -21,66 +20,89 @@ export async function GET() {
     },
   }
 
-  // 1. Can we read categories?
+  // 1. Full categories list — verify slugs are what we expect
   {
-    const start = Date.now()
-    const { data, error } = await supabase.from('categories').select('id, slug')
-    out.categories = {
-      rows: data?.length ?? 0,
+    const { data, error } = await supabase
+      .from('categories')
+      .select('id, slug, name')
+      .order('position')
+    out.categoriesList = {
+      rows: data ?? [],
       error: error?.message ?? null,
-      ms: Date.now() - start,
     }
   }
 
-  // 2. Cheap count of active products (no joins)
+  // 2. Slug lookup using .maybeSingle() (the current production code path)
   {
-    const start = Date.now()
+    const { data, error } = await supabase
+      .from('categories')
+      .select('id, slug')
+      .eq('slug', 'disposable-vapes')
+      .maybeSingle()
+    out.slugLookupMaybeSingle = {
+      data,
+      error: error?.message ?? null,
+      errorCode: (error as { code?: string } | null)?.code ?? null,
+    }
+  }
+
+  // 3. Slug lookup using .limit(1) + array index (alternative form)
+  {
+    const { data, error } = await supabase
+      .from('categories')
+      .select('id, slug')
+      .eq('slug', 'disposable-vapes')
+      .limit(1)
+    out.slugLookupLimit = {
+      data,
+      error: error?.message ?? null,
+    }
+  }
+
+  // 4. Slug lookup using .filter() (yet another alternative)
+  {
+    const { data, error } = await supabase
+      .from('categories')
+      .select('id, slug')
+      .filter('slug', 'eq', 'disposable-vapes')
+    out.slugLookupFilter = {
+      data,
+      error: error?.message ?? null,
+    }
+  }
+
+  // 5. Slug lookup using ilike (case-insensitive — to rule out casing)
+  {
+    const { data, error } = await supabase
+      .from('categories')
+      .select('id, slug')
+      .ilike('slug', 'disposable-vapes')
+    out.slugLookupIlike = {
+      data,
+      error: error?.message ?? null,
+    }
+  }
+
+  // 6. Most-bare possible: get all 5 categories without filter, then JS-find
+  {
+    const { data, error } = await supabase.from('categories').select('id, slug, name')
+    const found = (data ?? []).find((c) => c.slug === 'disposable-vapes')
+    out.slugLookupJsFind = {
+      found: found ?? null,
+      anyMatch: !!found,
+      allSlugs: (data ?? []).map((c) => c.slug),
+      error: error?.message ?? null,
+    }
+  }
+
+  // 7. Active product count (already known to work — control)
+  {
     const { count, error } = await supabase
       .from('products')
       .select('id', { count: 'exact', head: true })
       .eq('status', 'active')
       .is('deleted_at', null)
-    out.productCount = { count: count ?? 0, error: error?.message ?? null, ms: Date.now() - start }
-  }
-
-  // 3. Slim select of disposable-vapes products (mimics the category page query)
-  {
-    const start = Date.now()
-    const { data: cat } = await supabase.from('categories').select('id').eq('slug', 'disposable-vapes').maybeSingle()
-    if (!cat) {
-      out.disposableVapesQuery = { error: 'category disposable-vapes not found', rows: 0 }
-    } else {
-      const { data, error } = await supabase
-        .from('products')
-        .select('id, slug, name, sku, price, in_stock, rating, brand:brand_id(display_name), product_images(url, position)')
-        .eq('status', 'active')
-        .is('deleted_at', null)
-        .eq('category_id', cat.id)
-        .range(0, 9999)
-      out.disposableVapesQuery = {
-        rows: data?.length ?? 0,
-        error: error?.message ?? null,
-        errorCode: (error as { code?: string } | null)?.code ?? null,
-        firstRow: data?.[0] ?? null,
-        ms: Date.now() - start,
-      }
-    }
-  }
-
-  // 4. Even slimmer — no joins at all
-  {
-    const start = Date.now()
-    const { data, error } = await supabase
-      .from('products')
-      .select('id, slug, name, price')
-      .eq('status', 'active')
-      .is('deleted_at', null)
-      .range(0, 9999)
-    out.bareProducts = {
-      rows: data?.length ?? 0,
-      error: error?.message ?? null,
-      ms: Date.now() - start,
-    }
+    out.productCount = { count: count ?? 0, error: error?.message ?? null }
   }
 
   return NextResponse.json(out, {
