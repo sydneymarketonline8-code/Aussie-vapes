@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer'
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartDrawer from '@/components/cart/CartDrawer'
 import AgeGate from '@/components/ui/AgeGate'
+import LiveChat from '@/components/layout/LiveChat'
 import PublicChrome from '@/components/layout/PublicChrome'
 import { buildSiteMetadata, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <PublicChrome>
             <Footer />
             <CartDrawer />
+            <LiveChat />
           </PublicChrome>
         </CartProvider>
       </body>
