@@ -105,6 +105,70 @@ export async function GET() {
     out.productCount = { count: count ?? 0, error: error?.message ?? null }
   }
 
+  // 8. Exact production category query — slim select, embedded joins, range
+  {
+    const start = Date.now()
+    const { data: cat } = await supabase
+      .from('categories')
+      .select('id')
+      .eq('slug', 'disposable-vapes')
+      .maybeSingle()
+    if (!cat) {
+      out.fullCategoryQuery = { error: 'category lookup failed inside step 8', rows: 0 }
+    } else {
+      const SELECT = `
+        id, slug, name, sku, price, compare_price,
+        short_description, tags, flavours, nicotine_strengths,
+        in_stock, stock_count, rating, review_count,
+        is_new, is_best_seller, is_sale,
+        brand:brand_id ( display_name ),
+        category:category_id ( slug ),
+        subcategory:subcategory_id ( slug ),
+        product_images ( url, position )
+      `
+      const { data, error } = await supabase
+        .from('products')
+        .select(SELECT)
+        .eq('status', 'active')
+        .is('deleted_at', null)
+        .eq('category_id', cat.id)
+        .range(0, 9999)
+      out.fullCategoryQuery = {
+        rows: data?.length ?? 0,
+        error: error?.message ?? null,
+        errorCode: (error as { code?: string } | null)?.code ?? null,
+        ms: Date.now() - start,
+        firstRow: data?.[0] ?? null,
+      }
+    }
+  }
+
+  // 9. Same query without embedded joins (rules out join cost)
+  {
+    const start = Date.now()
+    const { data: cat } = await supabase
+      .from('categories')
+      .select('id')
+      .eq('slug', 'disposable-vapes')
+      .maybeSingle()
+    if (!cat) {
+      out.flatCategoryQuery = { error: 'category lookup failed inside step 9', rows: 0 }
+    } else {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, slug, name, price, in_stock')
+        .eq('status', 'active')
+        .is('deleted_at', null)
+        .eq('category_id', cat.id)
+        .range(0, 9999)
+      out.flatCategoryQuery = {
+        rows: data?.length ?? 0,
+        error: error?.message ?? null,
+        ms: Date.now() - start,
+      }
+    }
+  }
+
   return NextResponse.json(out, {
     headers: { 'Cache-Control': 'no-store' },
   })
