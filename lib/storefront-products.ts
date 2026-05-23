@@ -202,7 +202,36 @@ async function runRows(query: PromiseLike<{ data: unknown; error: unknown }>): P
     console.error('[storefront-products] query failed', error)
     return []
   }
-  return ((data ?? []) as ProductRow[]).map((row) => rowToProduct(row))
+  const rows = (data ?? []) as ProductRow[]
+  const products = rows.map((row) => rowToProduct(row))
+
+  // Fallback for stale PostgREST schema cache: if the embedded product_images
+  // join came back empty for *every* product, fetch images in a second query.
+  // (Happens after table changes until the schema cache refreshes.)
+  const everyMissing = products.length > 0 && products.every((p) => p.images.length === 0)
+  if (everyMissing) {
+    const supabase = getSupabasePublicClient()
+    const ids = products.map((p) => p.id)
+    const { data: imgs } = await supabase
+      .from('product_images')
+      .select('product_id, url, position')
+      .in('product_id', ids)
+      .order('position', { ascending: true })
+      .range(0, 9999)
+    if (imgs?.length) {
+      const byProduct = new Map<string, string[]>()
+      for (const r of imgs as { product_id: string; url: string; position: number }[]) {
+        const list = byProduct.get(r.product_id) ?? []
+        list.push(r.url)
+        byProduct.set(r.product_id, list)
+      }
+      for (const p of products) {
+        const urls = byProduct.get(p.id)
+        if (urls?.length) p.images = urls
+      }
+    }
+  }
+  return products
 }
 
 export async function getProductsByCategorySlug(slug: string): Promise<Product[]> {
