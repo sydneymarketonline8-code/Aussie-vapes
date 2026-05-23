@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { PhotoIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 
 interface ProductGalleryProps {
@@ -12,7 +13,15 @@ interface ProductGalleryProps {
 export default function ProductGallery({ images, productName }: ProductGalleryProps) {
   const [selected, setSelected] = useState(0)
 
-  if (!images.length) return null
+  if (!images.length) {
+    return (
+      <div className="flex flex-col gap-3">
+        <div className="relative aspect-square rounded-sm overflow-hidden bg-soft-100 border border-line flex items-center justify-center">
+          <PhotoIcon className="h-16 w-16 text-mute opacity-40" />
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-3">

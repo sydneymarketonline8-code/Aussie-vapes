@@ -131,18 +131,35 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   }
   if (!data) return null
 
+  const row = data as unknown as ProductRow
+
+  // Fallback for stale PostgREST schema cache: if the embedded product_images
+  // join came back empty, fetch images in a separate query keyed by id. This
+  // happens after table mutations until the cache refreshes; without this
+  // fallback the ProductGallery would render nothing.
+  if (!row.product_images || row.product_images.length === 0) {
+    const { data: imgs } = await supabase
+      .from('product_images')
+      .select('url, position')
+      .eq('product_id', row.id)
+      .order('position', { ascending: true })
+    if (imgs?.length) {
+      row.product_images = imgs as { url: string; position: number }[]
+    }
+  }
+
   // Fetch related slugs in a second query (avoids the recursive join complexity).
   const { data: rels } = await supabase
     .from('product_related')
     .select('related_product_id, position, related:related_product_id ( slug )')
-    .eq('product_id', (data as unknown as ProductRow).id)
+    .eq('product_id', row.id)
     .order('position', { ascending: true })
 
   const relatedSlugs = ((rels as unknown as Array<{ related: { slug: string } | { slug: string }[] | null }> | null) ?? [])
     .map((r) => pickOne(r.related)?.slug)
     .filter((s): s is string => !!s)
 
-  return rowToProduct(data as unknown as ProductRow, relatedSlugs)
+  return rowToProduct(row, relatedSlugs)
 }
 
 export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
