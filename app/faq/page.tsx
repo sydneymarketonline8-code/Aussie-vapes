@@ -40,7 +40,7 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
       {
         question: 'Can I order over the phone?',
         answer:
-          "Aussie Vapes is an online-only store. We don't take phone orders for security reasons, but our support team is happy to help you place an online order if you call us at +61 0000 0000.",
+          "Aussie Vapes is an online-only store. We don't take phone orders for security reasons, but our support team is happy to help you place an online order if you call us at +61 480 831 679.",
       },
     ],
   },

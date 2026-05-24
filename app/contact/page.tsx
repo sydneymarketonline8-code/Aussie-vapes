@@ -76,7 +76,7 @@ export default function ContactPage() {
           <h2 className="font-display text-2xl font-bold text-ink mb-2 lowercase">other ways to reach aussie vapes</h2>
 
           {[
-            { Icon: PhoneIcon, t: 'Phone', body: '+61 0000 0000', href: 'tel:+61000000000', note: 'Mon–Fri 9am–5pm AEST' },
+            { Icon: PhoneIcon, t: 'Phone', body: '+61 480 831 679', href: 'tel:+61480831679', note: 'Mon–Fri 9am–5pm AEST' },
             { Icon: EnvelopeIcon, t: 'Email', body: 'info@aussievapes.com.au', href: 'mailto:info@aussievapes.com.au', note: 'Replies within 4 business hours' },
             { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every Aussie Vapes page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
             { Icon: MapPinIcon, t: 'Sydney Warehouse', body: 'Sydney, NSW, Australia', href: '#', note: 'Pick-up by appointment only (B2B / wholesale)' },
