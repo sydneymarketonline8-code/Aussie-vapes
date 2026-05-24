@@ -82,6 +82,19 @@ export function buildSiteMetadata(): Metadata {
       description: DEFAULT_DESCRIPTION,
     },
     alternates: { canonical: SITE_URL },
+    // Search-engine ownership verification. Each value is rendered as a
+    // <meta> tag in <head>. Add the codes given by each engine's webmaster
+    // console as env vars; missing ones are omitted, so dev/preview don't
+    // need them.
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || undefined,
+      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
+      other: {
+        ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+          ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION }
+          : {}),
+      },
+    },
   }
 }
 
