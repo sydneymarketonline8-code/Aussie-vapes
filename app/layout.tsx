@@ -8,6 +8,7 @@ import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartDrawer from '@/components/cart/CartDrawer'
 import AgeGate from '@/components/ui/AgeGate'
 import LiveChat from '@/components/layout/LiveChat'
+import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import PublicChrome from '@/components/layout/PublicChrome'
 import { buildSiteMetadata, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
             <CartDrawer />
             <LiveChat />
+            <WhatsAppButton />
           </PublicChrome>
         </CartProvider>
       </body>
