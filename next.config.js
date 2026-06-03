@@ -23,16 +23,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Canonical host: 301 every www.* hit to the apex domain so Search
-      // Console stops flagging www URLs as "Alternate page with proper
-      // canonical tag". MUST be first so it runs before any path redirects.
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.aussievapes.com.au' }],
-        destination: 'https://aussievapes.com.au/:path*',
-        permanent: true,
-      },
-
       // Top-level brand shortcuts (SEO + bookmark friendliness)
       { source: '/iget', destination: '/brand/iget', permanent: true },
       { source: '/alfakher', destination: '/brand/alfakher', permanent: true },
