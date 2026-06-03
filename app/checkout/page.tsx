@@ -313,9 +313,9 @@ export default function CheckoutPage() {
                 <div className="rounded-sm bg-soft-100 border border-line p-4 text-sm text-body">
                   <p className="font-display text-xs font-bold uppercase tracking-wider text-ink mb-2">What happens next</p>
                   <ol className="list-decimal list-inside space-y-1 text-xs">
-                    <li>We&apos;ll create your order and show you the {paymentMethod === 'payid' ? 'PayID details' : 'BTC wallet address + QR code'}.</li>
-                    <li>Send payment using the unique reference code on that screen.</li>
-                    <li>We&apos;ll email confirmation and dispatch once payment is received (usually within hours).</li>
+                    <li>We&apos;ll create your order with a unique reference code.</li>
+                    <li>You&apos;ll be directed to <strong className="text-ink">WhatsApp</strong> to lock the order in with our team.</li>
+                    <li>We confirm details, arrange payment via your chosen method ({paymentMethod === 'payid' ? 'PayID' : 'Bitcoin'}), and dispatch once payment is received.</li>
                   </ol>
                 </div>
 

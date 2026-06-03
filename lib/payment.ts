@@ -34,3 +34,60 @@ export function buildBitcoinUri(address: string): string {
   return `bitcoin:${address}`
 }
 
+/**
+ * WhatsApp confirmation flow.
+ *
+ * After the customer places an order, we redirect them to WhatsApp with a
+ * pre-filled message so the sales team can lock the order in and arrange
+ * payment offline. The number is configured via NEXT_PUBLIC_WHATSAPP_NUMBER
+ * (E.164, with or without the leading "+", spaces and dashes are stripped).
+ */
+export interface WhatsAppConfig {
+  /** Sanitised E.164 number (digits only, no leading "+"). */
+  number: string
+}
+
+export function getWhatsAppConfig(): WhatsAppConfig {
+  const raw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
+  return { number: raw.replace(/\D+/g, '') }
+}
+
+export interface WhatsAppOrderSummary {
+  number: string
+  reference: string
+  total: number
+  paymentMethod: PaymentMethod
+  customerName?: string
+  customerEmail?: string
+}
+
+/**
+ * Returns a wa.me deep-link with the order summary pre-filled, or null when
+ * NEXT_PUBLIC_WHATSAPP_NUMBER is not configured (in which case the UI should
+ * fall back to manual payment instructions).
+ */
+export function buildWhatsAppOrderLink(summary: WhatsAppOrderSummary): string | null {
+  const { number } = getWhatsAppConfig()
+  if (!number) return null
+
+  const methodLabel =
+    PAYMENT_METHODS.find((m) => m.id === summary.paymentMethod)?.label ?? summary.paymentMethod
+
+  const lines = [
+    `Hi Aussie Vapes, I'd like to confirm my order:`,
+    ``,
+    `Order: ${summary.number}`,
+    `Reference: ${summary.reference}`,
+    `Total: $${summary.total.toFixed(2)} AUD`,
+    `Payment method: ${methodLabel}`,
+    summary.customerName ? `Name: ${summary.customerName}` : null,
+    summary.customerEmail ? `Email: ${summary.customerEmail}` : null,
+    ``,
+    `Ready to send payment — please confirm the details.`,
+  ]
+    .filter((l): l is string => l !== null)
+    .join('\n')
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(lines)}`
+}
+

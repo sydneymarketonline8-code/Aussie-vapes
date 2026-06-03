@@ -660,6 +660,7 @@ returns table (
   number text,
   total numeric,
   customer_email text,
+  customer_name text,
   payment_method text,
   payment_reference text,
   payment_status text
@@ -673,6 +674,7 @@ as $$
     o.number,
     o.total,
     o.customer_email,
+    o.customer_name,
     o.payment_method::text,
     o.payment_reference,
     o.payment_status::text
