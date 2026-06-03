@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, faqJsonLd } from '@/lib/seo'
 import HeroCollage from '@/components/ui/HeroCollage'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
 
 export const metadata: Metadata = {
   title: 'Aussie Vape Packs — Disposable Vape Packs & Bundle Deals Australia',

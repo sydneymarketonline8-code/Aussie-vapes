@@ -1,7 +1,7 @@
 import { sendEmail } from './email'
 import { getBitcoinConfig, getPayIdConfig, type PaymentMethod } from './payment'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
 
 export interface OrderConfirmationParams {
   to: string

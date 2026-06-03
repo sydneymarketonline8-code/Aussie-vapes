@@ -9,7 +9,7 @@ import { getFeaturedProducts } from '@/lib/storefront-products'
 import { faqJsonLd, breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
 
 export async function generateStaticParams() {
   return CITIES.map((c) => ({ city: c.slug }))

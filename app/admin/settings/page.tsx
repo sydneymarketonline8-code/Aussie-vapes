@@ -5,7 +5,7 @@ import { getActiveProductCount } from '@/lib/storefront-products'
 
 export const dynamic = 'force-dynamic'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
 
 function Row({ k, v, mono }: { k: string; v: string; mono?: boolean }) {
   return (

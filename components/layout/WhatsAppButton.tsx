@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation'
  * works out of the box and can be redirected by changing one var.
  *
  * Hidden on /admin/* and /checkout/success/* — same logic as <LiveChat>.
- * Positioned bottom-LEFT so it doesn't visually compete with the Tawk.to
+ * Positioned bottom-LEFT so it doesn't visually compete with the Crisp
  * chat bubble in the bottom-right corner.
  */
 
