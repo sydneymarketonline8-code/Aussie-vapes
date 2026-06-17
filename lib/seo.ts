@@ -331,7 +331,7 @@ export function localBusinessJsonLd() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+61-489-921-275',
+      telephone: '+61-480-803-761',
       contactType: 'customer service',
       email: 'info@aussievapes.com.au',
       areaServed: 'AU',
