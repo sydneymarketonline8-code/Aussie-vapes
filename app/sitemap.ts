@@ -6,7 +6,7 @@ import { CITIES } from '@/lib/cities'
 import { PACK_GROUPS } from '@/lib/packs'
 import { PUFF_RANGES } from '@/lib/puff-ranges'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()

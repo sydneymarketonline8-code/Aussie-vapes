@@ -144,7 +144,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-2 text-body">
               <EnvelopeIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
-              <a href="mailto:info@aussievapes.com.au" className="hover:text-price">info@aussievapes.com.au</a>
+              <a href="mailto:info@vapesaustralia.com.au" className="hover:text-price">info@vapesaustralia.com.au</a>
             </li>
             <li className="flex items-start gap-2 text-body">
               <ClockIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />

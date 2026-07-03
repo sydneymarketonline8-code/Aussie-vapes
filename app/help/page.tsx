@@ -16,7 +16,7 @@ const TILES = [
   { Icon: ArrowPathIcon, title: 'Returns', body: '30-day return policy and faulty device replacements.', href: '/returns' },
   { Icon: ShieldCheckIcon, title: 'Order Tracking', body: 'Check the status of your Aussie Vapes order.', href: '/track' },
   { Icon: ChatBubbleLeftRightIcon, title: 'Live Chat', body: 'Chat with the Aussie Vapes team in real time.', href: '/contact' },
-  { Icon: EnvelopeIcon, title: 'Email Support', body: 'Email info@aussievapes.com.au — reply within 4 business hours.', href: 'mailto:info@aussievapes.com.au' },
+  { Icon: EnvelopeIcon, title: 'Email Support', body: 'Email info@vapesaustralia.com.au — reply within 4 business hours.', href: 'mailto:info@vapesaustralia.com.au' },
 ]
 
 export default function HelpPage() {

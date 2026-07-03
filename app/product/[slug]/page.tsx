@@ -20,7 +20,7 @@ import StarRating from '@/components/ui/StarRating'
 import Badge from '@/components/ui/Badge'
 import { CheckIcon, TruckIcon, ArrowTopRightOnSquareIcon, ExclamationTriangleIcon, BoltIcon } from '@heroicons/react/24/outline'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 // ISR: product pages are statically generated for fast TTFB, but each one
 // regenerates on the next request after 60s. Admin edits (price, stock,

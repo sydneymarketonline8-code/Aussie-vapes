@@ -120,7 +120,7 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
       {
         question: 'My Aussie Vapes order arrived faulty — what now?',
         answer:
-          'Contact info@aussievapes.com.au within 7 days of delivery with your order number and a short video/photo of the issue. We typically dispatch replacements within 1 business day of approval.',
+          'Contact info@vapesaustralia.com.au within 7 days of delivery with your order number and a short video/photo of the issue. We typically dispatch replacements within 1 business day of approval.',
       },
       {
         question: 'How long do refunds take?',
@@ -185,7 +185,7 @@ export default function FaqPage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link href="/contact" className="btn-sale">Contact Aussie Vapes</Link>
-            <a href="mailto:info@aussievapes.com.au" className="btn-secondary bg-white">Email Us</a>
+            <a href="mailto:info@vapesaustralia.com.au" className="btn-secondary bg-white">Email Us</a>
           </div>
         </div>
       </section>

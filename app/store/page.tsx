@@ -53,7 +53,7 @@ export default function StorePage() {
             <li className="flex items-start gap-3"><MapPinIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><span><strong>Sydney, NSW, Australia</strong><br /><span className="text-mute">Pick-up by appointment only (B2B / wholesale orders)</span></span></li>
             <li className="flex items-start gap-3"><ClockIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><span><strong>Dispatch Hours:</strong> Mon-Fri 9am-5pm AEST</span></li>
             <li className="flex items-start gap-3"><PhoneIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><a href="tel:+61480803761" className="hover:text-price"><strong>+61 480 803 761</strong></a></li>
-            <li className="flex items-start gap-3"><EnvelopeIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><a href="mailto:info@aussievapes.com.au" className="hover:text-price"><strong>info@aussievapes.com.au</strong></a></li>
+            <li className="flex items-start gap-3"><EnvelopeIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><a href="mailto:info@vapesaustralia.com.au" className="hover:text-price"><strong>info@vapesaustralia.com.au</strong></a></li>
           </ul>
 
           <div className="pt-5 border-t border-line">

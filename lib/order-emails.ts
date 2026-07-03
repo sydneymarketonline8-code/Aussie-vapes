@@ -1,7 +1,7 @@
 import { sendEmail } from './email'
 import { getBitcoinConfig, getPayIdConfig, type PaymentMethod } from './payment'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 export interface OrderConfirmationParams {
   to: string
@@ -61,7 +61,7 @@ export async function sendOrderConfirmationEmail(p: OrderConfirmationParams) {
     <tr><td style="padding: 20px 28px 28px;">
       <a href="${successUrl}" style="display: inline-block; background: #111; color: #fff; text-decoration: none; padding: 10px 18px; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 4px;">View payment instructions online</a>
       <p style="margin: 18px 0 0; font-size: 12px; color: #888; line-height: 1.5;">
-        Questions? Reply to this email or contact <a href="mailto:sales@aussievapes.com.au" style="color: #ff0000;">sales@aussievapes.com.au</a> with your reference code.
+        Questions? Reply to this email or contact <a href="mailto:sales@vapesaustralia.com.au" style="color: #ff0000;">sales@vapesaustralia.com.au</a> with your reference code.
       </p>
     </td></tr>
   </table>
@@ -93,7 +93,7 @@ Reference: ${p.reference}   (include in the transaction note)`,
     subject: `Order ${p.orderNumber} received — payment instructions inside`,
     html,
     text,
-    replyTo: 'sales@aussievapes.com.au',
+    replyTo: 'sales@vapesaustralia.com.au',
   })
 }
 
@@ -122,7 +122,7 @@ function bitcoinBlock(address: string, total: number, reference: string): string
     <tr><td style="padding: 6px 0; color: #888; width: 130px;">Amount due</td><td style="padding: 6px 0; color: #ff0000;"><strong>$${total.toFixed(2)} AUD</strong></td></tr>
     <tr><td style="padding: 6px 0; color: #888;">Reference</td><td style="padding: 6px 0; color: #ff0000; font-family: monospace;"><strong>${escape(reference)}</strong></td></tr>
   </table>
-  <p style="font-size: 11px; color: #888; margin: 12px 0 0;">Email <a href="mailto:sales@aussievapes.com.au" style="color: #ff0000;">sales@aussievapes.com.au</a> with your reference code once you've broadcast the transaction.</p>
+  <p style="font-size: 11px; color: #888; margin: 12px 0 0;">Email <a href="mailto:sales@vapesaustralia.com.au" style="color: #ff0000;">sales@vapesaustralia.com.au</a> with your reference code once you've broadcast the transaction.</p>
 </div>`.trim()
 }
 

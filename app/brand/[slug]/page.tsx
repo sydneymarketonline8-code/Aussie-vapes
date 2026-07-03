@@ -16,7 +16,7 @@ import {
 import { CheckCircleIcon, StarIcon } from '@heroicons/react/24/solid'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 // ISR — see comment in /product/[slug]/page.tsx. Same rationale: brand
 // pages render fast from a baked static HTML, but pick up admin product

@@ -214,14 +214,14 @@ async function main() {
     }
     const onDiskName = onDisk.get(stem)
     if (onDiskName) {
-      fixes.push({ id: row.id, from: row.url, to: `https://www.aussievapes.com.au/products/${onDiskName}` })
+      fixes.push({ id: row.id, from: row.url, to: `https://www.vapesaustralia.com.au/products/${onDiskName}` })
       extensionFixed++
       continue
     }
     // Fuzzy fallback — try suffix strips + token overlap
     const fuzzy = fuzzyMatch(filename, idx)
     if (fuzzy) {
-      fixes.push({ id: row.id, from: row.url, to: `https://www.aussievapes.com.au/products/${fuzzy}` })
+      fixes.push({ id: row.id, from: row.url, to: `https://www.vapesaustralia.com.au/products/${fuzzy}` })
       extensionFixed++
       continue
     }
@@ -240,13 +240,13 @@ async function main() {
   for (const p of productsWithoutImage) {
     const onDiskName = onDisk.get(p.slug.toLowerCase())
     if (onDiskName) {
-      inserts.push({ product_id: p.id, url: `https://www.aussievapes.com.au/products/${onDiskName}`, position: 0 })
+      inserts.push({ product_id: p.id, url: `https://www.vapesaustralia.com.au/products/${onDiskName}`, position: 0 })
       backfilled++
       continue
     }
     const fuzzy = fuzzyMatch(p.slug, idx)
     if (fuzzy) {
-      inserts.push({ product_id: p.id, url: `https://www.aussievapes.com.au/products/${fuzzy}`, position: 0 })
+      inserts.push({ product_id: p.id, url: `https://www.vapesaustralia.com.au/products/${fuzzy}`, position: 0 })
       backfilled++
       continue
     }

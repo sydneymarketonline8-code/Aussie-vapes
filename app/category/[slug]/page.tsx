@@ -3,7 +3,7 @@ import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategorySlug } from '@/lib/storefront-products'
 import CategoryView from './CategoryView'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 export const dynamic = 'force-dynamic'
 

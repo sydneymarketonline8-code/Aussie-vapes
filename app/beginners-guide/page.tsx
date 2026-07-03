@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 export const metadata: Metadata = {
   title: "Beginner's Vape Guide Australia — Aussie Vapes Starter Tips",

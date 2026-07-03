@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapes.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Aussie Vapes'
 const DEFAULT_DESCRIPTION =
   "Aussie Vapes is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
@@ -277,7 +277,7 @@ export function organizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'info@aussievapes.com.au',
+      email: 'info@vapesaustralia.com.au',
       availableLanguage: 'en-AU',
     },
     sameAs: [
@@ -333,7 +333,7 @@ export function localBusinessJsonLd() {
       '@type': 'ContactPoint',
       telephone: '+61-480-803-761',
       contactType: 'customer service',
-      email: 'info@aussievapes.com.au',
+      email: 'info@vapesaustralia.com.au',
       areaServed: 'AU',
       availableLanguage: 'en-AU',
     },
