@@ -7,9 +7,9 @@ export const CATEGORIES: Category[] = [
     name: 'Disposable Vapes',
     description: 'Ready-to-use, no-maintenance disposable vapes — from compact 600 puff devices up to 25,000 puff long-life models.',
     intro:
-      "Aussie Vapes is Australia's largest stockist of disposable vapes, with over 1,700 authentic devices across 30+ brands all in stock and ready for same-day Sydney dispatch.",
+      "Vapes Australia is Australia's largest stockist of disposable vapes, with over 1,700 authentic devices across 30+ brands all in stock and ready for same-day Sydney dispatch.",
     longDescription:
-      "Disposable vapes are the most popular vaping format in Australia for one simple reason — they just work. No coil changes, no e-liquid refills, no setup, no maintenance. You unbox it, you vape it, and when it's done you safely dispose of it. Aussie Vapes carries the deepest disposable vape range in Australia, spanning every puff tier and price point. At the entry level, the IGET Shion 600, X-Qlusive 2500 and Gunnpod 2000 are the go-to recommendations for ex-smokers transitioning to vaping. In the mid-range, the IGET Bar 3500, HQD Cuvie Plus 1200 and Mr Fog Max Air 3600 strike the best balance of cost, capacity and flavour. The 5000-8000 puff tier — IGET Goat 5000, IGET Hot 5500, HQD Slick 6000, Gunnpod Moss 8000, Alfakher Crown Bar 8000 — is where most Australian vapers settle in, offering 5-10 days of moderate use per device with USB-C rechargeable batteries. At the top end, the IGET One 12,000, Alfakher Crown Bar 15,000, HQD Cuvie Slick 20,000 and Kuz Flow 25,000 deliver weeks of vaping per device. All disposables sold at Aussie Vapes are authentic, age-verified at checkout, and dispatched same-day from our Sydney warehouse on weekday orders placed before 2pm AEST.",
+      "Disposable vapes are the most popular vaping format in Australia for one simple reason — they just work. No coil changes, no e-liquid refills, no setup, no maintenance. You unbox it, you vape it, and when it's done you safely dispose of it. Vapes Australia carries the deepest disposable vape range in Australia, spanning every puff tier and price point. At the entry level, the IGET Shion 600, X-Qlusive 2500 and Gunnpod 2000 are the go-to recommendations for ex-smokers transitioning to vaping. In the mid-range, the IGET Bar 3500, HQD Cuvie Plus 1200 and Mr Fog Max Air 3600 strike the best balance of cost, capacity and flavour. The 5000-8000 puff tier — IGET Goat 5000, IGET Hot 5500, HQD Slick 6000, Gunnpod Moss 8000, Alfakher Crown Bar 8000 — is where most Australian vapers settle in, offering 5-10 days of moderate use per device with USB-C rechargeable batteries. At the top end, the IGET One 12,000, Alfakher Crown Bar 15,000, HQD Cuvie Slick 20,000 and Kuz Flow 25,000 deliver weeks of vaping per device. All disposables sold at Vapes Australia are authentic, age-verified at checkout, and dispatched same-day from our Sydney warehouse on weekday orders placed before 2pm AEST.",
     highlights: [
       '1,700+ authentic disposable vapes in stock',
       '30+ brands including IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol, RELX',
@@ -25,14 +25,14 @@ export const CATEGORIES: Category[] = [
     ],
     productCount: 1719,
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=Disposable+Vapes',
-    seoTitle: 'Disposable Vapes Australia — 1,700+ In Stock | Aussie Vapes',
+    seoTitle: 'Disposable Vapes Australia — 1,700+ In Stock | Vapes Australia',
     seoDescription:
-      'Aussie Vapes stocks 1,700+ disposable vapes online in Australia. IGET, Alfakher, HQD, Gunnpod, Lost Mary & 35+ brands. Same-day Sydney shipping, free over $300.',
+      'Vapes Australia stocks 1,700+ disposable vapes online in Australia. IGET, Alfakher, HQD, Gunnpod, Lost Mary & 35+ brands. Same-day Sydney shipping, free over $300.',
     keywords: [
-      'aussie vapes disposable',
+      'vapes australia disposable',
       'aussie disposable vapes',
-      'aussie vapes online',
-      'aussie vapes australia',
+      'vapes australia online',
+      'vapes australia australia',
       'disposable vapes australia',
       'buy disposable vape online australia',
       'best disposable vape australia',
@@ -67,7 +67,7 @@ export const CATEGORIES: Category[] = [
       {
         question: 'Are disposable vapes legal in Australia?',
         answer:
-          'Disposable vapes containing nicotine are legal in Australia under the TGA prescription model — you must hold a valid Australian prescription to legally possess them. Aussie Vapes operates within this framework and includes prescription confirmation at checkout. Non-nicotine disposable vapes are also available and require no prescription.',
+          'Disposable vapes containing nicotine are legal in Australia under the TGA prescription model — you must hold a valid Australian prescription to legally possess them. Vapes Australia operates within this framework and includes prescription confirmation at checkout. Non-nicotine disposable vapes are also available and require no prescription.',
       },
       {
         question: 'What is the best disposable vape in Australia?',
@@ -82,17 +82,17 @@ export const CATEGORIES: Category[] = [
       {
         question: 'How much do disposable vapes cost in Australia?',
         answer:
-          'Entry-level disposables (600-2,500 puffs) typically cost $14.95-$22.95 at Aussie Vapes. Mid-range (3,500-6,000 puffs) range from $24.95-$32.95. High-capacity (8,000-15,000 puffs) sit between $35-$47. Ultra-high capacity (20,000+ puffs) reach $55-$60. Bulk packs (3-pack, 5-pack, 10-pack) discount per-unit prices by 10-20%.',
+          'Entry-level disposables (600-2,500 puffs) typically cost $14.95-$22.95 at Vapes Australia. Mid-range (3,500-6,000 puffs) range from $24.95-$32.95. High-capacity (8,000-15,000 puffs) sit between $35-$47. Ultra-high capacity (20,000+ puffs) reach $55-$60. Bulk packs (3-pack, 5-pack, 10-pack) discount per-unit prices by 10-20%.',
       },
       {
         question: 'Do you ship disposable vapes Australia-wide?',
         answer:
-          'Yes. Aussie Vapes ships to every Australian state and territory using discreet plain-packaging couriers. Free shipping on orders over $300. Express options available at checkout. Same-day Sydney dispatch on weekday orders placed before 2pm AEST.',
+          'Yes. Vapes Australia ships to every Australian state and territory using discreet plain-packaging couriers. Free shipping on orders over $300. Express options available at checkout. Same-day Sydney dispatch on weekday orders placed before 2pm AEST.',
       },
       {
         question: "What's the difference between 20mg and 50mg disposables?",
         answer:
-          'In Australia, all legally-sold nicotine disposables are capped at 20mg/mL (2%) under TGA regulations. 50mg devices that some overseas sites sell are not compliant with Australian law. Aussie Vapes only sells TGA-compliant 20mg disposables, which is more than enough nicotine for any vaper.',
+          'In Australia, all legally-sold nicotine disposables are capped at 20mg/mL (2%) under TGA regulations. 50mg devices that some overseas sites sell are not compliant with Australian law. Vapes Australia only sells TGA-compliant 20mg disposables, which is more than enough nicotine for any vaper.',
       },
       {
         question: 'Are disposable vapes safe?',
@@ -109,7 +109,7 @@ export const CATEGORIES: Category[] = [
     intro:
       'Pod systems are the most cost-effective long-term vaping solution. Refill the same pod with nic salt or freebase e-liquid — no daily-disposable waste, no per-device cost.',
     longDescription:
-      "Pod systems are the smartest long-term economic choice for Australian vapers. Where a disposable costs $25-$45 per device and lasts a week or two, a refillable pod system pays for itself in 4-6 weeks of regular use — and after that, the only ongoing cost is e-liquid (around $20-25 per 30mL bottle) and the occasional coil head. Aussie Vapes carries refillable pod kits across three tiers: ultra-slim draw-activated pods for new vapers and ex-smokers wanting a cigarette-like draw; mid-range refillable pods with variable wattage and bigger batteries; and advanced sub-ohm pod mods for experienced vapers chasing flavour and cloud production. All pod kits include the coil heads needed to get started, USB-C charging cables, and a 12-month Australian warranty on hardware.",
+      "Pod systems are the smartest long-term economic choice for Australian vapers. Where a disposable costs $25-$45 per device and lasts a week or two, a refillable pod system pays for itself in 4-6 weeks of regular use — and after that, the only ongoing cost is e-liquid (around $20-25 per 30mL bottle) and the occasional coil head. Vapes Australia carries refillable pod kits across three tiers: ultra-slim draw-activated pods for new vapers and ex-smokers wanting a cigarette-like draw; mid-range refillable pods with variable wattage and bigger batteries; and advanced sub-ohm pod mods for experienced vapers chasing flavour and cloud production. All pod kits include the coil heads needed to get started, USB-C charging cables, and a 12-month Australian warranty on hardware.",
     highlights: [
       'Ultra-slim, mid-range and sub-ohm tiers',
       '12-month Australian warranty on all kits',
@@ -124,14 +124,14 @@ export const CATEGORIES: Category[] = [
     ],
     productCount: 59,
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=Pod+Systems',
-    seoTitle: 'Pod Systems Australia — Refillable Vape Kits | Aussie Vapes',
+    seoTitle: 'Pod Systems Australia — Refillable Vape Kits | Vapes Australia',
     seoDescription:
-      'Aussie Vapes stocks the best refillable pod systems & vape kits in Australia. Beginner to advanced, 12-month AU warranty, save 70% vs disposables long-term.',
+      'Vapes Australia stocks the best refillable pod systems & vape kits in Australia. Beginner to advanced, 12-month AU warranty, save 70% vs disposables long-term.',
     keywords: [
-      'aussie vapes pod systems',
+      'vapes australia pod systems',
       'aussie pod systems',
-      'aussie vapes vape kits',
-      'aussie vapes refillable',
+      'vapes australia vape kits',
+      'vapes australia refillable',
       'pod systems australia',
       'vape kits australia',
       'pod vape australia',
@@ -186,7 +186,7 @@ export const CATEGORIES: Category[] = [
     intro:
       'Nicotine salts deliver a smoother throat hit and faster nicotine absorption than freebase liquids — the format of choice for pod systems and ex-smokers.',
     longDescription:
-      "Nicotine salt e-liquids are the gold standard for pod systems. By combining freebase nicotine with benzoic acid (or another suitable acid), the nicotine becomes more bioavailable at lower wattages — the kind of low wattages pod systems and disposable vapes run at. The practical result: salt liquids deliver a smoother, faster nicotine hit at higher concentrations (20mg+) without the harsh throat hit that high-strength freebase causes. Aussie Vapes carries a curated selection of Australian-made and imported nicotine salt e-liquids in 30mL bottles, with strengths from 25mg to 50mg and a flavour range covering fruit, menthol, dessert and tobacco profiles.",
+      "Nicotine salt e-liquids are the gold standard for pod systems. By combining freebase nicotine with benzoic acid (or another suitable acid), the nicotine becomes more bioavailable at lower wattages — the kind of low wattages pod systems and disposable vapes run at. The practical result: salt liquids deliver a smoother, faster nicotine hit at higher concentrations (20mg+) without the harsh throat hit that high-strength freebase causes. Vapes Australia carries a curated selection of Australian-made and imported nicotine salt e-liquids in 30mL bottles, with strengths from 25mg to 50mg and a flavour range covering fruit, menthol, dessert and tobacco profiles.",
     highlights: [
       'Smoother than freebase at 20mg+ strengths',
       'Faster nicotine absorption',
@@ -201,14 +201,14 @@ export const CATEGORIES: Category[] = [
     ],
     productCount: 89,
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=Nicotine+Salts',
-    seoTitle: 'Nicotine Salts Australia — Nic Salt E-Liquid | Aussie Vapes',
+    seoTitle: 'Nicotine Salts Australia — Nic Salt E-Liquid | Vapes Australia',
     seoDescription:
-      'Aussie Vapes stocks premium nicotine salt e-liquid in Australia. 30mL bottles, 25mg & 50mg, fruit/menthol/dessert flavours. Same-day Sydney shipping.',
+      'Vapes Australia stocks premium nicotine salt e-liquid in Australia. 30mL bottles, 25mg & 50mg, fruit/menthol/dessert flavours. Same-day Sydney shipping.',
     keywords: [
-      'aussie vapes nicotine salts',
+      'vapes australia nicotine salts',
       'aussie nicotine salts',
-      'aussie vapes nic salt',
-      'aussie vapes e-liquid',
+      'vapes australia nic salt',
+      'vapes australia e-liquid',
       'nicotine salts australia',
       'nic salt e-liquid australia',
       'buy nicotine salt online australia',
@@ -263,7 +263,7 @@ export const CATEGORIES: Category[] = [
     intro:
       'Freebase e-liquids are formulated for sub-ohm pod systems and traditional box mods. Higher VG ratio, lower nicotine, big vapour production.',
     longDescription:
-      'Freebase e-liquids are the original e-cigarette format and remain the choice for sub-ohm vapers and cloud chasers. With a higher VG (vegetable glycerin) ratio — typically 70VG/30PG or 80VG/20PG — these liquids produce dense, voluminous vapour clouds at lower nicotine concentrations (typically 3mg or 6mg). Aussie Vapes carries a curated freebase e-liquid range in 30mL and 60mL bottles, covering dessert, fruit, menthol and tobacco profiles.',
+      'Freebase e-liquids are the original e-cigarette format and remain the choice for sub-ohm vapers and cloud chasers. With a higher VG (vegetable glycerin) ratio — typically 70VG/30PG or 80VG/20PG — these liquids produce dense, voluminous vapour clouds at lower nicotine concentrations (typically 3mg or 6mg). Vapes Australia carries a curated freebase e-liquid range in 30mL and 60mL bottles, covering dessert, fruit, menthol and tobacco profiles.',
     highlights: [
       '70VG/80VG high-cloud formulations',
       'Sub-ohm device compatible',
@@ -277,12 +277,12 @@ export const CATEGORIES: Category[] = [
     ],
     productCount: 84,
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=E-Liquids',
-    seoTitle: 'E-Liquids Australia — Freebase Vape Juice | Aussie Vapes',
+    seoTitle: 'E-Liquids Australia — Freebase Vape Juice | Vapes Australia',
     seoDescription:
-      'Aussie Vapes stocks premium freebase e-liquids in Australia. 70VG sub-ohm friendly vape juice, 3mg & 6mg, 30mL & 60mL bottles. Same-day Sydney shipping.',
+      'Vapes Australia stocks premium freebase e-liquids in Australia. 70VG sub-ohm friendly vape juice, 3mg & 6mg, 30mL & 60mL bottles. Same-day Sydney shipping.',
     keywords: [
-      'aussie vapes e-liquid',
-      'aussie vapes vape juice',
+      'vapes australia e-liquid',
+      'vapes australia vape juice',
       'aussie e-liquid',
       'aussie vape juice',
       'e-liquid australia',
@@ -328,7 +328,7 @@ export const CATEGORIES: Category[] = [
     intro:
       'Replacement coils, USB-C cables, carrying cases, nicotine pouches and cleaning supplies for every device in our range.',
     longDescription:
-      "Whether you need replacement coils for your pod system, a new USB-C charging cable, a travel case, or cleaning supplies — Aussie Vapes carries the accessories range you need. All replacement coils are genuine OEM parts compatible with the original devices, not aftermarket knock-offs. We also stock nicotine pouches (Velo, Zyn, AMMO, Dope, GOAT and more), cream chargers, and a curated lifestyle range. All accessories ship from our Sydney warehouse.",
+      "Whether you need replacement coils for your pod system, a new USB-C charging cable, a travel case, or cleaning supplies — Vapes Australia carries the accessories range you need. All replacement coils are genuine OEM parts compatible with the original devices, not aftermarket knock-offs. We also stock nicotine pouches (Velo, Zyn, AMMO, Dope, GOAT and more), cream chargers, and a curated lifestyle range. All accessories ship from our Sydney warehouse.",
     highlights: [
       'Genuine OEM replacement coils',
       'USB-C cables for all major devices',
@@ -347,14 +347,14 @@ export const CATEGORIES: Category[] = [
     ],
     productCount: 122,
     image: 'https://placehold.co/800x450/f1f1f1/3b3b3b?text=Accessories',
-    seoTitle: 'Vape Accessories Australia — Coils, Cables, Pouches | Aussie Vapes',
+    seoTitle: 'Vape Accessories Australia — Coils, Cables, Pouches | Vapes Australia',
     seoDescription:
-      'Aussie Vapes stocks genuine vape accessories in Australia — replacement coils, USB-C cables, carrying cases and nicotine pouches. Same-day Sydney shipping.',
+      'Vapes Australia stocks genuine vape accessories in Australia — replacement coils, USB-C cables, carrying cases and nicotine pouches. Same-day Sydney shipping.',
     keywords: [
-      'aussie vapes accessories',
+      'vapes australia accessories',
       'aussie vape accessories',
-      'aussie vapes coils',
-      'aussie vapes pouches',
+      'vapes australia coils',
+      'vapes australia pouches',
       'vape accessories australia',
       'replacement coils australia',
       'vape coils australia',
@@ -372,7 +372,7 @@ export const CATEGORIES: Category[] = [
       {
         question: 'Do you stock genuine OEM coils?',
         answer:
-          'Yes — all replacement coils sold at Aussie Vapes are genuine OEM parts from the original device manufacturer, never aftermarket knock-offs.',
+          'Yes — all replacement coils sold at Vapes Australia are genuine OEM parts from the original device manufacturer, never aftermarket knock-offs.',
       },
       {
         question: 'Are nicotine pouches legal in Australia?',

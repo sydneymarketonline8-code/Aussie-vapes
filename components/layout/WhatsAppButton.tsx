@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
  *
  * The destination phone number is read from NEXT_PUBLIC_WHATSAPP_NUMBER
  * (digits only, international format without + or spaces). Defaults to
- * the Aussie Vapes sales number if the env var isn't set, so the button
+ * the Vapes Australia sales number if the env var isn't set, so the button
  * works out of the box and can be redirected by changing one var.
  *
  * Hidden on /admin/* and /checkout/success/* — same logic as <LiveChat>.
@@ -33,7 +33,7 @@ export default function WhatsAppButton() {
   if (!number) return null
 
   const prefill = encodeURIComponent(
-    "Hi Aussie Vapes — I have a question about an order/product.",
+    "Hi Vapes Australia — I have a question about an order/product.",
   )
   const href = `https://wa.me/${number}?text=${prefill}`
 

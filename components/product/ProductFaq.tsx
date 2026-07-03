@@ -28,9 +28,9 @@ export function buildProductFaqs(product: Product, categoryName?: string): Produ
   faqs.push({
     question: `Is the ${product.name} a good ${categoryName ? categoryName.toLowerCase() : 'vape'}?`,
     answer:
-      `Yes — the ${product.name} is ${ratingDesc} by Aussie Vapes customers, averaging ${product.rating.toFixed(
+      `Yes — the ${product.name} is ${ratingDesc} by Vapes Australia customers, averaging ${product.rating.toFixed(
         1
-      )}/5 across ${product.reviewCount.toLocaleString()} reviews. ${product.shortDescription} It's stocked authentic at Aussie Vapes and dispatched same-day from our Sydney warehouse.`,
+      )}/5 across ${product.reviewCount.toLocaleString()} reviews. ${product.shortDescription} It's stocked authentic at Vapes Australia and dispatched same-day from our Sydney warehouse.`,
   })
 
   // 2. How long does it last? (only for puff-count disposables)
@@ -59,7 +59,7 @@ export function buildProductFaqs(product: Product, categoryName?: string): Produ
     faqs.push({
       question: `What's included in the ${product.name}?`,
       answer:
-        `The ${product.name} includes ${packSize}× ${product.brand} devices in one bundle, dispatched together from the Aussie Vapes Sydney warehouse. Pack pricing saves you ${
+        `The ${product.name} includes ${packSize}× ${product.brand} devices in one bundle, dispatched together from the Vapes Australia Sydney warehouse. Pack pricing saves you ${
           packSize >= 10 ? '18-25%' : packSize >= 5 ? '12-18%' : '8-12%'
         } per device versus single-unit purchases.`,
     })
@@ -81,14 +81,14 @@ export function buildProductFaqs(product: Product, categoryName?: string): Produ
   faqs.push({
     question: `Where can I buy the ${product.name} in Australia?`,
     answer:
-      `Aussie Vapes is the largest authorised AU stockist of ${product.brand} products. Every ${product.name} sold by Aussie Vapes is sourced through authorised distribution channels, carries the brand's authenticity verification code, and is dispatched same-day from our Sydney warehouse on weekday orders before 2pm AEST. Free shipping on orders over $300.`,
+      `Vapes Australia is the largest authorised AU stockist of ${product.brand} products. Every ${product.name} sold by Vapes Australia is sourced through authorised distribution channels, carries the brand's authenticity verification code, and is dispatched same-day from our Sydney warehouse on weekday orders before 2pm AEST. Free shipping on orders over $300.`,
   })
 
   // 7. AU compliance
   faqs.push({
     question: `Is the ${product.name} TGA compliant?`,
     answer:
-      `Yes — the ${product.name} sold by Aussie Vapes is TGA-compliant 20mg/mL (2%) salt nicotine and operates within Australia's prescription model for nicotine vaping products. You confirm prescription status at checkout.`,
+      `Yes — the ${product.name} sold by Vapes Australia is TGA-compliant 20mg/mL (2%) salt nicotine and operates within Australia's prescription model for nicotine vaping products. You confirm prescription status at checkout.`,
   })
 
   return faqs

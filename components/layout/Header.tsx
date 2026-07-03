@@ -57,8 +57,8 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center flex-shrink-0"
-            aria-label="Aussie Vapes — Australia's #1 Online Vape Store"
-            title="Aussie Vapes Home"
+            aria-label="Vapes Australia — Australia's #1 Online Vape Store"
+            title="Vapes Australia Home"
           >
             <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
               AUSSIE <span className="text-price">VAPES</span>

@@ -14,14 +14,14 @@ export async function generateMetadata({
   const suffix = page > 1 ? ` — Page ${page}` : ''
   const canonical = page > 1 ? `/new-arrivals?page=${page}` : '/new-arrivals'
   return {
-    title: `Aussie Vapes New Arrivals${suffix} — Latest Disposables & Pod Systems`,
+    title: `Vapes Australia New Arrivals${suffix} — Latest Disposables & Pod Systems`,
     description:
-      "The newest products at Aussie Vapes. Fresh disposable vapes, pod systems and e-liquids landing weekly in our Sydney warehouse. Same-day AU dispatch.",
+      "The newest products at Vapes Australia. Fresh disposable vapes, pod systems and e-liquids landing weekly in our Sydney warehouse. Same-day AU dispatch.",
     keywords: [
-      'aussie vapes new arrivals',
+      'vapes australia new arrivals',
       'new vapes australia',
       'latest disposable vapes australia',
-      'aussie vapes new products',
+      'vapes australia new products',
       'newest vapes australia',
     ],
     alternates: { canonical },
@@ -43,15 +43,15 @@ export default async function NewArrivalsPage({
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vapes', href: '/' }, { label: 'New Arrivals' }]} />
+          <Breadcrumb crumbs={[{ label: 'Vapes Australia', href: '/' }, { label: 'New Arrivals' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-success font-bold mt-4 mb-2">
-            Just Landed At Aussie Vapes
+            Just Landed At Vapes Australia
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
-            aussie vapes new arrivals
+            vapes australia new arrivals
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            New disposable vapes, pod systems and e-liquids land in the Aussie Vapes warehouse every week. Be first to
+            New disposable vapes, pod systems and e-liquids land in the Vapes Australia warehouse every week. Be first to
             try the latest IGET, Alfakher, HQD, Lost Mary and Vozol releases — fresh stock, same-day Sydney dispatch.
           </p>
         </div>

@@ -74,7 +74,7 @@ export function buildWhatsAppOrderLink(summary: WhatsAppOrderSummary): string | 
     PAYMENT_METHODS.find((m) => m.id === summary.paymentMethod)?.label ?? summary.paymentMethod
 
   const lines = [
-    `Hi Aussie Vapes, I'd like to confirm my order:`,
+    `Hi Vapes Australia, I'd like to confirm my order:`,
     ``,
     `Order: ${summary.number}`,
     `Reference: ${summary.reference}`,

@@ -8,7 +8,7 @@ export default function AdminNewProductPage() {
     <>
       <AdminTopbar
         title="New Product"
-        subtitle="Create a new SKU in the Aussie Vapes catalogue"
+        subtitle="Create a new SKU in the Vapes Australia catalogue"
         actions={
           <Link
             href="/admin/products"

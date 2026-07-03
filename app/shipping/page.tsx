@@ -2,24 +2,24 @@ import type { Metadata } from 'next'
 import InfoPageShell from '@/components/layout/InfoPageShell'
 
 export const metadata: Metadata = {
-  title: 'Aussie Vapes Shipping Policy — Same-Day AU Dispatch',
+  title: 'Vapes Australia Shipping Policy — Same-Day AU Dispatch',
   description:
-    "Aussie Vapes ships authentic vapes Australia-wide. Free shipping over $300. Same-day Sydney dispatch on weekday orders before 2pm AEST. Standard & express options.",
-  keywords: ['aussie vapes shipping', 'aussie vapes delivery', 'vape shipping australia', 'free vape shipping aus', 'same day vape delivery sydney'],
+    "Vapes Australia ships authentic vapes Australia-wide. Free shipping over $300. Same-day Sydney dispatch on weekday orders before 2pm AEST. Standard & express options.",
+  keywords: ['vapes australia shipping', 'vapes australia delivery', 'vape shipping australia', 'free vape shipping aus', 'same day vape delivery sydney'],
   alternates: { canonical: '/shipping' },
 }
 
 export default function ShippingPage() {
   return (
     <InfoPageShell
-      eyebrow="Aussie Vapes Shipping"
-      title="aussie vapes shipping policy"
-      intro="Every Aussie Vapes order ships discreetly from our Sydney warehouse. Same-day weekday dispatch on orders placed before 2pm AEST, free standard shipping on orders over $300, and express delivery options to every state and territory."
+      eyebrow="Vapes Australia Shipping"
+      title="vapes australia shipping policy"
+      intro="Every Vapes Australia order ships discreetly from our Sydney warehouse. Same-day weekday dispatch on orders placed before 2pm AEST, free standard shipping on orders over $300, and express delivery options to every state and territory."
       sections={[
         {
           heading: 'shipping rates',
           paragraphs: [
-            'Aussie Vapes offers free standard shipping on all Australian orders over $300. Below that threshold, standard shipping is a flat $9.95 to anywhere in Australia.',
+            'Vapes Australia offers free standard shipping on all Australian orders over $300. Below that threshold, standard shipping is a flat $9.95 to anywhere in Australia.',
             'Express shipping is available at checkout for $14.95 — typically 1-3 business days to metro Sydney, Melbourne, Brisbane, Adelaide and Perth, slightly longer to regional and remote areas.',
           ],
           list: [
@@ -31,8 +31,8 @@ export default function ShippingPage() {
         {
           heading: 'dispatch times',
           paragraphs: [
-            'Aussie Vapes dispatches same-day on weekday orders placed before 2pm AEST. Orders placed after 2pm, on weekends or on AU public holidays are dispatched the next business day.',
-            'You will receive a tracking email as soon as your Aussie Vapes order leaves our Sydney warehouse. Tracking links update within 24 hours of dispatch.',
+            'Vapes Australia dispatches same-day on weekday orders placed before 2pm AEST. Orders placed after 2pm, on weekends or on AU public holidays are dispatched the next business day.',
+            'You will receive a tracking email as soon as your Vapes Australia order leaves our Sydney warehouse. Tracking links update within 24 hours of dispatch.',
           ],
         },
         {
@@ -47,15 +47,15 @@ export default function ShippingPage() {
         },
         {
           heading: 'discreet packaging',
-          body: "Every Aussie Vapes order ships in plain, unbranded packaging. The sender name on the courier label reads 'AV Australia' rather than 'Aussie Vapes' for full privacy. The package contents are never visible from the outside.",
+          body: "Every Vapes Australia order ships in plain, unbranded packaging. The sender name on the courier label reads 'AV Australia' rather than 'Vapes Australia' for full privacy. The package contents are never visible from the outside.",
         },
         {
           heading: 'international shipping',
-          body: "Aussie Vapes currently ships within Australia only. We do not ship internationally. This is in line with the TGA prescription model for nicotine vaping products.",
+          body: "Vapes Australia currently ships within Australia only. We do not ship internationally. This is in line with the TGA prescription model for nicotine vaping products.",
         },
         {
           heading: 'lost or delayed orders',
-          body: "If your Aussie Vapes order hasn't arrived within the expected timeframe, contact our support team at info@vapesaustralia.com.au with your order number. We track every shipment and will investigate immediately with the courier.",
+          body: "If your Vapes Australia order hasn't arrived within the expected timeframe, contact our support team at info@vapesaustralia.com.au with your order number. We track every shipment and will investigate immediately with the courier.",
         },
       ]}
       cta={{ label: 'Track My Order', href: '/track' }}

@@ -21,7 +21,7 @@ export default function PacksSection() {
               Aussie Vape Packs
             </h2>
             <p className="text-white/80 leading-relaxed max-w-2xl">
-              The complete Aussie Vapes pack collection — disposable vape packs, multi-buy bundles, bulk cartons and
+              The complete Vapes Australia pack collection — disposable vape packs, multi-buy bundles, bulk cartons and
               brand pack deals. Save up to <strong className="text-price">25% per device</strong> when you buy in packs.
             </p>
           </div>

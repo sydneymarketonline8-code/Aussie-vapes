@@ -61,7 +61,7 @@ const nextConfig = {
       { source: '/coils', destination: '/category/accessories', permanent: true },
       { source: '/pouches', destination: '/category/accessories', permanent: true },
 
-      // City shortcuts (SEO: "vapes Sydney", "aussie vapes melbourne" etc.)
+      // City shortcuts (SEO: "vapes Sydney", "vapes australia melbourne" etc.)
       { source: '/sydney', destination: '/aussie-vapes/sydney', permanent: true },
       { source: '/melbourne', destination: '/aussie-vapes/melbourne', permanent: true },
       { source: '/brisbane', destination: '/aussie-vapes/brisbane', permanent: true },

@@ -3,7 +3,7 @@ import { login } from '@/lib/admin-auth'
 import { LockClosedIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'Aussie Vapes Admin — Sign In',
+  title: 'Vapes Australia Admin — Sign In',
   robots: { index: false, follow: false },
 }
 
@@ -45,7 +45,7 @@ export default async function AdminLoginPage({
               Sign in
             </h1>
             <p className="text-sm text-mute text-center mt-1">
-              Restricted area. Authorised Aussie Vapes staff only.
+              Restricted area. Authorised Vapes Australia staff only.
             </p>
           </div>
 
@@ -99,7 +99,7 @@ export default async function AdminLoginPage({
         </form>
 
         <p className="text-xs text-mute text-center mt-6">
-          <a href="/" className="hover:text-price">← Back to Aussie Vapes</a>
+          <a href="/" className="hover:text-price">← Back to Vapes Australia</a>
         </p>
       </div>
     </div>

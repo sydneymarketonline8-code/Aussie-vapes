@@ -11,25 +11,25 @@ import {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Aussie Vapes Brands — Shop By Brand In Australia | Aussie Vapes',
+  title: 'Vapes Australia Brands — Shop By Brand In Australia | Vapes Australia',
   description:
-    'Browse every vape brand stocked at Aussie Vapes — Australia\'s #1 online vape store. IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol, RELX and 35+ more. Authentic AU stock with same-day Sydney shipping.',
+    'Browse every vape brand stocked at Vapes Australia — Australia\'s #1 online vape store. IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol, RELX and 35+ more. Authentic AU stock with same-day Sydney shipping.',
   keywords: [
-    'aussie vapes brands',
-    'aussie vapes shop by brand',
+    'vapes australia brands',
+    'vapes australia shop by brand',
     'aussie vape brands',
     'vape brands australia',
     'best vape brands australia',
-    'iget aussie vapes',
-    'hqd aussie vapes',
-    'alfakher aussie vapes',
-    'gunnpod aussie vapes',
+    'iget vapes australia',
+    'hqd vapes australia',
+    'alfakher vapes australia',
+    'gunnpod vapes australia',
   ],
   alternates: { canonical: '/brands' },
   openGraph: {
-    title: 'Aussie Vapes Brands — Shop By Brand In Australia | Aussie Vapes',
+    title: 'Vapes Australia Brands — Shop By Brand In Australia | Vapes Australia',
     description:
-      'Browse every vape brand stocked at Aussie Vapes. Authentic AU stock with same-day Sydney shipping.',
+      'Browse every vape brand stocked at Vapes Australia. Authentic AU stock with same-day Sydney shipping.',
   },
 }
 
@@ -49,12 +49,12 @@ export default async function BrandsIndexPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-                {BRANDS.length}+ Vape Brands At Aussie Vapes
+                {BRANDS.length}+ Vape Brands At Vapes Australia
               </p>
-              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">aussie vapes — shop by brand</h1>
+              <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">vapes australia — shop by brand</h1>
               <p className="text-body leading-relaxed">
-                <strong>Aussie Vapes</strong> is Australia&apos;s largest authorised stockist of the world&apos;s leading vape brands.
-                Browse every brand carried at Aussie Vapes — IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol and 35+ more —
+                <strong>Vapes Australia</strong> is Australia&apos;s largest authorised stockist of the world&apos;s leading vape brands.
+                Browse every brand carried at Vapes Australia — IGET, Alfakher, HQD, Gunnpod, Lost Mary, Vozol and 35+ more —
                 all authentic, all in stock, all dispatched same-day from Sydney.
               </p>
             </div>
@@ -100,7 +100,7 @@ export default async function BrandsIndexPage() {
         <div className="container-site max-w-3xl text-center">
           <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">australia&apos;s most trusted vape brand stockist</h2>
           <p className="text-body text-sm leading-relaxed">
-            Every brand sold at Aussie Vapes is sourced through authorised Australian distribution channels. We verify
+            Every brand sold at Vapes Australia is sourced through authorised Australian distribution channels. We verify
             every batch, scan every authenticity code, and stand behind every product with a 30-day return guarantee.
             If you receive a counterfeit, damaged or non-working device, we replace it free of charge.
           </p>

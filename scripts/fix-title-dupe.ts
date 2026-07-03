@@ -1,7 +1,7 @@
 /**
- * Strips the trailing ' | Aussie Vapes' from seo_title on every product.
+ * Strips the trailing ' | Vapes Australia' from seo_title on every product.
  * The metadata template in lib/seo.ts adds it back, so leaving it in the
- * DB causes "... | Aussie Vapes | Aussie Vapes" double suffix in <title>.
+ * DB causes "... | Vapes Australia | Vapes Australia" double suffix in <title>.
  *
  * Idempotent.
  */
@@ -21,16 +21,16 @@ async function main() {
   const { data: rows } = await s
     .from('products')
     .select('id, seo_title')
-    .ilike('seo_title', '%| Aussie Vapes')
+    .ilike('seo_title', '%| Vapes Australia')
     .range(0, 9999)
 
-  console.log(`${rows?.length ?? 0} products with trailing "| Aussie Vapes" suffix`)
+  console.log(`${rows?.length ?? 0} products with trailing "| Vapes Australia" suffix`)
   if (!rows?.length) return
 
   const updates = rows
     .map((r) => ({
       id: r.id,
-      new: r.seo_title.replace(/\s*\|\s*Aussie Vapes\s*$/i, '').trim(),
+      new: r.seo_title.replace(/\s*\|\s*Vapes Australia\s*$/i, '').trim(),
     }))
     .filter((u) => u.new.length > 0)
 
@@ -48,7 +48,7 @@ async function main() {
   const { count: remaining } = await s
     .from('products')
     .select('id', { count: 'exact', head: true })
-    .ilike('seo_title', '%| Aussie Vapes')
+    .ilike('seo_title', '%| Vapes Australia')
   console.log(`Remaining with suffix: ${remaining}`)
 }
 

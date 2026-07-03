@@ -5,7 +5,7 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { getAccountSession } from '@/lib/account-auth'
 
 export const metadata: Metadata = {
-  title: 'My Aussie Vapes Account',
+  title: 'My Vapes Australia Account',
   robots: { index: false, follow: false },
 }
 
@@ -18,12 +18,12 @@ export default async function AccountLayout({ children }: { children: React.Reac
   return (
     <div className="bg-soft-100 min-h-[60vh]">
       <div className="container-site py-8">
-        <Breadcrumb crumbs={[{ label: 'Aussie Vapes', href: '/' }, { label: 'My Account' }]} />
+        <Breadcrumb crumbs={[{ label: 'Vapes Australia', href: '/' }, { label: 'My Account' }]} />
 
         <div className="mt-6 flex flex-wrap items-end justify-between gap-3 mb-6">
           <div>
             <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-1">
-              My Aussie Vapes
+              My Vapes Australia
             </p>
             <h1 className="font-display text-3xl lg:text-4xl font-bold text-ink leading-tight">
               Welcome back, {session.firstName}

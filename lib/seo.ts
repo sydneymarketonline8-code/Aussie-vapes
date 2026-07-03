@@ -2,29 +2,29 @@ import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Aussie Vapes'
+const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Vapes Australia'
 const DEFAULT_DESCRIPTION =
-  "Aussie Vapes is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
+  "Vapes Australia is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
 
-// Principal keyword cluster — "Aussie Vapes" topical authority targeting
+// Principal keyword cluster — "Vapes Australia" topical authority targeting
 export const AUSSIE_VAPES_KEYWORDS = [
-  'aussie vapes',
-  'aussie vapes online',
-  'aussie vapes australia',
+  'vapes australia',
+  'vapes australia online',
+  'vapes australia australia',
   'aussie vape',
   'aussie vape store',
   'aussie vape shop',
-  'aussie vapes shop',
-  'best aussie vapes',
-  'aussie vapes near me',
-  'aussie vapes free shipping',
-  'aussie vapes sydney',
-  'aussie vapes melbourne',
-  'aussie vapes brisbane',
-  'aussie vapes perth',
-  'aussie vapes adelaide',
-  'buy aussie vapes online',
-  'cheap aussie vapes',
+  'vapes australia shop',
+  'best vapes australia',
+  'vapes australia near me',
+  'vapes australia free shipping',
+  'vapes australia sydney',
+  'vapes australia melbourne',
+  'vapes australia brisbane',
+  'vapes australia perth',
+  'vapes australia adelaide',
+  'buy vapes australia online',
+  'cheap vapes australia',
   'aussie disposable vapes',
   'aussie pod systems',
   'aussie nicotine salts',
@@ -53,8 +53,8 @@ export function buildSiteMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `Aussie Vapes — Australia's #1 Online Vape Store`,
-      template: `%s | Aussie Vapes`,
+      default: `Vapes Australia — Australia's #1 Online Vape Store`,
+      template: `%s | Vapes Australia`,
     },
     description: DEFAULT_DESCRIPTION,
     keywords: [...AUSSIE_VAPES_KEYWORDS, ...VAPE_PRODUCT_KEYWORDS],
@@ -71,14 +71,14 @@ export function buildSiteMetadata(): Metadata {
       locale: 'en_AU',
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `Aussie Vapes — Australia's #1 Online Vape Store`,
+      title: `Vapes Australia — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     twitter: {
       card: 'summary_large_image',
       site: '@AussieVapes',
       creator: '@AussieVapes',
-      title: `Aussie Vapes — Australia's #1 Online Vape Store`,
+      title: `Vapes Australia — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     alternates: { canonical: SITE_URL },
@@ -258,8 +258,8 @@ export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
-    name: 'Aussie Vapes',
-    alternateName: ['AussieVapes', 'Aussie Vapes Australia', 'Aussie Vapes Online'],
+    name: 'Vapes Australia',
+    alternateName: ['AussieVapes', 'Vapes Australia Australia', 'Vapes Australia Online'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: DEFAULT_DESCRIPTION,
@@ -291,7 +291,7 @@ export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Aussie Vapes',
+    name: 'Vapes Australia',
     alternateName: 'AussieVapes',
     url: SITE_URL,
     potentialAction: {
@@ -310,8 +310,8 @@ export function localBusinessJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
     '@id': `${SITE_URL}/#store`,
-    name: 'Aussie Vapes',
-    alternateName: ['AussieVapes', 'Aussie Vapes Australia'],
+    name: 'Vapes Australia',
+    alternateName: ['AussieVapes', 'Vapes Australia Australia'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo.png`,

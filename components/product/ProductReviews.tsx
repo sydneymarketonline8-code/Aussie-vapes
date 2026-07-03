@@ -63,7 +63,7 @@ export default function ProductReviews({ productId, productSlug, productName, re
           <h2 className="section-heading">customer reviews</h2>
           <p className="text-mute text-sm mt-1">
             {reviews.length > 0
-              ? `${reviews.length} ${reviews.length === 1 ? 'review' : 'reviews'} from verified Aussie Vapes customers`
+              ? `${reviews.length} ${reviews.length === 1 ? 'review' : 'reviews'} from verified Vapes Australia customers`
               : 'Be the first to leave a review.'}
           </p>
         </div>

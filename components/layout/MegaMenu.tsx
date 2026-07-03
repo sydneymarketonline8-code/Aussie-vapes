@@ -61,7 +61,7 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
           {/* Brands column (wide) */}
           <div className="col-span-12 lg:col-span-6">
             <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
-              Top Aussie Vapes Brands
+              Top Vapes Australia Brands
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1">
               {featuredBrands.map((b) => (
@@ -79,7 +79,7 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
               href="/brands"
               className="inline-block mt-3 text-xs text-ink font-display uppercase tracking-wider font-bold hover:text-price"
             >
-              See All {BRANDS.length} Aussie Vapes Brands →
+              See All {BRANDS.length} Vapes Australia Brands →
             </Link>
 
             {/* Shop by Puff Count strip */}
@@ -126,12 +126,12 @@ export default function MegaMenu({ isOpen }: MegaMenuProps) {
 
             <div className="pt-3 border-t border-line">
               <p className="font-display text-[11px] uppercase tracking-[0.3em] text-price font-bold mb-3">
-                Aussie Vapes Locations &amp; Resources
+                Vapes Australia Locations &amp; Resources
               </p>
               <ul className="space-y-1.5">
-                <li><Link href="/aussie-vapes/sydney" className="text-sm text-body hover:text-price">Aussie Vapes Sydney</Link></li>
-                <li><Link href="/aussie-vapes/melbourne" className="text-sm text-body hover:text-price">Aussie Vapes Melbourne</Link></li>
-                <li><Link href="/aussie-vapes/brisbane" className="text-sm text-body hover:text-price">Aussie Vapes Brisbane</Link></li>
+                <li><Link href="/aussie-vapes/sydney" className="text-sm text-body hover:text-price">Vapes Australia Sydney</Link></li>
+                <li><Link href="/aussie-vapes/melbourne" className="text-sm text-body hover:text-price">Vapes Australia Melbourne</Link></li>
+                <li><Link href="/aussie-vapes/brisbane" className="text-sm text-body hover:text-price">Vapes Australia Brisbane</Link></li>
                 <li><Link href="/beginners-guide" className="text-sm text-body hover:text-price">Beginner&apos;s Guide</Link></li>
                 <li><Link href="/vaping-laws-australia" className="text-sm text-body hover:text-price">AU Vaping Laws</Link></li>
                 <li><Link href="/faq" className="text-sm text-body hover:text-price">FAQ</Link></li>

@@ -3,16 +3,16 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'Contact Aussie Vapes — Sydney-Based Australian Vape Support',
+  title: 'Contact Vapes Australia — Sydney-Based Australian Vape Support',
   description:
-    "Contact Aussie Vapes for order help, product advice or wholesale enquiries. Real Australian support team based in Sydney. Mon–Fri 9am–5pm AEST.",
+    "Contact Vapes Australia for order help, product advice or wholesale enquiries. Real Australian support team based in Sydney. Mon–Fri 9am–5pm AEST.",
   keywords: [
-    'contact aussie vapes',
-    'aussie vapes contact',
-    'aussie vapes support',
-    'aussie vapes phone',
-    'aussie vapes email',
-    'aussie vapes sydney',
+    'contact vapes australia',
+    'vapes australia contact',
+    'vapes australia support',
+    'vapes australia phone',
+    'vapes australia email',
+    'vapes australia sydney',
   ],
   alternates: { canonical: '/contact' },
 }
@@ -22,12 +22,12 @@ export default function ContactPage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vapes', href: '/' }, { label: 'Contact Us' }]} />
+          <Breadcrumb crumbs={[{ label: 'Vapes Australia', href: '/' }, { label: 'Contact Us' }]} />
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-4 mb-3 lowercase">
-            contact aussie vapes
+            contact vapes australia
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Need a hand with an Aussie Vapes order, product advice or a wholesale enquiry? Our Sydney-based support team
+            Need a hand with an Vapes Australia order, product advice or a wholesale enquiry? Our Sydney-based support team
             is here Monday to Friday, 9am–5pm AEST.
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function ContactPage() {
       <section className="container-site py-14 grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Contact form */}
         <div>
-          <h2 className="font-display text-2xl font-bold text-ink mb-5 lowercase">send aussie vapes a message</h2>
+          <h2 className="font-display text-2xl font-bold text-ink mb-5 lowercase">send vapes australia a message</h2>
           <form className="space-y-4 bg-white border border-line rounded-sm p-6">
             <div>
               <label htmlFor="contact-name" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Your Name *</label>
@@ -64,21 +64,21 @@ export default function ContactPage() {
             </div>
             <div>
               <label htmlFor="contact-message" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Message *</label>
-              <textarea id="contact-message" name="message" required rows={6} className="input-base resize-none" placeholder="How can the Aussie Vapes team help?" />
+              <textarea id="contact-message" name="message" required rows={6} className="input-base resize-none" placeholder="How can the Vapes Australia team help?" />
             </div>
-            <button type="submit" className="btn-sale w-full">Send to Aussie Vapes</button>
-            <p className="text-xs text-mute text-center">We aim to respond to all Aussie Vapes enquiries within 4 business hours.</p>
+            <button type="submit" className="btn-sale w-full">Send to Vapes Australia</button>
+            <p className="text-xs text-mute text-center">We aim to respond to all Vapes Australia enquiries within 4 business hours.</p>
           </form>
         </div>
 
         {/* Contact info */}
         <div className="space-y-6">
-          <h2 className="font-display text-2xl font-bold text-ink mb-2 lowercase">other ways to reach aussie vapes</h2>
+          <h2 className="font-display text-2xl font-bold text-ink mb-2 lowercase">other ways to reach vapes australia</h2>
 
           {[
             { Icon: PhoneIcon, t: 'Phone', body: '+61 480 803 761', href: 'tel:+61480803761', note: 'Mon–Fri 9am–5pm AEST' },
             { Icon: EnvelopeIcon, t: 'Email', body: 'info@vapesaustralia.com.au', href: 'mailto:info@vapesaustralia.com.au', note: 'Replies within 4 business hours' },
-            { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every Aussie Vapes page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
+            { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every Vapes Australia page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
             { Icon: MapPinIcon, t: 'Sydney Warehouse', body: 'Sydney, NSW, Australia', href: '#', note: 'Pick-up by appointment only (B2B / wholesale)' },
             { Icon: ClockIcon, t: 'Support Hours', body: 'Monday – Friday', href: '#', note: '9am–5pm AEST (closed AU public holidays)' },
           ].map(({ Icon, t, body, href, note }) => (
@@ -101,7 +101,7 @@ export default function ContactPage() {
           <div className="bg-soft-100 border border-line rounded-sm p-5">
             <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-2">Frequently Asked</h3>
             <p className="text-sm text-body mb-3">
-              Most Aussie Vapes questions are answered in our <a href="/faq" className="text-price font-semibold hover:underline">FAQ page</a>.
+              Most Vapes Australia questions are answered in our <a href="/faq" className="text-price font-semibold hover:underline">FAQ page</a>.
               For specific shipping queries see our <a href="/shipping" className="text-price font-semibold hover:underline">shipping policy</a>,
               and for returns see our <a href="/returns" className="text-price font-semibold hover:underline">returns policy</a>.
             </p>
