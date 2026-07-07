@@ -4,7 +4,7 @@ import AdminKpiCard from '@/components/admin/AdminKpiCard'
 
 const AFFILIATES = [
   { name: 'VapeReviewer.com.au', code: 'VAPER', clicks: 8421, conversions: 412, revenue: 18774.5, commission: 1877.45 },
-  { name: 'Aussie Vape YouTube', code: 'AVTUBE', clicks: 6109, conversions: 287, revenue: 13442.9, commission: 1344.29 },
+  { name: 'Vape YouTube', code: 'AVTUBE', clicks: 6109, conversions: 287, revenue: 13442.9, commission: 1344.29 },
   { name: 'Reddit r/ausvape', code: 'AUSVAPE', clicks: 4204, conversions: 198, revenue: 9019.8, commission: 901.98 },
   { name: 'IGetVapes Blog', code: 'IGETBLOG', clicks: 3781, conversions: 144, revenue: 6720.0, commission: 672.0 },
   { name: 'Lost Mary Fan Page', code: 'MARYFAN', clicks: 2980, conversions: 121, revenue: 5614.5, commission: 561.45 },

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   keywords: [
     'vapes australia brands',
     'vapes australia shop by brand',
-    'aussie vape brands',
+    'vape brands',
     'vape brands australia',
     'best vape brands australia',
     'iget vapes australia',

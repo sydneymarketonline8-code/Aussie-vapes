@@ -91,13 +91,13 @@ export default function SitemapHtmlPage() {
         <div>
           <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">vapes australia by location</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            <Link href="/aussie-vapes" className="px-4 py-3 bg-white border border-line rounded-sm font-display text-sm font-bold uppercase tracking-wider text-ink hover:bg-ink hover:text-white transition-colors text-center">
+            <Link href="/vapes-australia" className="px-4 py-3 bg-white border border-line rounded-sm font-display text-sm font-bold uppercase tracking-wider text-ink hover:bg-ink hover:text-white transition-colors text-center">
               All Locations
             </Link>
             {CITIES.map((c) => (
               <Link
                 key={c.slug}
-                href={`/aussie-vapes/${c.slug}`}
+                href={`/vapes-australia/${c.slug}`}
                 className="px-4 py-3 bg-white border border-line rounded-sm font-display text-sm font-bold uppercase tracking-wider text-ink hover:bg-ink hover:text-white transition-colors text-center"
               >
                 {c.name}

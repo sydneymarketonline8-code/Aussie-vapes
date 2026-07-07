@@ -18,7 +18,7 @@ const shop = [
   { label: 'Pod Systems', href: '/category/pod-systems' },
   { label: 'Nicotine Salts', href: '/category/nicotine-salts' },
   { label: 'E-Liquids', href: '/category/e-liquids' },
-  { label: 'Aussie Vape Packs', href: '/packs' },
+  { label: 'Vape Packs', href: '/packs' },
   { label: 'Sale', href: '/sale' },
 ]
 
@@ -41,12 +41,12 @@ const account = [
 ]
 
 const locations = [
-  { label: 'Vapes Australia Sydney', href: '/aussie-vapes/sydney' },
-  { label: 'Vapes Australia Melbourne', href: '/aussie-vapes/melbourne' },
-  { label: 'Vapes Australia Brisbane', href: '/aussie-vapes/brisbane' },
-  { label: 'Vapes Australia Perth', href: '/aussie-vapes/perth' },
-  { label: 'Vapes Australia Adelaide', href: '/aussie-vapes/adelaide' },
-  { label: 'All Locations', href: '/aussie-vapes' },
+  { label: 'Vapes Australia Sydney', href: '/vapes-australia/sydney' },
+  { label: 'Vapes Australia Melbourne', href: '/vapes-australia/melbourne' },
+  { label: 'Vapes Australia Brisbane', href: '/vapes-australia/brisbane' },
+  { label: 'Vapes Australia Perth', href: '/vapes-australia/perth' },
+  { label: 'Vapes Australia Adelaide', href: '/vapes-australia/adelaide' },
+  { label: 'All Locations', href: '/vapes-australia' },
 ]
 
 const legal = [
@@ -74,7 +74,7 @@ export default function Footer() {
       {/* Packs strip */}
       <div className="border-t border-line bg-ink text-white">
         <div className="container-site py-6">
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold text-center mb-3">Aussie Vape Packs</p>
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold text-center mb-3">Vape Packs</p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href="/packs" className="font-display text-sm font-bold uppercase tracking-wider text-white hover:text-price transition-colors">
               All Vape Packs

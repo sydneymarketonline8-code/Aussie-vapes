@@ -284,7 +284,7 @@ export const CATEGORIES: Category[] = [
       'vapes australia e-liquid',
       'vapes australia vape juice',
       'aussie e-liquid',
-      'aussie vape juice',
+      'vape juice',
       'e-liquid australia',
       'vape juice australia',
       'freebase e-liquid australia',
@@ -352,7 +352,7 @@ export const CATEGORIES: Category[] = [
       'Vapes Australia stocks genuine vape accessories in Australia — replacement coils, USB-C cables, carrying cases and nicotine pouches. Same-day Sydney shipping.',
     keywords: [
       'vapes australia accessories',
-      'aussie vape accessories',
+      'vape accessories',
       'vapes australia coils',
       'vapes australia pouches',
       'vape accessories australia',

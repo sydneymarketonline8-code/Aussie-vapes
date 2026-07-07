@@ -18,7 +18,7 @@ export default function PacksSection() {
               Buy More · Save More
             </p>
             <h2 className="font-display text-3xl lg:text-5xl font-bold uppercase leading-[1.05] mb-3">
-              Aussie Vape Packs
+              Vape Packs
             </h2>
             <p className="text-white/80 leading-relaxed max-w-2xl">
               The complete Vapes Australia pack collection — disposable vape packs, multi-buy bundles, bulk cartons and
@@ -26,7 +26,7 @@ export default function PacksSection() {
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:items-end">
-            <Link href="/packs" className="btn-sale">Shop All Aussie Vape Packs</Link>
+            <Link href="/packs" className="btn-sale">Shop All Vape Packs</Link>
             <Link href="/packs/bundle-deals" className="font-display text-xs uppercase tracking-widest font-bold text-white/70 hover:text-price">
               Bundle Deals →
             </Link>
@@ -63,7 +63,7 @@ export default function PacksSection() {
           <div className="bg-white rounded-sm border border-line p-6">
             <div className="flex items-end justify-between border-b border-line pb-3 mb-6">
               <h3 className="font-display text-xl font-bold text-ink uppercase tracking-wide">
-                Featured Aussie Vape Packs
+                Featured Vape Packs
               </h3>
               <Link href="/packs" className="font-display text-xs uppercase tracking-widest font-bold text-price hover:underline">
                 View All →
@@ -80,7 +80,7 @@ export default function PacksSection() {
         {/* SEO inline links */}
         <div className="mt-10 pt-8 border-t border-white/10">
           <p className="font-display text-xs uppercase tracking-[0.3em] text-white/60 font-bold mb-3 text-center">
-            Popular Aussie Vape Pack Searches
+            Popular Vape Pack Searches
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
             {[

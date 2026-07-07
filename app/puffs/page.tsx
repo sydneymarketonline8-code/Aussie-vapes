@@ -32,7 +32,7 @@ export default function PuffsIndexPage() {
             vapes australia by puff count
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Find the right Aussie Vape for how long you want a device to last. From compact starter vapes under 2,500
+            Find the right Vape for how long you want a device to last. From compact starter vapes under 2,500
             puffs to ultra-puff 25,000-puff marathon devices — pick the puff range that suits your style.
           </p>
         </div>

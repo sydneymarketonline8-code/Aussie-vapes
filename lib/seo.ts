@@ -7,14 +7,12 @@ const DEFAULT_DESCRIPTION =
   "Vapes Australia is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
 
 // Principal keyword cluster — "Vapes Australia" topical authority targeting
-export const AUSSIE_VAPES_KEYWORDS = [
+export const VAPES_AUSTRALIA_KEYWORDS = [
   'vapes australia',
   'vapes australia online',
-  'vapes australia australia',
-  'aussie vape',
-  'aussie vape store',
-  'aussie vape shop',
-  'vapes australia shop',
+  'vape australia',
+  'vape store australia',
+  'vape shop australia',
   'best vapes australia',
   'vapes australia near me',
   'vapes australia free shipping',
@@ -25,10 +23,10 @@ export const AUSSIE_VAPES_KEYWORDS = [
   'vapes australia adelaide',
   'buy vapes australia online',
   'cheap vapes australia',
-  'aussie disposable vapes',
-  'aussie pod systems',
-  'aussie nicotine salts',
-  'aussie e-liquid',
+  'disposable vapes australia',
+  'pod systems australia',
+  'nicotine salts australia',
+  'e-liquid australia',
 ]
 
 const VAPE_PRODUCT_KEYWORDS = [
@@ -57,7 +55,7 @@ export function buildSiteMetadata(): Metadata {
       template: `%s | Vapes Australia`,
     },
     description: DEFAULT_DESCRIPTION,
-    keywords: [...AUSSIE_VAPES_KEYWORDS, ...VAPE_PRODUCT_KEYWORDS],
+    keywords: [...VAPES_AUSTRALIA_KEYWORDS, ...VAPE_PRODUCT_KEYWORDS],
     authors: [{ name: SITE_NAME }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
@@ -76,8 +74,8 @@ export function buildSiteMetadata(): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@AussieVapes',
-      creator: '@AussieVapes',
+      site: '@VapesAustraliaAU',
+      creator: '@VapesAustraliaAU',
       title: `Vapes Australia — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
@@ -259,7 +257,7 @@ export function organizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
     name: 'Vapes Australia',
-    alternateName: ['AussieVapes', 'Vapes Australia Australia', 'Vapes Australia Online'],
+    alternateName: ['Vapes AU', 'Vapes Australia Online'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description: DEFAULT_DESCRIPTION,
@@ -281,8 +279,8 @@ export function organizationJsonLd() {
       availableLanguage: 'en-AU',
     },
     sameAs: [
-      'https://www.instagram.com/aussievapes',
-      'https://www.facebook.com/aussievapes',
+      'https://www.instagram.com/vapesaustralia',
+      'https://www.facebook.com/vapesaustralia',
     ],
   }
 }
@@ -292,7 +290,7 @@ export function websiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Vapes Australia',
-    alternateName: 'AussieVapes',
+    alternateName: 'Vapes AU',
     url: SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',
@@ -311,7 +309,7 @@ export function localBusinessJsonLd() {
     '@type': 'OnlineStore',
     '@id': `${SITE_URL}/#store`,
     name: 'Vapes Australia',
-    alternateName: ['AussieVapes', 'Vapes Australia Australia'],
+    alternateName: ['Vapes AU'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     image: `${SITE_URL}/logo.png`,
@@ -344,8 +342,8 @@ export function localBusinessJsonLd() {
       closes: '17:00',
     },
     sameAs: [
-      'https://www.instagram.com/aussievapes',
-      'https://www.facebook.com/aussievapes',
+      'https://www.instagram.com/vapesaustralia',
+      'https://www.facebook.com/vapesaustralia',
     ],
     aggregateRating: {
       '@type': 'AggregateRating',

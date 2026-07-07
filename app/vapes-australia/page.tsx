@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'vapes australia',
     'vape delivery australia',
   ],
-  alternates: { canonical: '/aussie-vapes' },
+  alternates: { canonical: '/vapes-australia' },
 }
 
 export default async function AussieVapesHubPage() {
@@ -56,7 +56,7 @@ export default async function AussieVapesHubPage() {
           {CITIES.map((c) => (
             <Link
               key={c.slug}
-              href={`/aussie-vapes/${c.slug}`}
+              href={`/vapes-australia/${c.slug}`}
               className="group bg-white border border-line rounded-sm p-6 hover:border-ink hover:shadow-md transition-all flex flex-col"
             >
               <div className="flex items-start justify-between mb-3">

@@ -28,10 +28,10 @@ export default function ProductInternalLinks({ product }: ProductInternalLinksPr
     links.push({ label: `Shop ${category.name}`, href: `/category/${category.slug}` })
   }
   if (isPack) {
-    links.push({ label: 'Aussie Vape Packs', href: '/packs' })
+    links.push({ label: 'Vape Packs', href: '/packs' })
     links.push({ label: 'Bundle Deals', href: '/packs/bundle-deals' })
   } else {
-    links.push({ label: 'Aussie Vape Packs', href: '/packs' })
+    links.push({ label: 'Vape Packs', href: '/packs' })
   }
   if (product.isSale) {
     links.push({ label: 'Current Vapes Australia Sale', href: '/sale' })

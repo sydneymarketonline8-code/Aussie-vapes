@@ -44,7 +44,7 @@ export default function FeaturedBrandSections() {
         {/* Section heading */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-            Top Aussie Vape Brands
+            Top Vape Brands
           </p>
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-ink lowercase mb-3">
             australia&apos;s most-searched vape brands
@@ -130,7 +130,7 @@ export default function FeaturedBrandSections() {
             Looking for more brands?
           </p>
           <Link href="/brands" className="btn-primary">
-            See All 40+ Aussie Vape Brands
+            See All 40+ Vape Brands
           </Link>
         </div>
       </div>

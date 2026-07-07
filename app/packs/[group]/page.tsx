@@ -111,7 +111,7 @@ export default async function PackGroupPage({
                 className="font-display text-xs uppercase tracking-[0.3em] font-bold mb-3"
                 style={{ color: g.accentColor }}
               >
-                {allProducts.length.toLocaleString()} Aussie Vape Packs In Stock
+                {allProducts.length.toLocaleString()} Vape Packs In Stock
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink-dark leading-[1.05] mb-3 lowercase">
                 {g.name.toLowerCase()}
@@ -169,7 +169,7 @@ export default async function PackGroupPage({
         {products.length === 0 ? (
           <p className="text-mute text-center py-20">
             No {g.name} currently in stock. Check back soon, or browse the{' '}
-            <Link href="/packs" className="text-price font-semibold hover:underline">full Aussie Vape Packs range</Link>.
+            <Link href="/packs" className="text-price font-semibold hover:underline">full Vape Packs range</Link>.
           </p>
         ) : (
           <>
@@ -208,7 +208,7 @@ export default async function PackGroupPage({
 
             <div className="mt-6">
               <h3 className="font-display text-base font-bold text-ink uppercase tracking-wider mb-3">
-                Explore Other Aussie Vape Packs
+                Explore Other Vape Packs
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {PACK_GROUPS.filter((other) => other.slug !== g.slug).map((other) => (
@@ -236,7 +236,7 @@ export default async function PackGroupPage({
                 Related Vapes Australia Pages
               </h3>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/packs" className="text-body hover:text-price">All Aussie Vape Packs</Link></li>
+                <li><Link href="/packs" className="text-body hover:text-price">All Vape Packs</Link></li>
                 <li><Link href="/category/disposable-vapes" className="text-body hover:text-price">Single Disposable Vapes</Link></li>
                 <li><Link href="/brands" className="text-body hover:text-price">All Vapes Australia Brands</Link></li>
                 <li><Link href="/sale" className="text-body hover:text-price">Vapes Australia Sale</Link></li>

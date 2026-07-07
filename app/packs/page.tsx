@@ -10,11 +10,11 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 export const metadata: Metadata = {
-  title: 'Aussie Vape Packs — Disposable Vape Packs & Bundle Deals Australia',
+  title: 'Vape Packs — Disposable Vape Packs & Bundle Deals Australia',
   description:
     "Buy Aussie vape packs online — disposable vape packs, multi-buy bundles, bulk cartons & brand pack deals. 2-pack, 5-pack, 10-pack and bulk discounts. Same-day Sydney dispatch.",
   keywords: [
-    'aussie vape packs',
+    'vape packs',
     'vapes australia packs',
     'disposable vape packs australia',
     'vape bundle deals australia',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: '/packs' },
   openGraph: {
-    title: 'Aussie Vape Packs — Disposable Vape Packs & Bundle Deals Australia',
+    title: 'Vape Packs — Disposable Vape Packs & Bundle Deals Australia',
     description:
       'Disposable vape packs, multi-buy bundles, bulk cartons & brand pack deals. Same-day Sydney dispatch.',
   },
@@ -79,7 +79,7 @@ export default function PacksLandingPage() {
   const itemListJson = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Aussie Vape Packs',
+    name: 'Vape Packs',
     description: 'Disposable vape packs, multi-buy bundles, bulk cartons and brand pack deals from Vapes Australia.',
     url: `${SITE_URL}/packs`,
     numberOfItems: allPacks.length,
@@ -101,7 +101,7 @@ export default function PacksLandingPage() {
                 {allPacks.length.toLocaleString()} Pack-Format Products
               </p>
               <h1 className="font-display text-4xl lg:text-6xl font-bold leading-[1.05] uppercase mb-4">
-                Aussie Vape Packs
+                Vape Packs
               </h1>
               <p className="text-white/80 leading-relaxed text-lg">
                 Save more, vape longer. The complete Vapes Australia pack collection — disposable vape packs, multi-buy
@@ -207,7 +207,7 @@ export default function PacksLandingPage() {
           <h2 className="font-display text-2xl font-bold text-ink lowercase">why buy vape packs from vapes australia</h2>
           <p className="text-body leading-relaxed">
             <strong>Vapes Australia</strong> stocks the largest range of pack-format disposable vapes in Australia. With
-            {' '}{allPacks.length.toLocaleString()} pack products across 5 organised collections, Aussie Vape Packs make
+            {' '}{allPacks.length.toLocaleString()} pack products across 5 organised collections, Vape Packs make
             it easy to compare per-device pricing across {' '}<Link href="/brand/iget" className="text-price font-semibold hover:underline">IGET</Link>,
             {' '}<Link href="/brand/alfakher" className="text-price font-semibold hover:underline">Alfakher Crown Bar</Link>,
             {' '}<Link href="/brand/hqd" className="text-price font-semibold hover:underline">HQD</Link>,
@@ -223,7 +223,7 @@ export default function PacksLandingPage() {
             is dispatched same-day from our Sydney warehouse on weekday orders before 2pm AEST.
           </p>
 
-          <h3 className="font-display text-xl font-bold text-ink lowercase mt-6">aussie vape packs popular searches</h3>
+          <h3 className="font-display text-xl font-bold text-ink lowercase mt-6">vape packs popular searches</h3>
           <div className="flex flex-wrap gap-2">
             {[
               { l: 'Aussie vape packs', h: '/packs' },
@@ -270,7 +270,7 @@ export default function PacksLandingPage() {
         <div className="container-site max-w-3xl">
           <div className="text-center mb-10">
             <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-              Aussie Vape Packs FAQ
+              Vape Packs FAQ
             </p>
             <h2 className="font-display text-3xl font-bold text-ink lowercase">
               vape pack questions answered

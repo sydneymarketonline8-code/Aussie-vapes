@@ -67,7 +67,7 @@ export default function StorePage() {
             {CITIES.map((c) => (
               <li key={c.slug}>
                 <Link
-                  href={`/aussie-vapes/${c.slug}`}
+                  href={`/vapes-australia/${c.slug}`}
                   className="bg-white border border-line rounded-sm p-4 flex items-center justify-between hover:border-ink hover:shadow-sm transition-all"
                 >
                   <div>

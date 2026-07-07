@@ -199,7 +199,7 @@ export default async function BrandPage({
 
             <div>
               <h3 className="font-display text-xl font-bold text-ink mb-4 lowercase">
-                why buy {brand.displayName.toLowerCase()} from aussievapes
+                why buy {brand.displayName.toLowerCase()} from vapes australia
               </h3>
               <ul className="space-y-3">
                 {brand.highlights.map((h) => (

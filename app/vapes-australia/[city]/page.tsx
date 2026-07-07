@@ -27,7 +27,7 @@ export async function generateMetadata({
     title: `Vapes Australia ${c.name} — Buy Vapes ${c.name} ${c.state} | Authentic AU Stock`,
     description: `Vapes Australia delivers authentic disposable vapes, pod systems and e-liquids to ${c.name}, ${c.state}. ${c.deliveryWindow}. Free shipping over $300. Same-day Sydney dispatch.`,
     keywords: c.keywords,
-    alternates: { canonical: `/aussie-vapes/${c.slug}` },
+    alternates: { canonical: `/vapes-australia/${c.slug}` },
     openGraph: {
       title: `Vapes Australia ${c.name} — Buy Vapes ${c.name} ${c.state}`,
       description: `Authentic disposable vapes & pod systems delivered to ${c.name}. ${c.deliveryWindow}.`,
@@ -44,8 +44,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
   const crumbs = [
     { name: 'Vapes Australia', url: `${SITE_URL}/` },
-    { name: 'Locations', url: `${SITE_URL}/aussie-vapes` },
-    { name: `Vapes Australia ${c.name}`, url: `${SITE_URL}/aussie-vapes/${c.slug}` },
+    { name: 'Locations', url: `${SITE_URL}/vapes-australia` },
+    { name: `Vapes Australia ${c.name}`, url: `${SITE_URL}/vapes-australia/${c.slug}` },
   ]
 
   const localBusinessJsonLd = {
@@ -53,7 +53,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     '@type': 'LocalBusiness',
     name: `Vapes Australia ${c.name}`,
     description: `Vapes Australia serves ${c.name}, ${c.state} with authentic disposable vapes, pod systems and e-liquids. ${c.deliveryWindow} from our Sydney warehouse.`,
-    url: `${SITE_URL}/aussie-vapes/${c.slug}`,
+    url: `${SITE_URL}/vapes-australia/${c.slug}`,
     parentOrganization: {
       '@type': 'Organization',
       name: 'Vapes Australia',
@@ -83,7 +83,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <Breadcrumb
             crumbs={[
               { label: 'Vapes Australia', href: '/' },
-              { label: 'Locations', href: '/aussie-vapes' },
+              { label: 'Locations', href: '/vapes-australia' },
               { label: `Vapes Australia ${c.name}` },
             ]}
           />
@@ -199,7 +199,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               <ul className="space-y-1 mt-3">
                 {CITIES.filter((other) => other.slug !== c.slug).map((other) => (
                   <li key={other.slug}>
-                    <Link href={`/aussie-vapes/${other.slug}`} className="font-display font-bold uppercase tracking-wider text-sm hover:text-price">
+                    <Link href={`/vapes-australia/${other.slug}`} className="font-display font-bold uppercase tracking-wider text-sm hover:text-price">
                       Vapes Australia {other.name}
                     </Link>
                   </li>
