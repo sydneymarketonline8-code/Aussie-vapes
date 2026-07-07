@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Vapes Australia mark">
+  <rect width="128" height="128" rx="26" fill="#0a0a0a"/>
+  <text x="64" y="92"
+        font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif"
+        font-weight="900"
+        font-size="76"
+        text-anchor="middle"
+        letter-spacing="-4">
+    <tspan fill="#ffffff">V</tspan><tspan fill="#ff0000">A</tspan>
+  </text>
+</svg>

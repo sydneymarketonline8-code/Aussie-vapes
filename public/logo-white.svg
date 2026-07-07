@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" role="img" aria-label="Vapes Australia (light on dark)">
+  <!-- Mark (inverted: light square on dark bg would look empty, so keep dark square with subtle white outline) -->
+  <rect x="1" y="17" width="94" height="94" rx="20" fill="#0a0a0a" stroke="#ffffff" stroke-width="2"/>
+  <text x="48" y="86"
+        font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif"
+        font-weight="900"
+        font-size="58"
+        text-anchor="middle"
+        letter-spacing="-3">
+    <tspan fill="#ffffff">V</tspan><tspan fill="#ff0000">A</tspan>
+  </text>
+
+  <!-- Wordmark: white VAPES + red AUSTRALIA (inverted from dark version) -->
+  <g font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-weight="900" letter-spacing="2">
+    <text x="120" y="60" font-size="42" fill="#ffffff">VAPES</text>
+    <text x="120" y="104" font-size="42" fill="#ff0000">AUSTRALIA</text>
+  </g>
+</svg>
