@@ -73,9 +73,11 @@ export function buildSiteMetadata(): Metadata {
       description: DEFAULT_DESCRIPTION,
     },
     twitter: {
+      // site / creator handles omitted until a real @VapesAustralia (or
+      // similar) Twitter/X account exists. A fake handle poisons the
+      // large-image preview and shows up as unclaimed in Twitter Card
+      // Validator. Re-add once the handle is registered.
       card: 'summary_large_image',
-      site: '@VapesAustraliaAU',
-      creator: '@VapesAustraliaAU',
       title: `Vapes Australia — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
@@ -278,10 +280,9 @@ export function organizationJsonLd() {
       email: 'info@vapesaustralia.com.au',
       availableLanguage: 'en-AU',
     },
-    sameAs: [
-      'https://www.instagram.com/vapesaustralia',
-      'https://www.facebook.com/vapesaustralia',
-    ],
+    // sameAs: intentionally omitted until real social profiles exist.
+    // Adding dead-link socials is a negative SEO signal (Google follows,
+    // gets 404s, flags entity mismatch). Re-add once handles are live.
   }
 }
 
@@ -341,10 +342,9 @@ export function localBusinessJsonLd() {
       opens: '09:00',
       closes: '17:00',
     },
-    sameAs: [
-      'https://www.instagram.com/vapesaustralia',
-      'https://www.facebook.com/vapesaustralia',
-    ],
+    // sameAs: intentionally omitted until real social profiles exist.
+    // Adding dead-link socials is a negative SEO signal (Google follows,
+    // gets 404s, flags entity mismatch). Re-add once handles are live.
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.8',
