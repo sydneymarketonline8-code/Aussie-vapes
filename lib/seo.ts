@@ -331,7 +331,7 @@ export function localBusinessJsonLd() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+61-480-803-761',
+      telephone: '+61-489-929-556',
       contactType: 'customer service',
       email: 'info@vapesaustralia.com.au',
       areaServed: 'AU',
