@@ -123,7 +123,7 @@ export default function Footer() {
         <div className="col-span-2">
           <Link href="/" className="inline-block mb-4">
             <span className="font-display text-2xl font-bold tracking-tight text-ink leading-none">
-              AUSSIE <span className="text-price">VAPES</span>
+              VAPES <span className="text-price">AUSTRALIA</span>
               <span className="block text-[10px] tracking-[0.3em] text-mute font-semibold mt-1">
                 AUSTRALIA&apos;S #1 ONLINE VAPE STORE
               </span>

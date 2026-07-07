@@ -75,7 +75,7 @@ export default function AdminSidebar() {
       {/* Logo */}
       <Link href="/admin" className="block px-5 py-5 border-b border-white/10">
         <span className="font-display text-lg font-bold tracking-tight leading-none">
-          AUSSIE <span className="text-price">VAPES</span>
+          VAPES <span className="text-price">AUSTRALIA</span>
         </span>
         <span className="block text-[10px] tracking-[0.3em] text-white/50 font-display font-semibold mt-1">
           ADMIN PANEL

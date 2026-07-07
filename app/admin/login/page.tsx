@@ -28,7 +28,7 @@ export default async function AdminLoginPage({
         <div className="text-center mb-6">
           <a href="/" className="inline-block">
             <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
-              AUSSIE <span className="text-price">VAPES</span>
+              VAPES <span className="text-price">AUSTRALIA</span>
             </span>
           </a>
           <p className="font-display text-[10px] tracking-[0.3em] text-mute font-semibold mt-2 uppercase">

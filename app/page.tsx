@@ -154,16 +154,16 @@ export default async function HomePage() {
             </h2>
             <div className="flex flex-wrap gap-2">
               {[
-                { label: 'Aussie vapes online', href: '/category/disposable-vapes' },
-                { label: 'Aussie vape store', href: '/brands' },
-                { label: 'Aussie disposable vapes', href: '/category/disposable-vapes' },
-                { label: 'Aussie pod systems', href: '/category/pod-systems' },
-                { label: 'Aussie vapes Sydney', href: '/category/disposable-vapes' },
-                { label: 'Cheap Aussie vapes', href: '/sale' },
+                { label: 'Vapes Australia online', href: '/category/disposable-vapes' },
+                { label: 'Vapes Australia store', href: '/brands' },
+                { label: 'Australia disposable vapes', href: '/category/disposable-vapes' },
+                { label: 'Australia pod systems', href: '/category/pod-systems' },
+                { label: 'Vapes Australia Sydney', href: '/category/disposable-vapes' },
+                { label: 'Cheap vapes Australia', href: '/sale' },
                 { label: 'IGET Vapes Australia', href: '/brand/iget' },
                 { label: 'HQD Vapes Australia', href: '/brand/hqd' },
                 { label: 'Alfakher Vapes Australia', href: '/brand/alfakher' },
-                { label: 'Aussie vapes free shipping', href: '/' },
+                { label: 'Vapes Australia free shipping', href: '/' },
               ].map(({ label, href }) => (
                 <a
                   key={label}

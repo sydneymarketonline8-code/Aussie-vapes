@@ -61,7 +61,7 @@ export default function Header() {
             title="Vapes Australia Home"
           >
             <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
-              AUSSIE <span className="text-price">VAPES</span>
+              VAPES <span className="text-price">AUSTRALIA</span>
               <span className="block text-[10px] tracking-[0.3em] text-mute font-semibold mt-1">
                 AUSTRALIA&apos;S #1 ONLINE VAPE STORE
               </span>
@@ -208,7 +208,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
           <nav className="relative w-80 max-w-full bg-white h-full overflow-y-auto animate-slide-right border-r border-line">
             <div className="p-4 border-b border-line flex items-center justify-between bg-ink text-white">
-              <span className="font-display text-xl font-bold">AUSSIE <span className="text-price">VAPES</span></span>
+              <span className="font-display text-xl font-bold">VAPES <span className="text-price">AUSTRALIA</span></span>
               <button onClick={() => setMobileOpen(false)} className="text-white hover:text-price" aria-label="Close menu">
                 <XMarkIcon className="h-6 w-6" />
               </button>
