@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
+import ProductImage from '@/components/ui/ProductImage'
 
 interface ProductGalleryProps {
   images: string[]
@@ -27,7 +27,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
     <div className="flex flex-col gap-3">
       {/* Main image */}
       <div className="relative aspect-square rounded-sm overflow-hidden bg-soft-100 border border-line">
-        <Image
+        <ProductImage
           src={images[selected]}
           alt={`${productName} — image ${selected + 1}`}
           fill
@@ -56,7 +56,7 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
               )}
               aria-label={`View image ${i + 1}`}
             >
-              <Image
+              <ProductImage
                 src={img}
                 alt={`${productName} thumbnail ${i + 1}`}
                 fill
