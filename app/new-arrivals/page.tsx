@@ -4,6 +4,8 @@ import ProductGrid from '@/components/product/ProductGrid'
 import Pagination, { PAGE_SIZE, paginate, parsePage } from '@/components/ui/Pagination'
 import { getNewArrivalProducts } from '@/lib/storefront-products'
 
+export const revalidate = 300
+
 export async function generateMetadata({
   searchParams,
 }: {

@@ -11,6 +11,8 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
+export const revalidate = 300
+
 export async function generateStaticParams() {
   return CITIES.map((c) => ({ city: c.slug }))
 }

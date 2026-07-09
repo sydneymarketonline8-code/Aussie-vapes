@@ -6,6 +6,8 @@ import { CITIES } from '@/lib/cities'
 import { getFeaturedProducts } from '@/lib/storefront-products'
 import { MapPinIcon } from '@heroicons/react/24/solid'
 
+export const revalidate = 300
+
 export const metadata: Metadata = {
   title: 'Vapes Australia — Australia\'s #1 Online Vape Store, City By City',
   description:

@@ -17,6 +17,11 @@ import {
 import { buildSiteMetadata, localBusinessJsonLd } from '@/lib/seo'
 import type { Product } from '@/types'
 
+// ISR: regenerate from the DB every 5 min so product/image changes
+// propagate without a full redeploy (previously static → baked stale
+// image URLs at build time).
+export const revalidate = 300
+
 export const metadata: Metadata = {
   ...buildSiteMetadata(),
   title: "Vapes Australia — Australia's #1 Online Vape Store | Disposables, Pods, E-Liquid",
