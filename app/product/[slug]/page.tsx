@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import {
   getProductBySlug,
-  getAllActiveProductSlugs,
+  getFeaturedProducts,
+  getNewArrivalProducts,
+  getSaleProducts,
 } from '@/lib/storefront-products'
 import { buildProductMetadata, productJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo'
 import { getCategoryBySlug } from '@/lib/categories'
@@ -28,9 +30,21 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia
 // without needing a Vercel rebuild.
 export const revalidate = 60
 
+// Pre-render only the merchandised products (best sellers, new arrivals, sale)
+// for instant TTFB on the pages people actually land on. The long tail (2000+
+// SKUs) renders on first request and is then cached by ISR — keeping build
+// time bounded and well under Vercel's limit. dynamicParams defaults to true,
+// so every product still resolves, and all are listed in sitemap.xml, so
+// indexability is unaffected.
 export async function generateStaticParams() {
-  const slugs = await getAllActiveProductSlugs()
-  return slugs.map((slug) => ({ slug }))
+  const [featured, fresh, sale] = await Promise.all([
+    getFeaturedProducts(200),
+    getNewArrivalProducts(200),
+    getSaleProducts(200),
+  ])
+  const slugs = new Set<string>()
+  for (const p of featured.concat(fresh, sale)) slugs.add(p.slug)
+  return Array.from(slugs, (slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

@@ -42,7 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
         />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="min-h-screen flex flex-col">

@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Product pages fetch from Supabase during static generation; under parallel
+  // build workers a few can exceed the default 60s. Give them headroom so the
+  // build doesn't churn on SIGTERM restarts (or fail on slower CI).
+  staticPageGenerationTimeout: 180,
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co' },

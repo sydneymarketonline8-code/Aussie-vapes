@@ -187,18 +187,27 @@ export async function getProductsBySlugs(slugs: string[]): Promise<Product[]> {
 
 export async function getAllActiveProductSlugs(): Promise<string[]> {
   const supabase = getSupabasePublicClient()
-  const { data, error } = await supabase
-    .from('products')
-    .select('slug')
-    .eq('status', 'active')
-    .is('deleted_at', null)
-    .range(0, 9999)
+  // PostgREST caps a single response at 1000 rows regardless of .range(),
+  // so page through until a short page is returned. Without this the sitemap
+  // and generateStaticParams silently truncate to the first 1000 products.
+  const slugs: string[] = []
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase
+      .from('products')
+      .select('slug')
+      .eq('status', 'active')
+      .is('deleted_at', null)
+      .order('id', { ascending: true })
+      .range(from, from + 999)
 
-  if (error) {
-    console.error('[getAllActiveProductSlugs] query failed', error)
-    return []
+    if (error) {
+      console.error('[getAllActiveProductSlugs] query failed', error)
+      break
+    }
+    slugs.push(...(data ?? []).map((p) => p.slug))
+    if (!data || data.length < 1000) break
   }
-  return (data ?? []).map((p) => p.slug)
+  return slugs
 }
 
 function baseSelect(columns: string = SELECT_COLUMNS) {
@@ -251,6 +260,20 @@ async function runRows(query: PromiseLike<{ data: unknown; error: unknown }>): P
   return products
 }
 
+// Pages through a listing query 1000 rows at a time. `build()` must return a
+// fresh query each call so a new .range() can be applied — PostgREST caps any
+// single response at 1000 rows, so listings with more products (e.g.
+// disposable-vapes has 1700+) silently truncated without this.
+async function runAllRows(build: () => ReturnType<typeof listSelect>): Promise<Product[]> {
+  const out: Product[] = []
+  for (let from = 0; ; from += 1000) {
+    const rows = await runRows(build().order('id', { ascending: true }).range(from, from + 999))
+    out.push(...rows)
+    if (rows.length < 1000) break
+  }
+  return out
+}
+
 export async function getProductsByCategorySlug(slug: string): Promise<Product[]> {
   const supabase = getSupabasePublicClient()
   // .limit(1) + index is more reliable than .maybeSingle() — we've seen
@@ -262,7 +285,7 @@ export async function getProductsByCategorySlug(slug: string): Promise<Product[]
     .limit(1)
   const cat = cats?.[0]
   if (!cat) return []
-  return runRows(listSelect().eq('category_id', cat.id).range(0, 9999))
+  return runAllRows(() => listSelect().eq('category_id', cat.id))
 }
 
 export async function getFeaturedProducts(limit = 8): Promise<Product[]> {
@@ -287,7 +310,7 @@ export async function getProductsByBrandSlug(slug: string): Promise<Product[]> {
     .limit(1)
   const brand = brands?.[0]
   if (!brand) return []
-  return runRows(listSelect().eq('brand_id', brand.id).range(0, 9999))
+  return runAllRows(() => listSelect().eq('brand_id', brand.id))
 }
 
 /** Counts of active products grouped by category slug. */

@@ -1,11 +1,24 @@
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getCategoryBySlug } from '@/lib/categories'
 import { getProductsByCategorySlug } from '@/lib/storefront-products'
+import { buildCategoryMetadata } from '@/lib/seo'
 import CategoryView from './CategoryView'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
 
 export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const category = getCategoryBySlug(slug)
+  if (!category) return {}
+  return buildCategoryMetadata(category)
+}
 
 export default async function CategoryPage({
   params,

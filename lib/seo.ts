@@ -261,7 +261,7 @@ export function organizationJsonLd() {
     name: 'Vapes Australia',
     alternateName: ['Vapes AU', 'Vapes Australia Online'],
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/logo.svg`,
     description: DEFAULT_DESCRIPTION,
     slogan: "Australia's #1 Online Vape Store",
     areaServed: {
@@ -312,8 +312,8 @@ export function localBusinessJsonLd() {
     name: 'Vapes Australia',
     alternateName: ['Vapes AU'],
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
-    image: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/logo.svg`,
+    image: `${SITE_URL}/logo.svg`,
     description: DEFAULT_DESCRIPTION,
     priceRange: '$15 - $60',
     paymentAccepted: ['Visa', 'Mastercard', 'American Express', 'PayPal'],
@@ -345,12 +345,11 @@ export function localBusinessJsonLd() {
     // sameAs: intentionally omitted until real social profiles exist.
     // Adding dead-link socials is a negative SEO signal (Google follows,
     // gets 404s, flags entity mismatch). Re-add once handles are live.
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '10000',
-      bestRating: '5',
-      worstRating: '1',
-    },
+    //
+    // No org-level aggregateRating: Google's policy disallows self-serving
+    // review markup that isn't backed by reviews visible on the same page.
+    // A fabricated site-wide rating risks a structured-data manual action.
+    // Product-level aggregateRating (from real review data) stays in
+    // productJsonLd and is fully eligible.
   }
 }
