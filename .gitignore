@@ -51,3 +51,4 @@ sitemap.xml
 # Import script artifacts
 scripts/import.log
 scripts/failed-images.json
+scripts/product-content-backup-*.json
