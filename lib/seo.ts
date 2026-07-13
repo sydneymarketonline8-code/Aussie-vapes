@@ -97,9 +97,9 @@ export function buildSiteMetadata(): Metadata {
       ].filter((v): v is string => Boolean(v)),
       yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
       other: {
-        ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
-          ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION }
-          : {}),
+        // Bing Webmaster Tools (also feeds DuckDuckGo). Public token; env
+        // var overrides.
+        'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION || 'AA4B24BB61805F06694EA15A78224F46',
       },
     },
   }
