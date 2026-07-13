@@ -87,9 +87,14 @@ export function buildSiteMetadata(): Metadata {
     // console as env vars; missing ones are omitted, so dev/preview don't
     // need them.
     verification: {
-      // Google Search Console — URL-prefix property meta-tag verification.
-      // Public token (visible in page source by design); env var overrides.
-      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || 'dQ8mBSny_hnKO-lEgF0utHDFpnMSGCD8Xm6szhAFHyI',
+      // Google Search Console — render every known verification token so
+      // multiple properties/accounts verify. Public values (visible in page
+      // source by design). Includes any env-var token plus the current
+      // URL-prefix property token.
+      google: [
+        process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+        'dQ8mBSny_hnKO-lEgF0utHDFpnMSGCD8Xm6szhAFHyI',
+      ].filter((v): v is string => Boolean(v)),
       yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
       other: {
         ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
