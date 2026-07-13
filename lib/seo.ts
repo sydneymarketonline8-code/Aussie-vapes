@@ -101,7 +101,9 @@ export function buildSiteMetadata(): Metadata {
 export function buildProductMetadata(product: Product): Metadata {
   const url = `${SITE_URL}/product/${product.slug}`
   return {
-    title: product.seoTitle,
+    // absolute: seoTitle already ends with "| Vapes Australia"; without this
+    // the root layout's "%s | Vapes Australia" template appends it twice.
+    title: { absolute: product.seoTitle },
     description: product.seoDescription,
     openGraph: {
       type: 'website',
@@ -118,7 +120,7 @@ export function buildProductMetadata(product: Product): Metadata {
 export function buildCategoryMetadata(category: Category): Metadata {
   const url = `${SITE_URL}/category/${category.slug}`
   return {
-    title: category.seoTitle,
+    title: { absolute: category.seoTitle },
     description: category.seoDescription,
     keywords: category.keywords,
     openGraph: {
@@ -143,7 +145,7 @@ export interface BrandSeoInput {
 export function buildBrandMetadata(brand: BrandSeoInput): Metadata {
   const url = `${SITE_URL}/brand/${brand.slug}`
   return {
-    title: brand.seoTitle,
+    title: { absolute: brand.seoTitle },
     description: brand.seoDescription,
     keywords: brand.keywords,
     openGraph: {
