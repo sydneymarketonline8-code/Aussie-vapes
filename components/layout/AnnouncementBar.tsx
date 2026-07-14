@@ -5,9 +5,9 @@ export default function AnnouncementBar() {
     <div className="topbar border-b border-black/20">
       <div className="container-site flex items-center justify-between h-9 text-[11px] tracking-wider uppercase font-semibold">
         <div className="hidden md:flex items-center gap-5">
-          <a href="tel:+61489929556" className="flex items-center gap-1.5 hover:text-price transition-colors">
+          <a href="tel:+61485882439" className="flex items-center gap-1.5 hover:text-price transition-colors">
             <PhoneIcon className="h-3.5 w-3.5" />
-            <span>+61 489 929 556</span>
+            <span>+61 485 882 439</span>
           </a>
           <a href="mailto:info@vapesaustralia.com.au" className="flex items-center gap-1.5 hover:text-price transition-colors">
             <EnvelopeIcon className="h-3.5 w-3.5" />
