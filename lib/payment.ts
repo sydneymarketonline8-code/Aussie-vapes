@@ -47,9 +47,13 @@ export interface WhatsAppConfig {
   number: string
 }
 
+// Hardcoded, NOT env-driven — a stale NEXT_PUBLIC_WHATSAPP_NUMBER in the host
+// kept resurrecting old/banned numbers. Keep in sync with WHATSAPP_NUMBER in
+// components/layout/WhatsAppButton.tsx.
+const WHATSAPP_NUMBER = '61485882439'
+
 export function getWhatsAppConfig(): WhatsAppConfig {
-  const raw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
-  return { number: raw.replace(/\D+/g, '') }
+  return { number: WHATSAPP_NUMBER.replace(/\D+/g, '') }
 }
 
 export interface WhatsAppOrderSummary {

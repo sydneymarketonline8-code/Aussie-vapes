@@ -5,17 +5,17 @@ import { usePathname } from 'next/navigation'
 /**
  * Floating WhatsApp click-to-chat button.
  *
- * The destination phone number is read from NEXT_PUBLIC_WHATSAPP_NUMBER
- * (digits only, international format without + or spaces). Defaults to
- * the Vapes Australia sales number if the env var isn't set, so the button
- * works out of the box and can be redirected by changing one var.
+ * The destination phone number is hardcoded (digits only, international
+ * format without + or spaces). It is deliberately NOT read from an env var:
+ * a stale NEXT_PUBLIC_WHATSAPP_NUMBER in the host kept resurrecting old /
+ * banned numbers. To change it, edit WHATSAPP_NUMBER here.
  *
  * Hidden on /admin/* and /checkout/success/* — same logic as <LiveChat>.
  * Positioned bottom-LEFT so it doesn't visually compete with the Crisp
  * chat bubble in the bottom-right corner.
  */
 
-const DEFAULT_NUMBER = '61485882439' // +61 485 882 439
+const WHATSAPP_NUMBER = '61485882439' // +61 485 882 439
 
 export default function WhatsAppButton() {
   const pathname = usePathname()
@@ -27,9 +27,8 @@ export default function WhatsAppButton() {
     return null
   }
 
-  const raw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? DEFAULT_NUMBER
   // Strip everything that isn't a digit so the wa.me URL is always valid
-  const number = raw.replace(/\D/g, '')
+  const number = WHATSAPP_NUMBER.replace(/\D/g, '')
   if (!number) return null
 
   const prefill = encodeURIComponent(
