@@ -140,7 +140,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-2 text-body">
               <PhoneIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
-              <a href="tel:+61485882439" className="hover:text-price">+61 485 882 439</a>
+              <a href="tel:+61468189205" className="hover:text-price">+61 468 189 205</a>
             </li>
             <li className="flex items-start gap-2 text-body">
               <EnvelopeIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />

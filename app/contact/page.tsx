@@ -76,7 +76,7 @@ export default function ContactPage() {
           <h2 className="font-display text-2xl font-bold text-ink mb-2 lowercase">other ways to reach vapes australia</h2>
 
           {[
-            { Icon: PhoneIcon, t: 'Phone', body: '+61 485 882 439', href: 'tel:+61485882439', note: 'Mon–Fri 9am–5pm AEST' },
+            { Icon: PhoneIcon, t: 'Phone', body: '+61 468 189 205', href: 'tel:+61468189205', note: 'Mon–Fri 9am–5pm AEST' },
             { Icon: EnvelopeIcon, t: 'Email', body: 'info@vapesaustralia.com.au', href: 'mailto:info@vapesaustralia.com.au', note: 'Replies within 4 business hours' },
             { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every Vapes Australia page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
             { Icon: MapPinIcon, t: 'Sydney Warehouse', body: 'Sydney, NSW, Australia', href: '#', note: 'Pick-up by appointment only (B2B / wholesale)' },

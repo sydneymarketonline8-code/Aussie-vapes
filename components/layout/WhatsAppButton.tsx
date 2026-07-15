@@ -15,7 +15,7 @@ import { usePathname } from 'next/navigation'
  * chat bubble in the bottom-right corner.
  */
 
-const WHATSAPP_NUMBER = '61485882439' // +61 485 882 439
+const WHATSAPP_NUMBER = '61468189205' // +61 468 189 205
 
 export default function WhatsAppButton() {
   const pathname = usePathname()
