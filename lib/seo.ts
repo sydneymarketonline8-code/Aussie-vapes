@@ -339,7 +339,7 @@ export function localBusinessJsonLd() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+61-468-189-205',
+      telephone: '+61-468-188-347',
       contactType: 'customer service',
       email: 'info@vapesaustralia.com.au',
       areaServed: 'AU',
