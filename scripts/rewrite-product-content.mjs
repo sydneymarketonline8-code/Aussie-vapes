@@ -222,18 +222,41 @@ function accessory(a, seed) {
   }
 }
 
+const SITE_BRAND = 'Aussie Vape Hub'
+
+/** Trim to <= max on a word boundary. Never mid-word. */
+function trimWords(s, max) {
+  if (s.length <= max) return s
+  const cut = s.slice(0, max)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > max * 0.5 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:|–-]+$/, '')
+}
+
+/** Prefer a complete sentence; else a whole word plus a full stop. */
+function trimSentence(s, max) {
+  if (s.length <= max) return s
+  const cut = s.slice(0, max)
+  const lastStop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '))
+  if (lastStop > max * 0.55) return cut.slice(0, lastStop + 1)
+  const words = trimWords(cut, max - 1)
+  return words.endsWith('.') ? words : words + '.'
+}
+
+// Title/description are truncated on word and sentence boundaries, and the
+// brand suffix is appended AFTER trimming — slicing the finished string cut
+// mid-brand ("… | Vapes Austra"), which then survived later find-replaces.
 function genSeo(a, seed, short) {
-  const t = pick([
-    `${a.dispName} | ${a.brand} | Aussie Vape Hub`,
-    `${a.dispName} — Buy Online | Aussie Vape Hub`,
-    `${a.dispName} | Aussie Vape Hub`,
-  ], seed, 11)
-  const d = clean(pick([
-    `Buy the ${a.dispName} online in Australia. ${short} Fast Sydney dispatch, free shipping over $300.`,
-    `${short} Shop the ${a.dispName} at Aussie Vape Hub — genuine stock, same-day AU dispatch.`,
-    `${a.dispName} in stock now at Aussie Vape Hub. ${short} Discreet, tracked Australia-wide delivery.`,
-  ], seed, 17)).slice(0, 158)
-  return { seoTitle: t.slice(0, 60), seoDescription: d }
+  const suffix = ` | ${SITE_BRAND}`
+  const seoTitle = trimWords(a.dispName, 62 - suffix.length) + suffix
+
+  const base = clean(short || a.dispName)
+  const cta = ` Buy online at ${SITE_BRAND} — fast Australia-wide shipping.`
+  const seoDescription =
+    base.length + cta.length <= 158
+      ? (base.endsWith('.') ? base : base + '.') + cta
+      : trimSentence(base, 158)
+
+  return { seoTitle, seoDescription }
 }
 
 function generate(p, brandName, catSlug) {
