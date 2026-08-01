@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
-const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'Aussie Vape Hub'
+// Hardcoded, NOT env-driven. A stale NEXT_PUBLIC_SITE_NAME in the host kept
+// the previous brand alive in author/creator/publisher/og:site_name after a
+// rebrand. Change the brand here.
+const SITE_NAME = 'Aussie Vape Hub'
 const DEFAULT_DESCRIPTION =
   "Aussie Vape Hub is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
 
@@ -80,19 +83,18 @@ export function buildSiteMetadata(): Metadata {
       description: DEFAULT_DESCRIPTION,
     },
     alternates: { canonical: SITE_URL },
-    // Search-engine ownership verification, rendered as <meta> tags. Tokens are
-    // per-property, so the ones issued for the previous (now suspended) domain
-    // are useless here and would only tie this domain to that one. Empty until
-    // fresh tokens are issued for aussievapehub.com.au — set the env vars and
-    // they render; missing ones are omitted.
+    // Search-engine ownership verification, rendered as <meta> tags.
+    //
+    // Deliberately NOT env-driven: verification tokens are issued per property,
+    // and stale NEXT_PUBLIC_*_VERIFICATION values in the host kept publishing
+    // tokens for a previous (now suspended) domain — they can never verify here
+    // and only associate this domain with that one.
+    //
+    // When the Search Console / Bing properties for aussievapehub.com.au are
+    // created, paste the tokens below.
     verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || undefined,
-      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || undefined,
-      other: {
-        ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
-          ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION }
-          : {}),
-      },
+      // google: 'paste-google-site-verification-token-here',
+      // other: { 'msvalidate.01': 'paste-bing-token-here' },
     },
   }
 }
