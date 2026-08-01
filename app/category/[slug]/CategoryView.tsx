@@ -296,7 +296,7 @@ export default function CategoryView({
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="font-display text-2xl lg:text-3xl font-bold text-ink mb-4 lowercase">
-                about {category.name.toLowerCase()} at vapes australia
+                about {category.name.toLowerCase()} at aussie vape hub
               </h2>
               <p className="text-body leading-relaxed">{category.longDescription}</p>
             </div>

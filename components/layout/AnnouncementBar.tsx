@@ -9,9 +9,9 @@ export default function AnnouncementBar() {
             <PhoneIcon className="h-3.5 w-3.5" />
             <span>+61 468 188 347</span>
           </a>
-          <a href="mailto:info@vapesaustralia.com.au" className="flex items-center gap-1.5 hover:text-price transition-colors">
+          <a href="mailto:info@aussievapehub.com.au" className="flex items-center gap-1.5 hover:text-price transition-colors">
             <EnvelopeIcon className="h-3.5 w-3.5" />
-            <span>info@vapesaustralia.com.au</span>
+            <span>info@aussievapehub.com.au</span>
           </a>
         </div>
         <div className="flex-1 md:flex-none text-center">

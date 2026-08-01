@@ -125,7 +125,7 @@ async function main() {
 
       // Are the URLs actually loadable?
       for (const url of row.imageUrls) {
-        if (url.startsWith('/products/') || url.includes('vapesaustralia.com.au/products/')) {
+        if (url.startsWith('/products/') || url.includes('aussievapehub.com.au/products/')) {
           const filename = url.split('/products/')[1]
           if (filename && onDiskFiles.has(filename.toLowerCase())) row.imagesOnDisk++
         } else if (/^https?:/.test(url)) {

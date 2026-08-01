@@ -9,7 +9,7 @@ import { PACK_GROUPS, getPackGroupBySlug, getPacksByGroup, extractPackSize } fro
 import { breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 export async function generateStaticParams() {
   return PACK_GROUPS.map((g) => ({ group: g.slug }))
@@ -67,7 +67,7 @@ export default async function PackGroupPage({
   const sizeKeys = Array.from(bySize.keys()).sort((a, b) => a - b)
 
   const crumbs = [
-    { name: 'Vapes Australia', url: `${SITE_URL}/` },
+    { name: 'Aussie Vape Hub', url: `${SITE_URL}/` },
     { name: 'Vape Packs', url: `${SITE_URL}/packs` },
     { name: g.name, url: `${SITE_URL}/packs/${g.slug}` },
   ]
@@ -100,7 +100,7 @@ export default async function PackGroupPage({
         <div className="container-site py-12">
           <Breadcrumb
             crumbs={[
-              { label: 'Vapes Australia', href: '/' },
+              { label: 'Aussie Vape Hub', href: '/' },
               { label: 'Vape Packs', href: '/packs' },
               { label: g.name },
             ]}
@@ -176,7 +176,7 @@ export default async function PackGroupPage({
             {sizeKeys.map((size) => (
               <div key={size} id={`size-${size}`} className="mb-12 scroll-mt-24">
                 <div className="section-heading-wrap">
-                  <h2 className="section-heading">{size}-pack vapes australia</h2>
+                  <h2 className="section-heading">{size}-pack aussie vape hub</h2>
                   <span className="font-display text-xs uppercase tracking-widest font-bold text-mute">
                     {bySize.get(size)?.length ?? 0} on this page
                   </span>
@@ -202,7 +202,7 @@ export default async function PackGroupPage({
         <div className="container-site grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2">
             <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">
-              about {g.name.toLowerCase()} at vapes australia
+              about {g.name.toLowerCase()} at aussie vape hub
             </h2>
             <p className="text-body leading-relaxed">{g.longDescription}</p>
 
@@ -233,13 +233,13 @@ export default async function PackGroupPage({
           <aside>
             <div className="bg-white border border-line rounded-sm p-6">
               <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3 pb-2 border-b border-line">
-                Related Vapes Australia Pages
+                Related Aussie Vape Hub Pages
               </h3>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/packs" className="text-body hover:text-price">All Vape Packs</Link></li>
                 <li><Link href="/category/disposable-vapes" className="text-body hover:text-price">Single Disposable Vapes</Link></li>
-                <li><Link href="/brands" className="text-body hover:text-price">All Vapes Australia Brands</Link></li>
-                <li><Link href="/sale" className="text-body hover:text-price">Vapes Australia Sale</Link></li>
+                <li><Link href="/brands" className="text-body hover:text-price">All Aussie Vape Hub Brands</Link></li>
+                <li><Link href="/sale" className="text-body hover:text-price">Aussie Vape Hub Sale</Link></li>
                 <li><Link href="/bulk" className="text-body hover:text-price">Bulk &amp; Wholesale</Link></li>
                 <li><Link href="/shipping" className="text-body hover:text-price">Shipping Policy</Link></li>
               </ul>

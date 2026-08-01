@@ -9,7 +9,7 @@ import { PUFF_RANGES, getPuffRangeBySlug, getProductsByPuffRange } from '@/lib/p
 import { breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 export async function generateStaticParams() {
   return PUFF_RANGES.map((r) => ({ range: r.slug }))
@@ -53,7 +53,7 @@ export default async function PuffRangePage({
   const products = paginate(allProducts, currentPage, PAGE_SIZE)
 
   const crumbs = [
-    { name: 'Vapes Australia', url: `${SITE_URL}/` },
+    { name: 'Aussie Vape Hub', url: `${SITE_URL}/` },
     { name: 'Shop by Puff Count', url: `${SITE_URL}/puffs` },
     { name: r.name, url: `${SITE_URL}/puffs/${r.slug}` },
   ]
@@ -66,7 +66,7 @@ export default async function PuffRangePage({
         <div className="container-site py-10">
           <Breadcrumb
             crumbs={[
-              { label: 'Vapes Australia', href: '/' },
+              { label: 'Aussie Vape Hub', href: '/' },
               { label: 'Shop by Puff Count', href: '/puffs' },
               { label: r.shortName },
             ]}
@@ -74,7 +74,7 @@ export default async function PuffRangePage({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-5">
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-                {allProducts.length.toLocaleString()} Vapes Australia In This Range
+                {allProducts.length.toLocaleString()} Aussie Vape Hub In This Range
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.05] mb-3 flex items-center gap-3">
                 <r.icon className="h-10 w-10 text-price" />
@@ -104,7 +104,7 @@ export default async function PuffRangePage({
       <section className="container-site py-12">
         {allProducts.length === 0 ? (
           <p className="text-mute text-center py-20">
-            No Vapes Australia products currently in the {r.shortName.toLowerCase()} puff range. Try a different range above.
+            No Aussie Vape Hub products currently in the {r.shortName.toLowerCase()} puff range. Try a different range above.
           </p>
         ) : (
           <>
@@ -120,13 +120,13 @@ export default async function PuffRangePage({
       <section className="bg-soft-100 border-t border-line py-12">
         <div className="container-site max-w-3xl">
           <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">
-            about {r.shortName.toLowerCase()} puff vapes at vapes australia
+            about {r.shortName.toLowerCase()} puff vapes at aussie vape hub
           </h2>
           <p className="text-body leading-relaxed text-sm">{r.longDescription}</p>
 
           <div className="mt-6 flex items-start gap-2 text-xs text-body">
             <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
-            All Vapes Australia products in this range are authentic AU stock, same-day Sydney dispatch on weekday orders before 2pm AEST.
+            All Aussie Vape Hub products in this range are authentic AU stock, same-day Sydney dispatch on weekday orders before 2pm AEST.
           </div>
         </div>
       </section>

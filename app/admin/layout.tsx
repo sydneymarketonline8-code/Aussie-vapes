@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import AdminSidebar from '@/components/admin/AdminSidebar'
 
 export const metadata: Metadata = {
-  title: 'Vapes Australia Admin',
+  title: 'Aussie Vape Hub Admin',
   robots: { index: false, follow: false },
 }
 

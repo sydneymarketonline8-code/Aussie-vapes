@@ -80,7 +80,7 @@ export default async function CheckoutSuccessPage({
           <strong className="text-ink">WhatsApp handoff is not configured.</strong> Set
           <code className="font-mono mx-1">NEXT_PUBLIC_WHATSAPP_NUMBER</code>
           in the environment to enable the one-tap WhatsApp confirmation. In the meantime, email
-          <a href="mailto:sales@vapesaustralia.com.au" className="text-price font-semibold hover:underline mx-1">sales@vapesaustralia.com.au</a>
+          <a href="mailto:sales@aussievapehub.com.au" className="text-price font-semibold hover:underline mx-1">sales@aussievapehub.com.au</a>
           with reference <strong className="font-mono text-ink">{order.payment_reference}</strong> to arrange payment.
         </div>
       )}
@@ -88,7 +88,7 @@ export default async function CheckoutSuccessPage({
       <div className="mt-8 bg-white border border-line rounded-sm p-5 text-sm text-body">
         <p className="font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Need help?</p>
         <p>
-          Email <a href="mailto:sales@vapesaustralia.com.au" className="text-price font-semibold hover:underline">sales@vapesaustralia.com.au</a> with your reference code and we&apos;ll sort it out.
+          Email <a href="mailto:sales@aussievapehub.com.au" className="text-price font-semibold hover:underline">sales@aussievapehub.com.au</a> with your reference code and we&apos;ll sort it out.
         </p>
       </div>
 

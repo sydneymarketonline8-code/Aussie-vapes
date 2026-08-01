@@ -35,7 +35,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Australia\'s Most Popular Disposable Vape Brand',
     shortDescription: 'IGET is the undisputed leader in Australian disposable vapes. From the original IGET Legend to the IGET Bar Plus and IGET Goat, IGET has set the benchmark for flavour, reliability and puff count in the AU market.',
     longDescription:
-      "IGET (Innokin) is Australia's most recognisable disposable vape brand — chances are if you've seen a vape in Sydney, Melbourne, Brisbane or Perth in the past three years, it was an IGET. The brand built its reputation on the legendary IGET Legend 4000 puff device and has since released a comprehensive line-up covering every puff range from the compact IGET Shion 600 right up to the mighty IGET One 12,000 puffs. IGET devices are known for their stable mesh coil hardware, true-to-flavour profile reproduction, and consistent draw activation that just works the first time, every time. Whether you're looking for the famous IGET Bar Plus 6000 puff rechargeable, the screen-equipped IGET Bar Pro, or the pod-and-mod IGET Dual system, Vapes Australia carries the largest in-stock IGET range in Australia. All IGET products are sourced through authorised AU channels, age-verified at checkout, and dispatched same-day from our Sydney warehouse on orders before 2pm AEST.",
+      "IGET (Innokin) is Australia's most recognisable disposable vape brand — chances are if you've seen a vape in Sydney, Melbourne, Brisbane or Perth in the past three years, it was an IGET. The brand built its reputation on the legendary IGET Legend 4000 puff device and has since released a comprehensive line-up covering every puff range from the compact IGET Shion 600 right up to the mighty IGET One 12,000 puffs. IGET devices are known for their stable mesh coil hardware, true-to-flavour profile reproduction, and consistent draw activation that just works the first time, every time. Whether you're looking for the famous IGET Bar Plus 6000 puff rechargeable, the screen-equipped IGET Bar Pro, or the pod-and-mod IGET Dual system, Aussie Vape Hub carries the largest in-stock IGET range in Australia. All IGET products are sourced through authorised AU channels, age-verified at checkout, and dispatched same-day from our Sydney warehouse on orders before 2pm AEST.",
     highlights: [
       'Largest IGET selection in Australia — Bar, Bar Plus, Bar Pro, Goat, Hot, King, Legend, Max, Moon, One, Shion, XXL',
       'Authentic AU stock with scratch-and-check authenticity codes',
@@ -53,7 +53,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'How can I tell if my IGET is genuine?',
         answer:
-          'Every authentic IGET sold by Vapes Australia carries a scratch-off authenticity code on the back of the packaging. Scratch the panel and enter the code at the official IGET verification page. Counterfeit IGETs typically have blurry print, missing batch codes, or fail authentication — if you ever receive one from us, contact our team for an immediate replacement.',
+          'Every authentic IGET sold by Aussie Vape Hub carries a scratch-off authenticity code on the back of the packaging. Scratch the panel and enter the code at the official IGET verification page. Counterfeit IGETs typically have blurry print, missing batch codes, or fail authentication — if you ever receive one from us, contact our team for an immediate replacement.',
       },
       {
         question: 'What is the difference between IGET Bar and IGET Bar Plus?',
@@ -63,7 +63,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'Do you ship IGET vapes Australia-wide?',
         answer:
-          'Yes. Vapes Australia ships IGET disposables to every Australian state and territory via discreet, plain-packaging courier. Free standard shipping on orders over $300, express options at checkout, and same-day dispatch from Sydney on weekday orders placed before 2pm AEST.',
+          'Yes. Aussie Vape Hub ships IGET disposables to every Australian state and territory via discreet, plain-packaging courier. Free standard shipping on orders over $300, express options at checkout, and same-day dispatch from Sydney on weekday orders placed before 2pm AEST.',
       },
       {
         question: 'How long does an IGET disposable actually last?',
@@ -84,7 +84,7 @@ export const BRANDS: Brand[] = [
       'buy iget online australia',
       'iget bar plus pods',
     ],
-    seoTitle: 'IGET Australia — Bar, Bar Plus, Goat & More | Vapes Australia',
+    seoTitle: 'IGET Australia — Bar, Bar Plus, Goat & More | Aussie Vape Hub',
     seoDescription: 'Buy authentic IGET disposable vapes in Australia. Bar 3500, Bar Plus 6000, Goat 5000, Hot 5500, King, Legend, Max, Moon, One 12000 & more. Same-day AU shipping.',
     aliases: ['iget'],
     accentColor: '#ff0000',
@@ -97,7 +97,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Premium Big-Puff Disposables From The Middle East',
     shortDescription: 'Alfakher Crown Bar disposables bring the Middle East\'s most celebrated shisha brand into the Australian vape market with 8,000 and 15,000 puff models packed with rich, deep flavours.',
     longDescription:
-      "Alfakher is one of the most respected names in shisha tobacco worldwide — and the Crown Bar disposable vape line brings that same fanatical attention to flavour blending into the modern disposable format. Available in 8,000 puff and 15,000 puff models, the Crown Bar is engineered for long sessions with a dual mesh coil, adjustable airflow, USB-C fast charging and a 650mAh battery. Flavour profiles lean richer and more layered than typical disposables — think Two Apple (the iconic Alfakher shisha blend in vape form), Lemon Mint, Lush Ice, Magic Love and Sweet Passionfruit. Vapes Australia is one of Australia's largest authorised Alfakher Crown Bar stockists, with 3-pack, 5-pack, 10-pack and 20-pack bulk options for those who want to save. All Crown Bar inventory is genuine and ships from our Sydney warehouse same-day.",
+      "Alfakher is one of the most respected names in shisha tobacco worldwide — and the Crown Bar disposable vape line brings that same fanatical attention to flavour blending into the modern disposable format. Available in 8,000 puff and 15,000 puff models, the Crown Bar is engineered for long sessions with a dual mesh coil, adjustable airflow, USB-C fast charging and a 650mAh battery. Flavour profiles lean richer and more layered than typical disposables — think Two Apple (the iconic Alfakher shisha blend in vape form), Lemon Mint, Lush Ice, Magic Love and Sweet Passionfruit. Aussie Vape Hub is one of Australia's largest authorised Alfakher Crown Bar stockists, with 3-pack, 5-pack, 10-pack and 20-pack bulk options for those who want to save. All Crown Bar inventory is genuine and ships from our Sydney warehouse same-day.",
     highlights: [
       'Crown Bar 15,000 puff and 8,000 puff range — full flavour line-up',
       'Bulk pack discounts (3-pack, 5-pack, 10-pack, 20-pack)',
@@ -143,7 +143,7 @@ export const BRANDS: Brand[] = [
       'crown bar bulk australia',
       'alfakher vape australia',
     ],
-    seoTitle: 'Alfakher Crown Bar Australia — 15000 & 8000 Puffs | Vapes Australia',
+    seoTitle: 'Alfakher Crown Bar Australia — 15000 & 8000 Puffs | Aussie Vape Hub',
     seoDescription: 'Shop authentic Alfakher Crown Bar disposables in Australia. 15,000 puff & 8,000 puff models, all flavours, 3-pack & 10-pack bundles. Same-day Sydney dispatch.',
     aliases: ['alfakher'],
     accentColor: '#8b0000',
@@ -156,7 +156,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Sleek, Reliable, Pocket-Friendly Disposables',
     shortDescription: 'HQD is the disposable vape brand that put style on the menu — slim, well-built devices with a clean flavour palette across the Cuvie, Maxx, Box and Slick ranges.',
     longDescription:
-      "HQD is one of the global big-three in disposable vapes alongside IGET and Lost Mary, and is particularly popular with Australian vapers who value design and pocket-friendly form factors. The Cuvie line built HQD's reputation for reliable starter disposables. The HQD Cuvie Slick 20,000 and Slick Plus 12,000 are the brand's current flagship long-puff models, while the HQD Maxx 2500 remains a perennial best-seller for the entry-level segment. HQD's flavour styling tends to be cleaner and less candy-forward than other brands, which makes it a favourite among ex-smokers looking for a more authentic profile. Vapes Australia stocks the full HQD range with genuine AU inventory shipped from Sydney.",
+      "HQD is one of the global big-three in disposable vapes alongside IGET and Lost Mary, and is particularly popular with Australian vapers who value design and pocket-friendly form factors. The Cuvie line built HQD's reputation for reliable starter disposables. The HQD Cuvie Slick 20,000 and Slick Plus 12,000 are the brand's current flagship long-puff models, while the HQD Maxx 2500 remains a perennial best-seller for the entry-level segment. HQD's flavour styling tends to be cleaner and less candy-forward than other brands, which makes it a favourite among ex-smokers looking for a more authentic profile. Aussie Vape Hub stocks the full HQD range with genuine AU inventory shipped from Sydney.",
     highlights: [
       'Full HQD range — Cuvie, Cuvie Plus, Cuvie Slick, Cuvie Slick Plus, Maxx, Slick, Box',
       'Premium build quality + design-focused form factor',
@@ -189,7 +189,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'Where are HQD vapes made?',
         answer:
-          'HQD devices are manufactured in Shenzhen, China by HQD Tech, one of the largest e-cigarette OEMs in the world. Vapes Australia only stocks authentic HQD inventory imported through authorised channels.',
+          'HQD devices are manufactured in Shenzhen, China by HQD Tech, one of the largest e-cigarette OEMs in the world. Aussie Vape Hub only stocks authentic HQD inventory imported through authorised channels.',
       },
     ],
     keywords: [
@@ -202,7 +202,7 @@ export const BRANDS: Brand[] = [
       'hqd box 4000',
       'hqd disposable vape',
     ],
-    seoTitle: 'HQD Australia — Cuvie, Maxx, Slick & Box Range | Vapes Australia',
+    seoTitle: 'HQD Australia — Cuvie, Maxx, Slick & Box Range | Aussie Vape Hub',
     seoDescription: 'Buy authentic HQD disposable vapes in Australia. Cuvie Slick 20000, Cuvie Plus 1200, Maxx 2500, Box 4000 and the full HQD range. Same-day Sydney shipping.',
     aliases: ['hqd'],
     accentColor: '#2fb5d2',
@@ -215,7 +215,7 @@ export const BRANDS: Brand[] = [
     tagline: 'The Original Australian Favourite',
     shortDescription: 'Gunnpod has been a household name in Australian vaping for years. The 2000-puff original is the device that introduced millions of Aussies to disposable vapes.',
     longDescription:
-      "Few disposable vape brands have shaped the Australian market like Gunnpod. The original Gunnpod 2000 was, for many years, the single best-selling disposable vape in Australia — its simple design, reliable mesh coil and well-balanced flavour line-up made it a go-to recommendation for ex-smokers transitioning to vaping. The brand has since expanded into the Gunnpod Plus 4500, Wave 3500, Lite 1400, Meta 4000, Lume 5000 and the high-capacity Moss 8000, covering every puff tier the AU market wants. Vapes Australia carries the complete Gunnpod range with authentic AU stock and same-day Sydney dispatch.",
+      "Few disposable vape brands have shaped the Australian market like Gunnpod. The original Gunnpod 2000 was, for many years, the single best-selling disposable vape in Australia — its simple design, reliable mesh coil and well-balanced flavour line-up made it a go-to recommendation for ex-smokers transitioning to vaping. The brand has since expanded into the Gunnpod Plus 4500, Wave 3500, Lite 1400, Meta 4000, Lume 5000 and the high-capacity Moss 8000, covering every puff tier the AU market wants. Aussie Vape Hub carries the complete Gunnpod range with authentic AU stock and same-day Sydney dispatch.",
     highlights: [
       'Full Gunnpod range — 2000, Lite 1400, Plus 4500, Wave 3500, Meta 4000, Lume 5000, Moss 8000',
       'The classic Australian disposable since 2020',
@@ -243,7 +243,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'Is the Gunnpod 2000 still in stock?',
         answer:
-          'Yes — despite being one of the older models, the original Gunnpod 2000 remains in active production and consistently in stock at Vapes Australia. It\'s still one of our top sellers, especially among customers who tried it first and prefer to stick with what works.',
+          'Yes — despite being one of the older models, the original Gunnpod 2000 remains in active production and consistently in stock at Aussie Vape Hub. It\'s still one of our top sellers, especially among customers who tried it first and prefer to stick with what works.',
       },
       {
         question: 'Can you recharge a Gunnpod 2000?',
@@ -261,7 +261,7 @@ export const BRANDS: Brand[] = [
       'gunnpod moss 8000',
       'gunnpod lite 1400',
     ],
-    seoTitle: 'Gunnpod Australia — 2000, Plus, Wave, Lume & Moss | Vapes Australia',
+    seoTitle: 'Gunnpod Australia — 2000, Plus, Wave, Lume & Moss | Aussie Vape Hub',
     seoDescription: 'Shop the full Gunnpod range in Australia. Original 2000, Plus 4500, Wave 3500, Lume 5000, Meta 4000 & Moss 8000 in stock. Same-day Sydney shipping.',
     aliases: ['gunnpod'],
     accentColor: '#4cbb6c',
@@ -274,7 +274,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Stylish Disposables From The Makers Of Elf Bar',
     shortDescription: 'Lost Mary is the design-led disposable vape line from Elf Bar — instantly recognisable by its egg-shape silhouette and screen-equipped premium models.',
     longDescription:
-      "Lost Mary launched in 2022 as the more design-forward sibling brand of Elf Bar, and quickly became one of the most fashionable disposable vapes globally — including a huge following in Australia. The distinctive curved \"egg\" silhouette of the original BM600 (and later AU-market models) made it instantly Instagrammable, while the newer screen-equipped models added battery and e-liquid percentage indicators. Lost Mary's flavour engineering is known for being fruit-forward, refreshing and well-balanced — Blueberry Sour Raspberry, Watermelon Ice and Triple Mango are universal favourites. Vapes Australia stocks the AU-compliant Lost Mary range.",
+      "Lost Mary launched in 2022 as the more design-forward sibling brand of Elf Bar, and quickly became one of the most fashionable disposable vapes globally — including a huge following in Australia. The distinctive curved \"egg\" silhouette of the original BM600 (and later AU-market models) made it instantly Instagrammable, while the newer screen-equipped models added battery and e-liquid percentage indicators. Lost Mary's flavour engineering is known for being fruit-forward, refreshing and well-balanced — Blueberry Sour Raspberry, Watermelon Ice and Triple Mango are universal favourites. Aussie Vape Hub stocks the AU-compliant Lost Mary range.",
     highlights: [
       'Iconic curved "egg" design',
       'Screen-equipped premium models with battery/liquid % display',
@@ -302,7 +302,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'Are Lost Mary vapes rechargeable?',
         answer:
-          'The original Lost Mary BM600 is non-rechargeable. Most newer Lost Mary models with 3000+ puffs are rechargeable via USB-C. Check the specific product page on Vapes Australia — rechargeability is always listed in the specifications.',
+          'The original Lost Mary BM600 is non-rechargeable. Most newer Lost Mary models with 3000+ puffs are rechargeable via USB-C. Check the specific product page on Aussie Vape Hub — rechargeability is always listed in the specifications.',
       },
       {
         question: 'How long does a Lost Mary disposable last?',
@@ -318,7 +318,7 @@ export const BRANDS: Brand[] = [
       'lost mary blueberry',
       'elf bar lost mary',
     ],
-    seoTitle: 'Lost Mary Australia — BM600 & Screen Disposables | Vapes Australia',
+    seoTitle: 'Lost Mary Australia — BM600 & Screen Disposables | Aussie Vape Hub',
     seoDescription: 'Shop authentic Lost Mary disposables in Australia. BM600, 3000, 5000 & screen-equipped models. By Elf Bar. Same-day Sydney shipping.',
     aliases: ['lost mary', 'lost-mary'],
     accentColor: '#9c27b0',
@@ -331,7 +331,7 @@ export const BRANDS: Brand[] = [
     tagline: 'High-Capacity Disposables Built For Marathon Sessions',
     shortDescription: 'Vozol specialises in massive-puff disposables — the Vozol Gear 10,000 and Star series are among the longest-lasting devices in the AU market.',
     longDescription:
-      "Vozol is one of the rising stars in the global disposable vape market, particularly favoured by heavy vapers who want the longest possible device life between buys. The Vozol Star series and Gear line consistently top the puff-count charts, with rechargeable USB-C batteries, dual mesh coils and large e-liquid reservoirs. Vozol's flavour engineering is more bold and concentrated than competitors — flavours hit harder out of the gate and maintain consistency right through to the last puff. Vapes Australia is one of the first Australian retailers to stock the latest Vozol releases.",
+      "Vozol is one of the rising stars in the global disposable vape market, particularly favoured by heavy vapers who want the longest possible device life between buys. The Vozol Star series and Gear line consistently top the puff-count charts, with rechargeable USB-C batteries, dual mesh coils and large e-liquid reservoirs. Vozol's flavour engineering is more bold and concentrated than competitors — flavours hit harder out of the gate and maintain consistency right through to the last puff. Aussie Vape Hub is one of the first Australian retailers to stock the latest Vozol releases.",
     highlights: [
       'High-capacity disposables (9,000+ puffs standard)',
       'Dual mesh coil for richer, more consistent flavour',
@@ -349,7 +349,7 @@ export const BRANDS: Brand[] = [
       {
         question: 'Are Vozol vapes rechargeable?',
         answer:
-          'Yes — all current Vozol disposables in the Vapes Australia range are USB-C rechargeable. Most ship with a charging cable in the box.',
+          'Yes — all current Vozol disposables in the Aussie Vape Hub range are USB-C rechargeable. Most ship with a charging cable in the box.',
       },
       {
         question: 'Where is Vozol manufactured?',
@@ -369,7 +369,7 @@ export const BRANDS: Brand[] = [
       'vozol star',
       'vozol disposable',
     ],
-    seoTitle: 'Vozol Australia — Gear 10000 & 9000-Puff Disposables | Vapes Australia',
+    seoTitle: 'Vozol Australia — Gear 10000 & 9000-Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Vozol disposables in Australia. Vozol Gear 10000, Vozol Star and the 9000-puff range in stock with same-day Sydney shipping.',
     aliases: ['vozol'],
     accentColor: '#1976d2',
@@ -382,7 +382,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Premium Pod Systems & MagicGo Disposables',
     shortDescription: 'RELX is the world\'s second-largest e-cigarette brand and the benchmark for premium pod systems. The MagicGo disposable line brings RELX engineering to the no-fuss format.',
     longDescription:
-      "RELX is the closed-pod and premium-disposable brand of choice for vapers who prioritise build quality, flavour consistency and refined hardware. Globally, RELX is the second-largest vape company after Juul, with a particularly strong presence in Asia, the Middle East and now Australia. The RELX MagicGo disposable line uses the same ceramic atomiser technology as the premium RELX pod systems — meaning cleaner, more accurate flavour reproduction and zero burnt-coil taste even at the end of life. Vapes Australia carries the AU-compliant MagicGo range.",
+      "RELX is the closed-pod and premium-disposable brand of choice for vapers who prioritise build quality, flavour consistency and refined hardware. Globally, RELX is the second-largest vape company after Juul, with a particularly strong presence in Asia, the Middle East and now Australia. The RELX MagicGo disposable line uses the same ceramic atomiser technology as the premium RELX pod systems — meaning cleaner, more accurate flavour reproduction and zero burnt-coil taste even at the end of life. Aussie Vape Hub carries the AU-compliant MagicGo range.",
     highlights: [
       'Ceramic atomiser technology (cleaner flavour)',
       'Premium pod system pedigree',
@@ -415,7 +415,7 @@ export const BRANDS: Brand[] = [
       'relx disposable',
       'relx pod system australia',
     ],
-    seoTitle: 'RELX Australia — MagicGo 8000 Disposables | Vapes Australia',
+    seoTitle: 'RELX Australia — MagicGo 8000 Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic RELX MagicGo disposables in Australia. Premium ceramic atomiser technology, 8000 puffs, USB-C rechargeable. Same-day Sydney shipping.',
     aliases: ['relx'],
     accentColor: '#000000',
@@ -428,7 +428,7 @@ export const BRANDS: Brand[] = [
     tagline: 'UK Disposables With A Loyal AU Following',
     shortDescription: 'Elux Legend was one of the disposables that started the UK vape boom — the brand has since brought its 15,000-puff long-life models to Australia.',
     longDescription:
-      "Elux made its name in the UK with the Elux Legend, a 3500-puff disposable that became one of the country's best-selling vapes during 2021-2023. The brand has since pivoted to higher-capacity models, with the Elux 15,000 puff series now widely available in Australia. Elux flavours lean fruity and refreshing, with strong Australian-tuned profiles like Cherry Berry, Pineapple Ice and Watermelon Ice. Vapes Australia carries genuine Elux stock direct from authorised distributors.",
+      "Elux made its name in the UK with the Elux Legend, a 3500-puff disposable that became one of the country's best-selling vapes during 2021-2023. The brand has since pivoted to higher-capacity models, with the Elux 15,000 puff series now widely available in Australia. Elux flavours lean fruity and refreshing, with strong Australian-tuned profiles like Cherry Berry, Pineapple Ice and Watermelon Ice. Aussie Vape Hub carries genuine Elux stock direct from authorised distributors.",
     highlights: [
       'UK heritage — proven on the European market first',
       '15,000 puff long-life models',
@@ -449,8 +449,8 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['elux australia', 'elux 15000', 'elux legend', 'elux disposable'],
-    seoTitle: 'Elux Australia — 15000 Puff Disposables | Vapes Australia',
-    seoDescription: 'Buy authentic Elux disposables in Australia. Elux 15000 long-life models with same-day Sydney shipping from Vapes Australia.',
+    seoTitle: 'Elux Australia — 15000 Puff Disposables | Aussie Vape Hub',
+    seoDescription: 'Buy authentic Elux disposables in Australia. Elux 15000 long-life models with same-day Sydney shipping from Aussie Vape Hub.',
     aliases: ['elux'],
     accentColor: '#e91e63',
   }),
@@ -462,7 +462,7 @@ export const BRANDS: Brand[] = [
     tagline: 'North American Disposable Brand Now In Australia',
     shortDescription: 'Mr Fog is the best-selling disposable brand in Canada, known for its no-nonsense, reliable hardware and the Mr Fog Max Air 3600 puff workhorse.',
     longDescription:
-      "Mr Fog is the dominant disposable vape brand in Canada and a strong seller across North America. Its Australian range centres on the Mr Fog 3600 — a rechargeable USB-C disposable with a balanced flavour line-up engineered for North American taste profiles. Mr Fog has built its reputation on no-marketing, no-hype, just-work hardware that doesn't surprise you. Vapes Australia stocks Mr Fog through authorised channels.",
+      "Mr Fog is the dominant disposable vape brand in Canada and a strong seller across North America. Its Australian range centres on the Mr Fog 3600 — a rechargeable USB-C disposable with a balanced flavour line-up engineered for North American taste profiles. Mr Fog has built its reputation on no-marketing, no-hype, just-work hardware that doesn't surprise you. Aussie Vape Hub stocks Mr Fog through authorised channels.",
     highlights: [
       'Mr Fog Max Air 3600 puff workhorse',
       'North American #1 disposable brand',
@@ -484,7 +484,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['mr fog australia', 'mr fog max air 3600', 'mr fog disposable', 'mr fog vape'],
-    seoTitle: 'Mr Fog Australia — Max Air 3600 Disposables | Vapes Australia',
+    seoTitle: 'Mr Fog Australia — Max Air 3600 Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Mr Fog disposables in Australia. Mr Fog Max Air 3600 puff range with same-day Sydney shipping. Canada\'s #1 disposable brand.',
     aliases: ['mr fog', 'mr-fog'],
     accentColor: '#37474f',
@@ -497,7 +497,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Performance Disposables For Enthusiast Vapers',
     shortDescription: 'Serein\'s Hunter and Mech-Pro lines are engineered for vapers who want the maximum flavour and cloud production a disposable can deliver.',
     longDescription:
-      "Serein sits in the enthusiast-tier of the disposable vape market. The Serein Hunter 6000 and Serein Mech-Pro 10,000 use dual mesh coil systems, higher-output batteries (800mAh+), and adjustable airflow rings to deliver cloud production and flavour intensity that's closer to a refillable pod system than a standard disposable. The brand has a small but loyal AU following among experienced vapers. Vapes Australia stocks the full Serein range.",
+      "Serein sits in the enthusiast-tier of the disposable vape market. The Serein Hunter 6000 and Serein Mech-Pro 10,000 use dual mesh coil systems, higher-output batteries (800mAh+), and adjustable airflow rings to deliver cloud production and flavour intensity that's closer to a refillable pod system than a standard disposable. The brand has a small but loyal AU following among experienced vapers. Aussie Vape Hub stocks the full Serein range.",
     highlights: [
       'Dual mesh coil performance',
       'Adjustable airflow rings',
@@ -519,7 +519,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['serein australia', 'serein hunter 6000', 'serein mech-pro 10000', 'serein disposable'],
-    seoTitle: 'Serein Australia — Hunter 6000 & Mech-Pro 10000 | Vapes Australia',
+    seoTitle: 'Serein Australia — Hunter 6000 & Mech-Pro 10000 | Aussie Vape Hub',
     seoDescription: 'Buy authentic Serein performance disposables in Australia. Hunter 6000 and Mech-Pro 10000. Dual mesh coil. Same-day Sydney shipping.',
     aliases: ['serein'],
     accentColor: '#f57c00',
@@ -532,7 +532,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Pod-Mod Hybrids And Mix Bars',
     shortDescription: 'Fisco focuses on the pod-mod hybrid format — devices like the Fisco XPod and Mix Bar bridge the gap between disposables and refillable pod systems.',
     longDescription:
-      "Fisco is a smaller specialist brand with an interesting niche: pod-mod hybrid disposables. The Fisco XPod features a replaceable pod (more like a refillable pod system) while keeping the all-in-one simplicity of a disposable. The Fisco Mix Bar 12,000 takes a different approach with swappable flavour cartridges. Vapes Australia stocks the AU-compliant Fisco range.",
+      "Fisco is a smaller specialist brand with an interesting niche: pod-mod hybrid disposables. The Fisco XPod features a replaceable pod (more like a refillable pod system) while keeping the all-in-one simplicity of a disposable. The Fisco Mix Bar 12,000 takes a different approach with swappable flavour cartridges. Aussie Vape Hub stocks the AU-compliant Fisco range.",
     highlights: [
       'Pod-mod hybrid format',
       'Replaceable / swappable pods',
@@ -553,7 +553,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['fisco australia', 'fisco xpod', 'fisco mix bar 12000', 'fisco vape'],
-    seoTitle: 'Fisco Australia — XPod & Mix Bar Hybrids | Vapes Australia',
+    seoTitle: 'Fisco Australia — XPod & Mix Bar Hybrids | Aussie Vape Hub',
     seoDescription: 'Buy authentic Fisco pod-mod hybrid disposables in Australia. Fisco XPod and Mix Bar 12000 with same-day Sydney shipping.',
     aliases: ['fisco'],
     accentColor: '#388e3c',
@@ -566,7 +566,7 @@ export const BRANDS: Brand[] = [
     tagline: 'High-Capacity Disposables With Bold Flavour Profiles',
     shortDescription: 'AliBarBar specialises in 9,000 puff disposables with rich, layered flavour formulations and the distinctive Ingot industrial design.',
     longDescription:
-      "AliBarBar (or Ali Bar Bar) is a Chinese disposable brand that has built a loyal Australian following on the back of two strong product lines: the AliBarBar 9000 and the AliBarBar Ingot 9000. Both use dual mesh coil systems and large 18mL e-liquid reservoirs. Flavour development leans richer and more layered than typical mid-tier disposables. Vapes Australia stocks the full AliBarBar AU range.",
+      "AliBarBar (or Ali Bar Bar) is a Chinese disposable brand that has built a loyal Australian following on the back of two strong product lines: the AliBarBar 9000 and the AliBarBar Ingot 9000. Both use dual mesh coil systems and large 18mL e-liquid reservoirs. Flavour development leans richer and more layered than typical mid-tier disposables. Aussie Vape Hub stocks the full AliBarBar AU range.",
     highlights: [
       '9,000 puff capacity standard',
       'Dual mesh coil',
@@ -587,7 +587,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['alibarbar australia', 'alibarbar 9000', 'alibarbar ingot 9000', 'alibarbar vape'],
-    seoTitle: 'AliBarBar Australia — 9000 Puff & Ingot Disposables | Vapes Australia',
+    seoTitle: 'AliBarBar Australia — 9000 Puff & Ingot Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic AliBarBar disposables in Australia. AliBarBar 9000 and AliBarBar Ingot 9000 puff range. Same-day Sydney shipping.',
     aliases: ['alibarbar', 'ali bar bar'],
     accentColor: '#7b1fa2',
@@ -600,7 +600,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Innovative Form Factors And Wild Designs',
     shortDescription: 'JNR pushes the boundaries of disposable vape design with the PhoneVape, FalconX, Shisha Hookah and Cruiser ranges.',
     longDescription:
-      "JNR is one of the more creative brands in the disposable vape space — instead of yet another rectangular slab, JNR has built a reputation for distinctive industrial design. The JNR PhoneVape is shaped (and roughly the size of) a smartphone. The JNR Shisha Hookah is styled after a portable shisha. The JNR Falcon X has aggressive gaming-aesthetic styling, and the JNR Tank 10,000 is a high-capacity rechargeable tube. Vapes Australia stocks the unusual and the practical.",
+      "JNR is one of the more creative brands in the disposable vape space — instead of yet another rectangular slab, JNR has built a reputation for distinctive industrial design. The JNR PhoneVape is shaped (and roughly the size of) a smartphone. The JNR Shisha Hookah is styled after a portable shisha. The JNR Falcon X has aggressive gaming-aesthetic styling, and the JNR Tank 10,000 is a high-capacity rechargeable tube. Aussie Vape Hub stocks the unusual and the practical.",
     highlights: [
       'Wild form factors — PhoneVape, Shisha Hookah, Falcon X, Cruiser, Tank',
       'High-capacity 10,000-12,000 puff models',
@@ -621,7 +621,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['jnr australia', 'jnr phonevape', 'jnr falcon x', 'jnr cruiser 12000', 'jnr tank 10000', 'jnr shisha hookah'],
-    seoTitle: 'JNR Australia — PhoneVape, FalconX, Shisha Hookah | Vapes Australia',
+    seoTitle: 'JNR Australia — PhoneVape, FalconX, Shisha Hookah | Aussie Vape Hub',
     seoDescription: 'Buy authentic JNR creative disposables in Australia. JNR PhoneVape, FalconX, Shisha Hookah, Cruiser 12000 and Tank 10000. Same-day Sydney shipping.',
     aliases: ['jnr'],
     accentColor: '#d32f2f',
@@ -634,7 +634,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Ultra-High Puff Specialists',
     shortDescription: 'Kuz competes at the top end of the puff-count market with the Kuz Flow 25,000 — currently one of the highest-capacity disposables on the AU market.',
     longDescription:
-      "Kuz is a relatively new brand that has made a name for itself with the Kuz Flow 25,000 — one of the highest-puff disposables available in Australia. The brand also offers the Kuz Lux 9000 and Kuz 6000 for mid-tier shoppers. All Kuz devices use USB-C charging, dual mesh coils, and large e-liquid reservoirs. Vapes Australia is an authorised AU stockist.",
+      "Kuz is a relatively new brand that has made a name for itself with the Kuz Flow 25,000 — one of the highest-puff disposables available in Australia. The brand also offers the Kuz Lux 9000 and Kuz 6000 for mid-tier shoppers. All Kuz devices use USB-C charging, dual mesh coils, and large e-liquid reservoirs. Aussie Vape Hub is an authorised AU stockist.",
     highlights: [
       'Kuz Flow 25,000 — highest-puff in the AU range',
       'Dual mesh coil',
@@ -650,7 +650,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['kuz australia', 'kuz flow 25000', 'kuz lux 9000', 'kuz 6000', 'kuz disposable'],
-    seoTitle: 'Kuz Australia — Flow 25000 & Lux 9000 | Vapes Australia',
+    seoTitle: 'Kuz Australia — Flow 25000 & Lux 9000 | Aussie Vape Hub',
     seoDescription: 'Buy authentic Kuz ultra-high-puff disposables in Australia. Kuz Flow 25000, Lux 9000 and Kuz 6000. Same-day Sydney shipping.',
     aliases: ['kuz'],
     accentColor: '#5d4037',
@@ -663,7 +663,7 @@ export const BRANDS: Brand[] = [
     tagline: 'Diverse Range From Entry-Level To Pro',
     shortDescription: 'X-Qlusive offers one of the broadest puff-count ranges in the AU market — from the entry 2500 right up to the X-PRO 5500 and X-POD 3800.',
     longDescription:
-      "X-Qlusive (X-Q) caters to vapers who want a single brand with broad coverage. The X-Qlusive 2500 is an entry-level non-rechargeable option, the Mega 3500 sits in the sweet spot for new vapers, the X-POD 3800 introduces refillable pod versatility, and the X-PRO 5500 is the brand's flagship rechargeable disposable. Vapes Australia stocks all four ranges.",
+      "X-Qlusive (X-Q) caters to vapers who want a single brand with broad coverage. The X-Qlusive 2500 is an entry-level non-rechargeable option, the Mega 3500 sits in the sweet spot for new vapers, the X-POD 3800 introduces refillable pod versatility, and the X-PRO 5500 is the brand's flagship rechargeable disposable. Aussie Vape Hub stocks all four ranges.",
     highlights: [
       'Full range from 2500 to 5500 puffs',
       'Includes X-POD refillable pod system',
@@ -679,7 +679,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     keywords: ['x-qlusive australia', 'x-qlusive 2500', 'x-qlusive mega 3500', 'x-qlusive x-pod 3800', 'x-qlusive x-pro 5500'],
-    seoTitle: 'X-Qlusive Australia — 2500 to X-PRO 5500 | Vapes Australia',
+    seoTitle: 'X-Qlusive Australia — 2500 to X-PRO 5500 | Aussie Vape Hub',
     seoDescription: 'Buy authentic X-Qlusive disposables in Australia. 2500, Mega 3500, X-POD 3800 and X-PRO 5500 range. Same-day Sydney shipping.',
     aliases: ['x-qlusive', 'xqlusive', 'x qlusive'],
     accentColor: '#0277bd',
@@ -693,7 +693,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       "Groo's Max and Slim 9000 series have built a loyal Australian following thanks to their pocket-friendly profile, USB-C charging, and clean flavour engineering.",
     longDescription:
-      "Groo focuses on slim, modern industrial design without compromising puff count. The Groo Slim 9000 in particular packs 9,000 puffs into a profile barely thicker than a smartphone, while the Groo Max takes the format to higher capacities. All current Groo devices are USB-C rechargeable with dual mesh coil systems and a curated AU-tuned flavour line-up. Vapes Australia stocks the full Groo range with authentic AU inventory shipped from Sydney.",
+      "Groo focuses on slim, modern industrial design without compromising puff count. The Groo Slim 9000 in particular packs 9,000 puffs into a profile barely thicker than a smartphone, while the Groo Max takes the format to higher capacities. All current Groo devices are USB-C rechargeable with dual mesh coil systems and a curated AU-tuned flavour line-up. Aussie Vape Hub stocks the full Groo range with authentic AU inventory shipped from Sydney.",
     highlights: [
       'Groo Slim 9000 — slimmest 9000-puff disposable',
       'Groo Max higher-capacity series',
@@ -707,7 +707,7 @@ export const BRANDS: Brand[] = [
       { question: 'How slim is the Groo Slim 9000?', answer: 'The Groo Slim 9000 is roughly 12mm thick — about the thickness of a thick smartphone case, and noticeably slimmer than competing 9000-puff disposables.' },
     ],
     keywords: ['groo australia', 'groo slim 9000', 'groo max', 'groo disposable vape'],
-    seoTitle: 'Groo Australia — Slim 9000 & Max Disposables | Vapes Australia',
+    seoTitle: 'Groo Australia — Slim 9000 & Max Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Groo disposables in Australia. Groo Slim 9000 and Groo Max in stock with same-day Sydney shipping.',
     aliases: ['groo'],
     accentColor: '#00897b',
@@ -721,7 +721,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'VapeHub offers one of the widest product matrices in the Australian disposable market, spanning entry-level pocket disposables through to high-capacity rechargeable workhorses.',
     longDescription:
-      "VapeHub is a Chinese manufacturer that has carved out a strong AU position by offering broad coverage across the disposable vape format. The VapeHub product line includes compact 2000-3000 puff pocket disposables, mid-range 5000-7000 puff USB-C rechargeable models, and high-capacity 10,000+ puff long-life devices. The brand emphasises consistent flavour engineering across the entire range so customers who try one model usually trust the next. Vapes Australia is an authorised AU stockist.",
+      "VapeHub is a Chinese manufacturer that has carved out a strong AU position by offering broad coverage across the disposable vape format. The VapeHub product line includes compact 2000-3000 puff pocket disposables, mid-range 5000-7000 puff USB-C rechargeable models, and high-capacity 10,000+ puff long-life devices. The brand emphasises consistent flavour engineering across the entire range so customers who try one model usually trust the next. Aussie Vape Hub is an authorised AU stockist.",
     highlights: [
       'Broad puff-count coverage (2000-10000+)',
       'Consistent flavour formulations across models',
@@ -734,7 +734,7 @@ export const BRANDS: Brand[] = [
       { question: 'Are VapeHub flavours strong?', answer: 'VapeHub leans toward balanced, true-to-fruit flavours rather than the very sweet candy profiles some other brands target. Many AU vapers find this more enjoyable for all-day use.' },
     ],
     keywords: ['vapehub australia', 'vapehub disposable vape', 'vapehub vape'],
-    seoTitle: 'VapeHub Australia — Disposable Vape Range | Vapes Australia',
+    seoTitle: 'VapeHub Australia — Disposable Vape Range | Aussie Vape Hub',
     seoDescription: 'Buy authentic VapeHub disposables in Australia. Full range from entry-level to high-capacity. Same-day Sydney shipping.',
     aliases: ['vapehub', 'vape hub'],
     accentColor: '#455a64',
@@ -748,7 +748,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Brisk Bar specialises in the mid-range 5000-puff sweet spot — affordable, rechargeable, and well-flavoured devices for everyday vaping.',
     longDescription:
-      "Brisk Bar focuses almost entirely on the 5000-puff mid-range segment that suits most Australian vapers. The brand has avoided the temptation to chase ever-higher puff counts and instead invested in flavour development and consistent build quality at a price point that beats most competitors. The Brisk Bar 5000 is USB-C rechargeable with mesh coil engineering. Vapes Australia stocks the full Brisk Bar range.",
+      "Brisk Bar focuses almost entirely on the 5000-puff mid-range segment that suits most Australian vapers. The brand has avoided the temptation to chase ever-higher puff counts and instead invested in flavour development and consistent build quality at a price point that beats most competitors. The Brisk Bar 5000 is USB-C rechargeable with mesh coil engineering. Aussie Vape Hub stocks the full Brisk Bar range.",
     highlights: ['5000-puff mid-range specialist', 'USB-C rechargeable', 'Mesh coil flavour', 'Competitive pricing', 'Authentic AU stock'],
     bestKnownFor: 'Brisk Bar 5000',
     faqs: [
@@ -756,7 +756,7 @@ export const BRANDS: Brand[] = [
       { question: 'Is Brisk Bar rechargeable?', answer: 'Yes — all current Brisk Bar 5000 models are USB-C rechargeable.' },
     ],
     keywords: ['brisk bar australia', 'brisk bar 5000', 'brisk bar disposable', 'cheap 5000 puff vape australia'],
-    seoTitle: 'Brisk Bar Australia — 5000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Brisk Bar Australia — 5000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Brisk Bar 5000 puff disposables in Australia at competitive prices. Same-day Sydney shipping.',
     aliases: ['brisk bar', 'briskbar'],
     accentColor: '#0288d1',
@@ -770,7 +770,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Rabbeats Bar disposables stand out with their distinctive music-themed industrial design and reliable high-capacity hardware.',
     longDescription:
-      "Rabbeats brings a music-inspired aesthetic to the disposable vape market — devices feature LED light effects and an audio-cue design language. Beyond the styling, the underlying hardware is solid: USB-C rechargeable batteries, dual mesh coil systems, and large e-liquid reservoirs delivering reliable performance. Vapes Australia carries the AU-compliant Rabbeats range.",
+      "Rabbeats brings a music-inspired aesthetic to the disposable vape market — devices feature LED light effects and an audio-cue design language. Beyond the styling, the underlying hardware is solid: USB-C rechargeable batteries, dual mesh coil systems, and large e-liquid reservoirs delivering reliable performance. Aussie Vape Hub carries the AU-compliant Rabbeats range.",
     highlights: ['Music-themed industrial design', 'High-capacity rechargeable', 'Dual mesh coil', 'LED accents', 'Authentic AU stock'],
     bestKnownFor: 'Rabbeats Bar high-capacity series',
     faqs: [
@@ -778,7 +778,7 @@ export const BRANDS: Brand[] = [
       { question: 'Are the LED effects always on?', answer: 'LED effects activate when you take a puff and fade out shortly after. They\'re not constantly illuminated, which preserves battery life.' },
     ],
     keywords: ['rabbeats australia', 'rabbeats bar', 'rabbeats disposable vape'],
-    seoTitle: 'Rabbeats Australia — Bar Disposable Vapes | Vapes Australia',
+    seoTitle: 'Rabbeats Australia — Bar Disposable Vapes | Aussie Vape Hub',
     seoDescription: 'Buy authentic Rabbeats Bar disposables in Australia. Music-themed design, high-capacity rechargeable. Same-day Sydney shipping.',
     aliases: ['rabbeats', 'rabbeats bar'],
     accentColor: '#e91e63',
@@ -792,7 +792,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Picco 7000 puff disposables hit the sweet spot of capacity, size and price — ideal for vapers who want a rechargeable mid-capacity device without bulk.',
     longDescription:
-      "Picco is a focused brand that builds primarily one thing extremely well — the Picco 7000 puff disposable. The device packs 7,000 puffs of e-liquid into a compact form factor that fits comfortably in a pocket or small bag. USB-C rechargeable with a mesh coil and adjustable airflow on select flavours. Vapes Australia stocks the full Picco AU flavour range.",
+      "Picco is a focused brand that builds primarily one thing extremely well — the Picco 7000 puff disposable. The device packs 7,000 puffs of e-liquid into a compact form factor that fits comfortably in a pocket or small bag. USB-C rechargeable with a mesh coil and adjustable airflow on select flavours. Aussie Vape Hub stocks the full Picco AU flavour range.",
     highlights: ['Picco 7000 puff specialist', 'Compact pocket-friendly form factor', 'USB-C rechargeable', 'Mesh coil + adjustable airflow', 'Authentic AU stock'],
     bestKnownFor: 'Picco 7000',
     faqs: [
@@ -800,7 +800,7 @@ export const BRANDS: Brand[] = [
       { question: 'Is Picco a new brand?', answer: 'Picco arrived in Australia in 2024 and has rapidly built a customer base among vapers who prioritise compact device size.' },
     ],
     keywords: ['picco australia', 'picco 7000', 'picco disposable vape', 'compact disposable vape australia'],
-    seoTitle: 'Picco Australia — 7000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Picco Australia — 7000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Picco 7000 puff disposables in Australia. Compact pocket-friendly design, USB-C rechargeable. Same-day Sydney shipping.',
     aliases: ['picco'],
     accentColor: '#7cb342',
@@ -814,7 +814,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'iBuff delivers premium build quality and refined flavour engineering at price points that beat most competitors in the mid-range disposable segment.',
     longDescription:
-      "iBuff is a quietly competent disposable brand that prioritises substance over marketing. The hardware uses higher-grade materials than typical mid-tier disposables — better mouthpieces, more uniform coil winding, and tighter manufacturing tolerances — but the brand passes those savings on through lower pricing. Vapes Australia stocks the iBuff range.",
+      "iBuff is a quietly competent disposable brand that prioritises substance over marketing. The hardware uses higher-grade materials than typical mid-tier disposables — better mouthpieces, more uniform coil winding, and tighter manufacturing tolerances — but the brand passes those savings on through lower pricing. Aussie Vape Hub stocks the iBuff range.",
     highlights: ['Premium build at mid-range pricing', 'Refined flavour engineering', 'Higher-grade materials', 'USB-C rechargeable', 'Authentic AU stock'],
     bestKnownFor: 'iBuff full range',
     faqs: [
@@ -822,7 +822,7 @@ export const BRANDS: Brand[] = [
       { question: 'How does iBuff compare to HQD?', answer: 'iBuff is slightly cheaper than HQD with comparable build quality. HQD has a stronger flavour range and more design variety, but iBuff offers better value-for-money.' },
     ],
     keywords: ['ibuff australia', 'ibuff vape', 'ibuff disposable'],
-    seoTitle: 'iBuff Australia — Premium Mid-Range Disposables | Vapes Australia',
+    seoTitle: 'iBuff Australia — Premium Mid-Range Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic iBuff disposables in Australia. Premium build at mid-range pricing. Same-day Sydney shipping.',
     aliases: ['ibuff', 'i-buff', 'i buff'],
     accentColor: '#fbc02d',
@@ -836,7 +836,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       "Pyro 6000 disposables are engineered for vapers who want concentrated, bold flavour profiles rather than subtle ones.",
     longDescription:
-      "Pyro takes a deliberately bold approach to flavour formulation — flavours are more intense, more concentrated, and hit harder than typical mid-range disposables. The Pyro 6000 is USB-C rechargeable with a mesh coil. The brand is particularly popular with vapers who find typical disposable flavours too mild. Vapes Australia stocks the Pyro AU range.",
+      "Pyro takes a deliberately bold approach to flavour formulation — flavours are more intense, more concentrated, and hit harder than typical mid-range disposables. The Pyro 6000 is USB-C rechargeable with a mesh coil. The brand is particularly popular with vapers who find typical disposable flavours too mild. Aussie Vape Hub stocks the Pyro AU range.",
     highlights: ['Bold, concentrated flavour profiles', 'USB-C rechargeable', 'Mesh coil', '6000-puff capacity', 'Authentic AU stock'],
     bestKnownFor: 'Pyro 6000',
     faqs: [
@@ -844,7 +844,7 @@ export const BRANDS: Brand[] = [
       { question: 'Is Pyro 6000 rechargeable?', answer: 'Yes — USB-C rechargeable. The battery doesn\'t outlast the e-liquid.' },
     ],
     keywords: ['pyro australia', 'pyro 6000', 'pyro vape', 'bold flavour disposable australia'],
-    seoTitle: 'Pyro Australia — 6000 Puff Bold Flavour Disposables | Vapes Australia',
+    seoTitle: 'Pyro Australia — 6000 Puff Bold Flavour Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Pyro 6000 puff disposables in Australia. Bold, concentrated flavour profiles. Same-day Sydney shipping.',
     aliases: ['pyro'],
     accentColor: '#d84315',
@@ -858,7 +858,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Olit 10000 puff disposables deliver weeks of vaping per device at a price point that undercuts most competitors in the 10k-puff tier.',
     longDescription:
-      "Olit focuses on the 10,000 puff long-life segment with disciplined attention to per-device pricing. The Olit 10000 uses dual mesh coil engineering and an 800mAh USB-C rechargeable battery in a robust industrial-design shell. Vapes Australia stocks the full Olit AU flavour range.",
+      "Olit focuses on the 10,000 puff long-life segment with disciplined attention to per-device pricing. The Olit 10000 uses dual mesh coil engineering and an 800mAh USB-C rechargeable battery in a robust industrial-design shell. Aussie Vape Hub stocks the full Olit AU flavour range.",
     highlights: ['10000-puff long-life specialist', 'Dual mesh coil', 'USB-C rechargeable', 'Competitive pricing', 'Authentic AU stock'],
     bestKnownFor: 'Olit 10000',
     faqs: [
@@ -866,7 +866,7 @@ export const BRANDS: Brand[] = [
       { question: 'Is Olit cheaper than other 10000-puff devices?', answer: 'Yes — Olit typically prices 10-15% below comparable 10000-puff disposables from larger brands, making it one of the best value options in the long-life tier.' },
     ],
     keywords: ['olit australia', 'olit 10000', 'olit disposable vape', 'cheap 10000 puff vape australia'],
-    seoTitle: 'Olit Australia — 10000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Olit Australia — 10000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Olit 10000 puff long-life disposables in Australia. Best value 10k-puff range. Same-day Sydney shipping.',
     aliases: ['olit'],
     accentColor: '#3949ab',
@@ -880,14 +880,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Puffmi 5000 puff disposables sit in the dependable mid-range — USB-C rechargeable, mesh coil, and a sensible flavour line-up.',
     longDescription:
-      "Puffmi has built its reputation in Australia on the Puffmi 5000 — a straightforward, reliable 5000-puff USB-C rechargeable disposable that does what it says on the tin. No gimmicks, no marketing hype, just a dependable mid-range device. Vapes Australia stocks the Puffmi range.",
+      "Puffmi has built its reputation in Australia on the Puffmi 5000 — a straightforward, reliable 5000-puff USB-C rechargeable disposable that does what it says on the tin. No gimmicks, no marketing hype, just a dependable mid-range device. Aussie Vape Hub stocks the Puffmi range.",
     highlights: ['5000 puff workhorse', 'USB-C rechargeable', 'Mesh coil', 'No-gimmicks reliability', 'Authentic AU stock'],
     bestKnownFor: 'Puffmi 5000',
     faqs: [
       { question: 'Is Puffmi 5000 a good choice for everyday vaping?', answer: 'Yes — Puffmi 5000 is one of the most consistent and reliable mid-range disposables on the AU market. It\'s the kind of device that "just works" without surprises.' },
     ],
     keywords: ['puffmi australia', 'puffmi 5000', 'puffmi disposable vape'],
-    seoTitle: 'Puffmi Australia — 5000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Puffmi Australia — 5000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Puffmi 5000 puff disposables in Australia. Reliable everyday mid-range vaping. Same-day Sydney shipping.',
     aliases: ['puffmi', 'puffmi 5000'],
     accentColor: '#26a69a',
@@ -901,7 +901,7 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'VapSolo focuses on the high-capacity 12,000-puff tier with the Viking series — robust, long-lasting, USB-C rechargeable disposables.',
     longDescription:
-      "VapSolo's Viking 12000 disposable is built for endurance — 12,000 puffs of e-liquid, an 850mAh USB-C rechargeable battery, dual mesh coil engineering, and an aluminium-bodied industrial design shell that feels substantial in the hand. Vapes Australia stocks the full VapSolo Viking AU range.",
+      "VapSolo's Viking 12000 disposable is built for endurance — 12,000 puffs of e-liquid, an 850mAh USB-C rechargeable battery, dual mesh coil engineering, and an aluminium-bodied industrial design shell that feels substantial in the hand. Aussie Vape Hub stocks the full VapSolo Viking AU range.",
     highlights: ['VapSolo Viking 12000 long-life', 'Dual mesh coil', 'USB-C rechargeable 850mAh', 'Aluminium-bodied design', 'Authentic AU stock'],
     bestKnownFor: 'VapSolo Viking 12000',
     faqs: [
@@ -909,7 +909,7 @@ export const BRANDS: Brand[] = [
       { question: 'Is the Viking 12000 actually 12000 puffs?', answer: 'Real-world testing puts it at approximately 10,500-11,500 puffs — slightly short of marketing but consistent with industry norms for this tier.' },
     ],
     keywords: ['vapsolo australia', 'vapsolo viking 12000', 'vapsolo disposable vape'],
-    seoTitle: 'VapSolo Australia — Viking 12000 Disposables | Vapes Australia',
+    seoTitle: 'VapSolo Australia — Viking 12000 Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic VapSolo Viking 12000 puff disposables in Australia. Premium high-capacity rechargeable. Same-day Sydney shipping.',
     aliases: ['vapsolo', 'vap solo'],
     accentColor: '#5e35b1',
@@ -923,14 +923,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Zoovoo Dragbar 6000 disposables are well-regarded for their tight MTL draw and balanced flavour profiles — particularly popular with ex-smokers.',
     longDescription:
-      "Zoovoo Dragbar 6000 has a loyal niche following in Australia, particularly among ex-smokers who prefer a tighter mouth-to-lung draw that more closely mimics a cigarette. The 6000-puff capacity is USB-C rechargeable. Flavours lean classic and balanced rather than dessert-heavy. Vapes Australia stocks the Zoovoo range.",
+      "Zoovoo Dragbar 6000 has a loyal niche following in Australia, particularly among ex-smokers who prefer a tighter mouth-to-lung draw that more closely mimics a cigarette. The 6000-puff capacity is USB-C rechargeable. Flavours lean classic and balanced rather than dessert-heavy. Aussie Vape Hub stocks the Zoovoo range.",
     highlights: ['Tight MTL cigarette-like draw', '6000-puff capacity', 'USB-C rechargeable', 'Classic balanced flavours', 'Authentic AU stock'],
     bestKnownFor: 'Zoovoo Dragbar 6000',
     faqs: [
       { question: 'Is the Zoovoo Dragbar good for ex-smokers?', answer: 'Yes — the tight MTL draw is one of the closest cigarette-mimicking experiences in the AU disposable market, making it a popular recommendation for transitioning smokers.' },
     ],
     keywords: ['zoovoo australia', 'zoovoo dragbar 6000', 'dragbar disposable vape australia'],
-    seoTitle: 'Zoovoo Australia — Dragbar 6000 Disposables | Vapes Australia',
+    seoTitle: 'Zoovoo Australia — Dragbar 6000 Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Zoovoo Dragbar 6000 puff disposables in Australia. Tight MTL draw, ex-smoker favourite. Same-day Sydney shipping.',
     aliases: ['zoovoo', 'zoovoo dragbar', 'dragbar'],
     accentColor: '#6a1b9a',
@@ -944,14 +944,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       "Higo's Pro Mix range introduces an innovative twist — adjustable airflow rings that meaningfully alter the flavour intensity and throat hit.",
     longDescription:
-      "Higo Pro Mix devices feature a usable airflow adjustment ring that allows vapers to fine-tune their experience between tight MTL and looser RDL draws. This is unusual in the disposable space and gives Pro Mix users genuine flexibility from a single device. Vapes Australia stocks the Higo Pro Mix AU range.",
+      "Higo Pro Mix devices feature a usable airflow adjustment ring that allows vapers to fine-tune their experience between tight MTL and looser RDL draws. This is unusual in the disposable space and gives Pro Mix users genuine flexibility from a single device. Aussie Vape Hub stocks the Higo Pro Mix AU range.",
     highlights: ['Adjustable airflow ring', 'Pro Mix flavour profiles', 'USB-C rechargeable', 'Mesh coil', 'Authentic AU stock'],
     bestKnownFor: 'Higo Pro Mix',
     faqs: [
       { question: 'Does the Higo airflow ring really make a difference?', answer: 'Yes — unlike some disposables that include cosmetic airflow rings, the Higo Pro Mix ring meaningfully shifts the draw resistance between cigarette-tight and looser, more open inhales.' },
     ],
     keywords: ['higo australia', 'higo pro mix', 'higo disposable vape', 'adjustable airflow disposable australia'],
-    seoTitle: 'Higo Pro Mix Australia — Adjustable Disposables | Vapes Australia',
+    seoTitle: 'Higo Pro Mix Australia — Adjustable Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Higo Pro Mix disposables in Australia. Adjustable airflow ring for tunable draw. Same-day Sydney shipping.',
     aliases: ['higo', 'higo pro mix'],
     accentColor: '#00838f',
@@ -965,14 +965,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       "Tess focuses on a single hero product — the Tess LV 12,000 — engineered for premium long-life vaping with refined hardware.",
     longDescription:
-      "Tess takes a focused approach: one product, done well. The Tess LV 12,000 is a 12,000-puff USB-C rechargeable disposable with dual mesh coil engineering, 850mAh battery, and an industrial-design shell that feels closer to a premium pod system than a typical disposable. Vapes Australia stocks the Tess LV 12000 in its full AU flavour range.",
+      "Tess takes a focused approach: one product, done well. The Tess LV 12,000 is a 12,000-puff USB-C rechargeable disposable with dual mesh coil engineering, 850mAh battery, and an industrial-design shell that feels closer to a premium pod system than a typical disposable. Aussie Vape Hub stocks the Tess LV 12000 in its full AU flavour range.",
     highlights: ['Tess LV 12000 hero product', 'Premium build quality', 'Dual mesh coil', 'USB-C rechargeable 850mAh', 'Authentic AU stock'],
     bestKnownFor: 'Tess LV 12000',
     faqs: [
       { question: 'Why only one Tess model?', answer: 'Tess focuses development resources on perfecting a single device rather than diluting effort across a wide range. The LV 12,000 has been refined over several hardware revisions.' },
     ],
     keywords: ['tess australia', 'tess lv 12000', 'tess disposable vape'],
-    seoTitle: 'Tess Australia — LV 12000 Premium Disposables | Vapes Australia',
+    seoTitle: 'Tess Australia — LV 12000 Premium Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Tess LV 12000 puff disposables in Australia. Premium long-life single-product specialist. Same-day Sydney shipping.',
     aliases: ['tess', 'tess lv', 'tess - lv'],
     accentColor: '#311b92',
@@ -986,14 +986,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Wotofo is a veteran in vape hardware (mods, tanks, RTAs) and brings that engineering pedigree to the disposable space with the Wotofo nexBar.',
     longDescription:
-      "Wotofo has been one of the most respected vape hardware brands globally for over a decade, primarily known for rebuildable atomisers, advanced tanks and box mods. The Wotofo nexBar is the company's well-engineered entry into the disposable market — bringing the same coil-design expertise that made Wotofo famous in the enthusiast space. Vapes Australia stocks the Wotofo nexBar AU range.",
+      "Wotofo has been one of the most respected vape hardware brands globally for over a decade, primarily known for rebuildable atomisers, advanced tanks and box mods. The Wotofo nexBar is the company's well-engineered entry into the disposable market — bringing the same coil-design expertise that made Wotofo famous in the enthusiast space. Aussie Vape Hub stocks the Wotofo nexBar AU range.",
     highlights: ['Wotofo engineering heritage', 'Decade of vape hardware expertise', 'nexBar disposable', 'USB-C rechargeable', 'Authentic AU stock'],
     bestKnownFor: 'Wotofo nexBar',
     faqs: [
       { question: 'Is Wotofo only known for disposables?', answer: 'No — Wotofo is much better known globally for advanced vape hardware like the Profile RTA series and Recurve mods. The nexBar is a recent disposable-market entry leveraging Wotofo\'s engineering heritage.' },
     ],
     keywords: ['wotofo australia', 'wotofo nexbar', 'wotofo disposable vape'],
-    seoTitle: 'Wotofo Australia — nexBar Disposables | Vapes Australia',
+    seoTitle: 'Wotofo Australia — nexBar Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Wotofo nexBar disposables in Australia. Vape hardware veteran enters disposable space. Same-day Sydney shipping.',
     aliases: ['wotofo', 'wotofo nexbar', 'nexbar'],
     accentColor: '#bf360c',
@@ -1007,14 +1007,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Calibarn 6000 disposables hit the mid-range sweet spot — affordable rechargeable devices with solid flavour engineering.',
     longDescription:
-      "Calibarn is a focused brand offering one well-built product: the Calibarn 6000. USB-C rechargeable, mesh coil, and a balanced flavour line-up at a price point that competes aggressively with bigger-name brands. Vapes Australia stocks the Calibarn 6000 AU range.",
+      "Calibarn is a focused brand offering one well-built product: the Calibarn 6000. USB-C rechargeable, mesh coil, and a balanced flavour line-up at a price point that competes aggressively with bigger-name brands. Aussie Vape Hub stocks the Calibarn 6000 AU range.",
     highlights: ['Calibarn 6000 single-product focus', 'USB-C rechargeable', 'Mesh coil flavour', 'Aggressive pricing', 'Authentic AU stock'],
     bestKnownFor: 'Calibarn 6000',
     faqs: [
       { question: 'Is Calibarn 6000 worth trying?', answer: 'Yes — at the price point, Calibarn 6000 is a strong value option in the 6000-puff tier. Flavour engineering won\'t blow you away, but build quality and reliability are dependable.' },
     ],
     keywords: ['calibarn australia', 'calibarn 6000', 'calibarn disposable vape'],
-    seoTitle: 'Calibarn Australia — 6000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Calibarn Australia — 6000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Calibarn 6000 puff disposables in Australia. Affordable mid-range rechargeable. Same-day Sydney shipping.',
     aliases: ['calibarn', 'calibarn 6000'],
     accentColor: '#558b2f',
@@ -1028,14 +1028,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Lucky Wolf disposables stand out with bold, aggressive industrial design and concentrated flavour formulations targeting experienced vapers.',
     longDescription:
-      "Lucky Wolf is one of the more visually distinctive brands in the AU disposable market, with industrial design that leans toward the aggressive end of the spectrum — sharp lines, bold colours, and a brand identity that targets enthusiast vapers rather than mass-market. Flavours are concentrated and forward, not subtle. Vapes Australia stocks the Lucky Wolf AU range.",
+      "Lucky Wolf is one of the more visually distinctive brands in the AU disposable market, with industrial design that leans toward the aggressive end of the spectrum — sharp lines, bold colours, and a brand identity that targets enthusiast vapers rather than mass-market. Flavours are concentrated and forward, not subtle. Aussie Vape Hub stocks the Lucky Wolf AU range.",
     highlights: ['Distinctive aggressive industrial design', 'Concentrated flavour profiles', 'USB-C rechargeable', 'Targeting experienced vapers', 'Authentic AU stock'],
     bestKnownFor: 'Lucky Wolf disposable range',
     faqs: [
       { question: 'Is Lucky Wolf only for experienced vapers?', answer: 'Lucky Wolf is approachable for anyone, but the brand positioning and concentrated flavours tend to appeal more to vapers who\'ve tried the mainstream brands and want something stronger.' },
     ],
     keywords: ['lucky wolf australia', 'lucky wolf vape', 'lucky wolf disposable'],
-    seoTitle: 'Lucky Wolf Australia — Aggressive Disposables | Vapes Australia',
+    seoTitle: 'Lucky Wolf Australia — Aggressive Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Lucky Wolf disposables in Australia. Bold design, concentrated flavours. Same-day Sydney shipping.',
     aliases: ['lucky wolf'],
     accentColor: '#212121',
@@ -1049,14 +1049,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Rival Bar 7000 disposables differentiate on flavour — the line-up includes some of the more inventive combinations on the AU market.',
     longDescription:
-      "Rival Bar competes in the 7000-puff tier against bigger-name brands by leaning into unusual flavour combinations that the mainstream brands don't attempt. The hardware is solid (USB-C rechargeable, mesh coil) but the brand's identity is really about the flavour menu. Vapes Australia stocks the full Rival Bar AU range.",
+      "Rival Bar competes in the 7000-puff tier against bigger-name brands by leaning into unusual flavour combinations that the mainstream brands don't attempt. The hardware is solid (USB-C rechargeable, mesh coil) but the brand's identity is really about the flavour menu. Aussie Vape Hub stocks the full Rival Bar AU range.",
     highlights: ['Inventive flavour combinations', '7000-puff capacity', 'USB-C rechargeable', 'Mesh coil', 'Authentic AU stock'],
     bestKnownFor: 'Rival Bar 7000',
     faqs: [
       { question: 'What unusual flavours does Rival Bar offer?', answer: 'Rival Bar has historically experimented with combinations like cucumber lemon, tropical chili, and various lesser-seen fruit hybrids that mainstream brands don\'t carry.' },
     ],
     keywords: ['rival bar australia', 'rival bar 7000', 'rival bar disposable vape', 'unusual flavour disposable australia'],
-    seoTitle: 'Rival Bar Australia — 7000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Rival Bar Australia — 7000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Rival Bar 7000 puff disposables in Australia. Inventive flavour combinations. Same-day Sydney shipping.',
     aliases: ['rival bar', 'rivalbar'],
     accentColor: '#c62828',
@@ -1070,14 +1070,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'VEIIK is one of the older established vape brands in the AU market with a reliable 7000 puff disposable line-up.',
     longDescription:
-      "VEIIK has been in the Australian vape market since the early disposable boom and has earned a reputation for reliable, no-nonsense hardware. The VEIIK 7000 disposable is USB-C rechargeable with dual mesh coil engineering. The brand also produces pod systems and starter kits. Vapes Australia stocks the VEIIK AU range.",
+      "VEIIK has been in the Australian vape market since the early disposable boom and has earned a reputation for reliable, no-nonsense hardware. The VEIIK 7000 disposable is USB-C rechargeable with dual mesh coil engineering. The brand also produces pod systems and starter kits. Aussie Vape Hub stocks the VEIIK AU range.",
     highlights: ['Established AU brand presence', 'VEIIK 7000 puff range', 'Dual mesh coil', 'USB-C rechargeable', 'Authentic AU stock'],
     bestKnownFor: 'VEIIK 7000',
     faqs: [
       { question: 'How long has VEIIK been around?', answer: 'VEIIK has been active in the AU vape market since around 2019 — one of the older surviving disposable brands in Australia.' },
     ],
     keywords: ['veiik australia', 'veiik 7000', 'veiik disposable vape'],
-    seoTitle: 'VEIIK Australia — 7000 Puff Disposables | Vapes Australia',
+    seoTitle: 'VEIIK Australia — 7000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic VEIIK 7000 puff disposables in Australia. Established AU brand, reliable hardware. Same-day Sydney shipping.',
     aliases: ['veiik'],
     accentColor: '#1565c0',
@@ -1091,14 +1091,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       "Panda 2500 puff disposables target the entry-level segment with cute branding and a simple, dependable user experience.",
     longDescription:
-      "Panda 2500 brings approachable, friendly branding to the entry-level disposable segment. The 2500-puff capacity is non-rechargeable but well-priced, making it a popular first-vape choice for ex-smokers or casual vapers who don't want to commit to a higher-capacity device. Vapes Australia stocks the Panda 2500 AU range.",
+      "Panda 2500 brings approachable, friendly branding to the entry-level disposable segment. The 2500-puff capacity is non-rechargeable but well-priced, making it a popular first-vape choice for ex-smokers or casual vapers who don't want to commit to a higher-capacity device. Aussie Vape Hub stocks the Panda 2500 AU range.",
     highlights: ['Entry-level 2500-puff specialist', 'Approachable cute branding', 'Affordable pricing', 'Non-rechargeable simplicity', 'Authentic AU stock'],
     bestKnownFor: 'Panda 2500',
     faqs: [
       { question: 'Is Panda 2500 rechargeable?', answer: 'No — Panda 2500 is non-rechargeable, which keeps the device simple and the price low. For a moderate vaper, the device lasts roughly 3-5 days.' },
     ],
     keywords: ['panda australia', 'panda 2500', 'panda disposable vape', 'entry level disposable vape australia'],
-    seoTitle: 'Panda Australia — 2500 Puff Entry Disposables | Vapes Australia',
+    seoTitle: 'Panda Australia — 2500 Puff Entry Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Panda 2500 puff disposables in Australia. Approachable entry-level option. Same-day Sydney shipping.',
     aliases: ['panda', 'panda 2500'],
     accentColor: '#424242',
@@ -1112,14 +1112,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       "Waka Smash 6000 disposables are built tougher than most — reinforced shell construction, drop-resistant industrial design, and reliable 6000-puff hardware.",
     longDescription:
-      "Waka Smash earns its name from the sturdier-than-average build quality. The shell uses reinforced construction that survives drops and tumbles better than typical plastic disposables. The Smash 6000 is USB-C rechargeable with dual mesh coil engineering. Vapes Australia stocks the Waka Smash AU range.",
+      "Waka Smash earns its name from the sturdier-than-average build quality. The shell uses reinforced construction that survives drops and tumbles better than typical plastic disposables. The Smash 6000 is USB-C rechargeable with dual mesh coil engineering. Aussie Vape Hub stocks the Waka Smash AU range.",
     highlights: ['Reinforced drop-resistant shell', 'Waka Smash 6000-puff capacity', 'Dual mesh coil', 'USB-C rechargeable', 'Authentic AU stock'],
     bestKnownFor: 'Waka Smash 6000',
     faqs: [
       { question: 'Is Waka Smash actually more durable?', answer: 'The shell construction uses thicker plastic and reinforced internal supports, making the device noticeably more drop-resistant than a typical plastic disposable. Not indestructible, but harder to break.' },
     ],
     keywords: ['waka smash australia', 'waka smash 6000', 'waka smash disposable vape', 'durable disposable vape australia'],
-    seoTitle: 'Waka Smash Australia — 6000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Waka Smash Australia — 6000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Waka Smash 6000 puff disposables in Australia. Drop-resistant reinforced shell. Same-day Sydney shipping.',
     aliases: ['waka', 'waka smash'],
     accentColor: '#33691e',
@@ -1133,14 +1133,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Yooz Ultra 15000 disposables compete at the top end of the AU long-life market with 15,000-puff capacity and refined hardware.',
     longDescription:
-      "Yooz Ultra 15000 is the brand's flagship — 15,000 puffs of e-liquid, dual mesh coil engineering, 850mAh USB-C rechargeable battery, and a premium aluminium-bodied industrial design. The brand positions itself in the premium tier alongside Alfakher Crown Bar and HQD Cuvie Slick. Vapes Australia stocks the Yooz Ultra range.",
+      "Yooz Ultra 15000 is the brand's flagship — 15,000 puffs of e-liquid, dual mesh coil engineering, 850mAh USB-C rechargeable battery, and a premium aluminium-bodied industrial design. The brand positions itself in the premium tier alongside Alfakher Crown Bar and HQD Cuvie Slick. Aussie Vape Hub stocks the Yooz Ultra range.",
     highlights: ['Yooz Ultra 15000 flagship', 'Dual mesh coil', 'USB-C rechargeable 850mAh', 'Aluminium-bodied premium design', 'Authentic AU stock'],
     bestKnownFor: 'Yooz Ultra 15000',
     faqs: [
       { question: 'How long does Yooz Ultra 15000 last?', answer: 'For a moderate vaper, approximately 14-18 days. For a heavy vaper, 10-14 days.' },
     ],
     keywords: ['yooz australia', 'yooz ultra 15000', 'yooz disposable vape'],
-    seoTitle: 'Yooz Australia — Ultra 15000 Disposables | Vapes Australia',
+    seoTitle: 'Yooz Australia — Ultra 15000 Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Yooz Ultra 15000 puff disposables in Australia. Premium long-life specialist. Same-day Sydney shipping.',
     aliases: ['yooz', 'yooz ultra'],
     accentColor: '#283593',
@@ -1154,14 +1154,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Bimo Crystal 12000 disposables stand out with a transparent crystal-clear shell that displays the e-liquid level at a glance.',
     longDescription:
-      "Bimo Crystal 12000 features one of the more distinctive design choices in the AU disposable market: a transparent crystal-clear shell that exposes the internal e-liquid reservoir so you can see at-a-glance how much vape time is left. Otherwise: 12,000 puff capacity, dual mesh coil, USB-C rechargeable. Vapes Australia stocks the Bimo Crystal AU range.",
+      "Bimo Crystal 12000 features one of the more distinctive design choices in the AU disposable market: a transparent crystal-clear shell that exposes the internal e-liquid reservoir so you can see at-a-glance how much vape time is left. Otherwise: 12,000 puff capacity, dual mesh coil, USB-C rechargeable. Aussie Vape Hub stocks the Bimo Crystal AU range.",
     highlights: ['Transparent crystal-clear shell', 'Visible e-liquid reservoir', '12000-puff capacity', 'USB-C rechargeable', 'Authentic AU stock'],
     bestKnownFor: 'Bimo Crystal 12000',
     faqs: [
       { question: 'Does the transparent shell affect durability?', answer: 'The crystal shell uses a tougher polycarbonate than typical disposable plastic, so durability is comparable to opaque-shelled devices. The transparency is a design feature, not a structural compromise.' },
     ],
     keywords: ['bimo australia', 'bimo crystal 12000', 'transparent disposable vape australia'],
-    seoTitle: 'Bimo Australia — Crystal 12000 Disposables | Vapes Australia',
+    seoTitle: 'Bimo Australia — Crystal 12000 Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Bimo Crystal 12000 puff disposables in Australia. Transparent shell shows e-liquid level. Same-day Sydney shipping.',
     aliases: ['bimo', 'bimo crystal'],
     accentColor: '#0097a7',
@@ -1175,14 +1175,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Adalya is a Turkish premium shisha tobacco brand bringing its renowned flavour formulations to the disposable vape format with the Love 66 and Two Apples 16,000-puff models.',
     longDescription:
-      "Adalya is one of the world's most respected shisha tobacco brands, particularly known for its rich, layered flavour development. The Adalya disposable vape line — Love 66 and Two Apples in 16,000-puff format — translates the brand's shisha flavour expertise into the modern disposable format. Vapes Australia stocks the Adalya AU range.",
+      "Adalya is one of the world's most respected shisha tobacco brands, particularly known for its rich, layered flavour development. The Adalya disposable vape line — Love 66 and Two Apples in 16,000-puff format — translates the brand's shisha flavour expertise into the modern disposable format. Aussie Vape Hub stocks the Adalya AU range.",
     highlights: ['Turkish shisha brand heritage', '16,000-puff capacity', 'Rich, layered flavour formulations', 'Love 66 and Two Apples models', 'Authentic AU stock'],
     bestKnownFor: 'Adalya Two Apples 16000',
     faqs: [
       { question: 'Is Adalya the same as Alfakher?', answer: 'No — both are Middle Eastern premium shisha brands but they\'re separate companies. Adalya is Turkish; Alfakher is from the UAE. Both have brought their flavour expertise to disposable vapes recently.' },
     ],
     keywords: ['adalya australia', 'adalya 16000', 'adalya two apples', 'adalya love 66', 'adalya disposable vape'],
-    seoTitle: 'Adalya Australia — 16000 Puff Shisha Disposables | Vapes Australia',
+    seoTitle: 'Adalya Australia — 16000 Puff Shisha Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Adalya disposables in Australia. Premium Turkish shisha brand. Love 66 and Two Apples 16000 puff models. Same-day Sydney shipping.',
     aliases: ['adalya'],
     accentColor: '#6d4c41',
@@ -1196,14 +1196,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Funky Land 6000 disposables bring vibrant colour, playful branding, and reliable mid-range hardware to the Australian disposable market.',
     longDescription:
-      "Funky Land takes a deliberately playful approach — vibrant colours, bold packaging, and fun branding sit alongside dependable mid-range hardware. The Funky Land 6000 is USB-C rechargeable with a mesh coil. Flavours lean toward the fun, fruity end of the spectrum. Vapes Australia stocks the Funky Land AU range.",
+      "Funky Land takes a deliberately playful approach — vibrant colours, bold packaging, and fun branding sit alongside dependable mid-range hardware. The Funky Land 6000 is USB-C rechargeable with a mesh coil. Flavours lean toward the fun, fruity end of the spectrum. Aussie Vape Hub stocks the Funky Land AU range.",
     highlights: ['Vibrant playful branding', '6000-puff USB-C rechargeable', 'Mesh coil flavour', 'Fun fruity flavour focus', 'Authentic AU stock'],
     bestKnownFor: 'Funky Land 6000',
     faqs: [
       { question: 'Is Funky Land suitable for serious vapers?', answer: 'The playful branding shouldn\'t put off serious vapers — the underlying hardware is solid mid-range, comparable to other 6000-puff disposables.' },
     ],
     keywords: ['funky land australia', 'funky land 6000', 'funky land disposable vape'],
-    seoTitle: 'Funky Land Australia — 6000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Funky Land Australia — 6000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Funky Land 6000 puff disposables in Australia. Vibrant branding, reliable mid-range hardware. Same-day Sydney shipping.',
     aliases: ['funky land', 'funkyland'],
     accentColor: '#f4511e',
@@ -1217,14 +1217,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Golit 15,000 puff disposables sit at the long-life end of the AU market with aggressive pricing that undercuts most competitors at the same puff count.',
     longDescription:
-      "Golit 15000 competes in the premium long-life disposable tier with one key differentiator: price. The device matches the puff count and rechargeable hardware of brands like Alfakher Crown Bar 15000 and HQD Cuvie Slick at a noticeably lower price point. Flavour engineering is solid if not exceptional. Vapes Australia stocks the Golit AU range.",
+      "Golit 15000 competes in the premium long-life disposable tier with one key differentiator: price. The device matches the puff count and rechargeable hardware of brands like Alfakher Crown Bar 15000 and HQD Cuvie Slick at a noticeably lower price point. Flavour engineering is solid if not exceptional. Aussie Vape Hub stocks the Golit AU range.",
     highlights: ['15000-puff long-life capacity', 'Competitive pricing vs Alfakher / HQD', 'USB-C rechargeable', 'Dual mesh coil', 'Authentic AU stock'],
     bestKnownFor: 'Golit 15000',
     faqs: [
       { question: 'How does Golit compare to Alfakher Crown Bar 15000?', answer: 'Golit 15000 matches the capacity and hardware features but is priced lower. Alfakher Crown Bar has more refined flavour engineering, while Golit offers better value for money.' },
     ],
     keywords: ['golit australia', 'golit 15000', 'golit disposable vape', 'cheap 15000 puff vape australia'],
-    seoTitle: 'Golit Australia — 15000 Puff Disposables | Vapes Australia',
+    seoTitle: 'Golit Australia — 15000 Puff Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Golit 15000 puff disposables in Australia. Long-life at competitive prices. Same-day Sydney shipping.',
     aliases: ['golit'],
     accentColor: '#4527a0',
@@ -1238,14 +1238,14 @@ export const BRANDS: Brand[] = [
     shortDescription:
       'Leafbar Platinum sits at the upper end of the disposable vape market with refined hardware engineering and a more sophisticated flavour palette.',
     longDescription:
-      "Leafbar Platinum is positioned as a premium-tier brand competing with the likes of RELX MagicGo and HQD Cuvie Slick in the refined-hardware segment. The platinum line uses higher-grade internal components, more uniform coil winding, and a more sophisticated flavour development approach than mid-tier brands. Vapes Australia stocks the Leafbar Platinum AU range.",
+      "Leafbar Platinum is positioned as a premium-tier brand competing with the likes of RELX MagicGo and HQD Cuvie Slick in the refined-hardware segment. The platinum line uses higher-grade internal components, more uniform coil winding, and a more sophisticated flavour development approach than mid-tier brands. Aussie Vape Hub stocks the Leafbar Platinum AU range.",
     highlights: ['Premium-tier positioning', 'Higher-grade internal components', 'Refined flavour palette', 'USB-C rechargeable', 'Authentic AU stock'],
     bestKnownFor: 'Leafbar Platinum range',
     faqs: [
       { question: 'Is Leafbar Platinum worth the premium price?', answer: 'For vapers who prioritise refined flavour reproduction and premium hardware feel — yes. For value-focused buyers, mid-range brands deliver 80% of the experience at a lower price.' },
     ],
     keywords: ['leafbar australia', 'leafbar platinum', 'leafbar disposable vape', 'premium disposable vape australia'],
-    seoTitle: 'Leafbar Platinum Australia — Premium Disposables | Vapes Australia',
+    seoTitle: 'Leafbar Platinum Australia — Premium Disposables | Aussie Vape Hub',
     seoDescription: 'Buy authentic Leafbar Platinum disposables in Australia. Premium-tier refined hardware. Same-day Sydney shipping.',
     aliases: ['leafbar', 'leafbar platinum'],
     accentColor: '#37474f',

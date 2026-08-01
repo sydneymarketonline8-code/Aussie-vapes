@@ -106,7 +106,7 @@ export default function CheckoutPage() {
             add ${minOrder.remaining.toFixed(2)} more to checkout
           </h1>
           <p className="text-body text-sm mb-6">
-            Your cart subtotal is currently <strong>${subtotal.toFixed(2)}</strong>. We have a ${minOrder.minimum} minimum order across Vapes Australia — top up your cart to continue.
+            Your cart subtotal is currently <strong>${subtotal.toFixed(2)}</strong>. We have a ${minOrder.minimum} minimum order across Aussie Vape Hub — top up your cart to continue.
           </p>
           <div className="h-2 bg-amber-200/60 rounded-full overflow-hidden mb-6">
             <div

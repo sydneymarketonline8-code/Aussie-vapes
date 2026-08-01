@@ -4,9 +4,9 @@ import { BellAlertIcon } from '@heroicons/react/24/outline'
 const NOTIFICATION_PREFS = [
   { id: 'order-updates', label: 'Order updates & shipping', body: 'Order confirmations, dispatch alerts and delivery notifications. Recommended.', defaultOn: true, required: true },
   { id: 'restocks', label: 'Restock alerts', body: 'Notify me when a product I viewed is back in stock.', defaultOn: true },
-  { id: 'promotions', label: 'Sales & promotions', body: 'Vapes Australia sales, limited-time discounts and pack-deal alerts.', defaultOn: true },
+  { id: 'promotions', label: 'Sales & promotions', body: 'Aussie Vape Hub sales, limited-time discounts and pack-deal alerts.', defaultOn: true },
   { id: 'new-arrivals', label: 'New arrivals', body: 'Brand drops and freshly-landed disposables.', defaultOn: false },
-  { id: 'newsletter', label: 'Vapes Australia newsletter', body: 'Monthly wrap of new brands, AU vape news and member tips.', defaultOn: false },
+  { id: 'newsletter', label: 'Aussie Vape Hub newsletter', body: 'Monthly wrap of new brands, AU vape news and member tips.', defaultOn: false },
   { id: 'sms', label: 'SMS shipping alerts', body: 'Text-only notifications when your order ships. Standard rates apply.', defaultOn: false },
 ]
 
@@ -21,7 +21,7 @@ export default async function AccountPreferencesPage() {
           Email &amp; Notification Preferences
         </h2>
         <p className="text-sm text-mute mt-1">
-          Choose which Vapes Australia emails and notifications you want to receive. You can change these any time.
+          Choose which Aussie Vape Hub emails and notifications you want to receive. You can change these any time.
         </p>
       </header>
 
@@ -68,7 +68,7 @@ export default async function AccountPreferencesPage() {
           Unsubscribe From Everything
         </h3>
         <p className="text-sm text-body mb-3 max-w-2xl">
-          You can opt out of all Vapes Australia marketing communications in one click. You&apos;ll still receive
+          You can opt out of all Aussie Vape Hub marketing communications in one click. You&apos;ll still receive
           essential order-related emails (dispatch, delivery, returns).
         </p>
         <button type="button" className="btn-secondary" disabled>

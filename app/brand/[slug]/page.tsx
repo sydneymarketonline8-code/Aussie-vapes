@@ -16,7 +16,7 @@ import {
 import { CheckCircleIcon, StarIcon } from '@heroicons/react/24/solid'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 // ISR — see comment in /product/[slug]/page.tsx. Same rationale: brand
 // pages render fast from a baked static HTML, but pick up admin product
@@ -94,7 +94,7 @@ export default async function BrandPage({
         <div className="container-site py-10 lg:py-16">
           <Breadcrumb
             crumbs={[
-              { label: 'Vapes Australia', href: '/' },
+              { label: 'Aussie Vape Hub', href: '/' },
               { label: 'Brands', href: '/brands' },
               { label: brand.displayName },
             ]}
@@ -108,7 +108,7 @@ export default async function BrandPage({
                 {brand.origin} · Authentic AU Stock
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink-dark leading-[1.05] mb-3">
-                {brand.displayName} <span className="text-mute">at Vapes Australia</span>
+                {brand.displayName} <span className="text-mute">at Aussie Vape Hub</span>
               </h1>
               <p
                 className="font-display text-lg font-semibold mb-5"
@@ -199,7 +199,7 @@ export default async function BrandPage({
 
             <div>
               <h3 className="font-display text-xl font-bold text-ink mb-4 lowercase">
-                why buy {brand.displayName.toLowerCase()} from vapes australia
+                why buy {brand.displayName.toLowerCase()} from aussie vape hub
               </h3>
               <ul className="space-y-3">
                 {brand.highlights.map((h) => (
@@ -328,7 +328,7 @@ export default async function BrandPage({
         <div className="p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed flex items-start gap-2">
           <ExclamationTriangleIcon className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
           <span>
-            <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Vapes Australia complies with all applicable Australian regulations.
+            <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Aussie Vape Hub complies with all applicable Australian regulations.
           </span>
         </div>
       </div>

@@ -7,8 +7,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co' },
-      { protocol: 'https', hostname: 'www.vapesaustralia.com.au' },
-      { protocol: 'https', hostname: 'vapesaustralia.com.au' },
+      { protocol: 'https', hostname: 'www.aussievapehub.com.au' },
+      { protocol: 'https', hostname: 'aussievapehub.com.au' },
       { protocol: 'https', hostname: 'cprvkojsnyxsgwnzyfsa.supabase.co' },
     ],
     formats: ['image/avif', 'image/webp'],
@@ -27,11 +27,13 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Legacy /aussie-vapes/* path (from before the brand isolation pass) —
-      // permanent-redirect to the new /vapes-australia/* slug so any lingering
-      // internal links or bookmarks land in the right place.
-      { source: '/aussie-vapes', destination: '/vapes-australia', permanent: true },
-      { source: '/aussie-vapes/:city', destination: '/vapes-australia/:city', permanent: true },
+      // Legacy city-hub slugs from earlier brand names. Each rebrand moved the
+      // path; these keep old internal links, bookmarks and previously-submitted
+      // sitemap URLs landing on the current /aussie-vape-hub/* pages.
+      { source: '/aussie-vapes', destination: '/aussie-vape-hub', permanent: true },
+      { source: '/aussie-vapes/:city', destination: '/aussie-vape-hub/:city', permanent: true },
+      { source: '/vapes-australia', destination: '/aussie-vape-hub', permanent: true },
+      { source: '/vapes-australia/:city', destination: '/aussie-vape-hub/:city', permanent: true },
 
       // Top-level brand shortcuts (SEO + bookmark friendliness)
       { source: '/iget', destination: '/brand/iget', permanent: true },
@@ -71,19 +73,19 @@ const nextConfig = {
       { source: '/coils', destination: '/category/accessories', permanent: true },
       { source: '/pouches', destination: '/category/accessories', permanent: true },
 
-      // City shortcuts (SEO: "vapes Sydney", "vapes australia melbourne" etc.)
-      { source: '/sydney', destination: '/vapes-australia/sydney', permanent: true },
-      { source: '/melbourne', destination: '/vapes-australia/melbourne', permanent: true },
-      { source: '/brisbane', destination: '/vapes-australia/brisbane', permanent: true },
-      { source: '/perth', destination: '/vapes-australia/perth', permanent: true },
-      { source: '/adelaide', destination: '/vapes-australia/adelaide', permanent: true },
-      { source: '/vapes-australia-sydney', destination: '/vapes-australia/sydney', permanent: true },
-      { source: '/vapes-australia-melbourne', destination: '/vapes-australia/melbourne', permanent: true },
-      { source: '/vapes-australia-brisbane', destination: '/vapes-australia/brisbane', permanent: true },
-      { source: '/vapes-australia-perth', destination: '/vapes-australia/perth', permanent: true },
-      { source: '/vapes-australia-adelaide', destination: '/vapes-australia/adelaide', permanent: true },
-      { source: '/locations', destination: '/vapes-australia', permanent: true },
-      { source: '/locations/:city', destination: '/vapes-australia/:city', permanent: true },
+      // City shortcuts (SEO: "vapes Sydney", "aussie vape hub melbourne" etc.)
+      { source: '/sydney', destination: '/aussie-vape-hub/sydney', permanent: true },
+      { source: '/melbourne', destination: '/aussie-vape-hub/melbourne', permanent: true },
+      { source: '/brisbane', destination: '/aussie-vape-hub/brisbane', permanent: true },
+      { source: '/perth', destination: '/aussie-vape-hub/perth', permanent: true },
+      { source: '/adelaide', destination: '/aussie-vape-hub/adelaide', permanent: true },
+      { source: '/aussie-vape-hub-sydney', destination: '/aussie-vape-hub/sydney', permanent: true },
+      { source: '/aussie-vape-hub-melbourne', destination: '/aussie-vape-hub/melbourne', permanent: true },
+      { source: '/aussie-vape-hub-brisbane', destination: '/aussie-vape-hub/brisbane', permanent: true },
+      { source: '/aussie-vape-hub-perth', destination: '/aussie-vape-hub/perth', permanent: true },
+      { source: '/aussie-vape-hub-adelaide', destination: '/aussie-vape-hub/adelaide', permanent: true },
+      { source: '/locations', destination: '/aussie-vape-hub', permanent: true },
+      { source: '/locations/:city', destination: '/aussie-vape-hub/:city', permanent: true },
 
       // SEO / legacy short-paths
       { source: '/home', destination: '/', permanent: true },
@@ -132,7 +134,7 @@ const nextConfig = {
       { source: '/pack', destination: '/packs', permanent: true },
       { source: '/vape-packs', destination: '/packs', permanent: true },
       { source: '/aussie-vape-packs', destination: '/packs', permanent: true },
-      { source: '/vapes-australia-packs', destination: '/packs', permanent: true },
+      { source: '/aussie-vape-hub-packs', destination: '/packs', permanent: true },
       { source: '/bundles', destination: '/packs/bundle-deals', permanent: true },
       { source: '/bundle-deals', destination: '/packs/bundle-deals', permanent: true },
       { source: '/multi-buy', destination: '/packs/multi-buy-packs', permanent: true },

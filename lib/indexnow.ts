@@ -19,7 +19,7 @@
  * Never throws — IndexNow failures shouldn't block business logic.
  */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 export async function notifyIndexNow(urls: string[]): Promise<void> {
   const key = process.env.INDEXNOW_KEY

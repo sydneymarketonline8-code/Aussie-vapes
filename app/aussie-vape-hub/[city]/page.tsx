@@ -9,7 +9,7 @@ import { getFeaturedProducts } from '@/lib/storefront-products'
 import { faqJsonLd, breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 export const revalidate = 300
 
@@ -26,12 +26,12 @@ export async function generateMetadata({
   const c = getCityBySlug(city)
   if (!c) return {}
   return {
-    title: `Vapes Australia ${c.name} — Buy Vapes ${c.name} ${c.state} | Authentic AU Stock`,
-    description: `Vapes Australia delivers authentic disposable vapes, pod systems and e-liquids to ${c.name}, ${c.state}. ${c.deliveryWindow}. Free shipping over $300. Same-day Sydney dispatch.`,
+    title: `Aussie Vape Hub ${c.name} — Buy Vapes ${c.name} ${c.state} | Authentic AU Stock`,
+    description: `Aussie Vape Hub delivers authentic disposable vapes, pod systems and e-liquids to ${c.name}, ${c.state}. ${c.deliveryWindow}. Free shipping over $300. Same-day Sydney dispatch.`,
     keywords: c.keywords,
-    alternates: { canonical: `/vapes-australia/${c.slug}` },
+    alternates: { canonical: `/aussie-vape-hub/${c.slug}` },
     openGraph: {
-      title: `Vapes Australia ${c.name} — Buy Vapes ${c.name} ${c.state}`,
+      title: `Aussie Vape Hub ${c.name} — Buy Vapes ${c.name} ${c.state}`,
       description: `Authentic disposable vapes & pod systems delivered to ${c.name}. ${c.deliveryWindow}.`,
     },
   }
@@ -45,20 +45,20 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const featured = await getFeaturedProducts(5)
 
   const crumbs = [
-    { name: 'Vapes Australia', url: `${SITE_URL}/` },
-    { name: 'Locations', url: `${SITE_URL}/vapes-australia` },
-    { name: `Vapes Australia ${c.name}`, url: `${SITE_URL}/vapes-australia/${c.slug}` },
+    { name: 'Aussie Vape Hub', url: `${SITE_URL}/` },
+    { name: 'Locations', url: `${SITE_URL}/aussie-vape-hub` },
+    { name: `Aussie Vape Hub ${c.name}`, url: `${SITE_URL}/aussie-vape-hub/${c.slug}` },
   ]
 
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: `Vapes Australia ${c.name}`,
-    description: `Vapes Australia serves ${c.name}, ${c.state} with authentic disposable vapes, pod systems and e-liquids. ${c.deliveryWindow} from our Sydney warehouse.`,
-    url: `${SITE_URL}/vapes-australia/${c.slug}`,
+    name: `Aussie Vape Hub ${c.name}`,
+    description: `Aussie Vape Hub serves ${c.name}, ${c.state} with authentic disposable vapes, pod systems and e-liquids. ${c.deliveryWindow} from our Sydney warehouse.`,
+    url: `${SITE_URL}/aussie-vape-hub/${c.slug}`,
     parentOrganization: {
       '@type': 'Organization',
-      name: 'Vapes Australia',
+      name: 'Aussie Vape Hub',
       url: SITE_URL,
     },
     areaServed: {
@@ -84,9 +84,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         <div className="container-site py-10">
           <Breadcrumb
             crumbs={[
-              { label: 'Vapes Australia', href: '/' },
-              { label: 'Locations', href: '/vapes-australia' },
-              { label: `Vapes Australia ${c.name}` },
+              { label: 'Aussie Vape Hub', href: '/' },
+              { label: 'Locations', href: '/aussie-vape-hub' },
+              { label: `Aussie Vape Hub ${c.name}` },
             ]}
           />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-5">
@@ -95,7 +95,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                 {c.state} · {c.population} · Postcodes {c.postcodeRange}
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink leading-[1.05] mb-3">
-                Vapes Australia {c.name}
+                Aussie Vape Hub {c.name}
               </h1>
               <p className="text-body text-base leading-relaxed">{c.introCopy}</p>
 
@@ -115,7 +115,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               </div>
             </div>
 
-            {/* Featured product collage — what Vapes Australia ships to this city */}
+            {/* Featured product collage — what Aussie Vape Hub ships to this city */}
             <div className="w-full">
               <HeroCollage products={featured} accentColor="#ff0000" />
             </div>
@@ -125,7 +125,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
       <section className="container-site py-12">
         <div className="section-heading-wrap">
-          <h2 className="section-heading">popular at vapes australia {c.name.toLowerCase()}</h2>
+          <h2 className="section-heading">popular at aussie vape hub {c.name.toLowerCase()}</h2>
           <Link href="/category/disposable-vapes" className="font-display text-xs uppercase tracking-widest font-bold text-mute hover:text-price">
             View All →
           </Link>
@@ -142,14 +142,14 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">
-                about vapes australia in {c.name.toLowerCase()}
+                about aussie vape hub in {c.name.toLowerCase()}
               </h2>
               <p className="text-body leading-relaxed">{c.longDescription}</p>
             </div>
 
             <div>
               <h3 className="font-display text-xl font-bold text-ink mb-4 lowercase">
-                why {c.name.toLowerCase()} chooses vapes australia
+                why {c.name.toLowerCase()} chooses aussie vape hub
               </h3>
               <ul className="space-y-3 text-body">
                 {c.highlights.map((h) => (
@@ -163,7 +163,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
 
             <div>
               <h3 className="font-display text-xl font-bold text-ink mb-4 lowercase">
-                vapes australia delivers across {c.name.toLowerCase()}
+                aussie vape hub delivers across {c.name.toLowerCase()}
               </h3>
               <p className="text-body leading-relaxed text-sm mb-3">
                 Popular {c.name} suburbs we deliver to:
@@ -184,7 +184,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           <aside className="lg:sticky lg:top-24 h-fit space-y-5">
             <div className="bg-white border border-line rounded-sm p-6">
               <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3 pb-2 border-b border-line">
-                Shop Vapes Australia {c.name}
+                Shop Aussie Vape Hub {c.name}
               </h3>
               <ul className="space-y-2 text-sm">
                 <li><Link href="/category/disposable-vapes" className="text-body hover:text-price">Disposable Vapes</Link></li>
@@ -197,12 +197,12 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               </ul>
             </div>
             <div className="bg-ink text-white rounded-sm p-6">
-              <p className="font-display text-xs uppercase tracking-[0.3em] font-bold text-white/70 mb-2">Other Vapes Australia Locations</p>
+              <p className="font-display text-xs uppercase tracking-[0.3em] font-bold text-white/70 mb-2">Other Aussie Vape Hub Locations</p>
               <ul className="space-y-1 mt-3">
                 {CITIES.filter((other) => other.slug !== c.slug).map((other) => (
                   <li key={other.slug}>
-                    <Link href={`/vapes-australia/${other.slug}`} className="font-display font-bold uppercase tracking-wider text-sm hover:text-price">
-                      Vapes Australia {other.name}
+                    <Link href={`/aussie-vape-hub/${other.slug}`} className="font-display font-bold uppercase tracking-wider text-sm hover:text-price">
+                      Aussie Vape Hub {other.name}
                     </Link>
                   </li>
                 ))}
@@ -216,7 +216,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         <div className="container-site max-w-3xl">
           <div className="text-center mb-10">
             <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-              Vapes Australia {c.name} FAQ
+              Aussie Vape Hub {c.name} FAQ
             </p>
             <h2 className="font-display text-3xl font-bold text-ink lowercase">
               {c.name.toLowerCase()} delivery questions

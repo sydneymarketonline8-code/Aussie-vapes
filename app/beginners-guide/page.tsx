@@ -3,19 +3,19 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 export const metadata: Metadata = {
-  title: "Beginner's Vape Guide Australia — Vapes Australia Starter Tips",
+  title: "Beginner's Vape Guide Australia — Aussie Vape Hub Starter Tips",
   description:
-    "The complete beginner's vape guide for Australia. How to choose your first vape, nicotine strength, disposable vs pod, TGA prescription model — Vapes Australia walks you through everything.",
+    "The complete beginner's vape guide for Australia. How to choose your first vape, nicotine strength, disposable vs pod, TGA prescription model — Aussie Vape Hub walks you through everything.",
   keywords: [
     'beginners vape guide australia',
-    'vapes australia beginners',
+    'aussie vape hub beginners',
     'first vape australia',
     'how to vape australia',
     'starter vape kit australia',
-    'vapes australia starter guide',
+    'aussie vape hub starter guide',
   ],
   alternates: { canonical: '/beginners-guide' },
 }
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
 const ARTICLE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: "Beginner's Vape Guide Australia — Vapes Australia",
+  headline: "Beginner's Vape Guide Australia — Aussie Vape Hub",
   description: "The complete beginner's vape guide for Australia. How to choose your first vape, nicotine strength, disposable vs pod, TGA prescription model.",
-  author: { '@type': 'Organization', name: 'Vapes Australia' },
+  author: { '@type': 'Organization', name: 'Aussie Vape Hub' },
   publisher: {
     '@type': 'Organization',
-    name: 'Vapes Australia',
+    name: 'Aussie Vape Hub',
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
   },
   datePublished: '2026-01-01',
@@ -43,15 +43,15 @@ export default function BeginnersGuidePage() {
 
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Vapes Australia', href: '/' }, { label: "Beginner's Guide" }]} />
+          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: "Beginner's Guide" }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
-            Vapes Australia Guides
+            Aussie Vape Hub Guides
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
             beginner&apos;s vape guide for australia
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            New to vaping? The Vapes Australia team has put together this comprehensive beginner&apos;s guide to help you
+            New to vaping? The Aussie Vape Hub team has put together this comprehensive beginner&apos;s guide to help you
             choose your first device, understand AU regulations, and avoid the most common mistakes new vapers make.
           </p>
         </div>
@@ -62,13 +62,13 @@ export default function BeginnersGuidePage() {
           <section>
             <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">step 1: understand why you&apos;re vaping</h2>
             <p className="text-body leading-relaxed mb-3">
-              Vapes Australia products are designed for adult smokers (18+) looking for a less harmful alternative to
+              Aussie Vape Hub products are designed for adult smokers (18+) looking for a less harmful alternative to
               cigarettes. The Royal College of Physicians (UK) estimates vaping is around 95% less harmful than smoking
               tobacco. The TGA permits prescription vaping access as a recognised smoking cessation tool in Australia.
             </p>
             <p className="text-body leading-relaxed">
               If you&apos;ve never smoked and never vaped, you should not start. Nicotine is addictive. The advice in
-              this Vapes Australia guide assumes you&apos;re an existing smoker or vaper.
+              this Aussie Vape Hub guide assumes you&apos;re an existing smoker or vaper.
             </p>
           </section>
 
@@ -86,7 +86,7 @@ export default function BeginnersGuidePage() {
                   Pull it out of the box, vape it, dispose when done.
                 </p>
                 <p className="text-sm text-body leading-relaxed">
-                  <strong>Vapes Australia recommends starting with:</strong> the <Link href="/product/iget-bar" className="text-price font-semibold hover:underline">IGET Bar 3500</Link>, <Link href="/brand/gunnpod" className="text-price font-semibold hover:underline">Gunnpod 2000</Link>, or <Link href="/brand/hqd" className="text-price font-semibold hover:underline">HQD Cuvie Plus</Link>. Spend $20-$30 for your first device, try several flavours, and decide if vaping suits you before investing in a pod system.
+                  <strong>Aussie Vape Hub recommends starting with:</strong> the <Link href="/product/iget-bar" className="text-price font-semibold hover:underline">IGET Bar 3500</Link>, <Link href="/brand/gunnpod" className="text-price font-semibold hover:underline">Gunnpod 2000</Link>, or <Link href="/brand/hqd" className="text-price font-semibold hover:underline">HQD Cuvie Plus</Link>. Spend $20-$30 for your first device, try several flavours, and decide if vaping suits you before investing in a pod system.
                 </p>
               </div>
 
@@ -96,7 +96,7 @@ export default function BeginnersGuidePage() {
                   <strong>Best for:</strong> Beginners who already know they&apos;ll be vaping long-term and want to save money. Higher upfront cost but 50-70% cheaper per week than disposables.
                 </p>
                 <p className="text-sm text-body leading-relaxed">
-                  <strong>Vapes Australia recommends:</strong> A simple draw-activated pod system paired with 25mg or 50mg nic salt e-liquid. Browse our <Link href="/category/pod-systems" className="text-price font-semibold hover:underline">Pod Systems range</Link>.
+                  <strong>Aussie Vape Hub recommends:</strong> A simple draw-activated pod system paired with 25mg or 50mg nic salt e-liquid. Browse our <Link href="/category/pod-systems" className="text-price font-semibold hover:underline">Pod Systems range</Link>.
                 </p>
               </div>
             </div>
@@ -105,7 +105,7 @@ export default function BeginnersGuidePage() {
           <section>
             <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">step 3: choose your nicotine strength</h2>
             <p className="text-body leading-relaxed mb-3">
-              All disposable vapes sold legally in Australia (including every Vapes Australia product) use 20mg/mL salt
+              All disposable vapes sold legally in Australia (including every Aussie Vape Hub product) use 20mg/mL salt
               nicotine — the TGA-compliant standard. For pod systems with refillable nic salt e-liquid:
             </p>
             <ul className="space-y-2 text-sm text-body mb-3">
@@ -114,7 +114,7 @@ export default function BeginnersGuidePage() {
               <li>• <strong>20+ cigarettes/day:</strong> 50mg salt nic</li>
             </ul>
             <p className="text-body leading-relaxed">
-              If unsure, the Vapes Australia team recommends starting at the higher strength and tapering down. Lower
+              If unsure, the Aussie Vape Hub team recommends starting at the higher strength and tapering down. Lower
               strengths feel weaker but are smoother on the throat.
             </p>
           </section>
@@ -123,7 +123,7 @@ export default function BeginnersGuidePage() {
             <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">step 4: pick flavours you&apos;ll actually enjoy</h2>
             <p className="text-body leading-relaxed mb-3">
               Flavour matters more than you&apos;d expect — if you don&apos;t enjoy the flavour, you won&apos;t stick
-              with vaping. Vapes Australia recommends starting with these proven beginner flavours:
+              with vaping. Aussie Vape Hub recommends starting with these proven beginner flavours:
             </p>
             <ul className="space-y-2 text-sm text-body">
               <li>• <strong>If you smoke menthol cigarettes:</strong> Cool Mint, Lush Ice, Mint</li>
@@ -134,10 +134,10 @@ export default function BeginnersGuidePage() {
           </section>
 
           <section>
-            <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">step 5: know the vapes australia basics</h2>
+            <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">step 5: know the aussie vape hub basics</h2>
             <ul className="space-y-3 text-sm text-body">
               <li>
-                <strong>Charge it:</strong> If your Vapes Australia device is rechargeable, give it a 30-minute top-up
+                <strong>Charge it:</strong> If your Aussie Vape Hub device is rechargeable, give it a 30-minute top-up
                 charge before first use even if it&apos;s pre-charged.
               </li>
               <li>
@@ -149,7 +149,7 @@ export default function BeginnersGuidePage() {
                 aren&apos;t cigarettes. Wait 5-10 seconds between puffs for the coil to recover.
               </li>
               <li>
-                <strong>Storage:</strong> Keep your Vapes Australia device upright at room temperature. Avoid leaving in
+                <strong>Storage:</strong> Keep your Aussie Vape Hub device upright at room temperature. Avoid leaving in
                 hot cars or direct sunlight.
               </li>
               <li>
@@ -166,7 +166,7 @@ export default function BeginnersGuidePage() {
             </h2>
             <p className="text-sm text-body leading-relaxed">
               Nicotine vaping products require a valid Australian prescription. You confirm prescription status at
-              Vapes Australia checkout. Vaping is for adults 18+ only — Vapes Australia does not sell to minors.
+              Aussie Vape Hub checkout. Vaping is for adults 18+ only — Aussie Vape Hub does not sell to minors.
             </p>
           </section>
         </div>
@@ -174,7 +174,7 @@ export default function BeginnersGuidePage() {
         <aside className="lg:sticky lg:top-24 h-fit space-y-6">
           <div className="bg-white border border-line rounded-sm p-6">
             <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3 pb-2 border-b border-line">
-              Vapes Australia Starter Picks
+              Aussie Vape Hub Starter Picks
             </h3>
             <ul className="space-y-3 text-sm">
               <li><Link href="/brand/iget" className="text-body hover:text-price"><strong>IGET</strong> — best overall beginner</Link></li>
@@ -184,13 +184,13 @@ export default function BeginnersGuidePage() {
             </ul>
           </div>
           <div className="bg-soft-100 border border-line rounded-sm p-6">
-            <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3">More Vapes Australia Reading</h3>
+            <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3">More Aussie Vape Hub Reading</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/vaping-laws-australia" className="text-body hover:text-price">AU Vaping Laws Explained</Link></li>
               <li><Link href="/category/disposable-vapes" className="text-body hover:text-price">Disposable Vapes Range</Link></li>
               <li><Link href="/category/pod-systems" className="text-body hover:text-price">Pod Systems Range</Link></li>
-              <li><Link href="/faq" className="text-body hover:text-price">Vapes Australia FAQ</Link></li>
-              <li><Link href="/contact" className="text-body hover:text-price">Talk to Vapes Australia Support</Link></li>
+              <li><Link href="/faq" className="text-body hover:text-price">Aussie Vape Hub FAQ</Link></li>
+              <li><Link href="/contact" className="text-body hover:text-price">Talk to Aussie Vape Hub Support</Link></li>
             </ul>
           </div>
         </aside>

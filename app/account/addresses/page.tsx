@@ -12,7 +12,7 @@ export default async function AccountAddressesPage() {
             Saved Addresses
           </h2>
           <p className="text-sm text-mute mt-1">
-            Vapes Australia will auto-fill these at checkout to save you time.
+            Aussie Vape Hub will auto-fill these at checkout to save you time.
           </p>
         </div>
         <button
@@ -32,7 +32,7 @@ export default async function AccountAddressesPage() {
           No saved addresses
         </p>
         <p className="text-sm text-mute mb-6 max-w-md mx-auto">
-          Save your shipping address once and Vapes Australia will auto-fill it on every future checkout.
+          Save your shipping address once and Aussie Vape Hub will auto-fill it on every future checkout.
         </p>
       </div>
 

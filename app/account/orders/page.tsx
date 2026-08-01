@@ -12,7 +12,7 @@ export default async function AccountOrdersPage() {
           Order History
         </h2>
         <p className="text-sm text-mute mt-1">
-          Every Vapes Australia order you place will appear here. Track shipments, download invoices, and reorder favourites in one tap.
+          Every Aussie Vape Hub order you place will appear here. Track shipments, download invoices, and reorder favourites in one tap.
         </p>
       </header>
 
@@ -44,7 +44,7 @@ export default async function AccountOrdersPage() {
             No orders yet
           </p>
           <p className="text-sm text-mute mb-6 max-w-md mx-auto">
-            Once you place your first Vapes Australia order it will land here. You can re-order any past purchase
+            Once you place your first Aussie Vape Hub order it will land here. You can re-order any past purchase
             in two taps from this page.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">

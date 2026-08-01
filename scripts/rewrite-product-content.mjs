@@ -224,14 +224,14 @@ function accessory(a, seed) {
 
 function genSeo(a, seed, short) {
   const t = pick([
-    `${a.dispName} | ${a.brand} | Vapes Australia`,
-    `${a.dispName} — Buy Online | Vapes Australia`,
-    `${a.dispName} | Vapes Australia`,
+    `${a.dispName} | ${a.brand} | Aussie Vape Hub`,
+    `${a.dispName} — Buy Online | Aussie Vape Hub`,
+    `${a.dispName} | Aussie Vape Hub`,
   ], seed, 11)
   const d = clean(pick([
     `Buy the ${a.dispName} online in Australia. ${short} Fast Sydney dispatch, free shipping over $300.`,
-    `${short} Shop the ${a.dispName} at Vapes Australia — genuine stock, same-day AU dispatch.`,
-    `${a.dispName} in stock now at Vapes Australia. ${short} Discreet, tracked Australia-wide delivery.`,
+    `${short} Shop the ${a.dispName} at Aussie Vape Hub — genuine stock, same-day AU dispatch.`,
+    `${a.dispName} in stock now at Aussie Vape Hub. ${short} Discreet, tracked Australia-wide delivery.`,
   ], seed, 17)).slice(0, 158)
   return { seoTitle: t.slice(0, 60), seoDescription: d }
 }

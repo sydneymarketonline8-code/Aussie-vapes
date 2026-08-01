@@ -6,7 +6,7 @@ import { CITIES } from '@/lib/cities'
 import { PACK_GROUPS } from '@/lib/packs'
 import { PUFF_RANGES } from '@/lib/puff-ranges'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/brands`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${SITE_URL}/packs`, lastModified: now, changeFrequency: 'weekly', priority: 0.95 },
     { url: `${SITE_URL}/puffs`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${SITE_URL}/vapes-australia`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${SITE_URL}/aussie-vape-hub`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE_URL}/sale`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${SITE_URL}/new-arrivals`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: `${SITE_URL}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
@@ -58,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Tier 2 — City landing pages (geo SEO)
   const cityRoutes: MetadataRoute.Sitemap = CITIES.map((c) => ({
-    url: `${SITE_URL}/vapes-australia/${c.slug}`,
+    url: `${SITE_URL}/aussie-vape-hub/${c.slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.8,

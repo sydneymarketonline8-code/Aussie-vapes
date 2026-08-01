@@ -34,19 +34,19 @@ const support = [
 const account = [
   { label: 'My Account', href: '/account' },
   { label: 'Wishlist', href: '/wishlist' },
-  { label: 'About Vapes Australia', href: '/about' },
+  { label: 'About Aussie Vape Hub', href: '/about' },
   { label: 'Vaping Laws AU', href: '/vaping-laws-australia' },
   { label: 'Bulk & Wholesale', href: '/bulk' },
   { label: 'Blog', href: '/blog' },
 ]
 
 const locations = [
-  { label: 'Vapes Australia Sydney', href: '/vapes-australia/sydney' },
-  { label: 'Vapes Australia Melbourne', href: '/vapes-australia/melbourne' },
-  { label: 'Vapes Australia Brisbane', href: '/vapes-australia/brisbane' },
-  { label: 'Vapes Australia Perth', href: '/vapes-australia/perth' },
-  { label: 'Vapes Australia Adelaide', href: '/vapes-australia/adelaide' },
-  { label: 'All Locations', href: '/vapes-australia' },
+  { label: 'Aussie Vape Hub Sydney', href: '/aussie-vape-hub/sydney' },
+  { label: 'Aussie Vape Hub Melbourne', href: '/aussie-vape-hub/melbourne' },
+  { label: 'Aussie Vape Hub Brisbane', href: '/aussie-vape-hub/brisbane' },
+  { label: 'Aussie Vape Hub Perth', href: '/aussie-vape-hub/perth' },
+  { label: 'Aussie Vape Hub Adelaide', href: '/aussie-vape-hub/adelaide' },
+  { label: 'All Locations', href: '/aussie-vape-hub' },
 ]
 
 const legal = [
@@ -62,8 +62,8 @@ export default function Footer() {
       <div className="bg-ink text-white">
         <div className="container-site py-8 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
           <div>
-            <h3 className="font-display text-2xl font-bold uppercase tracking-wide">Join the Vapes Australia Club</h3>
-            <p className="text-sm text-white/70 mt-1">Get 10% off your first Vapes Australia order plus exclusive deals straight to your inbox.</p>
+            <h3 className="font-display text-2xl font-bold uppercase tracking-wide">Join the Aussie Vape Hub Club</h3>
+            <p className="text-sm text-white/70 mt-1">Get 10% off your first Aussie Vape Hub order plus exclusive deals straight to your inbox.</p>
           </div>
           <div className="lg:max-w-md w-full lg:ml-auto">
             <NewsletterForm />
@@ -101,14 +101,14 @@ export default function Footer() {
       {/* Top brands strip */}
       <div className="border-t border-line bg-white">
         <div className="container-site py-6">
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Top Brands At Vapes Australia</p>
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Top Brands At Aussie Vape Hub</p>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             {['IGET', 'Alfakher', 'HQD', 'Gunnpod', 'Lost Mary', 'Vozol', 'RELX', 'Elux', 'Mr Fog', 'AliBarBar', 'JNR', 'Serein'].map((b) => (
               <a
                 key={b}
                 href={`/brand/${b.toLowerCase().replace(/\s+/g, '-')}`}
                 className="font-display text-sm font-bold uppercase tracking-wider text-ink hover:text-price transition-colors"
-                title={`${b} at Vapes Australia`}
+                title={`${b} at Aussie Vape Hub`}
               >
                 {b}
               </a>
@@ -130,7 +130,7 @@ export default function Footer() {
             </span>
           </Link>
           <p className="text-body text-sm leading-relaxed mb-5 max-w-md">
-            <strong>Vapes Australia</strong> is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ more brands — shipped same-day from our Sydney warehouse, free across Australia on orders over $300.
+            <strong>Aussie Vape Hub</strong> is Australia&apos;s #1 online vape store. Authentic disposable vapes from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ more brands — shipped same-day from our Sydney warehouse, free across Australia on orders over $300.
           </p>
 
           <ul className="space-y-2.5 text-sm">
@@ -144,7 +144,7 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-2 text-body">
               <EnvelopeIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
-              <a href="mailto:info@vapesaustralia.com.au" className="hover:text-price">info@vapesaustralia.com.au</a>
+              <a href="mailto:info@aussievapehub.com.au" className="hover:text-price">info@aussievapehub.com.au</a>
             </li>
             <li className="flex items-start gap-2 text-body">
               <ClockIcon className="h-4 w-4 text-price flex-shrink-0 mt-0.5" />
@@ -254,7 +254,7 @@ export default function Footer() {
       {/* Locations strip */}
       <div className="border-t border-line bg-white">
         <div className="container-site py-6">
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Vapes Australia Locations</p>
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-mute font-bold text-center mb-3">Aussie Vape Hub Locations</p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             {locations.map(({ label, href }) => (
               <Link
@@ -292,7 +292,7 @@ export default function Footer() {
       <div className="border-t border-line bg-ink text-white">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/70 text-center sm:text-left">
-            © {new Date().getFullYear()} Vapes Australia. All rights reserved. ABN: 00 000 000 000 — Australia&apos;s #1 Online Vape Store
+            © {new Date().getFullYear()} Aussie Vape Hub. All rights reserved. ABN: 00 000 000 000 — Australia&apos;s #1 Online Vape Store
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {legal.map(({ label, href }) => (
@@ -304,7 +304,7 @@ export default function Footer() {
         </div>
         <div className="container-site pb-4">
           <p className="text-[10px] text-white/50 text-center leading-relaxed">
-            Nicotine products are highly addictive and not risk-free. For adult use only (18+). Vapes Australia does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
+            Nicotine products are highly addictive and not risk-free. For adult use only (18+). Aussie Vape Hub does not sell nicotine products without a valid Australian prescription where required by law. Please vape responsibly.
           </p>
         </div>
       </div>

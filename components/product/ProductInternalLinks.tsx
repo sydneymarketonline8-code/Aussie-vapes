@@ -10,7 +10,7 @@ interface ProductInternalLinksProps {
 /**
  * Contextual internal link block for product pages. Hits the SEO sweet spot
  * of 3-10 internal links by surfacing the most-related landing pages for the
- * product's brand, category, format and the surrounding Vapes Australia site.
+ * product's brand, category, format and the surrounding Aussie Vape Hub site.
  */
 export default function ProductInternalLinks({ product }: ProductInternalLinksProps) {
   const brandSlug = getBrandSlugForProduct(product)
@@ -34,21 +34,21 @@ export default function ProductInternalLinks({ product }: ProductInternalLinksPr
     links.push({ label: 'Vape Packs', href: '/packs' })
   }
   if (product.isSale) {
-    links.push({ label: 'Current Vapes Australia Sale', href: '/sale' })
+    links.push({ label: 'Current Aussie Vape Hub Sale', href: '/sale' })
   } else {
-    links.push({ label: 'Vapes Australia Sale', href: '/sale' })
+    links.push({ label: 'Aussie Vape Hub Sale', href: '/sale' })
   }
   links.push({ label: 'New Arrivals', href: '/new-arrivals' })
   links.push({ label: 'Shipping Policy', href: '/shipping' })
   links.push({ label: 'Returns & Refunds', href: '/returns' })
   links.push({ label: "Beginner's Guide", href: '/beginners-guide' })
   links.push({ label: 'AU Vaping Laws', href: '/vaping-laws-australia' })
-  links.push({ label: 'Vapes Australia FAQ', href: '/faq' })
+  links.push({ label: 'Aussie Vape Hub FAQ', href: '/faq' })
 
   return (
     <section className="mt-8 bg-white border border-line rounded-sm p-6">
       <h2 className="font-display text-xl font-bold text-ink uppercase tracking-wide mb-4">
-        Related Vapes Australia Pages
+        Related Aussie Vape Hub Pages
       </h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
         {links.map((l) => (

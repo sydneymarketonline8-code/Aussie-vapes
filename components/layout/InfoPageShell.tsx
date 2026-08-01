@@ -33,7 +33,7 @@ export default function InfoPageShell({
         <div className="container-site py-10">
           <Breadcrumb
             crumbs={[
-              { label: 'Vapes Australia', href: '/' },
+              { label: 'Aussie Vape Hub', href: '/' },
               { label: breadcrumbLabel ?? title },
             ]}
           />
@@ -83,7 +83,7 @@ export default function InfoPageShell({
         <aside className="lg:sticky lg:top-24 h-fit">
           <div className="bg-white border border-line rounded-sm p-6">
             <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3 pb-2 border-b border-line">
-              Helpful Vapes Australia Links
+              Helpful Aussie Vape Hub Links
             </h3>
             <ul className="space-y-2 text-sm">
               {(sidebarLinks ?? [

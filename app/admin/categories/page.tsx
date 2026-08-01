@@ -14,7 +14,7 @@ export default async function AdminCategoriesPage() {
   )
   return (
     <>
-      <AdminTopbar title="Categories" subtitle={`${CATEGORIES.length} top-level categories on Vapes Australia`} />
+      <AdminTopbar title="Categories" subtitle={`${CATEGORIES.length} top-level categories on Aussie Vape Hub`} />
 
       <div className="px-8 py-8 space-y-5">
         {categoriesWithStats.map(({ cat, total, inStock }) => {

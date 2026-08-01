@@ -84,7 +84,7 @@ export default async function SearchPage({
         </>
       ) : (
         <div>
-          <h1 className="font-display text-2xl sm:text-3xl font-bold text-ink mb-2 lowercase">search vapes australia</h1>
+          <h1 className="font-display text-2xl sm:text-3xl font-bold text-ink mb-2 lowercase">search aussie vape hub</h1>
           <p className="text-body text-sm mb-8">Browse popular categories or type a product name above.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {CATEGORIES.map((cat) => (

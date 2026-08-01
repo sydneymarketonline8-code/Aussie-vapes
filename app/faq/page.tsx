@@ -4,14 +4,14 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { faqJsonLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Vapes Australia FAQ — All Your Questions Answered',
+  title: 'Aussie Vape Hub FAQ — All Your Questions Answered',
   description:
-    "Complete FAQ for Vapes Australia. Shipping, returns, payment, age verification, AU vaping laws, product authenticity and more. Australia's #1 online vape store.",
+    "Complete FAQ for Aussie Vape Hub. Shipping, returns, payment, age verification, AU vaping laws, product authenticity and more. Australia's #1 online vape store.",
   keywords: [
-    'vapes australia faq',
-    'vapes australia questions',
-    'vapes australia help',
-    'vapes australia support',
+    'aussie vape hub faq',
+    'aussie vape hub questions',
+    'aussie vape hub help',
+    'aussie vape hub support',
     'how to buy vape australia',
     'vape shipping australia faq',
   ],
@@ -23,24 +23,24 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
     title: 'Ordering & Payment',
     items: [
       {
-        question: 'How do I place an order at Vapes Australia?',
+        question: 'How do I place an order at Aussie Vape Hub?',
         answer:
-          "Browse the Vapes Australia catalogue, add items to your cart, click Checkout, fill in your shipping address and payment details, confirm your age and prescription, and submit. You'll get a confirmation email within seconds.",
+          "Browse the Aussie Vape Hub catalogue, add items to your cart, click Checkout, fill in your shipping address and payment details, confirm your age and prescription, and submit. You'll get a confirmation email within seconds.",
       },
       {
-        question: 'What payment methods does Vapes Australia accept?',
+        question: 'What payment methods does Aussie Vape Hub accept?',
         answer:
-          'Vapes Australia accepts Visa, Mastercard, American Express, and PayPal. All payments are processed by our PCI-DSS compliant payment processor. We do not store card details.',
+          'Aussie Vape Hub accepts Visa, Mastercard, American Express, and PayPal. All payments are processed by our PCI-DSS compliant payment processor. We do not store card details.',
       },
       {
-        question: 'Is it safe to buy from Vapes Australia?',
+        question: 'Is it safe to buy from Aussie Vape Hub?',
         answer:
-          'Yes — Vapes Australia uses SSL encryption sitewide, PCI-compliant payment processing, and we never store card details. Plus our 30-day return guarantee and authenticity guarantee protect every purchase.',
+          'Yes — Aussie Vape Hub uses SSL encryption sitewide, PCI-compliant payment processing, and we never store card details. Plus our 30-day return guarantee and authenticity guarantee protect every purchase.',
       },
       {
         question: 'Can I order over the phone?',
         answer:
-          "Vapes Australia is an online-only store. We don't take phone orders for security reasons, but our support team is happy to help you place an online order if you call us at +61 468 188 347.",
+          "Aussie Vape Hub is an online-only store. We don't take phone orders for security reasons, but our support team is happy to help you place an online order if you call us at +61 468 188 347.",
       },
     ],
   },
@@ -48,24 +48,24 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
     title: 'Shipping & Delivery',
     items: [
       {
-        question: 'How fast does Vapes Australia ship?',
+        question: 'How fast does Aussie Vape Hub ship?',
         answer:
           'Same-day weekday dispatch on orders placed before 2pm AEST. Standard delivery is 3-7 business days to most AU addresses. Express is 1-3 business days.',
       },
       {
         question: 'Do you offer free shipping?',
         answer:
-          'Yes — Vapes Australia offers free standard shipping on all Australian orders over $300. Below that, standard shipping is $9.95 flat.',
+          'Yes — Aussie Vape Hub offers free standard shipping on all Australian orders over $300. Below that, standard shipping is $9.95 flat.',
       },
       {
-        question: 'Where does Vapes Australia ship to?',
+        question: 'Where does Aussie Vape Hub ship to?',
         answer:
-          'Every Australian state and territory — NSW, VIC, QLD, WA, SA, TAS, ACT, NT. Vapes Australia does not ship internationally.',
+          'Every Australian state and territory — NSW, VIC, QLD, WA, SA, TAS, ACT, NT. Aussie Vape Hub does not ship internationally.',
       },
       {
-        question: 'Is Vapes Australia packaging discreet?',
+        question: 'Is Aussie Vape Hub packaging discreet?',
         answer:
-          "Yes — every Vapes Australia order ships in plain, unbranded packaging. The sender name on the courier label reads 'AV Australia' rather than 'Vapes Australia' for full privacy.",
+          "Yes — every Aussie Vape Hub order ships in plain, unbranded packaging. The sender name on the courier label reads 'AV Australia' rather than 'Aussie Vape Hub' for full privacy.",
       },
     ],
   },
@@ -73,19 +73,19 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
     title: 'Products & Authenticity',
     items: [
       {
-        question: 'Are Vapes Australia products authentic?',
+        question: 'Are Aussie Vape Hub products authentic?',
         answer:
-          'Yes — every product sold by Vapes Australia is sourced through authorised distribution channels. We scan authenticity codes on every batch and stand behind every device with a counterfeit guarantee.',
+          'Yes — every product sold by Aussie Vape Hub is sourced through authorised distribution channels. We scan authenticity codes on every batch and stand behind every device with a counterfeit guarantee.',
       },
       {
-        question: 'What brands does Vapes Australia carry?',
+        question: 'What brands does Aussie Vape Hub carry?',
         answer:
-          'Vapes Australia stocks 40+ brands including IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, RELX, Elux, Mr Fog, Serein, JNR, AliBarBar, Kuz, X-Qlusive and many more. See our full brand directory.',
+          'Aussie Vape Hub stocks 40+ brands including IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, RELX, Elux, Mr Fog, Serein, JNR, AliBarBar, Kuz, X-Qlusive and many more. See our full brand directory.',
       },
       {
-        question: 'How do I verify my Vapes Australia product is genuine?',
+        question: 'How do I verify my Aussie Vape Hub product is genuine?',
         answer:
-          "Most disposable vapes ship with a scratch-off authenticity code on the packaging. Scratch the panel and enter the code at the brand's official verification site. If verification fails, contact Vapes Australia immediately for a free replacement.",
+          "Most disposable vapes ship with a scratch-off authenticity code on the packaging. Scratch the panel and enter the code at the brand's official verification site. If verification fails, contact Aussie Vape Hub immediately for a free replacement.",
       },
     ],
   },
@@ -93,12 +93,12 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
     title: 'AU Vaping Laws & Compliance',
     items: [
       {
-        question: 'Is buying vapes from Vapes Australia legal?',
+        question: 'Is buying vapes from Aussie Vape Hub legal?',
         answer:
-          'Yes — Vapes Australia operates within the TGA prescription model. Nicotine-containing vapes require you to confirm a valid Australian prescription at checkout. Non-nicotine products have no prescription requirement.',
+          'Yes — Aussie Vape Hub operates within the TGA prescription model. Nicotine-containing vapes require you to confirm a valid Australian prescription at checkout. Non-nicotine products have no prescription requirement.',
       },
       {
-        question: 'Do I need a prescription to buy from Vapes Australia?',
+        question: 'Do I need a prescription to buy from Aussie Vape Hub?',
         answer:
           'For nicotine-containing products, yes — Australian law requires a prescription. You confirm prescription status at checkout. Non-nicotine vape products are not subject to this requirement.',
       },
@@ -113,19 +113,19 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
     title: 'Returns & Issues',
     items: [
       {
-        question: 'What is the Vapes Australia return policy?',
+        question: 'What is the Aussie Vape Hub return policy?',
         answer:
           "30-day returns on unopened products. Faulty or counterfeit devices replaced free of charge. See our full Returns Policy for details.",
       },
       {
-        question: 'My Vapes Australia order arrived faulty — what now?',
+        question: 'My Aussie Vape Hub order arrived faulty — what now?',
         answer:
-          'Contact info@vapesaustralia.com.au within 7 days of delivery with your order number and a short video/photo of the issue. We typically dispatch replacements within 1 business day of approval.',
+          'Contact info@aussievapehub.com.au within 7 days of delivery with your order number and a short video/photo of the issue. We typically dispatch replacements within 1 business day of approval.',
       },
       {
         question: 'How long do refunds take?',
         answer:
-          'Once Vapes Australia receives and inspects your return (1-3 business days), refunds are processed to your original payment method. Bank processing typically takes another 5-10 business days to appear in your account.',
+          'Once Aussie Vape Hub receives and inspects your return (1-3 business days), refunds are processed to your original payment method. Bank processing typically takes another 5-10 business days to appear in your account.',
       },
     ],
   },
@@ -142,15 +142,15 @@ export default function FaqPage() {
 
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Vapes Australia', href: '/' }, { label: 'FAQ' }]} />
+          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'FAQ' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
-            Vapes Australia FAQ
+            Aussie Vape Hub FAQ
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
-            vapes australia — frequently asked questions
+            aussie vape hub — frequently asked questions
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Everything you need to know about ordering from Vapes Australia — shipping, returns, authenticity, AU vaping
+            Everything you need to know about ordering from Aussie Vape Hub — shipping, returns, authenticity, AU vaping
             laws and more. Can&apos;t find what you need? <Link href="/contact" className="text-price font-semibold hover:underline">Contact our team.</Link>
           </p>
         </div>
@@ -181,11 +181,11 @@ export default function FaqPage() {
             Still need help?
           </h2>
           <p className="text-white/80 text-sm mb-5 max-w-lg mx-auto">
-            The Vapes Australia support team is here Mon–Fri 9am–5pm AEST.
+            The Aussie Vape Hub support team is here Mon–Fri 9am–5pm AEST.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/contact" className="btn-sale">Contact Vapes Australia</Link>
-            <a href="mailto:info@vapesaustralia.com.au" className="btn-secondary bg-white">Email Us</a>
+            <Link href="/contact" className="btn-sale">Contact Aussie Vape Hub</Link>
+            <a href="mailto:info@aussievapehub.com.au" className="btn-secondary bg-white">Email Us</a>
           </div>
         </div>
       </section>
