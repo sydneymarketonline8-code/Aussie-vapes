@@ -3,15 +3,15 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export const metadata: Metadata = {
-  title: 'Aussie Vape Hub Blog — Vape News, Reviews & Guides',
+  title: 'VapeHub Vapes Australia Blog — Vape News, Reviews & Guides',
   description:
-    "Australian vape news, product reviews, beginner guides and industry updates from Aussie Vape Hub — the country's #1 online vape store.",
+    "Australian vape news, product reviews, beginner guides and industry updates from VapeHub Vapes Australia — the country's #1 online vape store.",
   keywords: [
-    'aussie vape hub blog',
+    'vapehub vapes australia blog',
     'australian vape news',
     'vape reviews australia',
     'vape guides australia',
-    'aussie vape hub articles',
+    'vapehub vapes australia articles',
   ],
   alternates: { canonical: '/blog' },
 }
@@ -36,8 +36,8 @@ const POSTS = [
   {
     slug: 'shop-by-brand',
     href: '/brands',
-    title: '40+ Aussie Vape Hub Brands At A Glance',
-    excerpt: 'A quick tour of every disposable and pod brand stocked at Aussie Vape Hub — IGET, Alfakher, HQD, Gunnpod, Lost Mary and more.',
+    title: '40+ VapeHub Vapes Australia Brands At A Glance',
+    excerpt: 'A quick tour of every disposable and pod brand stocked at VapeHub Vapes Australia — IGET, Alfakher, HQD, Gunnpod, Lost Mary and more.',
     category: 'Brands',
     date: '2026-04-22',
   },
@@ -45,7 +45,7 @@ const POSTS = [
     slug: 'iget-bar-plus-review',
     href: '/brand/iget',
     title: 'IGET Bar Plus 6000 Review — Still The Best Aussie Disposable?',
-    excerpt: "The IGET Bar Plus 6000 has been the most popular Aussie Vape Hub disposable for two years running. Here's why it dominates the AU mid-range.",
+    excerpt: "The IGET Bar Plus 6000 has been the most popular VapeHub Vapes Australia disposable for two years running. Here's why it dominates the AU mid-range.",
     category: 'Reviews',
     date: '2026-04-10',
   },
@@ -72,15 +72,15 @@ export default function BlogPage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'Blog' }]} />
+          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Blog' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
             News · Reviews · Guides
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
-            aussie vape hub blog
+            vapehub vapes australia blog
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Australian vape news, product reviews, beginner guides and industry updates from the Aussie Vape Hub team.
+            Australian vape news, product reviews, beginner guides and industry updates from the VapeHub Vapes Australia team.
           </p>
         </div>
       </section>
@@ -100,14 +100,14 @@ export default function BlogPage() {
               <h2 className="font-display text-lg font-bold text-ink leading-snug mb-2 group-hover:text-price transition-colors">{p.title}</h2>
               <p className="text-body text-sm leading-relaxed flex-1">{p.excerpt}</p>
               <span className="mt-3 pt-3 border-t border-line font-display text-xs uppercase tracking-widest font-bold text-ink group-hover:text-price transition-colors">
-                Read on Aussie Vape Hub →
+                Read on VapeHub Vapes Australia →
               </span>
             </Link>
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <p className="text-body text-sm mb-3">More Aussie Vape Hub content coming soon — bookmark this page.</p>
+          <p className="text-body text-sm mb-3">More VapeHub Vapes Australia content coming soon — bookmark this page.</p>
           <Link href="/contact" className="btn-secondary">Suggest A Topic</Link>
         </div>
       </section>

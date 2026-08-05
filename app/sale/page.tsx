@@ -17,15 +17,15 @@ export async function generateMetadata({
   const suffix = page > 1 ? ` — Page ${page}` : ''
   const canonical = page > 1 ? `/sale?page=${page}` : '/sale'
   return {
-    title: `Aussie Vape Hub Sale${suffix} — Discounted Disposables & Pod Systems`,
+    title: `VapeHub Vapes Australia Sale${suffix} — Discounted Disposables & Pod Systems`,
     description:
-      "Save big on authentic Australian vapes. Aussie Vape Hub Sale features discounted disposables, pod systems, nicotine salts and e-liquids — same-day Sydney dispatch.",
+      "Save big on authentic Australian vapes. VapeHub Vapes Australia Sale features discounted disposables, pod systems, nicotine salts and e-liquids — same-day Sydney dispatch.",
     keywords: [
-      'aussie vape hub sale',
+      'vapehub vapes australia sale',
       'cheap vapes australia',
-      'discount aussie vape hub',
+      'discount vapehub vapes australia',
       'vape sale australia',
-      'aussie vape hub discount',
+      'vapehub vapes australia discount',
       'vape clearance australia',
     ],
     alternates: { canonical },
@@ -50,26 +50,26 @@ export default async function SalePage({
             Limited Time Offers
           </p>
           <h1 className="font-display text-4xl lg:text-6xl font-bold leading-[1.05] mb-3 uppercase">
-            Aussie Vape Hub Sale
+            VapeHub Vapes Australia Sale
           </h1>
           <p className="max-w-2xl mx-auto text-white/90 leading-relaxed">
-            {products.length.toLocaleString()} products currently discounted at Aussie Vape Hub — IGET, Alfakher, HQD,
+            {products.length.toLocaleString()} products currently discounted at VapeHub Vapes Australia — IGET, Alfakher, HQD,
             Gunnpod and more at the lowest prices in Australia. Same-day Sydney dispatch on every order.
           </p>
         </div>
       </section>
 
       <div className="container-site py-4">
-        <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'Sale' }]} />
+        <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Sale' }]} />
       </div>
 
       <section className="container-site pb-14">
         {products.length === 0 ? (
           <div className="text-center py-20">
             <p className="font-display text-xl font-bold text-ink uppercase tracking-wider mb-3">
-              No Aussie Vape Hub sale items right now
+              No VapeHub Vapes Australia sale items right now
             </p>
-            <p className="text-mute mb-6">Check back soon — Aussie Vape Hub runs flash sales weekly.</p>
+            <p className="text-mute mb-6">Check back soon — VapeHub Vapes Australia runs flash sales weekly.</p>
             <Link href="/category/disposable-vapes" className="btn-primary">
               Browse All Disposables
             </Link>
@@ -91,10 +91,10 @@ export default async function SalePage({
       <section className="bg-soft-100 border-t border-line py-12">
         <div className="container-site max-w-3xl text-center">
           <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">
-            why aussie vape hub sale prices beat the competition
+            why vapehub vapes australia sale prices beat the competition
           </h2>
           <p className="text-body text-sm leading-relaxed">
-            Aussie Vape Hub buys direct from authorised distributors in bulk, which means we pass deep discounts to
+            VapeHub Vapes Australia buys direct from authorised distributors in bulk, which means we pass deep discounts to
             customers. Every sale item is the same authentic product as the full-price version — never grey-market,
             never expired stock. Same 30-day return guarantee, same same-day Sydney dispatch.
           </p>

@@ -66,7 +66,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     : null
 
   const crumbs = [
-    { name: 'Aussie Vape Hub', url: `${SITE_URL}/` },
+    { name: 'VapeHub Vapes Australia', url: `${SITE_URL}/` },
     { name: category?.name ?? 'Shop', url: `${SITE_URL}/category/${product.category}` },
     { name: product.name, url: `${SITE_URL}/product/${product.slug}` },
   ]
@@ -92,7 +92,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         {/* Breadcrumb */}
         <Breadcrumb
           crumbs={[
-            { label: 'Aussie Vape Hub', href: '/' },
+            { label: 'VapeHub Vapes Australia', href: '/' },
             { label: category?.name ?? 'Shop', href: `/category/${product.category}` },
             { label: product.name },
           ]}
@@ -250,7 +250,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products
               require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping
               Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years
-              or older. Aussie Vape Hub complies with all applicable Australian regulations.
+              or older. VapeHub Vapes Australia complies with all applicable Australian regulations.
             </span>
           </p>
           <p className="text-mute mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">

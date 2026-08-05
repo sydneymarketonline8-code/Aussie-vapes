@@ -6,15 +6,15 @@ import { ScaleIcon } from '@heroicons/react/24/outline'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
 
 export const metadata: Metadata = {
-  title: 'Vaping Laws In Australia 2026 — Aussie Vape Hub Compliance Guide',
+  title: 'Vaping Laws In Australia 2026 — VapeHub Vapes Australia Compliance Guide',
   description:
-    "Complete guide to Australian vaping laws in 2026. TGA prescription model, legal nicotine strengths, age limits, importation rules — Aussie Vape Hub breaks it all down.",
+    "Complete guide to Australian vaping laws in 2026. TGA prescription model, legal nicotine strengths, age limits, importation rules — VapeHub Vapes Australia breaks it all down.",
   keywords: [
     'vaping laws australia',
     'australian vape laws',
     'tga vape rules',
     'vape prescription australia',
-    'aussie vape hub laws',
+    'vapehub vapes australia laws',
     'is vaping legal australia',
     'nicotine vape law australia',
   ],
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
 const ARTICLE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Vaping Laws In Australia 2026 — Aussie Vape Hub Compliance Guide',
+  headline: 'Vaping Laws In Australia 2026 — VapeHub Vapes Australia Compliance Guide',
   description: 'Complete guide to Australian vaping laws in 2026. TGA prescription model, legal nicotine strengths, age limits and importation rules.',
-  author: { '@type': 'Organization', name: 'Aussie Vape Hub' },
+  author: { '@type': 'Organization', name: 'VapeHub Vapes Australia' },
   publisher: {
     '@type': 'Organization',
-    name: 'Aussie Vape Hub',
+    name: 'VapeHub Vapes Australia',
     logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
   },
   datePublished: '2026-01-01',
@@ -44,7 +44,7 @@ export default function VapingLawsPage() {
 
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'AU Vaping Laws' }]} />
+          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'AU Vaping Laws' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
             Compliance Guide · Updated 2026
           </p>
@@ -52,7 +52,7 @@ export default function VapingLawsPage() {
             vaping laws in australia
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Australia&apos;s vaping laws are unique and frequently updated. This Aussie Vape Hub guide explains the current
+            Australia&apos;s vaping laws are unique and frequently updated. This VapeHub Vapes Australia guide explains the current
             legal framework — the TGA prescription model, legal nicotine strengths, importation rules and what it all
             means for you as a consumer.
           </p>
@@ -80,12 +80,12 @@ export default function VapingLawsPage() {
             <p className="text-body leading-relaxed mb-3">
               Under TGO 110, the maximum legal nicotine concentration in Australia is <strong>100mg/mL</strong>, but
               the practical maximum for retail-style consumer products is <strong>50mg/mL</strong>. Most disposable
-              vapes — including every Aussie Vape Hub disposable — are capped at <strong>20mg/mL (2%)</strong>, which is
+              vapes — including every VapeHub Vapes Australia disposable — are capped at <strong>20mg/mL (2%)</strong>, which is
               the TGA-compliant standard set as the SP2S (Schedule 2/3 transition) limit.
             </p>
             <p className="text-body leading-relaxed">
               Devices marketed as &quot;50mg&quot; that you might see on overseas sites are not TGA-compliant for
-              direct AU consumer sale. Aussie Vape Hub only stocks compliant products.
+              direct AU consumer sale. VapeHub Vapes Australia only stocks compliant products.
             </p>
           </section>
 
@@ -93,7 +93,7 @@ export default function VapingLawsPage() {
             <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">age restrictions</h2>
             <p className="text-body leading-relaxed">
               Vaping products — both nicotine and non-nicotine — can only be sold to adults aged <strong>18 years or
-              older</strong>. Aussie Vape Hub enforces an age-gate on every site visit and prescription confirmation at
+              older</strong>. VapeHub Vapes Australia enforces an age-gate on every site visit and prescription confirmation at
               checkout. Selling vapes to minors is a serious offence under Australian law.
             </p>
           </section>
@@ -105,7 +105,7 @@ export default function VapingLawsPage() {
               Australian Border Force can seize the shipment and issue penalties.
             </p>
             <p className="text-body leading-relaxed">
-              Aussie Vape Hub is a domestic Australian retailer — we don&apos;t ship internationally and your purchase
+              VapeHub Vapes Australia is a domestic Australian retailer — we don&apos;t ship internationally and your purchase
               never crosses a border. This eliminates customs risk entirely.
             </p>
           </section>
@@ -123,7 +123,7 @@ export default function VapingLawsPage() {
               <li>• <strong>Beaches:</strong> Banned in NSW, WA, ACT, parts of VIC and QLD</li>
             </ul>
             <p className="text-body leading-relaxed mt-3">
-              Aussie Vape Hub recommends vaping only in your home or designated outdoor smoking areas. Check your specific
+              VapeHub Vapes Australia recommends vaping only in your home or designated outdoor smoking areas. Check your specific
               state or territory laws for definitive guidance.
             </p>
           </section>
@@ -136,10 +136,10 @@ export default function VapingLawsPage() {
             <ul className="space-y-2 text-sm text-body">
               <li>• <strong>July 2024:</strong> Disposable nicotine vapes restricted to pharmacy sale (later partially walked back)</li>
               <li>• <strong>2025:</strong> Adults 18+ no longer need a prescription for low-strength nicotine vapes purchased at pharmacy</li>
-              <li>• <strong>Mid-2025:</strong> Online consumer retailers like Aussie Vape Hub continue operating under prescription model with prescription confirmation at checkout</li>
+              <li>• <strong>Mid-2025:</strong> Online consumer retailers like VapeHub Vapes Australia continue operating under prescription model with prescription confirmation at checkout</li>
             </ul>
             <p className="text-body leading-relaxed mt-3">
-              The regulatory environment continues to evolve. Aussie Vape Hub monitors all changes and updates compliance
+              The regulatory environment continues to evolve. VapeHub Vapes Australia monitors all changes and updates compliance
               processes accordingly. If you have specific legal questions, consult an Australian lawyer or pharmacist.
             </p>
           </section>
@@ -150,7 +150,7 @@ export default function VapingLawsPage() {
               Disclaimer
             </h2>
             <p className="text-sm text-body leading-relaxed">
-              This Aussie Vape Hub guide is general information only and is not legal advice. Australian vaping laws are
+              This VapeHub Vapes Australia guide is general information only and is not legal advice. Australian vaping laws are
               subject to change and vary by state and territory. For specific legal guidance, consult an Australian
               lawyer or your state health department.
             </p>
@@ -172,12 +172,12 @@ export default function VapingLawsPage() {
             </ul>
           </div>
           <div className="bg-soft-100 border border-line rounded-sm p-6">
-            <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3">Related Aussie Vape Hub Pages</h3>
+            <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3">Related VapeHub Vapes Australia Pages</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/beginners-guide" className="text-body hover:text-price">Beginner&apos;s Vape Guide</Link></li>
-              <li><Link href="/faq" className="text-body hover:text-price">Aussie Vape Hub FAQ</Link></li>
+              <li><Link href="/faq" className="text-body hover:text-price">VapeHub Vapes Australia FAQ</Link></li>
               <li><Link href="/category/disposable-vapes" className="text-body hover:text-price">Compliant Disposable Vapes</Link></li>
-              <li><Link href="/contact" className="text-body hover:text-price">Talk to Aussie Vape Hub</Link></li>
+              <li><Link href="/contact" className="text-body hover:text-price">Talk to VapeHub Vapes Australia</Link></li>
             </ul>
           </div>
         </aside>

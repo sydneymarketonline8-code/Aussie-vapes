@@ -57,11 +57,11 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center flex-shrink-0"
-            aria-label="Aussie Vape Hub — Australia's #1 Online Vape Store"
-            title="Aussie Vape Hub Home"
+            aria-label="VapeHub Vapes Australia — Australia's #1 Online Vape Store"
+            title="VapeHub Vapes Australia Home"
           >
             <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
-              VAPES <span className="text-price">AUSTRALIA</span>
+              VAPEHUB <span className="text-price">VAPES AUSTRALIA</span>
               <span className="block text-[10px] tracking-[0.3em] text-mute font-semibold mt-1">
                 AUSTRALIA&apos;S #1 ONLINE VAPE STORE
               </span>
@@ -208,7 +208,7 @@ export default function Header() {
           <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
           <nav className="relative w-80 max-w-full bg-white h-full overflow-y-auto animate-slide-right border-r border-line">
             <div className="p-4 border-b border-line flex items-center justify-between bg-ink text-white">
-              <span className="font-display text-xl font-bold">VAPES <span className="text-price">AUSTRALIA</span></span>
+              <span className="font-display text-xl font-bold">VAPEHUB <span className="text-price">VAPES AUSTRALIA</span></span>
               <button onClick={() => setMobileOpen(false)} className="text-white hover:text-price" aria-label="Close menu">
                 <XMarkIcon className="h-6 w-6" />
               </button>

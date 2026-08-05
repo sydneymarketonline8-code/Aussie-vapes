@@ -22,7 +22,7 @@ export default async function AdminInventoryPage() {
 
   return (
     <>
-      <AdminTopbar title="Inventory" subtitle="Stock health across the Aussie Vape Hub catalogue" />
+      <AdminTopbar title="Inventory" subtitle="Stock health across the VapeHub Vapes Australia catalogue" />
 
       <div className="px-8 py-8 space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -51,7 +51,7 @@ export default async function AdminInventoryPage() {
           </div>
           {lowStockSorted.length === 0 ? (
             <p className="px-5 py-12 text-center text-mute text-sm">
-              All Aussie Vape Hub products are healthy. No low-stock alerts.
+              All VapeHub Vapes Australia products are healthy. No low-stock alerts.
             </p>
           ) : (
             <div className="overflow-x-auto">

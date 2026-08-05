@@ -4,22 +4,22 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
 export const metadata: Metadata = {
-  title: 'About Aussie Vape Hub — Australia\'s #1 Online Vape Store',
+  title: 'About VapeHub Vapes Australia — Australia\'s #1 Online Vape Store',
   description:
-    "Discover Aussie Vape Hub — Australia's largest authorised online vape retailer. 2,000+ authentic disposable vapes, pod systems and e-liquids shipped same-day from Sydney.",
+    "Discover VapeHub Vapes Australia — Australia's largest authorised online vape retailer. 2,000+ authentic disposable vapes, pod systems and e-liquids shipped same-day from Sydney.",
   keywords: [
-    'about aussie vape hub',
-    'aussie vape hub story',
-    'aussie vape hub australia',
-    'aussie vape hub sydney',
-    'who is aussie vape hub',
-    'aussie vape hub about us',
+    'about vapehub vapes australia',
+    'vapehub vapes australia story',
+    'vapehub vapes australia australia',
+    'vapehub vapes australia sydney',
+    'who is vapehub vapes australia',
+    'vapehub vapes australia about us',
   ],
   alternates: { canonical: '/about' },
   openGraph: {
-    title: 'About Aussie Vape Hub — Australia\'s #1 Online Vape Store',
+    title: 'About VapeHub Vapes Australia — Australia\'s #1 Online Vape Store',
     description:
-      "Discover Aussie Vape Hub — Australia's largest authorised online vape retailer.",
+      "Discover VapeHub Vapes Australia — Australia's largest authorised online vape retailer.",
   },
 }
 
@@ -28,15 +28,15 @@ export default function AboutPage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'About Us' }]} />
+          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'About Us' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
-            About Aussie Vape Hub
+            About VapeHub Vapes Australia
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink lowercase mb-4">
             australia&apos;s #1 online vape store
           </h1>
           <p className="text-body text-base leading-relaxed max-w-2xl">
-            <strong>Aussie Vape Hub</strong> is built by Australians, for Australians. We&apos;re the largest authorised
+            <strong>VapeHub Vapes Australia</strong> is built by Australians, for Australians. We&apos;re the largest authorised
             online vape retailer in Australia — stocking 2,000+ authentic devices across 40+ brands, all dispatched
             same-day from our Sydney warehouse.
           </p>
@@ -49,14 +49,14 @@ export default function AboutPage() {
             <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">our story</h2>
             <div className="space-y-4 text-body leading-relaxed">
               <p>
-                Aussie Vape Hub was founded with a simple mission: bring authentic, well-priced vape products to
+                VapeHub Vapes Australia was founded with a simple mission: bring authentic, well-priced vape products to
                 Australian adult smokers looking for a safer alternative to cigarettes. We saw a market crowded with
                 grey imports, counterfeit devices, and overseas sellers who didn&apos;t understand the unique TGA
-                prescription model. So we built Aussie Vape Hub — locally operated, locally stocked, and entirely
+                prescription model. So we built VapeHub Vapes Australia — locally operated, locally stocked, and entirely
                 compliant with Australian regulations.
               </p>
               <p>
-                Today, Aussie Vape Hub serves customers in every state and territory. From our Sydney warehouse we
+                Today, VapeHub Vapes Australia serves customers in every state and territory. From our Sydney warehouse we
                 dispatch same-day on weekday orders before 2pm AEST. We carry the brands Australians actually buy —
                 IGET, Alfakher Crown Bar, HQD, Gunnpod, Lost Mary, Vozol, RELX, Elux — and dozens of smaller specialist
                 brands too. Every device is sourced through authorised distribution channels, verified for
@@ -71,15 +71,15 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">what makes aussie vape hub different</h2>
+            <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">what makes vapehub vapes australia different</h2>
             <ul className="space-y-3 text-body">
               {[
-                { t: 'Authentic stock only', b: "Every Aussie Vape Hub product is sourced through authorised distribution channels. We verify batch codes and stand behind every device sold." },
-                { t: 'Same-day Sydney dispatch', b: 'Order before 2pm AEST on a weekday and your Aussie Vape Hub order ships the same day from our Sydney warehouse.' },
+                { t: 'Authentic stock only', b: "Every VapeHub Vapes Australia product is sourced through authorised distribution channels. We verify batch codes and stand behind every device sold." },
+                { t: 'Same-day Sydney dispatch', b: 'Order before 2pm AEST on a weekday and your VapeHub Vapes Australia order ships the same day from our Sydney warehouse.' },
                 { t: 'Free Aussie-wide shipping over $300', b: 'Discreet plain packaging, fast couriers, every state and territory.' },
                 { t: 'Real Australian support', b: 'Live humans in Sydney, Mon-Fri 9am-5pm AEST. Email, chat or phone — no offshore call centres.' },
-                { t: '30-day return policy', b: 'Not happy with your Aussie Vape Hub purchase? Return unopened devices within 30 days for a full refund.' },
-                { t: 'Largest in-stock range in AU', b: '2,000+ devices across 40+ brands. If a popular AU vape exists, Aussie Vape Hub stocks it.' },
+                { t: '30-day return policy', b: 'Not happy with your VapeHub Vapes Australia purchase? Return unopened devices within 30 days for a full refund.' },
+                { t: 'Largest in-stock range in AU', b: '2,000+ devices across 40+ brands. If a popular AU vape exists, VapeHub Vapes Australia stocks it.' },
               ].map((p) => (
                 <li key={p.t} className="flex gap-3">
                   <CheckCircleIcon className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
@@ -96,7 +96,7 @@ export default function AboutPage() {
             <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">tga compliance and harm reduction</h2>
             <div className="space-y-4 text-body leading-relaxed text-sm">
               <p>
-                Aussie Vape Hub operates entirely within Australia&apos;s TGA prescription framework for nicotine vaping
+                VapeHub Vapes Australia operates entirely within Australia&apos;s TGA prescription framework for nicotine vaping
                 products. Every nicotine-containing product sold requires the customer to confirm a valid Australian
                 prescription at checkout. We never knowingly sell to under-18s and our age-gate is enforced on every
                 visit.
@@ -108,7 +108,7 @@ export default function AboutPage() {
                 Australian TGA has cautiously aligned by permitting prescription-model access.
               </p>
               <p>
-                That said, nicotine is addictive and vaping is not risk-free. Aussie Vape Hub products are for adults 18+
+                That said, nicotine is addictive and vaping is not risk-free. VapeHub Vapes Australia products are for adults 18+
                 who are already smokers or vapers transitioning away from cigarettes. If you don&apos;t smoke and have
                 never vaped, you should not start.
               </p>
@@ -119,7 +119,7 @@ export default function AboutPage() {
         <aside className="lg:sticky lg:top-24 h-fit space-y-6">
           <div className="bg-soft-100 border border-line rounded-sm p-6">
             <h3 className="font-display text-base font-bold text-ink uppercase tracking-wider mb-4 pb-3 border-b border-line">
-              Aussie Vape Hub At A Glance
+              VapeHub Vapes Australia At A Glance
             </h3>
             <dl className="space-y-3 text-sm">
               <div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
           <div className="bg-white border border-line rounded-sm p-6">
             <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-3">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/brands" className="text-body hover:text-price">All Aussie Vape Hub Brands</Link></li>
+              <li><Link href="/brands" className="text-body hover:text-price">All VapeHub Vapes Australia Brands</Link></li>
               <li><Link href="/category/disposable-vapes" className="text-body hover:text-price">Disposable Vapes</Link></li>
               <li><Link href="/shipping" className="text-body hover:text-price">Shipping Policy</Link></li>
               <li><Link href="/returns" className="text-body hover:text-price">Returns &amp; Refunds</Link></li>

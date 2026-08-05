@@ -1,4 +1,4 @@
-# Aussie Vape Hub — Supabase Schema
+# VapeHub Vapes Australia — Supabase Schema
 
 Three SQL files that turn the read-only admin UI into a real backend.
 

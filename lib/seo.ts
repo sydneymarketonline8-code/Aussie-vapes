@@ -5,21 +5,21 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesau
 // Hardcoded, NOT env-driven. A stale NEXT_PUBLIC_SITE_NAME in the host kept
 // the previous brand alive in author/creator/publisher/og:site_name after a
 // rebrand. Change the brand here.
-const SITE_NAME = 'Aussie Vape Hub'
+const SITE_NAME = 'VapeHub Vapes Australia'
 const DEFAULT_DESCRIPTION =
-  "Aussie Vape Hub is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
+  "VapeHub Vapes Australia is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
 
 // Brand-name cluster — searches for the store itself.
 export const BRAND_KEYWORDS = [
-  'aussie vape hub',
-  'aussie vape hub australia',
+  'vapehub vapes australia',
+  'vapehub vapes australia store',
   'vapehubvapesaustralia',
-  'aussie vape hub online',
-  'aussie vape hub sydney',
-  'aussie vape hub melbourne',
-  'aussie vape hub brisbane',
-  'aussie vape hub perth',
-  'aussie vape hub adelaide',
+  'vapehub vapes australia online',
+  'vapehub vapes australia sydney',
+  'vapehub vapes australia melbourne',
+  'vapehub vapes australia brisbane',
+  'vapehub vapes australia perth',
+  'vapehub vapes australia adelaide',
 ]
 
 // Generic/product cluster — the high-volume non-brand terms we actually
@@ -52,8 +52,8 @@ export function buildSiteMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `Aussie Vape Hub — Australia's #1 Online Vape Store`,
-      template: `%s | Aussie Vape Hub`,
+      default: `VapeHub Vapes Australia — Australia's #1 Online Vape Store`,
+      template: `%s | VapeHub Vapes Australia`,
     },
     description: DEFAULT_DESCRIPTION,
     keywords: [...BRAND_KEYWORDS, ...VAPE_PRODUCT_KEYWORDS],
@@ -70,7 +70,7 @@ export function buildSiteMetadata(): Metadata {
       locale: 'en_AU',
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `Aussie Vape Hub — Australia's #1 Online Vape Store`,
+      title: `VapeHub Vapes Australia — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     twitter: {
@@ -79,7 +79,7 @@ export function buildSiteMetadata(): Metadata {
       // large-image preview and shows up as unclaimed in Twitter Card
       // Validator. Re-add once the handle is registered.
       card: 'summary_large_image',
-      title: `Aussie Vape Hub — Australia's #1 Online Vape Store`,
+      title: `VapeHub Vapes Australia — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     alternates: { canonical: SITE_URL },
@@ -102,8 +102,8 @@ export function buildSiteMetadata(): Metadata {
 export function buildProductMetadata(product: Product): Metadata {
   const url = `${SITE_URL}/product/${product.slug}`
   return {
-    // absolute: seoTitle already ends with "| Aussie Vape Hub"; without this
-    // the root layout's "%s | Aussie Vape Hub" template appends it twice.
+    // absolute: seoTitle already ends with "| VapeHub Vapes Australia"; without this
+    // the root layout's "%s | VapeHub Vapes Australia" template appends it twice.
     title: { absolute: product.seoTitle },
     description: product.seoDescription,
     openGraph: {
@@ -261,8 +261,8 @@ export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
-    name: 'Aussie Vape Hub',
-    alternateName: ['Vapes AU', 'Aussie Vape Hub Online'],
+    name: 'VapeHub Vapes Australia',
+    alternateName: ['Vapes AU', 'VapeHub Vapes Australia Online'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
     description: DEFAULT_DESCRIPTION,
@@ -293,7 +293,7 @@ export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Aussie Vape Hub',
+    name: 'VapeHub Vapes Australia',
     alternateName: 'Vapes AU',
     url: SITE_URL,
     potentialAction: {
@@ -312,7 +312,7 @@ export function localBusinessJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
     '@id': `${SITE_URL}/#store`,
-    name: 'Aussie Vape Hub',
+    name: 'VapeHub Vapes Australia',
     alternateName: ['Vapes AU'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,

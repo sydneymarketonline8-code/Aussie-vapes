@@ -5,7 +5,7 @@
  * server console — so the code path works in dev without an account, and
  * production can be wired up later by just adding the key.
  *
- * RESEND_FROM controls the From address; defaults to "Aussie Vape Hub <orders@vapehubvapesaustralia.com.au>".
+ * RESEND_FROM controls the From address; defaults to "VapeHub Vapes Australia <orders@vapehubvapesaustralia.com.au>".
  * Whatever address you use must be verified in the Resend dashboard first.
  *
  * Never throws — email failures shouldn't block order creation.
@@ -21,7 +21,7 @@ export interface EmailMessage {
 
 export async function sendEmail(msg: EmailMessage): Promise<{ ok: boolean; error?: string }> {
   const key = process.env.RESEND_API_KEY
-  const from = process.env.RESEND_FROM ?? 'Aussie Vape Hub <orders@vapehubvapesaustralia.com.au>'
+  const from = process.env.RESEND_FROM ?? 'VapeHub Vapes Australia <orders@vapehubvapesaustralia.com.au>'
 
   if (!key) {
     console.log(

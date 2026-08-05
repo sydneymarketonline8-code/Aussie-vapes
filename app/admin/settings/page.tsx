@@ -22,7 +22,7 @@ export default async function AdminSettingsPage() {
   const productCount = await getActiveProductCount()
   return (
     <>
-      <AdminTopbar title="Settings" subtitle="Aussie Vape Hub site configuration" />
+      <AdminTopbar title="Settings" subtitle="VapeHub Vapes Australia site configuration" />
 
       <div className="px-8 py-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <section className="bg-white border border-line rounded-sm p-5">
@@ -30,7 +30,7 @@ export default async function AdminSettingsPage() {
             Site
           </h3>
           <dl>
-            <Row k="Brand Name" v="Aussie Vape Hub" />
+            <Row k="Brand Name" v="VapeHub Vapes Australia" />
             <Row k="Site URL" v={SITE_URL} mono />
             <Row k="Locale" v="en-AU" />
             <Row k="Currency" v="AUD" />

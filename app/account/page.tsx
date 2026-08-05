@@ -47,7 +47,7 @@ export default async function AccountDashboardPage() {
         <div className="bg-white border border-line rounded-sm p-5">
           <p className="font-display text-[10px] uppercase tracking-widest text-mute font-bold">Member Since</p>
           <p className="font-display text-xl font-bold text-ink mt-1">{memberSince}</p>
-          <p className="text-xs text-mute mt-1">Aussie Vape Hub member</p>
+          <p className="text-xs text-mute mt-1">VapeHub Vapes Australia member</p>
         </div>
       </section>
 
@@ -71,7 +71,7 @@ export default async function AccountDashboardPage() {
             No orders yet
           </p>
           <p className="text-sm text-mute mb-5 max-w-sm mx-auto">
-            When you place your first Aussie Vape Hub order it will appear here with full tracking and reorder options.
+            When you place your first VapeHub Vapes Australia order it will appear here with full tracking and reorder options.
           </p>
           <Link href="/category/disposable-vapes" className="btn-primary">
             Start Shopping

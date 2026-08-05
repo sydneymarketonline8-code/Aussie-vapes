@@ -5,7 +5,7 @@
  * the store name (e.g. "... | Vapes Australia"). A code-side rebrand doesn't
  * touch those, because the storefront reads them from the database.
  *
- *   node scripts/rebrand-supabase-seo.mjs "Vapes Australia" "Aussie Vape Hub"
+ *   node scripts/rebrand-supabase-seo.mjs "Vapes Australia" "VapeHub Vapes Australia"
  */
 import { createClient } from '@supabase/supabase-js'
 import fs from 'fs'

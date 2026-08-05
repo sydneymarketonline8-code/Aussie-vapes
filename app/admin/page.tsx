@@ -52,7 +52,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <>
-      <AdminTopbar title="Dashboard" subtitle="Aussie Vape Hub — operational overview" />
+      <AdminTopbar title="Dashboard" subtitle="VapeHub Vapes Australia — operational overview" />
 
       <div className="px-8 py-8 space-y-8">
         {/* KPI cards */}
@@ -243,7 +243,7 @@ export default async function AdminDashboardPage() {
                 Public Site
               </h3>
               <p className="text-white/80 text-sm">
-                Preview Aussie Vape Hub as a customer sees it.
+                Preview VapeHub Vapes Australia as a customer sees it.
               </p>
             </div>
             <a

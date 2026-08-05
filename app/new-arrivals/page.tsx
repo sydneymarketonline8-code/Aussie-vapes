@@ -16,15 +16,15 @@ export async function generateMetadata({
   const suffix = page > 1 ? ` — Page ${page}` : ''
   const canonical = page > 1 ? `/new-arrivals?page=${page}` : '/new-arrivals'
   return {
-    title: `Aussie Vape Hub New Arrivals${suffix} — Latest Disposables & Pod Systems`,
+    title: `VapeHub Vapes Australia New Arrivals${suffix} — Latest Disposables & Pod Systems`,
     description:
-      "The newest products at Aussie Vape Hub. Fresh disposable vapes, pod systems and e-liquids landing weekly in our Sydney warehouse. Same-day AU dispatch.",
+      "The newest products at VapeHub Vapes Australia. Fresh disposable vapes, pod systems and e-liquids landing weekly in our Sydney warehouse. Same-day AU dispatch.",
     keywords: [
-      'aussie vape hub new arrivals',
-      'new aussie vape hub',
+      'vapehub vapes australia new arrivals',
+      'new vapehub vapes australia',
       'latest disposable vapes australia',
-      'aussie vape hub new products',
-      'newest aussie vape hub',
+      'vapehub vapes australia new products',
+      'newest vapehub vapes australia',
     ],
     alternates: { canonical },
   }
@@ -45,15 +45,15 @@ export default async function NewArrivalsPage({
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'New Arrivals' }]} />
+          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'New Arrivals' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-success font-bold mt-4 mb-2">
-            Just Landed At Aussie Vape Hub
+            Just Landed At VapeHub Vapes Australia
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
-            aussie vape hub new arrivals
+            vapehub vapes australia new arrivals
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            New disposable vapes, pod systems and e-liquids land in the Aussie Vape Hub warehouse every week. Be first to
+            New disposable vapes, pod systems and e-liquids land in the VapeHub Vapes Australia warehouse every week. Be first to
             try the latest IGET, Alfakher, HQD, Lost Mary and Vozol releases — fresh stock, same-day Sydney dispatch.
           </p>
         </div>

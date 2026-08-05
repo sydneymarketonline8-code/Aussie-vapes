@@ -12,7 +12,7 @@ export default async function AdminProductsPage() {
     <>
       <AdminTopbar
         title="Products"
-        subtitle={`${products.length.toLocaleString()} product${products.length === 1 ? '' : 's'} in the Aussie Vape Hub catalogue`}
+        subtitle={`${products.length.toLocaleString()} product${products.length === 1 ? '' : 's'} in the VapeHub Vapes Australia catalogue`}
         actions={
           <Link
             href="/admin/products/new"

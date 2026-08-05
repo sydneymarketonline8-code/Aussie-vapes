@@ -4,21 +4,21 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { MapPinIcon, ClockIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'Aussie Vape Hub Store Locator — Sydney HQ + Australia-Wide Delivery',
+  title: 'VapeHub Vapes Australia Store Locator — Sydney HQ + Australia-Wide Delivery',
   description:
-    "Aussie Vape Hub operates from a single Sydney warehouse for fast Australia-wide dispatch. We deliver to every state and territory rather than maintain retail stores.",
+    "VapeHub Vapes Australia operates from a single Sydney warehouse for fast Australia-wide dispatch. We deliver to every state and territory rather than maintain retail stores.",
   keywords: [
-    'aussie vape hub store',
-    'aussie vape hub sydney',
-    'aussie vape hub location',
+    'vapehub vapes australia store',
+    'vapehub vapes australia sydney',
+    'vapehub vapes australia location',
     'vape store near me australia',
-    'aussie vape hub warehouse',
+    'vapehub vapes australia warehouse',
   ],
   alternates: { canonical: '/store' },
 }
 
 const CITIES = [
-  { name: 'Sydney', slug: 'sydney', metro: 'NSW', note: 'Aussie Vape Hub HQ — fastest dispatch' },
+  { name: 'Sydney', slug: 'sydney', metro: 'NSW', note: 'VapeHub Vapes Australia HQ — fastest dispatch' },
   { name: 'Melbourne', slug: 'melbourne', metro: 'VIC', note: '2-4 business days standard' },
   { name: 'Brisbane', slug: 'brisbane', metro: 'QLD', note: '2-4 business days standard' },
   { name: 'Perth', slug: 'perth', metro: 'WA', note: '4-7 business days standard' },
@@ -30,12 +30,12 @@ export default function StorePage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'Store Locator' }]} />
+          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Store Locator' }]} />
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-4 mb-3 lowercase">
-            aussie vape hub store locator
+            vapehub vapes australia store locator
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Aussie Vape Hub operates as an online-only retailer to bring you the largest range at the lowest prices.
+            VapeHub Vapes Australia operates as an online-only retailer to bring you the largest range at the lowest prices.
             We dispatch from a single Sydney warehouse to every Australian state and territory — typically same-day
             on weekday orders before 2pm AEST.
           </p>
@@ -45,7 +45,7 @@ export default function StorePage() {
       <section className="container-site py-14 grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div className="bg-white border border-line rounded-sm p-8 space-y-5">
           <div>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">Aussie Vape Hub HQ</p>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">VapeHub Vapes Australia HQ</p>
             <h2 className="font-display text-3xl font-bold text-ink uppercase">Sydney Warehouse</h2>
           </div>
 
@@ -62,16 +62,16 @@ export default function StorePage() {
         </div>
 
         <div>
-          <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">aussie vape hub delivers to</h2>
+          <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">vapehub vapes australia delivers to</h2>
           <ul className="space-y-3">
             {CITIES.map((c) => (
               <li key={c.slug}>
                 <Link
-                  href={`/aussie-vape-hub/${c.slug}`}
+                  href={`/vapehub-vapes-australia/${c.slug}`}
                   className="bg-white border border-line rounded-sm p-4 flex items-center justify-between hover:border-ink hover:shadow-sm transition-all"
                 >
                   <div>
-                    <p className="font-display font-bold text-ink">Aussie Vape Hub {c.name}, {c.metro}</p>
+                    <p className="font-display font-bold text-ink">VapeHub Vapes Australia {c.name}, {c.metro}</p>
                     <p className="text-xs text-mute">{c.note}</p>
                   </div>
                   <span className="text-price font-display text-xs uppercase tracking-widest font-bold">View →</span>
@@ -80,7 +80,7 @@ export default function StorePage() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-mute">
-            Aussie Vape Hub also ships to every regional postcode in Australia. Estimate delivery on the{' '}
+            VapeHub Vapes Australia also ships to every regional postcode in Australia. Estimate delivery on the{' '}
             <Link href="/shipping" className="text-price font-semibold hover:underline">shipping policy page</Link>.
           </p>
         </div>

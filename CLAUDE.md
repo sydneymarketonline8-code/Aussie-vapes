@@ -163,7 +163,7 @@ Every page calls a builder from `lib/seo.ts` and exports it as `metadata` (serve
 
 ### Keyword Targets
 Core categories map to primary keyword clusters:
-- `/category/disposable-vapes` → "disposable aussie vape hub", "best disposable vape australia", "10000 puff disposable vape"
+- `/category/disposable-vapes` → "disposable vapehub vapes australia", "best disposable vape australia", "10000 puff disposable vape"
 - `/category/pod-systems` → "pod systems australia", "vape kits australia", "starter vape kit"
 - `/category/nicotine-salts` → "nicotine salts australia", "nic salt e-liquid australia", "50mg nicotine salt"
 - `/category/e-liquids` → "e-liquid australia", "vape juice australia", "freebase e-liquid"

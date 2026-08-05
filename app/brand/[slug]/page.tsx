@@ -94,7 +94,7 @@ export default async function BrandPage({
         <div className="container-site py-10 lg:py-16">
           <Breadcrumb
             crumbs={[
-              { label: 'Aussie Vape Hub', href: '/' },
+              { label: 'VapeHub Vapes Australia', href: '/' },
               { label: 'Brands', href: '/brands' },
               { label: brand.displayName },
             ]}
@@ -108,7 +108,7 @@ export default async function BrandPage({
                 {brand.origin} · Authentic AU Stock
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink-dark leading-[1.05] mb-3">
-                {brand.displayName} <span className="text-mute">at Aussie Vape Hub</span>
+                {brand.displayName} <span className="text-mute">at VapeHub Vapes Australia</span>
               </h1>
               <p
                 className="font-display text-lg font-semibold mb-5"
@@ -199,7 +199,7 @@ export default async function BrandPage({
 
             <div>
               <h3 className="font-display text-xl font-bold text-ink mb-4 lowercase">
-                why buy {brand.displayName.toLowerCase()} from aussie vape hub
+                why buy {brand.displayName.toLowerCase()} from vapehub vapes australia
               </h3>
               <ul className="space-y-3">
                 {brand.highlights.map((h) => (
@@ -328,7 +328,7 @@ export default async function BrandPage({
         <div className="p-4 rounded-sm bg-soft-100 border border-line text-xs text-body leading-relaxed flex items-start gap-2">
           <ExclamationTriangleIcon className="h-4 w-4 text-warning flex-shrink-0 mt-0.5" />
           <span>
-            <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. Aussie Vape Hub complies with all applicable Australian regulations.
+            <strong className="text-ink">Australian Regulation Notice:</strong> Nicotine-containing vaping products require a valid Australian prescription under the TGA Therapeutic Goods (Standard for Nicotine Vaping Products) (TGO 110) Order 2021. By purchasing, you confirm you hold a valid prescription and are 18 years or older. VapeHub Vapes Australia complies with all applicable Australian regulations.
           </span>
         </div>
       </div>

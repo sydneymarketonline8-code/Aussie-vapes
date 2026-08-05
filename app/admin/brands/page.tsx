@@ -15,7 +15,7 @@ export default function AdminBrandsPage() {
 
   return (
     <>
-      <AdminTopbar title="Brands" subtitle={`${BRANDS.length} brands stocked at Aussie Vape Hub`} />
+      <AdminTopbar title="Brands" subtitle={`${BRANDS.length} brands stocked at VapeHub Vapes Australia`} />
       <div className="px-8 py-8">
         <div className="bg-white border border-line rounded-sm overflow-x-auto">
           <table className="w-full text-sm">

@@ -4,12 +4,12 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { PUFF_RANGES, getPuffRangeCounts } from '@/lib/puff-ranges'
 
 export const metadata: Metadata = {
-  title: 'Shop Aussie Vape Hub By Puff Count — Starter to Ultra-Puff | Aussie Vape Hub',
+  title: 'Shop VapeHub Vapes Australia By Puff Count — Starter to Ultra-Puff | VapeHub Vapes Australia',
   description:
-    'Browse Aussie Vape Hub by puff count. Starter (under 2,500), mid-range (2,500-6,000), high-puff (6,000-12,000) and ultra-puff (12,000+) ranges. Same-day Sydney dispatch.',
+    'Browse VapeHub Vapes Australia by puff count. Starter (under 2,500), mid-range (2,500-6,000), high-puff (6,000-12,000) and ultra-puff (12,000+) ranges. Same-day Sydney dispatch.',
   keywords: [
     'shop by puff count australia',
-    'aussie vape hub by puff count',
+    'vapehub vapes australia by puff count',
     'disposable vape puff count australia',
     'high puff vape australia',
     'mid range vape australia',
@@ -24,12 +24,12 @@ export default function PuffsIndexPage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'Aussie Vape Hub', href: '/' }, { label: 'Shop By Puff Count' }]} />
+          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Shop By Puff Count' }]} />
           <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mt-4 mb-2">
-            Aussie Vape Hub — Shop By Puff Count
+            VapeHub Vapes Australia — Shop By Puff Count
           </p>
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
-            aussie vape hub by puff count
+            vapehub vapes australia by puff count
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
             Find the right Vape for how long you want a device to last. From compact starter vapes under 2,500

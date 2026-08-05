@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Vapes Australia">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="VapeHub Vapes Australia">
   <rect width="180" height="180" rx="36" fill="#0a0a0a"/>
   <text x="90" y="128"
         font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif"
@@ -6,6 +6,6 @@
         font-size="108"
         text-anchor="middle"
         letter-spacing="-5">
-    <tspan fill="#ffffff">V</tspan><tspan fill="#ff0000">A</tspan>
+    <tspan fill="#ffffff">V</tspan><tspan fill="#ff0000">H</tspan>
   </text>
 </svg>

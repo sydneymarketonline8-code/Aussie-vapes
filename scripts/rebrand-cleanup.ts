@@ -50,16 +50,16 @@ async function main() {
     await Promise.all(
       batch.map((row) => {
         const patch: Record<string, string | null> = {}
-        if (row.name?.includes('VapeVault')) patch.name = row.name.replace(/VapeVault AU/g, 'Aussie Vape Hub').replace(/VapeVault/g, 'Aussie Vape Hub')
-        if (row.short_description?.includes('VapeVault')) patch.short_description = row.short_description.replace(/VapeVault AU/g, 'Aussie Vape Hub').replace(/VapeVault/g, 'Aussie Vape Hub')
-        if (row.description?.includes('VapeVault')) patch.description = row.description.replace(/VapeVault AU/g, 'Aussie Vape Hub').replace(/VapeVault/g, 'Aussie Vape Hub')
+        if (row.name?.includes('VapeVault')) patch.name = row.name.replace(/VapeVault AU/g, 'VapeHub Vapes Australia').replace(/VapeVault/g, 'VapeHub Vapes Australia')
+        if (row.short_description?.includes('VapeVault')) patch.short_description = row.short_description.replace(/VapeVault AU/g, 'VapeHub Vapes Australia').replace(/VapeVault/g, 'VapeHub Vapes Australia')
+        if (row.description?.includes('VapeVault')) patch.description = row.description.replace(/VapeVault AU/g, 'VapeHub Vapes Australia').replace(/VapeVault/g, 'VapeHub Vapes Australia')
         if (row.seo_title?.includes('VapeVault')) {
           patch.seo_title = row.seo_title
-            .replace(/ \| VapeVault AU \| Aussie Vape Hub/g, ' | Aussie Vape Hub')
-            .replace(/VapeVault AU/g, 'Aussie Vape Hub')
-            .replace(/VapeVault/g, 'Aussie Vape Hub')
+            .replace(/ \| VapeVault AU \| VapeHub Vapes Australia/g, ' | VapeHub Vapes Australia')
+            .replace(/VapeVault AU/g, 'VapeHub Vapes Australia')
+            .replace(/VapeVault/g, 'VapeHub Vapes Australia')
         }
-        if (row.seo_description?.includes('VapeVault')) patch.seo_description = row.seo_description.replace(/VapeVault AU/g, 'Aussie Vape Hub').replace(/VapeVault/g, 'Aussie Vape Hub')
+        if (row.seo_description?.includes('VapeVault')) patch.seo_description = row.seo_description.replace(/VapeVault AU/g, 'VapeHub Vapes Australia').replace(/VapeVault/g, 'VapeHub Vapes Australia')
         return supabase.from('products').update(patch).eq('id', row.id)
       }),
     )
@@ -87,7 +87,7 @@ async function main() {
       const patch: Record<string, string | null> = {}
       for (const f of ['name', 'description', 'long_description', 'intro', 'seo_title', 'seo_description'] as const) {
         const v = (c as Record<string, string | null>)[f]
-        if (v && v.includes('VapeVault')) patch[f] = v.replace(/VapeVault AU/g, 'Aussie Vape Hub').replace(/VapeVault/g, 'Aussie Vape Hub')
+        if (v && v.includes('VapeVault')) patch[f] = v.replace(/VapeVault AU/g, 'VapeHub Vapes Australia').replace(/VapeVault/g, 'VapeHub Vapes Australia')
       }
       if (Object.keys(patch).length) await supabase.from('categories').update(patch).eq('id', c.id)
     }
@@ -110,7 +110,7 @@ async function main() {
       const patch: Record<string, string | null> = {}
       for (const f of ['description', 'seo_title', 'seo_description'] as const) {
         const v = (b as Record<string, string | null>)[f]
-        if (v && v.includes('VapeVault')) patch[f] = v.replace(/VapeVault AU/g, 'Aussie Vape Hub').replace(/VapeVault/g, 'Aussie Vape Hub')
+        if (v && v.includes('VapeVault')) patch[f] = v.replace(/VapeVault AU/g, 'VapeHub Vapes Australia').replace(/VapeVault/g, 'VapeHub Vapes Australia')
       }
       if (Object.keys(patch).length) await supabase.from('brands').update(patch).eq('id', b.id)
     }
