@@ -57,4 +57,4 @@ on conflict (code) do nothing;
 -- 3. Run: update public.profiles set role = 'admin' where id = '<uuid>';
 --
 -- Example (uncomment + replace UUID):
--- update public.profiles set role = 'admin' where email = 'admin@aussievapes.com.au';
+-- update public.profiles set role = 'admin' where email = 'admin@vapehubvapesaustralia.com.au';
