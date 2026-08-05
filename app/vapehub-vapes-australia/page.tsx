@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "VapeHub Vapes Australia ships authentic vapes to every Australian city — Sydney, Melbourne, Brisbane, Perth, Adelaide and regional Australia. Find your city's delivery info.",
   keywords: [
-    'vapehub vapes australia australia',
+    'vapehub vapes australia locations',
     'vapehub vapes australia sydney',
     'vapehub vapes australia melbourne',
     'vapehub vapes australia brisbane',
@@ -35,7 +35,7 @@ export default async function AussieVapesHubPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-4">
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">
-                VapeHub Vapes Australia Australia-Wide
+                VapeHub Vapes Australia — Australia-Wide
               </p>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-1 mb-3 lowercase">
                 vapehub vapes australia near you

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   keywords: [
     'about vapehub vapes australia',
     'vapehub vapes australia story',
-    'vapehub vapes australia australia',
+    'vapehub vapes australia store',
     'vapehub vapes australia sydney',
     'who is vapehub vapes australia',
     'vapehub vapes australia about us',

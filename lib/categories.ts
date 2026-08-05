@@ -32,7 +32,7 @@ export const CATEGORIES: Category[] = [
       'vapehub vapes australia disposable',
       'aussie disposable vapes',
       'vapehub vapes australia online',
-      'vapehub vapes australia australia',
+      'vapehub vapes australia store',
       'disposable vapes australia',
       'buy disposable vape online australia',
       'best disposable vape australia',
