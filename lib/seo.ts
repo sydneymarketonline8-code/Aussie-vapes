@@ -90,10 +90,10 @@ export function buildSiteMetadata(): Metadata {
     // tokens for a previous (now suspended) domain — they can never verify here
     // and only associate this domain with that one.
     //
-    // When the Search Console / Bing properties for vapehubvapesaustralia.com.au are
-    // created, paste the tokens below.
+    // Tokens below are for the vapehubvapesaustralia.com.au properties. Public
+    // values — they are meant to be readable in page source.
     verification: {
-      // google: 'paste-google-site-verification-token-here',
+      google: 'lWtYvJ-4XPKjDoceXtXxnpX4Bvjs-iS-aIHt9w7ZKGw',
       // other: { 'msvalidate.01': 'paste-bing-token-here' },
     },
   }
