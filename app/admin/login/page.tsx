@@ -69,7 +69,7 @@ export default async function AdminLoginPage({
                 required
                 autoFocus
                 autoComplete="email"
-                placeholder="admin@aussievapehub.com.au"
+                placeholder="admin@vapehubvapesaustralia.com.au"
                 className="input-base"
               />
             </div>

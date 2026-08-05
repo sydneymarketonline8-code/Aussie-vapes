@@ -76,7 +76,7 @@ async function main() {
       if (imgs.length === 0) found.push('no image rows')
       else {
         imgs.forEach((img) => {
-          if (img.url.startsWith('/products/') || img.url.startsWith('https://www.aussievapehub.com.au/products/')) {
+          if (img.url.startsWith('/products/') || img.url.startsWith('https://www.vapehubvapesaustralia.com.au/products/')) {
             const filename = img.url.split('/products/')[1]
             if (!onDiskFiles.has(filename.toLowerCase())) {
               found.push(`image file missing: ${filename}`)

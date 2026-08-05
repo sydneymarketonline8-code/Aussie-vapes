@@ -7,8 +7,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'placehold.co' },
-      { protocol: 'https', hostname: 'www.aussievapehub.com.au' },
-      { protocol: 'https', hostname: 'aussievapehub.com.au' },
+      { protocol: 'https', hostname: 'www.vapehubvapesaustralia.com.au' },
+      { protocol: 'https', hostname: 'vapehubvapesaustralia.com.au' },
       { protocol: 'https', hostname: 'cprvkojsnyxsgwnzyfsa.supabase.co' },
     ],
     formats: ['image/avif', 'image/webp'],

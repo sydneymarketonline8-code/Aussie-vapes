@@ -9,7 +9,7 @@ import { PUFF_RANGES, getPuffRangeBySlug, getProductsByPuffRange } from '@/lib/p
 import { breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
 
 export async function generateStaticParams() {
   return PUFF_RANGES.map((r) => ({ range: r.slug }))

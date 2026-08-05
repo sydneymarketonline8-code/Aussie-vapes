@@ -55,7 +55,7 @@ export default function ShippingPage() {
         },
         {
           heading: 'lost or delayed orders',
-          body: "If your Aussie Vape Hub order hasn't arrived within the expected timeframe, contact our support team at info@aussievapehub.com.au with your order number. We track every shipment and will investigate immediately with the courier.",
+          body: "If your Aussie Vape Hub order hasn't arrived within the expected timeframe, contact our support team at info@vapehubvapesaustralia.com.au with your order number. We track every shipment and will investigate immediately with the courier.",
         },
       ]}
       cta={{ label: 'Track My Order', href: '/track' }}

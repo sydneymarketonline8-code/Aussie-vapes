@@ -9,7 +9,7 @@ import { PACK_GROUPS, getPackGroupBySlug, getPacksByGroup, extractPackSize } fro
 import { breadcrumbJsonLd } from '@/lib/seo'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
 
 export async function generateStaticParams() {
   return PACK_GROUPS.map((g) => ({ group: g.slug }))

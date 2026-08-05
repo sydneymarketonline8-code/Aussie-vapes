@@ -56,7 +56,7 @@ export default function PrivacyPage() {
         },
         {
           heading: 'contact aussie vape hub about privacy',
-          body: "Privacy questions, data access requests or complaints can be sent to privacy@aussievapehub.com.au. We aim to respond within 5 business days. For unresolved complaints, contact the OAIC at oaic.gov.au.",
+          body: "Privacy questions, data access requests or complaints can be sent to privacy@vapehubvapesaustralia.com.au. We aim to respond within 5 business days. For unresolved complaints, contact the OAIC at oaic.gov.au.",
         },
         {
           heading: 'policy updates',

@@ -45,7 +45,7 @@ export default function ReturnsPage() {
         {
           heading: 'how to start a return',
           list: [
-            'Email returns@aussievapehub.com.au with your order number and reason for return',
+            'Email returns@vapehubvapesaustralia.com.au with your order number and reason for return',
             'A member of the Aussie Vape Hub team will reply within one business day with a Return Authorisation (RA) number',
             'Pack the unopened item in its original packaging and include the RA number on the outside',
             'Post to the Sydney return address provided in your RA email',

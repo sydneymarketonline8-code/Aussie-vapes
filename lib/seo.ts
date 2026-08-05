@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.aussievapehub.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
 // Hardcoded, NOT env-driven. A stale NEXT_PUBLIC_SITE_NAME in the host kept
 // the previous brand alive in author/creator/publisher/og:site_name after a
 // rebrand. Change the brand here.
@@ -13,7 +13,7 @@ const DEFAULT_DESCRIPTION =
 export const BRAND_KEYWORDS = [
   'aussie vape hub',
   'aussie vape hub australia',
-  'aussievapehub',
+  'vapehubvapesaustralia',
   'aussie vape hub online',
   'aussie vape hub sydney',
   'aussie vape hub melbourne',
@@ -90,7 +90,7 @@ export function buildSiteMetadata(): Metadata {
     // tokens for a previous (now suspended) domain — they can never verify here
     // and only associate this domain with that one.
     //
-    // When the Search Console / Bing properties for aussievapehub.com.au are
+    // When the Search Console / Bing properties for vapehubvapesaustralia.com.au are
     // created, paste the tokens below.
     verification: {
       // google: 'paste-google-site-verification-token-here',
@@ -280,7 +280,7 @@ export function organizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'info@aussievapehub.com.au',
+      email: 'info@vapehubvapesaustralia.com.au',
       availableLanguage: 'en-AU',
     },
     // sameAs: intentionally omitted until real social profiles exist.
@@ -335,7 +335,7 @@ export function localBusinessJsonLd() {
       '@type': 'ContactPoint',
       telephone: '+61-468-188-347',
       contactType: 'customer service',
-      email: 'info@aussievapehub.com.au',
+      email: 'info@vapehubvapesaustralia.com.au',
       areaServed: 'AU',
       availableLanguage: 'en-AU',
     },

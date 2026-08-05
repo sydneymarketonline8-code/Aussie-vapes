@@ -16,7 +16,7 @@ const TILES = [
   { Icon: ArrowPathIcon, title: 'Returns', body: '30-day return policy and faulty device replacements.', href: '/returns' },
   { Icon: ShieldCheckIcon, title: 'Order Tracking', body: 'Check the status of your Aussie Vape Hub order.', href: '/track' },
   { Icon: ChatBubbleLeftRightIcon, title: 'Live Chat', body: 'Chat with the Aussie Vape Hub team in real time.', href: '/contact' },
-  { Icon: EnvelopeIcon, title: 'Email Support', body: 'Email info@aussievapehub.com.au — reply within 4 business hours.', href: 'mailto:info@aussievapehub.com.au' },
+  { Icon: EnvelopeIcon, title: 'Email Support', body: 'Email info@vapehubvapesaustralia.com.au — reply within 4 business hours.', href: 'mailto:info@vapehubvapesaustralia.com.au' },
 ]
 
 export default function HelpPage() {

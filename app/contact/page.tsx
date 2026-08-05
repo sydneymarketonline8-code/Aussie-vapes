@@ -77,7 +77,7 @@ export default function ContactPage() {
 
           {[
             { Icon: PhoneIcon, t: 'Phone', body: '+61 468 188 347', href: 'tel:+61468188347', note: 'Mon–Fri 9am–5pm AEST' },
-            { Icon: EnvelopeIcon, t: 'Email', body: 'info@aussievapehub.com.au', href: 'mailto:info@aussievapehub.com.au', note: 'Replies within 4 business hours' },
+            { Icon: EnvelopeIcon, t: 'Email', body: 'info@vapehubvapesaustralia.com.au', href: 'mailto:info@vapehubvapesaustralia.com.au', note: 'Replies within 4 business hours' },
             { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every Aussie Vape Hub page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
             { Icon: MapPinIcon, t: 'Sydney Warehouse', body: 'Sydney, NSW, Australia', href: '#', note: 'Pick-up by appointment only (B2B / wholesale)' },
             { Icon: ClockIcon, t: 'Support Hours', body: 'Monday – Friday', href: '#', note: '9am–5pm AEST (closed AU public holidays)' },
