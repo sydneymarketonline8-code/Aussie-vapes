@@ -8,6 +8,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
+        // Private / transactional pages only. Cart and checkout are client
+        // components and cannot export a noindex tag, so robots.txt is their
+        // only protection — Search Console reporting these as "Blocked by
+        // robots.txt" is intended, not a fault.
+        //
+        // /_next/ is deliberately NOT blocked: it serves the CSS, JS and font
+        // assets Googlebot needs to render the page. Blocking it makes Google
+        // render an unstyled, script-less page, which breaks the
+        // mobile-friendly and Core Web Vitals assessments.
         disallow: [
           '/cart',
           '/checkout',
@@ -17,7 +26,6 @@ export default function robots(): MetadataRoute.Robots {
           '/search?',
           '/admin/',
           '/api/',
-          '/_next/',
         ],
       },
       // Googlebot-Image — allow image crawling explicitly
