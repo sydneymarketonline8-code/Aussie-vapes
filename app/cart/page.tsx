@@ -124,7 +124,7 @@ export default function CartPage() {
                 </div>
                 {shipping > 0 && (
                   <p className="text-xs text-mute">
-                    Add ${(300 - subtotal).toFixed(2)} more for free shipping
+                    Add ${(FREE_SHIPPING_THRESHOLD_AUD - subtotal).toFixed(2)} more for free shipping
                   </p>
                 )}
                 <div className="divider" />

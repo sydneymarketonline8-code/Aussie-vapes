@@ -155,7 +155,7 @@ export default async function BrandPage({
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircleIcon className="h-4 w-4 text-success flex-shrink-0" />
-                  Free shipping over $300
+                  Free shipping over $200
                 </li>
               </ul>
             </div>

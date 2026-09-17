@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesau
 // rebrand. Change the brand here.
 const SITE_NAME = 'VapeHub Vapes Australia'
 const DEFAULT_DESCRIPTION =
-  "VapeHub Vapes Australia is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $300."
+  "VapeHub Vapes Australia is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $200."
 
 // Brand-name cluster — searches for the store itself.
 export const BRAND_KEYWORDS = [

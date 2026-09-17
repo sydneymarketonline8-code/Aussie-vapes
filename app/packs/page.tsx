@@ -52,7 +52,7 @@ const FAQS = [
   {
     question: 'Do VapeHub Vapes Australia packs qualify for free shipping?',
     answer:
-      "Yes — VapeHub Vapes Australia offers free standard shipping on all Australian orders over $300. Almost every pack on VapeHub Vapes Australia is over the threshold, so you'll get free shipping automatically.",
+      "Yes — VapeHub Vapes Australia offers free standard shipping on all Australian orders over $200. Almost every pack on VapeHub Vapes Australia is over the threshold, so you'll get free shipping automatically.",
   },
   {
     question: 'Can I buy vape packs for a business or event?',

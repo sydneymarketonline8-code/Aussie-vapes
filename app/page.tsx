@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   ...buildSiteMetadata(),
   title: "VapeHub Vapes Australia — Australia's #1 Online Vape Store | Disposables, Pods, E-Liquid",
   description:
-    "VapeHub Vapes Australia is Australia's #1 online vape store. Shop authentic disposable vapes, pod systems, nicotine salts and e-liquids from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ brands. Same-day Sydney dispatch, free shipping over $300.",
+    "VapeHub Vapes Australia is Australia's #1 online vape store. Shop authentic disposable vapes, pod systems, nicotine salts and e-liquids from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ brands. Same-day Sydney dispatch, free shipping over $200.",
   alternates: { canonical: '/' },
 }
 
@@ -143,7 +143,7 @@ export default async function HomePage() {
               and dozens more. Every device is age-verified at purchase, sourced through authorised AU channels, and backed by a 30-day return policy.
             </p>
             <p>
-              Why do Australians choose VapeHub Vapes Australia? Free shipping on orders over $300, express options to every state and territory, real Australian customer support Mon–Fri 9am–5pm AEST, and the deepest in-stock selection of any AU vape retailer. Same-day Sydney dispatch on weekday orders before 2pm AEST.
+              Why do Australians choose VapeHub Vapes Australia? Free shipping on orders over $200, express options to every state and territory, real Australian customer support Mon–Fri 9am–5pm AEST, and the deepest in-stock selection of any AU vape retailer. Same-day Sydney dispatch on weekday orders before 2pm AEST.
             </p>
             <p>
               Browse the full{' '}

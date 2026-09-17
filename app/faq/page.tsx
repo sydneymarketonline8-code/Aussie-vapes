@@ -55,7 +55,7 @@ const FAQ_GROUPS: { title: string; items: { question: string; answer: string }[]
       {
         question: 'Do you offer free shipping?',
         answer:
-          'Yes — VapeHub Vapes Australia offers free standard shipping on all Australian orders over $300. Below that, standard shipping is $9.95 flat.',
+          'Yes — VapeHub Vapes Australia offers free standard shipping on all Australian orders over $200. Below that, standard shipping is $9.95 flat.',
       },
       {
         question: 'Where does VapeHub Vapes Australia ship to?',

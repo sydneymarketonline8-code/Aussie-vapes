@@ -46,7 +46,7 @@ export default async function AdminSettingsPage() {
             <Row k="Total Products" v={productCount.toLocaleString()} />
             <Row k="Brands" v={String(BRANDS.length)} />
             <Row k="Categories" v={String(CATEGORIES.length)} />
-            <Row k="Free Shipping Over" v="$300 AUD" />
+            <Row k="Free Shipping Over" v="$200 AUD" />
             <Row k="Standard Shipping" v="$9.95 AUD" />
           </dl>
         </section>

@@ -6,14 +6,14 @@
  * value; the server action enforces the same check so the rule can't be
  * bypassed by manipulating the client.
  *
- * Configurable per-environment via NEXT_PUBLIC_MIN_ORDER_AUD (defaults to
- * 250). NEXT_PUBLIC_ prefix is intentional — the client needs to read it
- * to disable buttons and show progress.
+ * Hardcoded, NOT env-driven — a stale NEXT_PUBLIC_MIN_ORDER_AUD in the host
+ * would silently override a change made here.
  */
 
-export const MIN_ORDER_AUD = Number(process.env.NEXT_PUBLIC_MIN_ORDER_AUD ?? '250')
+export const MIN_ORDER_AUD = 200
 
-export const FREE_SHIPPING_THRESHOLD_AUD = 300
+// Deliberately equal to the minimum: every order that can check out ships free.
+export const FREE_SHIPPING_THRESHOLD_AUD = 200
 
 /** Helper for messaging: "Add $X more to checkout" / "Minimum met" */
 export function minimumOrderState(subtotal: number) {

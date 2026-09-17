@@ -76,7 +76,7 @@ export default function AboutPage() {
               {[
                 { t: 'Authentic stock only', b: "Every VapeHub Vapes Australia product is sourced through authorised distribution channels. We verify batch codes and stand behind every device sold." },
                 { t: 'Same-day Sydney dispatch', b: 'Order before 2pm AEST on a weekday and your VapeHub Vapes Australia order ships the same day from our Sydney warehouse.' },
-                { t: 'Free Aussie-wide shipping over $300', b: 'Discreet plain packaging, fast couriers, every state and territory.' },
+                { t: 'Free Aussie-wide shipping over $200', b: 'Discreet plain packaging, fast couriers, every state and territory.' },
                 { t: 'Real Australian support', b: 'Live humans in Sydney, Mon-Fri 9am-5pm AEST. Email, chat or phone — no offshore call centres.' },
                 { t: '30-day return policy', b: 'Not happy with your VapeHub Vapes Australia purchase? Return unopened devices within 30 days for a full refund.' },
                 { t: 'Largest in-stock range in AU', b: '2,000+ devices across 40+ brands. If a popular AU vape exists, VapeHub Vapes Australia stocks it.' },
