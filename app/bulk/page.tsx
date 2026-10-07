@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Breadcrumb from '@/components/ui/Breadcrumb'
+import WholesaleForm from '@/components/forms/WholesaleForm'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
 export const metadata: Metadata = {
@@ -62,35 +63,7 @@ export default function BulkPage() {
 
         <div className="bg-white border border-line rounded-sm p-6">
           <h2 className="font-display text-xl font-bold text-ink uppercase tracking-wide mb-4">Apply for an VapeHub Vapes Australia Wholesale Account</h2>
-          <form className="space-y-4">
-            <div>
-              <label htmlFor="bulk-business" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Business Name *</label>
-              <input id="bulk-business" name="business" type="text" required className="input-base" />
-            </div>
-            <div>
-              <label htmlFor="bulk-abn" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">ABN *</label>
-              <input id="bulk-abn" name="abn" type="text" required className="input-base" placeholder="00 000 000 000" />
-            </div>
-            <div>
-              <label htmlFor="bulk-name" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Contact Name *</label>
-              <input id="bulk-name" name="name" type="text" required className="input-base" />
-            </div>
-            <div>
-              <label htmlFor="bulk-email" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Email *</label>
-              <input id="bulk-email" name="email" type="email" required className="input-base" />
-            </div>
-            <div>
-              <label htmlFor="bulk-monthly" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Estimated Monthly Spend *</label>
-              <select id="bulk-monthly" name="monthly" required className="input-base">
-                <option>$1,000 – $5,000</option>
-                <option>$5,000 – $10,000</option>
-                <option>$10,000 – $25,000</option>
-                <option>$25,000+</option>
-              </select>
-            </div>
-            <button type="submit" className="btn-sale w-full">Apply For Wholesale Access</button>
-            <p className="text-xs text-mute text-center">VapeHub Vapes Australia typically responds to wholesale applications within 1 business day.</p>
-          </form>
+          <WholesaleForm />
         </div>
       </section>
     </>

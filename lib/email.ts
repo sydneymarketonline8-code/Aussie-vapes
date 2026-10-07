@@ -5,11 +5,13 @@
  * server console — so the code path works in dev without an account, and
  * production can be wired up later by just adding the key.
  *
- * RESEND_FROM controls the From address; defaults to "VapeHub Vapes Australia <orders@vapehubvapesaustralia.com.au>".
+ * RESEND_FROM controls the From address; defaults to "VapeHub Vapes Australia <info@vapehubvapesaustralia.com.au>".
  * Whatever address you use must be verified in the Resend dashboard first.
  *
  * Never throws — email failures shouldn't block order creation.
  */
+
+export const STORE_EMAIL = 'info@vapehubvapesaustralia.com.au'
 
 export interface EmailMessage {
   to: string
@@ -21,7 +23,7 @@ export interface EmailMessage {
 
 export async function sendEmail(msg: EmailMessage): Promise<{ ok: boolean; error?: string }> {
   const key = process.env.RESEND_API_KEY
-  const from = process.env.RESEND_FROM ?? 'VapeHub Vapes Australia <orders@vapehubvapesaustralia.com.au>'
+  const from = process.env.RESEND_FROM ?? `VapeHub Vapes Australia <${STORE_EMAIL}>`
 
   if (!key) {
     console.log(
@@ -56,4 +58,13 @@ export async function sendEmail(msg: EmailMessage): Promise<{ ok: boolean; error
     console.error('[email] resend fetch failed', err)
     return { ok: false, error: 'fetch failed' }
   }
+}
+
+export function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
 }

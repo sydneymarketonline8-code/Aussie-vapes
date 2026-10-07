@@ -1,14 +1,14 @@
 /**
  * Sales-team notifications for orders awaiting manual payment confirmation.
  *
- * If SLACK_SALES_WEBHOOK_URL is set, posts a Slack-formatted message to it.
- * Otherwise logs to the server console so the wiring works in dev without
- * any external service configured.
+ * Always emails the store inbox (STORE_EMAIL). If SLACK_SALES_WEBHOOK_URL is
+ * also set, posts a Slack-formatted message to it as well.
  *
  * Never throws — a notification failure should not block order creation.
  */
 
 import type { PaymentMethod } from '@/lib/payment'
+import { escapeHtml, sendEmail, STORE_EMAIL } from '@/lib/email'
 
 export interface PendingPaymentNotification {
   orderNumber: string
@@ -30,10 +30,24 @@ export async function notifySalesPendingPayment(n: PendingPaymentNotification) {
   ]
   const text = lines.join('\n')
 
-  if (!webhook) {
-    console.log('[sales notify]\n' + text)
-    return
-  }
+  const plain = [
+    `New order awaiting payment — ${n.orderNumber}`,
+    ``,
+    `Method:    ${n.method.toUpperCase()}`,
+    `Amount:    $${n.totalAud.toFixed(2)} AUD`,
+    `Reference: ${n.reference}`,
+    `Customer:  ${n.customerName} <${n.customerEmail}>`,
+  ].join('\n')
+
+  await sendEmail({
+    to: STORE_EMAIL,
+    subject: `New order ${n.orderNumber} — $${n.totalAud.toFixed(2)} via ${n.method.toUpperCase()}`,
+    html: `<pre style="font-family: monospace; font-size: 14px;">${escapeHtml(plain)}</pre>`,
+    text: plain,
+    replyTo: n.customerEmail,
+  })
+
+  if (!webhook) return
 
   try {
     await fetch(webhook, {

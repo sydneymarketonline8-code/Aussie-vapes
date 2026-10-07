@@ -56,3 +56,6 @@ scripts/product-content-backup-*.json
 # Source WooCommerce export used to seed the catalogue (dev artifact,
 # contains supplier URLs on long-dead domains). Kept locally, not committed.
 wc-product-export-*.csv
+
+.vercel
+.env*
