@@ -22,6 +22,8 @@ export interface Brand {
   seoDescription: string
   aliases: string[]
   accentColor: string
+  /** Optional banner artwork for the brand page hero; falls back to a product collage. */
+  heroImage?: string
 }
 
 const make = (b: Brand): Brand => b
@@ -1249,6 +1251,29 @@ export const BRANDS: Brand[] = [
     seoDescription: 'Buy authentic Leafbar Platinum disposables in Australia. Premium-tier refined hardware. Same-day Sydney shipping.',
     aliases: ['leafbar', 'leafbar platinum'],
     accentColor: '#37474f',
+  }),
+  make({
+    slug: 'tomoro',
+    name: 'tomoro',
+    displayName: 'Tomoro',
+    origin: 'China',
+    tagline: 'Dual-Coil Screen Disposables',
+    shortDescription:
+      'Tomoro makes feature-packed disposables — the Tomoro Max pairs Duo-Ignite dual coils with 10W/16W power modes and a full-colour screen.',
+    longDescription:
+      "Tomoro builds disposables for vapers who want more control than a basic stick. The flagship Tomoro Max runs Duo-Ignite dual-coil technology from a 2730mAh battery, lets you switch between 10W (up to 15,000 puffs) and 16W (up to 10,000 puffs), and shows your mode and battery on a 24×24mm full-colour LED screen under a dome window. VapeHub Vapes Australia stocks the full 12-flavour Tomoro Max range with same-day Sydney dispatch.",
+    highlights: ['Up to 15,000 puffs', 'Duo-Ignite dual-coil', '10W / 16W power modes', '24×24mm colour screen', '12 flavours', 'Authentic AU stock'],
+    bestKnownFor: 'Tomoro Max',
+    faqs: [
+      { question: 'How many puffs does the Tomoro Max last?', answer: 'Up to 15,000 puffs on the 10W setting, or up to 10,000 puffs if you vape on the stronger 16W setting.' },
+      { question: 'What flavours does the Tomoro Max come in?', answer: 'Twelve: Strawberry Ice, Strawberry Lychee, Blackberry Cherry Pomegranate, Strawberry Coconut Watermelon, Kiwi Pineapple, Mango Boom, Passion Fruit Mango Lime, Watermelon Smash, Skittles, Blueberry Ice, Blackberry Ice and Grape Lemon.' },
+    ],
+    keywords: ['tomoro australia', 'tomoro max', 'tomoro max 15000', 'tomoro vape', 'tomoro disposable vape'],
+    seoTitle: 'Tomoro Max Australia — 15000 Puff Dual-Coil Vapes | VapeHub Vapes Australia',
+    seoDescription: 'Buy authentic Tomoro Max disposables in Australia. Up to 15,000 puffs, dual-coil, 10W/16W modes and a colour screen. 12 flavours, same-day Sydney shipping.',
+    aliases: ['tomoro', 'tomoro max'],
+    heroImage: '/products/tomoro-max-15000-puffs-4-pack-mix-and-match.jpg',
+    accentColor: '#e91e63',
   }),
 ]
 

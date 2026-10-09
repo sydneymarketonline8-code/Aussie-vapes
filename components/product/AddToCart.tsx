@@ -3,21 +3,28 @@
 import { useState } from 'react'
 import { HeartIcon, TruckIcon, LockClosedIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline'
 import type { Product } from '@/types'
+import { mixMatchSize } from '@/lib/mix-match'
 import AddToCartButton from './AddToCartButton'
+import MixMatchPicker from './MixMatchPicker'
 
 interface AddToCartProps {
   product: Product
 }
 
 export default function AddToCart({ product }: AddToCartProps) {
-  const [selectedFlavour, setSelectedFlavour] = useState(product.flavours?.[0])
+  const packSize = mixMatchSize(product)
+  const [selectedFlavour, setSelectedFlavour] = useState(packSize ? undefined : product.flavours?.[0])
   const [selectedNicotine, setSelectedNicotine] = useState(product.nicotineStrengths?.[0])
   const [wishlisted, setWishlisted] = useState(false)
 
   return (
     <div className="space-y-5">
+      {packSize > 0 && product.flavours && (
+        <MixMatchPicker flavours={product.flavours} size={packSize} onChange={setSelectedFlavour} />
+      )}
+
       {/* Flavour selector */}
-      {product.flavours && product.flavours.length > 0 && (
+      {!packSize && product.flavours && product.flavours.length > 0 && (
         <div>
           <label className="block font-display text-xs font-bold text-ink uppercase tracking-widest mb-2">
             Flavour — <span className="text-mute normal-case tracking-normal font-normal">{selectedFlavour}</span>

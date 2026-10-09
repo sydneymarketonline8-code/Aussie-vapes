@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed:products": "tsx scripts/seed-products.ts",
+    "seed:brand": "tsx scripts/seed-brand.ts",
     "fix:images": "tsx scripts/fix-product-images.ts"
   },
   "dependencies": {

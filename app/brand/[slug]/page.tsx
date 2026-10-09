@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Suspense } from 'react'
+import Image from 'next/image'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 import BrandProductGrid from '@/components/brand/BrandProductGrid'
 import HeroCollage from '@/components/ui/HeroCollage'
@@ -51,10 +52,9 @@ export default async function BrandPage({
   const sublines = computeBrandSublines(brand, products)
   const productCount = products.length
   const featured = products.slice(0, 5)
-  const avgRating =
-    products.length > 0
-      ? products.reduce((s, p) => s + p.rating, 0) / products.length
-      : 4.7
+  // Average only reviewed products so a brand-new range doesn't show 0.0 stars.
+  const rated = products.filter((p) => p.reviewCount > 0)
+  const avgRating = rated.length > 0 ? rated.reduce((s, p) => s + p.rating, 0) / rated.length : null
   const minPrice = products.length ? Math.min(...products.map((p) => p.price)) : 0
   const maxPrice = products.length ? Math.max(...products.map((p) => p.price)) : 0
 
@@ -130,18 +130,25 @@ export default async function BrandPage({
                   </p>
                   <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">From</p>
                 </div>
-                <div className="bg-white border border-line rounded-sm p-3 text-center">
-                  <div className="flex items-center justify-center gap-0.5 mb-0.5">
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <StarIcon
-                        key={i}
-                        className={i < Math.round(avgRating) ? 'h-3 w-3 text-warning' : 'h-3 w-3 text-soft-300'}
-                      />
-                    ))}
+                {avgRating === null ? (
+                  <div className="bg-white border border-line rounded-sm p-3 text-center">
+                    <p className="font-display text-xl font-bold" style={{ color: brand.accentColor }}>New</p>
+                    <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold mt-1">Just Landed</p>
                   </div>
-                  <p className="font-display text-base font-bold text-ink">{avgRating.toFixed(1)}</p>
-                  <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold">Rating</p>
-                </div>
+                ) : (
+                  <div className="bg-white border border-line rounded-sm p-3 text-center">
+                    <div className="flex items-center justify-center gap-0.5 mb-0.5">
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <StarIcon
+                          key={i}
+                          className={i < Math.round(avgRating) ? 'h-3 w-3 text-warning' : 'h-3 w-3 text-soft-300'}
+                        />
+                      ))}
+                    </div>
+                    <p className="font-display text-base font-bold text-ink">{avgRating.toFixed(1)}</p>
+                    <p className="text-[10px] text-mute uppercase tracking-wider font-display font-semibold">Rating</p>
+                  </div>
+                )}
               </div>
 
               <ul className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-body">
@@ -162,7 +169,19 @@ export default async function BrandPage({
 
             {/* Brand product collage */}
             <div className="w-full">
-              <HeroCollage products={featured} accentColor={brand.accentColor} />
+              {brand.heroImage ? (
+                <Image
+                  src={brand.heroImage}
+                  alt={`${brand.displayName} range at VapeHub Vapes Australia`}
+                  width={1254}
+                  height={1254}
+                  priority
+                  sizes="(min-width: 1024px) 560px, 100vw"
+                  className="w-full max-w-xl mx-auto h-auto rounded-sm shadow-lg"
+                />
+              ) : (
+                <HeroCollage products={featured} accentColor={brand.accentColor} />
+              )}
             </div>
           </div>
         </div>
