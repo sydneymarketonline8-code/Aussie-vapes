@@ -4,8 +4,8 @@ import { BRANDS, getProductsByBrand } from '@/lib/brands'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
 
 /**
- * Five SEO-rich brand landing blocks on the homepage, one per top Aussie
- * search brand. Each block has an H2 with the brand name, a brief tagline,
+ * SEO-rich brand landing blocks on the homepage, one per top Aussie
+ * search brand (plus the current new-launch brand). Each block has an H2 with the brand name, a brief tagline,
  * 4 representative products, and a Shop CTA pointing at the full brand page.
  *
  * Targets keyword clusters: "iget australia", "alfakher australia",
@@ -13,7 +13,7 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid'
  * combined "[brand] vapehub vapes australia" long-tails.
  */
 
-const FEATURED_BRAND_SLUGS = ['iget', 'alfakher', 'hqd', 'gunnpod', 'lost-mary']
+const FEATURED_BRAND_SLUGS = ['tomoro', 'iget', 'alfakher', 'hqd', 'gunnpod', 'lost-mary']
 
 function pick4(slug: string) {
   const products = getProductsByBrand(slug).filter((p) => p.images?.[0])
@@ -50,7 +50,7 @@ export default function FeaturedBrandSections() {
             australia&apos;s most-searched vape brands
           </h2>
           <p className="text-body leading-relaxed">
-            The five brands Australians actually buy. Each has a dedicated VapeHub Vapes Australia page with the full range,
+            The brands Australians actually buy — plus the newest arrival. Each has a dedicated VapeHub Vapes Australia page with the full range,
             verified authentic stock and same-day Sydney dispatch.
           </p>
         </div>

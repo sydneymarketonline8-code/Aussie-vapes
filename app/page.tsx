@@ -36,16 +36,32 @@ function pickHeroProducts(candidates: Product[], count = 5): Product[] {
 }
 
 export default async function HomePage() {
-  const [bestsellers, newArrivals, saleProducts, igetProducts, alfakherProducts, lostMaryProducts] = await Promise.all([
+  const [bestsellers, newArrivals, saleProducts, tomoroProducts, igetProducts, alfakherProducts, lostMaryProducts] = await Promise.all([
     getDbFeatured(10),
     getDbNewArrivals(10),
     getDbSale(10),
+    getProductsByBrandSlug('tomoro'),
     getProductsByBrandSlug('iget'),
     getProductsByBrandSlug('alfakher'),
     getProductsByBrandSlug('lost-mary'),
   ])
 
+  // Single devices only — the mix & match bundle artwork is too busy for the collage.
+  const tomoroSingles = tomoroProducts.filter((p) => !/mix\s*&\s*match/i.test(p.name))
+
   const slides: HeroSlide[] = [
+    {
+      eyebrow: 'Just Landed',
+      heading: 'Tomoro Max 15,000',
+      subheading:
+        'Dual mesh coils, 10W / 16W power modes and a full-colour screen. 12 flavours — or build your own 4 or 10-pack and save up to 17%.',
+      cta: { label: 'Shop Tomoro Max', href: '/brand/tomoro' },
+      ctaSecondary: { label: 'Build a Mix & Match Pack', href: '/product/tomoro-max-15000-puffs-4-pack-mix-and-match' },
+      badge: 'From $46.95',
+      bg: 'linear-gradient(135deg, #fdf0f5 0%, #ffffff 60%)',
+      accent: '#e91e63',
+      products: pickHeroProducts(tomoroSingles.length ? tomoroSingles : newArrivals),
+    },
     {
       eyebrow: 'Featured Disposable',
       heading: 'IGET Bar Plus 6000',
@@ -139,7 +155,9 @@ export default async function HomePage() {
               <a href="/brand/lost-mary" className="text-price font-semibold hover:underline">Lost Mary</a>,{' '}
               <a href="/brand/vozol" className="text-price font-semibold hover:underline">Vozol</a>,{' '}
               <a href="/brand/relx" className="text-price font-semibold hover:underline">RELX</a>,{' '}
-              <a href="/brand/elux" className="text-price font-semibold hover:underline">Elux</a>{' '}
+              <a href="/brand/elux" className="text-price font-semibold hover:underline">Elux</a>,{' '}
+              the new{' '}
+              <a href="/brand/tomoro" className="text-price font-semibold hover:underline">Tomoro Max</a>{' '}
               and dozens more. Every device is age-verified at purchase, sourced through authorised AU channels, and backed by a 30-day return policy.
             </p>
             <p>
@@ -168,6 +186,7 @@ export default async function HomePage() {
                 { label: 'IGET VapeHub Vapes Australia', href: '/brand/iget' },
                 { label: 'HQD VapeHub Vapes Australia', href: '/brand/hqd' },
                 { label: 'Alfakher VapeHub Vapes Australia', href: '/brand/alfakher' },
+                { label: 'Tomoro Max Australia', href: '/brand/tomoro' },
                 { label: 'VapeHub Vapes Australia free shipping', href: '/' },
               ].map(({ label, href }) => (
                 <a
