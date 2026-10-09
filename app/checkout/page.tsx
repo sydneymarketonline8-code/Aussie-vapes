@@ -237,7 +237,7 @@ export default function CheckoutPage() {
                 <div className="space-y-2">
                   <label className={labelClass}>Shipping method</label>
                   {[
-                    { id: 'standard' as const, label: 'Standard Post (3–7 business days)', price: subtotal >= 300 ? 'FREE' : '$9.95' },
+                    { id: 'standard' as const, label: 'Standard Post (3–7 business days)', price: subtotal >= FREE_SHIPPING_THRESHOLD_AUD ? 'FREE' : '$9.95' },
                     { id: 'express' as const, label: 'Express Post (1–3 business days)', price: '$14.95' },
                   ].map((opt) => (
                     <label key={opt.id} className="flex items-center justify-between p-3 rounded-sm border border-line bg-white hover:border-ink cursor-pointer transition-colors">

@@ -6,7 +6,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { type PaymentMethod } from '@/lib/payment'
 import { notifySalesPendingPayment } from '@/lib/notify'
 import { sendOrderConfirmationEmail } from '@/lib/order-emails'
-import { MIN_ORDER_AUD } from '@/lib/cart-rules'
+import { FREE_SHIPPING_THRESHOLD_AUD, MIN_ORDER_AUD } from '@/lib/cart-rules'
 
 /**
  * Generates an order payment reference like `PAY-7F2K9QH3DR`. 10 chars of
@@ -66,11 +66,36 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
   if (!input.items.length) {
     return { ok: false, error: 'Your cart is empty.' }
   }
+  if (input.items.some((i) => !Number.isInteger(i.quantity) || i.quantity < 1 || i.quantity > 999)) {
+    return { ok: false, error: 'Invalid item quantity.' }
+  }
 
-  const subtotal = input.items.reduce(
-    (sum, i) => sum + i.unitPrice * i.quantity,
-    0,
-  )
+  const supabase = await createSupabaseServerClient()
+
+  // Price, name and id come from the database, never from the client — the
+  // cart lives in localStorage and anything posted here can be edited.
+  const slugs = Array.from(new Set(input.items.map((i) => i.productSlug)))
+  const { data: dbProducts, error: priceError } = await supabase
+    .from('products')
+    .select('id, slug, name, price, in_stock')
+    .in('slug', slugs)
+    .eq('status', 'active')
+    .is('deleted_at', null)
+  if (priceError) {
+    console.error('[createOrder] price lookup failed', priceError)
+    return { ok: false, error: 'Could not create order. Please try again.' }
+  }
+  const bySlug = new Map((dbProducts ?? []).map((p) => [p.slug as string, p]))
+  const unavailable = input.items.find((i) => !bySlug.get(i.productSlug)?.in_stock)
+  if (unavailable) {
+    return { ok: false, error: `${unavailable.productName} is no longer available. Please remove it from your cart.` }
+  }
+  const lines = input.items.map((i) => {
+    const p = bySlug.get(i.productSlug)!
+    return { ...i, productId: p.id as string, productName: p.name as string, unitPrice: Number(p.price) }
+  })
+
+  const subtotal = Math.round(lines.reduce((sum, i) => sum + i.unitPrice * i.quantity, 0) * 100) / 100
 
   // Strict server-side minimum-order enforcement. Client also blocks but this
   // is the source of truth — anyone bypassing the client UI hits this check.
@@ -83,15 +108,13 @@ export async function createOrder(input: CreateOrderInput): Promise<CreateOrderR
 
   const shippingCost = input.shipping.method === 'express'
     ? 14.95
-    : subtotal >= 300 ? 0 : 9.95
+    : subtotal >= FREE_SHIPPING_THRESHOLD_AUD ? 0 : 9.95
   const total = subtotal + shippingCost
 
   const reference = generatePaymentReference()
   const fullName = `${input.contact.firstName} ${input.contact.lastName}`.trim()
 
-  const supabase = await createSupabaseServerClient()
-
-  const items = input.items.map((i) => ({
+  const items = lines.map((i) => ({
     product_id: UUID_RE.test(i.productId) ? i.productId : '',
     product_slug: i.productSlug,
     product_name: i.productName,
