@@ -10,6 +10,7 @@ import AgeGate from '@/components/ui/AgeGate'
 import LiveChat from '@/components/layout/LiveChat'
 import WhatsAppButton from '@/components/layout/WhatsAppButton'
 import PublicChrome from '@/components/layout/PublicChrome'
+import ContentProtection from '@/components/layout/ContentProtection'
 import { buildSiteMetadata, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
 
 const dosis = Dosis({
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <CartDrawer />
             <LiveChat />
             <WhatsAppButton />
+            <ContentProtection />
           </PublicChrome>
         </CartProvider>
       </body>

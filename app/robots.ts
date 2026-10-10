@@ -33,6 +33,30 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Googlebot-Image',
         allow: ['/products/', '/'],
       },
+      // AI-training and dataset crawlers — opt out of having the catalogue
+      // copied into training sets. Google-Extended / Applebot-Extended are
+      // training-only tokens and do not affect Google or Apple search.
+      // AI *search* crawlers (OAI-SearchBot, PerplexityBot) stay allowed.
+      // middleware.ts hard-blocks the ones known to ignore robots.txt.
+      {
+        userAgent: [
+          'GPTBot',
+          'CCBot',
+          'ClaudeBot',
+          'anthropic-ai',
+          'Google-Extended',
+          'Applebot-Extended',
+          'Bytespider',
+          'meta-externalagent',
+          'FacebookBot',
+          'Diffbot',
+          'Omgilibot',
+          'ImagesiftBot',
+          'cohere-training-data-crawler',
+          'Timpibot',
+        ],
+        disallow: '/',
+      },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,

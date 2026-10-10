@@ -31,6 +31,13 @@
     line-height: 1.6;
   }
 
+  /* Set by components/layout/ContentProtection on storefront pages only. */
+  .protect-media img {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display, 'Dosis'), Helvetica, Arial, sans-serif;
     font-weight: 700;

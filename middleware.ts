@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { updateSupabaseSession } from '@/lib/supabase/middleware'
+import { blockHotlinks, blockScrapers } from '@/lib/content-protection'
 
 /**
+ * Every request: scraper / site-downloader and image-hotlink filtering
+ * (see lib/content-protection.ts).
+ *
  * /admin/* is protected by Supabase Auth + a profiles.role check.
  *
  * If Supabase env vars are missing the middleware fails open (lets the
@@ -11,6 +15,9 @@ import { updateSupabaseSession } from '@/lib/supabase/middleware'
  */
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
+
+  const blocked = blockScrapers(req) ?? blockHotlinks(req)
+  if (blocked) return blocked
 
   if (!pathname.startsWith('/admin')) return NextResponse.next()
 
@@ -61,5 +68,6 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  // Everything except build assets (JS/CSS/fonts), which carry no catalogue content.
+  matcher: ['/((?!_next/static|_next/webpack-hmr|favicon.ico|icon.svg|apple-icon.svg).*)'],
 }
