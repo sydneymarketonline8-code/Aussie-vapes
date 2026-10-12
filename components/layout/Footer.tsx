@@ -292,7 +292,7 @@ export default function Footer() {
       <div className="border-t border-line bg-ink text-white">
         <div className="container-site py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/70 text-center sm:text-left">
-            © {new Date().getFullYear()} Vapes Near Me. All rights reserved. ABN: 00 000 000 000 — Australia&apos;s #1 Online Vape Store
+            © {new Date().getFullYear()} Vapes Near Me. All rights reserved. — Australia&apos;s #1 Online Vape Store
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             {legal.map(({ label, href }) => (
