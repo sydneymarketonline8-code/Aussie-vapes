@@ -17,7 +17,7 @@ const BLOCKED_AGENTS = [
   'facebookbot', 'diffbot', 'omgili', 'imagesiftbot', 'img2dataset', 'cohere-ai', 'timpibot',
 ]
 
-const SITE_HOSTS = ['vapehubvapesaustralia.com.au', 'www.vapehubvapesaustralia.com.au', 'localhost']
+const SITE_HOSTS = ['vapesnearme.com.au', 'www.vapesnearme.com.au', 'localhost']
 
 // Referrers allowed to load our images directly (image search results, social apps).
 const ALLOWED_REFERRER_SUFFIXES = [

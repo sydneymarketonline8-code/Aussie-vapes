@@ -46,11 +46,11 @@ export default function ContactForm() {
       </div>
       <div>
         <label htmlFor="contact-message" className="block font-display text-xs font-bold uppercase tracking-wider text-ink mb-1">Message *</label>
-        <textarea id="contact-message" name="message" required rows={6} className="input-base resize-none" placeholder="How can the VapeHub Vapes Australia team help?" />
+        <textarea id="contact-message" name="message" required rows={6} className="input-base resize-none" placeholder="How can the Vapes Near Me team help?" />
       </div>
       <FormError state={state} />
-      <SubmitButton>Send to VapeHub Vapes Australia</SubmitButton>
-      <p className="text-xs text-mute text-center">We aim to respond to all VapeHub Vapes Australia enquiries within 4 business hours.</p>
+      <SubmitButton>Send to Vapes Near Me</SubmitButton>
+      <p className="text-xs text-mute text-center">We aim to respond to all Vapes Near Me enquiries within 4 business hours.</p>
     </form>
   )
 }

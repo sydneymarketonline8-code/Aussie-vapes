@@ -4,16 +4,16 @@ import ContactForm from '@/components/forms/ContactForm'
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'Contact VapeHub Vapes Australia — Sydney-Based Australian Vape Support',
+  title: 'Contact Vapes Near Me — Sydney-Based Australian Vape Support',
   description:
-    "Contact VapeHub Vapes Australia for order help, product advice or wholesale enquiries. Real Australian support team based in Sydney. Mon–Fri 9am–5pm AEST.",
+    "Contact Vapes Near Me for order help, product advice or wholesale enquiries. Real Australian support team based in Sydney. Mon–Fri 9am–5pm AEST.",
   keywords: [
-    'contact vapehub vapes australia',
-    'vapehub vapes australia contact',
-    'vapehub vapes australia support',
-    'vapehub vapes australia phone',
-    'vapehub vapes australia email',
-    'vapehub vapes australia sydney',
+    'contact vapes near me',
+    'vapes near me contact',
+    'vapes near me support',
+    'vapes near me phone',
+    'vapes near me email',
+    'vapes near me sydney',
   ],
   alternates: { canonical: '/contact' },
 }
@@ -23,12 +23,12 @@ export default function ContactPage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Contact Us' }]} />
+          <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Contact Us' }]} />
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-4 mb-3 lowercase">
-            contact vapehub vapes australia
+            contact vapes near me
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Need a hand with an VapeHub Vapes Australia order, product advice or a wholesale enquiry? Our Sydney-based support team
+            Need a hand with a Vapes Near Me order, product advice or a wholesale enquiry? Our Sydney-based support team
             is here Monday to Friday, 9am–5pm AEST.
           </p>
         </div>
@@ -37,18 +37,18 @@ export default function ContactPage() {
       <section className="container-site py-14 grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* Contact form */}
         <div>
-          <h2 className="font-display text-2xl font-bold text-ink mb-5 lowercase">send vapehub vapes australia a message</h2>
+          <h2 className="font-display text-2xl font-bold text-ink mb-5 lowercase">send vapes near me a message</h2>
           <ContactForm />
         </div>
 
         {/* Contact info */}
         <div className="space-y-6">
-          <h2 className="font-display text-2xl font-bold text-ink mb-2 lowercase">other ways to reach vapehub vapes australia</h2>
+          <h2 className="font-display text-2xl font-bold text-ink mb-2 lowercase">other ways to reach vapes near me</h2>
 
           {[
             { Icon: PhoneIcon, t: 'Phone', body: '+61 468 189 205', href: 'tel:+61468189205', note: 'Mon–Fri 9am–5pm AEST' },
-            { Icon: EnvelopeIcon, t: 'Email', body: 'info@vapehubvapesaustralia.com.au', href: 'mailto:info@vapehubvapesaustralia.com.au', note: 'Replies within 4 business hours' },
-            { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every VapeHub Vapes Australia page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
+            { Icon: EnvelopeIcon, t: 'Email', body: 'info@vapesnearme.com.au', href: 'mailto:info@vapesnearme.com.au', note: 'Replies within 4 business hours' },
+            { Icon: ChatBubbleLeftRightIcon, t: 'Live Chat', body: 'Available on every Vapes Near Me page', href: '#', note: 'Look for the bubble in the bottom-right corner' },
             { Icon: MapPinIcon, t: 'Sydney Warehouse', body: 'Sydney, NSW, Australia', href: '#', note: 'Pick-up by appointment only (B2B / wholesale)' },
             { Icon: ClockIcon, t: 'Support Hours', body: 'Monday – Friday', href: '#', note: '9am–5pm AEST (closed AU public holidays)' },
           ].map(({ Icon, t, body, href, note }) => (
@@ -71,7 +71,7 @@ export default function ContactPage() {
           <div className="bg-soft-100 border border-line rounded-sm p-5">
             <h3 className="font-display text-sm font-bold text-ink uppercase tracking-wider mb-2">Frequently Asked</h3>
             <p className="text-sm text-body mb-3">
-              Most VapeHub Vapes Australia questions are answered in our <a href="/faq" className="text-price font-semibold hover:underline">FAQ page</a>.
+              Most Vapes Near Me questions are answered in our <a href="/faq" className="text-price font-semibold hover:underline">FAQ page</a>.
               For specific shipping queries see our <a href="/shipping" className="text-price font-semibold hover:underline">shipping policy</a>,
               and for returns see our <a href="/returns" className="text-price font-semibold hover:underline">returns policy</a>.
             </p>

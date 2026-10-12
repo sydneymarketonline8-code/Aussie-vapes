@@ -1,25 +1,25 @@
 import type { Metadata } from 'next'
 import type { Product, Category } from '@/types'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesnearme.com.au'
 // Hardcoded, NOT env-driven. A stale NEXT_PUBLIC_SITE_NAME in the host kept
 // the previous brand alive in author/creator/publisher/og:site_name after a
 // rebrand. Change the brand here.
-const SITE_NAME = 'VapeHub Vapes Australia'
+const SITE_NAME = 'Vapes Near Me'
 const DEFAULT_DESCRIPTION =
-  "VapeHub Vapes Australia is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $200."
+  "Vapes Near Me is Australia's #1 online vape store. Buy authentic disposable vapes, pod systems, nicotine salts and e-liquids with same-day Sydney dispatch and free Aussie-wide shipping over $200."
 
 // Brand-name cluster — searches for the store itself.
 export const BRAND_KEYWORDS = [
-  'vapehub vapes australia',
-  'vapehub vapes australia store',
-  'vapehubvapesaustralia',
-  'vapehub vapes australia online',
-  'vapehub vapes australia sydney',
-  'vapehub vapes australia melbourne',
-  'vapehub vapes australia brisbane',
-  'vapehub vapes australia perth',
-  'vapehub vapes australia adelaide',
+  'vapes near me',
+  'vapes near me store',
+  'vapesnearme',
+  'vapes near me online',
+  'vapes near me sydney',
+  'vapes near me melbourne',
+  'vapes near me brisbane',
+  'vapes near me perth',
+  'vapes near me adelaide',
 ]
 
 // Generic/product cluster — the high-volume non-brand terms we actually
@@ -52,8 +52,8 @@ export function buildSiteMetadata(): Metadata {
   return {
     metadataBase: new URL(SITE_URL),
     title: {
-      default: `VapeHub Vapes Australia — Australia's #1 Online Vape Store`,
-      template: `%s | VapeHub Vapes Australia`,
+      default: `Vapes Near Me — Australia's #1 Online Vape Store`,
+      template: `%s | Vapes Near Me`,
     },
     description: DEFAULT_DESCRIPTION,
     keywords: [...BRAND_KEYWORDS, ...VAPE_PRODUCT_KEYWORDS],
@@ -70,7 +70,7 @@ export function buildSiteMetadata(): Metadata {
       locale: 'en_AU',
       url: SITE_URL,
       siteName: SITE_NAME,
-      title: `VapeHub Vapes Australia — Australia's #1 Online Vape Store`,
+      title: `Vapes Near Me — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     twitter: {
@@ -79,7 +79,7 @@ export function buildSiteMetadata(): Metadata {
       // large-image preview and shows up as unclaimed in Twitter Card
       // Validator. Re-add once the handle is registered.
       card: 'summary_large_image',
-      title: `VapeHub Vapes Australia — Australia's #1 Online Vape Store`,
+      title: `Vapes Near Me — Australia's #1 Online Vape Store`,
       description: DEFAULT_DESCRIPTION,
     },
     alternates: { canonical: SITE_URL },
@@ -90,7 +90,7 @@ export function buildSiteMetadata(): Metadata {
     // tokens for a previous (now suspended) domain — they can never verify here
     // and only associate this domain with that one.
     //
-    // Tokens below are for the vapehubvapesaustralia.com.au properties. Public
+    // Tokens below are for the vapesnearme.com.au properties. Public
     // values — they are meant to be readable in page source.
     verification: {
       google: 'lWtYvJ-4XPKjDoceXtXxnpX4Bvjs-iS-aIHt9w7ZKGw',
@@ -102,8 +102,8 @@ export function buildSiteMetadata(): Metadata {
 export function buildProductMetadata(product: Product): Metadata {
   const url = `${SITE_URL}/product/${product.slug}`
   return {
-    // absolute: seoTitle already ends with "| VapeHub Vapes Australia"; without this
-    // the root layout's "%s | VapeHub Vapes Australia" template appends it twice.
+    // absolute: seoTitle already ends with "| Vapes Near Me"; without this
+    // the root layout's "%s | Vapes Near Me" template appends it twice.
     title: { absolute: product.seoTitle },
     description: product.seoDescription,
     openGraph: {
@@ -261,8 +261,8 @@ export function organizationJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
-    name: 'VapeHub Vapes Australia',
-    alternateName: ['Vapes AU', 'VapeHub Vapes Australia Online'],
+    name: 'Vapes Near Me',
+    alternateName: ['Vapes AU', 'Vapes Near Me Online'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
     description: DEFAULT_DESCRIPTION,
@@ -280,7 +280,7 @@ export function organizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'info@vapehubvapesaustralia.com.au',
+      email: 'info@vapesnearme.com.au',
       availableLanguage: 'en-AU',
     },
     // sameAs: intentionally omitted until real social profiles exist.
@@ -293,7 +293,7 @@ export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'VapeHub Vapes Australia',
+    name: 'Vapes Near Me',
     alternateName: 'Vapes AU',
     url: SITE_URL,
     potentialAction: {
@@ -312,7 +312,7 @@ export function localBusinessJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'OnlineStore',
     '@id': `${SITE_URL}/#store`,
-    name: 'VapeHub Vapes Australia',
+    name: 'Vapes Near Me',
     alternateName: ['Vapes AU'],
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
@@ -335,7 +335,7 @@ export function localBusinessJsonLd() {
       '@type': 'ContactPoint',
       telephone: '+61-468-188-347',
       contactType: 'customer service',
-      email: 'info@vapehubvapesaustralia.com.au',
+      email: 'info@vapesnearme.com.au',
       areaServed: 'AU',
       availableLanguage: 'en-AU',
     },

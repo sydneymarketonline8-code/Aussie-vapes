@@ -24,9 +24,9 @@ export const revalidate = 300
 
 export const metadata: Metadata = {
   ...buildSiteMetadata(),
-  title: "VapeHub Vapes Australia — Australia's #1 Online Vape Store | Disposables, Pods, E-Liquid",
+  title: "Vapes Near Me — Australia's #1 Online Vape Store | Disposables, Pods, E-Liquid",
   description:
-    "VapeHub Vapes Australia is Australia's #1 online vape store. Shop authentic disposable vapes, pod systems, nicotine salts and e-liquids from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ brands. Same-day Sydney dispatch, free shipping over $200.",
+    "Vapes Near Me is Australia's #1 online vape store. Shop authentic disposable vapes, pod systems, nicotine salts and e-liquids from IGET, Alfakher, HQD, Gunnpod, Lost Mary and 35+ brands. Same-day Sydney dispatch, free shipping over $200.",
   alternates: { canonical: '/' },
 }
 
@@ -66,7 +66,7 @@ export default async function HomePage() {
       eyebrow: 'Featured Disposable',
       heading: 'IGET Bar Plus 6000',
       subheading:
-        'Premium 6,000-puff rechargeable disposable. Mesh coil flavour, 20mg salt nic, fast Australia-wide shipping from VapeHub Vapes Australia.',
+        'Premium 6,000-puff rechargeable disposable. Mesh coil flavour, 20mg salt nic, fast Australia-wide shipping from Vapes Near Me.',
       cta: { label: 'Shop IGET', href: '/brand/iget' },
       ctaSecondary: { label: 'All Disposables', href: '/category/disposable-vapes' },
       badge: 'From $32.95',
@@ -78,7 +78,7 @@ export default async function HomePage() {
       eyebrow: 'Best Seller',
       heading: 'Alfakher Crown Bar 15,000',
       subheading:
-        'The ultimate big-puff disposable. Adjustable airflow, mega capacity, 15+ flavour options always in stock at VapeHub Vapes Australia.',
+        'The ultimate big-puff disposable. Adjustable airflow, mega capacity, 15+ flavour options always in stock at Vapes Near Me.',
       cta: { label: 'Shop Alfakher', href: '/brand/alfakher' },
       ctaSecondary: { label: 'See Pack Deals', href: '/packs/bundle-deals' },
       badge: 'Save 20% on 3-Packs',
@@ -90,7 +90,7 @@ export default async function HomePage() {
       eyebrow: 'New Arrival',
       heading: 'Lost Mary — Just Landed',
       subheading:
-        'Sleek pocket-friendly design with USB-C charging. Fresh fruit & menthol profiles, exclusive to VapeHub Vapes Australia.',
+        'Sleek pocket-friendly design with USB-C charging. Fresh fruit & menthol profiles, exclusive to Vapes Near Me.',
       cta: { label: 'Discover Lost Mary', href: '/brand/lost-mary' },
       ctaSecondary: { label: 'All New Arrivals', href: '/new-arrivals' },
       badge: 'Just Landed',
@@ -127,16 +127,16 @@ export default async function HomePage() {
       <BrandShowcase />
       <Testimonials />
 
-      {/* SEO content block — VapeHub Vapes Australia topical authority */}
+      {/* SEO content block — Vapes Near Me topical authority */}
       <section className="py-14 bg-soft-100 border-t border-line">
         <div className="container-site max-w-3xl">
           {/* SEO H1 for the home page — sits below the styled hero */}
           <h1 className="font-display text-3xl font-bold text-ink mb-4 lowercase">
-            vapehub vapes australia — australia&apos;s #1 online vape store
+            vapes near me — australia&apos;s #1 online vape store
           </h1>
           <div className="space-y-4 text-body text-sm leading-relaxed">
             <p>
-              <strong>VapeHub Vapes Australia</strong> is the largest online vape store in Australia, stocking 2,000+ authentic products
+              <strong>Vapes Near Me</strong> is the largest online vape store in Australia, stocking 2,000+ authentic products
               across 40+ leading brands. Whether you&apos;re after the latest{' '}
               <a href="/category/disposable-vapes" className="text-price font-semibold hover:underline">disposable vapes</a>,{' '}
               a refillable{' '}
@@ -144,10 +144,10 @@ export default async function HomePage() {
               premium{' '}
               <a href="/category/nicotine-salts" className="text-price font-semibold hover:underline">nicotine salts</a>{' '}
               or cloud-friendly{' '}
-              <a href="/category/e-liquids" className="text-price font-semibold hover:underline">freebase e-liquids</a>, VapeHub Vapes Australia has the deepest in-stock range on the Australian market — all dispatched same-day from our Sydney warehouse.
+              <a href="/category/e-liquids" className="text-price font-semibold hover:underline">freebase e-liquids</a>, Vapes Near Me has the deepest in-stock range on the Australian market — all dispatched same-day from our Sydney warehouse.
             </p>
             <p>
-              The VapeHub Vapes Australia catalogue covers every major brand Australian vapers actually buy:{' '}
+              The Vapes Near Me catalogue covers every major brand Australian vapers actually buy:{' '}
               <a href="/brand/iget" className="text-price font-semibold hover:underline">IGET</a>,{' '}
               <a href="/brand/alfakher" className="text-price font-semibold hover:underline">Alfakher Crown Bar</a>,{' '}
               <a href="/brand/hqd" className="text-price font-semibold hover:underline">HQD</a>,{' '}
@@ -161,33 +161,33 @@ export default async function HomePage() {
               and dozens more. Every device is age-verified at purchase, sourced through authorised AU channels, and backed by a 30-day return policy.
             </p>
             <p>
-              Why do Australians choose VapeHub Vapes Australia? Free shipping on orders over $200, express options to every state and territory, real Australian customer support Mon–Fri 9am–5pm AEST, and the deepest in-stock selection of any AU vape retailer. Same-day Sydney dispatch on weekday orders before 2pm AEST.
+              Why do Australians choose Vapes Near Me? Free shipping on orders over $200, express options to every state and territory, real Australian customer support Mon–Fri 9am–5pm AEST, and the deepest in-stock selection of any AU vape retailer. Same-day Sydney dispatch on weekday orders before 2pm AEST.
             </p>
             <p>
               Browse the full{' '}
-              <a href="/brands" className="text-price font-semibold hover:underline">VapeHub Vapes Australia brand directory</a>{' '}
-              to shop by manufacturer, or jump straight into our category pages above. New arrivals land every week — bookmark VapeHub Vapes Australia to stay across the latest drops.
+              <a href="/brands" className="text-price font-semibold hover:underline">Vapes Near Me brand directory</a>{' '}
+              to shop by manufacturer, or jump straight into our category pages above. New arrivals land every week — bookmark Vapes Near Me to stay across the latest drops.
             </p>
           </div>
 
           {/* Topic clusters / internal links — strengthens semantic relevance */}
           <div className="mt-8 pt-8 border-t border-line">
             <h2 className="font-display text-base font-bold text-ink mb-3 uppercase tracking-wider">
-              Popular VapeHub Vapes Australia searches
+              Popular Vapes Near Me searches
             </h2>
             <div className="flex flex-wrap gap-2">
               {[
-                { label: 'VapeHub Vapes Australia online', href: '/category/disposable-vapes' },
-                { label: 'VapeHub Vapes Australia store', href: '/brands' },
+                { label: 'Vapes Near Me online', href: '/category/disposable-vapes' },
+                { label: 'Vapes Near Me store', href: '/brands' },
                 { label: 'Australia disposable vapes', href: '/category/disposable-vapes' },
                 { label: 'Australia pod systems', href: '/category/pod-systems' },
-                { label: 'VapeHub Vapes Australia Sydney', href: '/category/disposable-vapes' },
+                { label: 'Vapes Near Me Sydney', href: '/category/disposable-vapes' },
                 { label: 'Cheap vapes Australia', href: '/sale' },
-                { label: 'IGET VapeHub Vapes Australia', href: '/brand/iget' },
-                { label: 'HQD VapeHub Vapes Australia', href: '/brand/hqd' },
-                { label: 'Alfakher VapeHub Vapes Australia', href: '/brand/alfakher' },
+                { label: 'IGET Vapes Near Me', href: '/brand/iget' },
+                { label: 'HQD Vapes Near Me', href: '/brand/hqd' },
+                { label: 'Alfakher Vapes Near Me', href: '/brand/alfakher' },
                 { label: 'Tomoro Max Australia', href: '/brand/tomoro' },
-                { label: 'VapeHub Vapes Australia free shipping', href: '/' },
+                { label: 'Vapes Near Me free shipping', href: '/' },
               ].map(({ label, href }) => (
                 <a
                   key={label}

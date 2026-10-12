@@ -3,7 +3,7 @@ import { login } from '@/lib/admin-auth'
 import { LockClosedIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'VapeHub Vapes Australia Admin — Sign In',
+  title: 'Vapes Near Me Admin — Sign In',
   robots: { index: false, follow: false },
 }
 
@@ -28,7 +28,7 @@ export default async function AdminLoginPage({
         <div className="text-center mb-6">
           <a href="/" className="inline-block">
             <span className="font-display text-3xl font-bold tracking-tight text-ink leading-none">
-              VAPEHUB <span className="text-price">VAPES AUSTRALIA</span>
+              VAPES <span className="text-price">NEAR ME</span>
             </span>
           </a>
           <p className="font-display text-[10px] tracking-[0.3em] text-mute font-semibold mt-2 uppercase">
@@ -45,7 +45,7 @@ export default async function AdminLoginPage({
               Sign in
             </h1>
             <p className="text-sm text-mute text-center mt-1">
-              Restricted area. Authorised VapeHub Vapes Australia staff only.
+              Restricted area. Authorised Vapes Near Me staff only.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default async function AdminLoginPage({
                 required
                 autoFocus
                 autoComplete="email"
-                placeholder="admin@vapehubvapesaustralia.com.au"
+                placeholder="admin@vapesnearme.com.au"
                 className="input-base"
               />
             </div>
@@ -99,7 +99,7 @@ export default async function AdminLoginPage({
         </form>
 
         <p className="text-xs text-mute text-center mt-6">
-          <a href="/" className="hover:text-price">← Back to VapeHub Vapes Australia</a>
+          <a href="/" className="hover:text-price">← Back to Vapes Near Me</a>
         </p>
       </div>
     </div>

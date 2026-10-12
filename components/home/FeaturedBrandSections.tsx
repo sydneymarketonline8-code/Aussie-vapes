@@ -10,7 +10,7 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid'
  *
  * Targets keyword clusters: "iget australia", "alfakher australia",
  * "hqd australia", "gunnpod australia", "lost mary australia" — and the
- * combined "[brand] vapehub vapes australia" long-tails.
+ * combined "[brand] vapes near me" long-tails.
  */
 
 const FEATURED_BRAND_SLUGS = ['tomoro', 'iget', 'alfakher', 'hqd', 'gunnpod', 'lost-mary']
@@ -50,7 +50,7 @@ export default function FeaturedBrandSections() {
             australia&apos;s most-searched vape brands
           </h2>
           <p className="text-body leading-relaxed">
-            The brands Australians actually buy — plus the newest arrival. Each has a dedicated VapeHub Vapes Australia page with the full range,
+            The brands Australians actually buy — plus the newest arrival. Each has a dedicated Vapes Near Me page with the full range,
             verified authentic stock and same-day Sydney dispatch.
           </p>
         </div>

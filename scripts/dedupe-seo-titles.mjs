@@ -18,7 +18,7 @@ import { createClient } from '@supabase/supabase-js'
 import fs from 'fs'
 
 const MODE = process.argv.includes('--apply') ? 'apply' : 'dry'
-const BRAND = 'VapeHub Vapes Australia'
+const BRAND = 'Vapes Near Me'
 const SUFFIX = ` | ${BRAND}`
 const BASE_MAX = 62
 const HARD_MAX = 110 // absolute ceiling; beyond this uniqueness isn't worth it

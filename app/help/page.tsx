@@ -4,19 +4,19 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { ChatBubbleLeftRightIcon, QuestionMarkCircleIcon, EnvelopeIcon, TruckIcon, ArrowPathIcon, ShieldCheckIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'VapeHub Vapes Australia Help Centre — Support, FAQ, Order Tracking',
+  title: 'Vapes Near Me Help Centre — Support, FAQ, Order Tracking',
   description:
-    "Get help with your VapeHub Vapes Australia order. Quick links to FAQ, shipping, returns, order tracking and customer support. Sydney-based team Mon-Fri 9am-5pm AEST.",
+    "Get help with your Vapes Near Me order. Quick links to FAQ, shipping, returns, order tracking and customer support. Sydney-based team Mon-Fri 9am-5pm AEST.",
   alternates: { canonical: '/help' },
 }
 
 const TILES = [
-  { Icon: QuestionMarkCircleIcon, title: 'FAQ', body: 'Browse the VapeHub Vapes Australia FAQ for instant answers.', href: '/faq' },
+  { Icon: QuestionMarkCircleIcon, title: 'FAQ', body: 'Browse the Vapes Near Me FAQ for instant answers.', href: '/faq' },
   { Icon: TruckIcon, title: 'Shipping', body: 'Delivery times, free shipping threshold and dispatch info.', href: '/shipping' },
   { Icon: ArrowPathIcon, title: 'Returns', body: '30-day return policy and faulty device replacements.', href: '/returns' },
-  { Icon: ShieldCheckIcon, title: 'Order Tracking', body: 'Check the status of your VapeHub Vapes Australia order.', href: '/track' },
-  { Icon: ChatBubbleLeftRightIcon, title: 'Live Chat', body: 'Chat with the VapeHub Vapes Australia team in real time.', href: '/contact' },
-  { Icon: EnvelopeIcon, title: 'Email Support', body: 'Email info@vapehubvapesaustralia.com.au — reply within 4 business hours.', href: 'mailto:info@vapehubvapesaustralia.com.au' },
+  { Icon: ShieldCheckIcon, title: 'Order Tracking', body: 'Check the status of your Vapes Near Me order.', href: '/track' },
+  { Icon: ChatBubbleLeftRightIcon, title: 'Live Chat', body: 'Chat with the Vapes Near Me team in real time.', href: '/contact' },
+  { Icon: EnvelopeIcon, title: 'Email Support', body: 'Email info@vapesnearme.com.au — reply within 4 business hours.', href: 'mailto:info@vapesnearme.com.au' },
 ]
 
 export default function HelpPage() {
@@ -24,12 +24,12 @@ export default function HelpPage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Help Centre' }]} />
+          <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Help Centre' }]} />
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-4 mb-3 lowercase">
-            vapehub vapes australia help centre
+            vapes near me help centre
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            Find answers fast or get in touch with the VapeHub Vapes Australia support team. We&apos;re here Monday-Friday
+            Find answers fast or get in touch with the Vapes Near Me support team. We&apos;re here Monday-Friday
             9am-5pm AEST.
           </p>
         </div>

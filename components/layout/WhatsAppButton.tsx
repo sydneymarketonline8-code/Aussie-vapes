@@ -32,7 +32,7 @@ export default function WhatsAppButton() {
   if (!number) return null
 
   const prefill = encodeURIComponent(
-    "Hi VapeHub Vapes Australia — I have a question about an order/product.",
+    "Hi Vapes Near Me — I have a question about an order/product.",
   )
   const href = `https://wa.me/${number}?text=${prefill}`
 

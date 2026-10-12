@@ -5,7 +5,7 @@ import { getActiveProductCount } from '@/lib/storefront-products'
 
 export const dynamic = 'force-dynamic'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesnearme.com.au'
 
 function Row({ k, v, mono }: { k: string; v: string; mono?: boolean }) {
   return (
@@ -22,7 +22,7 @@ export default async function AdminSettingsPage() {
   const productCount = await getActiveProductCount()
   return (
     <>
-      <AdminTopbar title="Settings" subtitle="VapeHub Vapes Australia site configuration" />
+      <AdminTopbar title="Settings" subtitle="Vapes Near Me site configuration" />
 
       <div className="px-8 py-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
         <section className="bg-white border border-line rounded-sm p-5">
@@ -30,7 +30,7 @@ export default async function AdminSettingsPage() {
             Site
           </h3>
           <dl>
-            <Row k="Brand Name" v="VapeHub Vapes Australia" />
+            <Row k="Brand Name" v="Vapes Near Me" />
             <Row k="Site URL" v={SITE_URL} mono />
             <Row k="Locale" v="en-AU" />
             <Row k="Currency" v="AUD" />

@@ -16,7 +16,7 @@ export default async function AccountProfilePage() {
             Personal Details
           </h2>
           <p className="text-sm text-mute mt-0.5">
-            Keep your VapeHub Vapes Australia profile up to date for faster checkout and accurate shipping.
+            Keep your Vapes Near Me profile up to date for faster checkout and accurate shipping.
           </p>
         </div>
       </header>

@@ -6,7 +6,7 @@ import { accountRegister, getAccountSession } from '@/lib/account-auth'
 import { UserPlusIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'Create VapeHub Vapes Australia Account',
+  title: 'Create Vapes Near Me Account',
   robots: { index: false, follow: true },
 }
 
@@ -24,7 +24,7 @@ export default async function AccountRegisterPage({
   return (
     <div className="bg-soft-100 min-h-[60vh]">
       <div className="container-site py-10 max-w-xl">
-        <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Create Account' }]} />
+        <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Create Account' }]} />
 
         <div className="mt-6 bg-white border border-line rounded-sm p-7">
           <div className="mb-5">
@@ -32,7 +32,7 @@ export default async function AccountRegisterPage({
               <UserPlusIcon className="h-6 w-6 text-ink" />
             </div>
             <h1 className="font-display text-2xl font-bold text-ink uppercase tracking-wide">
-              Create Your VapeHub Vapes Australia Account
+              Create Your Vapes Near Me Account
             </h1>
             <p className="text-sm text-mute mt-1">
               Faster checkout, order tracking, and exclusive member offers — adults 18+.
@@ -114,7 +114,7 @@ export default async function AccountRegisterPage({
                 className="mt-0.5 rounded-sm border-line bg-white text-ink focus:ring-ink"
               />
               <span className="text-sm text-body">
-                I confirm I am <strong className="text-ink">18 years or older</strong> and agree to the VapeHub Vapes Australia{' '}
+                I confirm I am <strong className="text-ink">18 years or older</strong> and agree to the Vapes Near Me{' '}
                 <Link href="/terms" className="text-price font-semibold hover:underline">Terms</Link> and{' '}
                 <Link href="/privacy" className="text-price font-semibold hover:underline">Privacy Policy</Link>.
               </span>
@@ -125,7 +125,7 @@ export default async function AccountRegisterPage({
             </button>
 
             <p className="text-xs text-mute text-center">
-              Already have an VapeHub Vapes Australia account?{' '}
+              Already have a Vapes Near Me account?{' '}
               <Link href="/account/login" className="text-price font-semibold hover:underline">
                 Sign in
               </Link>

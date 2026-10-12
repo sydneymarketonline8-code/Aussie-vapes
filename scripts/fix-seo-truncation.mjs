@@ -19,7 +19,7 @@ import { createClient } from '@supabase/supabase-js'
 import fs from 'fs'
 
 const MODE = process.argv.includes('--apply') ? 'apply' : 'dry'
-const BRAND = 'VapeHub Vapes Australia'
+const BRAND = 'Vapes Near Me'
 const TITLE_MAX = 62
 const DESC_MAX = 158
 

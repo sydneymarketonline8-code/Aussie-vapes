@@ -6,7 +6,7 @@ import { accountLogin, getAccountSession } from '@/lib/account-auth'
 import { LockClosedIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'Sign In to VapeHub Vapes Australia — My Account',
+  title: 'Sign In to Vapes Near Me — My Account',
   robots: { index: false, follow: true },
 }
 
@@ -25,7 +25,7 @@ export default async function AccountLoginPage({
   return (
     <div className="bg-soft-100 min-h-[60vh]">
       <div className="container-site py-10">
-        <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Sign In' }]} />
+        <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Sign In' }]} />
 
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Login form */}
@@ -38,7 +38,7 @@ export default async function AccountLoginPage({
                 Sign In
               </h1>
               <p className="text-sm text-mute mt-1">
-                Welcome back to VapeHub Vapes Australia. Sign in to view orders, addresses and preferences.
+                Welcome back to Vapes Near Me. Sign in to view orders, addresses and preferences.
               </p>
             </div>
 
@@ -107,12 +107,12 @@ export default async function AccountLoginPage({
               Why register
             </p>
             <h2 className="font-display text-2xl font-bold uppercase mb-4 leading-tight">
-              VapeHub Vapes Australia Members
+              Vapes Near Me Members
             </h2>
             <ul className="space-y-3 text-sm">
               {[
                 'Save shipping addresses for faster checkout',
-                'Track every VapeHub Vapes Australia order in one place',
+                'Track every Vapes Near Me order in one place',
                 'Upload your prescription once — keep it on file',
                 'Get exclusive member-only deals via email',
                 'Faster repeat orders on your favourite brands',
@@ -124,7 +124,7 @@ export default async function AccountLoginPage({
               ))}
             </ul>
             <div className="mt-auto pt-6 border-t border-white/10 text-xs text-white/60">
-              By signing in you agree to the VapeHub Vapes Australia{' '}
+              By signing in you agree to the Vapes Near Me{' '}
               <Link href="/terms" className="underline hover:text-white">
                 Terms
               </Link>{' '}

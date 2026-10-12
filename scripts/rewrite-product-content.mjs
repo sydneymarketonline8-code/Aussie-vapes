@@ -222,7 +222,7 @@ function accessory(a, seed) {
   }
 }
 
-const SITE_BRAND = 'VapeHub Vapes Australia'
+const SITE_BRAND = 'Vapes Near Me'
 
 /** Trim to <= max on a word boundary. Never mid-word. */
 function trimWords(s, max) {

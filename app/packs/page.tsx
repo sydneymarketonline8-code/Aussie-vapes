@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, faqJsonLd } from '@/lib/seo'
 import HeroCollage from '@/components/ui/HeroCollage'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapehubvapesaustralia.com.au'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.vapesnearme.com.au'
 
 export const metadata: Metadata = {
   title: 'Vape Packs — Disposable Vape Packs & Bundle Deals Australia',
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     "Buy Aussie vape packs online — disposable vape packs, multi-buy bundles, bulk cartons & brand pack deals. 2-pack, 5-pack, 10-pack and bulk discounts. Same-day Sydney dispatch.",
   keywords: [
     'vape packs',
-    'vapehub vapes australia packs',
+    'vapes near me packs',
     'disposable vape packs australia',
     'vape bundle deals australia',
     'buy vape packs online australia',
     'vape packs australia',
-    'multi pack vapehub vapes australia',
+    'multi pack vapes near me',
     'bulk vape packs australia',
     'iget pack australia',
     'alfakher pack australia',
@@ -40,29 +40,29 @@ const FAQS = [
       'Aussie vape packs are multi-device pack-format disposable vapes — typically 2-pack, 3-pack, 5-pack, 10-pack or larger. Each pack contains multiple identical or mixed-flavour devices at a per-unit price lower than buying single devices.',
   },
   {
-    question: 'How much can I save with VapeHub Vapes Australia pack pricing?',
+    question: 'How much can I save with Vapes Near Me pack pricing?',
     answer:
-      'Pack savings at VapeHub Vapes Australia typically scale with pack size: 2-3 packs save 8-12% per device, 5-packs save 12-18%, 10-packs save 18-25%, and 20+ pack cartons can save 25-30%+ per unit vs single-device pricing.',
+      'Pack savings at Vapes Near Me typically scale with pack size: 2-3 packs save 8-12% per device, 5-packs save 12-18%, 10-packs save 18-25%, and 20+ pack cartons can save 25-30%+ per unit vs single-device pricing.',
   },
   {
     question: 'Are the products in a pack all the same flavour?',
     answer:
-      'Most VapeHub Vapes Australia packs are single-flavour (e.g. an Alfakher Crown Bar 15000 5-pack is all the same flavour). Some bundles and bulk packs offer mixed-flavour assortments — flavour selection is shown on each individual product page.',
+      'Most Vapes Near Me packs are single-flavour (e.g. an Alfakher Crown Bar 15000 5-pack is all the same flavour). Some bundles and bulk packs offer mixed-flavour assortments — flavour selection is shown on each individual product page.',
   },
   {
-    question: 'Do VapeHub Vapes Australia packs qualify for free shipping?',
+    question: 'Do Vapes Near Me packs qualify for free shipping?',
     answer:
-      "Yes — VapeHub Vapes Australia offers free standard shipping on all Australian orders over $200. Almost every pack on VapeHub Vapes Australia is over the threshold, so you'll get free shipping automatically.",
+      "Yes — Vapes Near Me offers free standard shipping on all Australian orders over $200. Almost every pack on Vapes Near Me is over the threshold, so you'll get free shipping automatically.",
   },
   {
     question: 'Can I buy vape packs for a business or event?',
     answer:
-      'Yes — VapeHub Vapes Australia Bulk Vape Packs (10-pack, 20-pack, 50-pack, 100-pack) are the easiest way to buy in volume. For dedicated wholesale accounts with net-30 terms, see our /bulk page.',
+      'Yes — Vapes Near Me Bulk Vape Packs (10-pack, 20-pack, 50-pack, 100-pack) are the easiest way to buy in volume. For dedicated wholesale accounts with net-30 terms, see our /bulk page.',
   },
   {
-    question: 'Are packs from VapeHub Vapes Australia authentic?',
+    question: 'Are packs from Vapes Near Me authentic?',
     answer:
-      "Yes — every product in every VapeHub Vapes Australia pack is sourced through authorised distribution channels and carries the brand's authenticity verification code. We never sell grey-market or counterfeit stock.",
+      "Yes — every product in every Vapes Near Me pack is sourced through authorised distribution channels and carries the brand's authenticity verification code. We never sell grey-market or counterfeit stock.",
   },
 ]
 
@@ -72,7 +72,7 @@ export default function PacksLandingPage() {
   const featured = getFeaturedPacks(10)
 
   const crumbs = [
-    { name: 'VapeHub Vapes Australia', url: `${SITE_URL}/` },
+    { name: 'Vapes Near Me', url: `${SITE_URL}/` },
     { name: 'Vape Packs', url: `${SITE_URL}/packs` },
   ]
 
@@ -80,7 +80,7 @@ export default function PacksLandingPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Vape Packs',
-    description: 'Disposable vape packs, multi-buy bundles, bulk cartons and brand pack deals from VapeHub Vapes Australia.',
+    description: 'Disposable vape packs, multi-buy bundles, bulk cartons and brand pack deals from Vapes Near Me.',
     url: `${SITE_URL}/packs`,
     numberOfItems: allPacks.length,
   }
@@ -94,7 +94,7 @@ export default function PacksLandingPage() {
       {/* Hero */}
       <section className="bg-ink text-white border-b border-line">
         <div className="container-site py-14">
-          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Vape Packs' }]} />
+          <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Vape Packs' }]} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mt-5">
             <div>
               <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-3">
@@ -104,7 +104,7 @@ export default function PacksLandingPage() {
                 Vape Packs
               </h1>
               <p className="text-white/80 leading-relaxed text-lg">
-                Save more, vape longer. The complete VapeHub Vapes Australia pack collection — disposable vape packs, multi-buy
+                Save more, vape longer. The complete Vapes Near Me pack collection — disposable vape packs, multi-buy
                 bundles, bulk cartons and brand pack deals. Save up to{' '}
                 <strong className="text-price">25% per device</strong> vs single-unit pricing with same-day Sydney
                 dispatch.
@@ -187,7 +187,7 @@ export default function PacksLandingPage() {
         <section className="bg-soft-100 border-y border-line py-14">
           <div className="container-site">
             <div className="section-heading-wrap">
-              <h2 className="section-heading">featured vapehub vapes australia packs</h2>
+              <h2 className="section-heading">featured vapes near me packs</h2>
               <Link href="/packs/bundle-deals" className="font-display text-xs uppercase tracking-widest font-bold text-price hover:underline">
                 View All Bundle Deals →
               </Link>
@@ -204,9 +204,9 @@ export default function PacksLandingPage() {
       {/* Long-form SEO content */}
       <section className="container-site py-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-6">
-          <h2 className="font-display text-2xl font-bold text-ink lowercase">why buy vape packs from vapehub vapes australia</h2>
+          <h2 className="font-display text-2xl font-bold text-ink lowercase">why buy vape packs from vapes near me</h2>
           <p className="text-body leading-relaxed">
-            <strong>VapeHub Vapes Australia</strong> stocks the largest range of pack-format disposable vapes in Australia. With
+            <strong>Vapes Near Me</strong> stocks the largest range of pack-format disposable vapes in Australia. With
             {' '}{allPacks.length.toLocaleString()} pack products across 5 organised collections, Vape Packs make
             it easy to compare per-device pricing across {' '}<Link href="/brand/iget" className="text-price font-semibold hover:underline">IGET</Link>,
             {' '}<Link href="/brand/alfakher" className="text-price font-semibold hover:underline">Alfakher Crown Bar</Link>,
@@ -217,9 +217,9 @@ export default function PacksLandingPage() {
             {' '}and 35+ more authentic Aussie vape brands.
           </p>
           <p className="text-body leading-relaxed">
-            Pack pricing at VapeHub Vapes Australia scales with quantity. A 2-pack typically saves 8-12% per unit vs single-device
+            Pack pricing at Vapes Near Me scales with quantity. A 2-pack typically saves 8-12% per unit vs single-device
             pricing. A 5-pack saves 12-18%. A 10-pack saves 18-25%. Bulk 20-pack, 50-pack and 100-pack cartons unlock
-            wholesale-style pricing tiers for heavy users, event organisers and B2B resellers. Every VapeHub Vapes Australia pack
+            wholesale-style pricing tiers for heavy users, event organisers and B2B resellers. Every Vapes Near Me pack
             is dispatched same-day from our Sydney warehouse on weekday orders before 2pm AEST.
           </p>
 
@@ -247,7 +247,7 @@ export default function PacksLandingPage() {
         <aside className="lg:sticky lg:top-24 h-fit">
           <div className="bg-soft-100 border border-line rounded-sm p-6">
             <h3 className="font-display text-base font-bold text-ink uppercase tracking-wider mb-4 pb-3 border-b border-line">
-              VapeHub Vapes Australia Pack Stats
+              Vapes Near Me Pack Stats
             </h3>
             <dl className="space-y-3 text-sm">
               <div className="flex justify-between"><dt className="text-body">Total Pack Products</dt><dd className="font-display font-bold text-ink">{allPacks.length}</dd></div>

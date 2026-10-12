@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import InfoPageShell from '@/components/layout/InfoPageShell'
 
 export const metadata: Metadata = {
-  title: 'VapeHub Vapes Australia Privacy Policy',
+  title: 'Vapes Near Me Privacy Policy',
   description:
-    "How VapeHub Vapes Australia collects, uses, stores and protects your personal information. Compliant with the Australian Privacy Act 1988.",
-  keywords: ['vapehub vapes australia privacy policy', 'vapehub vapes australia privacy', 'australian vape privacy policy'],
+    "How Vapes Near Me collects, uses, stores and protects your personal information. Compliant with the Australian Privacy Act 1988.",
+  keywords: ['vapes near me privacy policy', 'vapes near me privacy', 'australian vape privacy policy'],
   alternates: { canonical: '/privacy' },
   robots: { index: true, follow: true },
 }
@@ -13,41 +13,41 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <InfoPageShell
-      title="vapehub vapes australia privacy policy"
-      intro="VapeHub Vapes Australia respects your privacy. This page explains how we collect, use, store and protect your personal information in accordance with the Australian Privacy Act 1988 and the Australian Privacy Principles (APPs)."
+      title="vapes near me privacy policy"
+      intro="Vapes Near Me respects your privacy. This page explains how we collect, use, store and protect your personal information in accordance with the Australian Privacy Act 1988 and the Australian Privacy Principles (APPs)."
       sections={[
         {
           heading: 'information we collect',
-          body: "VapeHub Vapes Australia collects personal information you provide directly — name, email, phone, billing/shipping address, payment details (handled by our PCI-compliant payment processor, not stored by us), prescription confirmation, and date-of-birth verification.",
+          body: "Vapes Near Me collects personal information you provide directly — name, email, phone, billing/shipping address, payment details (handled by our PCI-compliant payment processor, not stored by us), prescription confirmation, and date-of-birth verification.",
         },
         {
-          heading: 'how vapehub vapes australia uses your information',
+          heading: 'how vapes near me uses your information',
           list: [
-            'Process and dispatch your VapeHub Vapes Australia orders',
+            'Process and dispatch your Vapes Near Me orders',
             'Send order confirmations, shipping updates and delivery notifications',
             'Verify your age (18+) and prescription status as required by AU law',
             'Respond to your customer support enquiries',
             'Send marketing emails ONLY if you opt-in (you can unsubscribe at any time)',
-            'Improve the VapeHub Vapes Australia website and customer experience',
+            'Improve the Vapes Near Me website and customer experience',
             'Comply with Australian legal and regulatory obligations',
           ],
         },
         {
           heading: 'cookies and tracking',
-          body: "VapeHub Vapes Australia uses cookies to remember your cart, your age-gate confirmation, and (with your consent) analytics tools like Google Analytics. You can disable cookies in your browser settings, though this may affect site functionality.",
+          body: "Vapes Near Me uses cookies to remember your cart, your age-gate confirmation, and (with your consent) analytics tools like Google Analytics. You can disable cookies in your browser settings, though this may affect site functionality.",
         },
         {
           heading: 'sharing of information',
-          body: "VapeHub Vapes Australia does NOT sell your personal information. We share only what's necessary with: couriers (for delivery), payment processors (for transactions), and Australian government bodies (only when legally required, e.g. ATO).",
+          body: "Vapes Near Me does NOT sell your personal information. We share only what's necessary with: couriers (for delivery), payment processors (for transactions), and Australian government bodies (only when legally required, e.g. ATO).",
         },
         {
           heading: 'data security',
-          body: "All data transmitted to VapeHub Vapes Australia is encrypted using SSL/TLS. Payment information is processed by PCI-DSS compliant processors and never stored on our servers. Customer records are stored on secure Australian-based infrastructure.",
+          body: "All data transmitted to Vapes Near Me is encrypted using SSL/TLS. Payment information is processed by PCI-DSS compliant processors and never stored on our servers. Customer records are stored on secure Australian-based infrastructure.",
         },
         {
           heading: 'your rights',
           list: [
-            'Access the personal information VapeHub Vapes Australia holds about you (free of charge, within 30 days)',
+            'Access the personal information Vapes Near Me holds about you (free of charge, within 30 days)',
             'Correct any inaccurate or outdated information',
             'Request deletion of your data (subject to legal record-keeping requirements)',
             'Opt out of marketing communications at any time',
@@ -55,12 +55,12 @@ export default function PrivacyPage() {
           ],
         },
         {
-          heading: 'contact vapehub vapes australia about privacy',
-          body: "Privacy questions, data access requests or complaints can be sent to privacy@vapehubvapesaustralia.com.au. We aim to respond within 5 business days. For unresolved complaints, contact the OAIC at oaic.gov.au.",
+          heading: 'contact vapes near me about privacy',
+          body: "Privacy questions, data access requests or complaints can be sent to privacy@vapesnearme.com.au. We aim to respond within 5 business days. For unresolved complaints, contact the OAIC at oaic.gov.au.",
         },
         {
           heading: 'policy updates',
-          body: 'This policy was last updated in 2026. VapeHub Vapes Australia may update this policy from time to time — material changes will be notified via email to registered customers.',
+          body: 'This policy was last updated in 2026. Vapes Near Me may update this policy from time to time — material changes will be notified via email to registered customers.',
         },
       ]}
     />

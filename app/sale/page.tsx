@@ -17,15 +17,15 @@ export async function generateMetadata({
   const suffix = page > 1 ? ` — Page ${page}` : ''
   const canonical = page > 1 ? `/sale?page=${page}` : '/sale'
   return {
-    title: `VapeHub Vapes Australia Sale${suffix} — Discounted Disposables & Pod Systems`,
+    title: `Vapes Near Me Sale${suffix} — Discounted Disposables & Pod Systems`,
     description:
-      "Save big on authentic Australian vapes. VapeHub Vapes Australia Sale features discounted disposables, pod systems, nicotine salts and e-liquids — same-day Sydney dispatch.",
+      "Save big on authentic Australian vapes. Vapes Near Me Sale features discounted disposables, pod systems, nicotine salts and e-liquids — same-day Sydney dispatch.",
     keywords: [
-      'vapehub vapes australia sale',
+      'vapes near me sale',
       'cheap vapes australia',
-      'discount vapehub vapes australia',
+      'discount vapes near me',
       'vape sale australia',
-      'vapehub vapes australia discount',
+      'vapes near me discount',
       'vape clearance australia',
     ],
     alternates: { canonical },
@@ -50,26 +50,26 @@ export default async function SalePage({
             Limited Time Offers
           </p>
           <h1 className="font-display text-4xl lg:text-6xl font-bold leading-[1.05] mb-3 uppercase">
-            VapeHub Vapes Australia Sale
+            Vapes Near Me Sale
           </h1>
           <p className="max-w-2xl mx-auto text-white/90 leading-relaxed">
-            {products.length.toLocaleString()} products currently discounted at VapeHub Vapes Australia — IGET, Alfakher, HQD,
+            {products.length.toLocaleString()} products currently discounted at Vapes Near Me — IGET, Alfakher, HQD,
             Gunnpod and more at the lowest prices in Australia. Same-day Sydney dispatch on every order.
           </p>
         </div>
       </section>
 
       <div className="container-site py-4">
-        <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Sale' }]} />
+        <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Sale' }]} />
       </div>
 
       <section className="container-site pb-14">
         {products.length === 0 ? (
           <div className="text-center py-20">
             <p className="font-display text-xl font-bold text-ink uppercase tracking-wider mb-3">
-              No VapeHub Vapes Australia sale items right now
+              No Vapes Near Me sale items right now
             </p>
-            <p className="text-mute mb-6">Check back soon — VapeHub Vapes Australia runs flash sales weekly.</p>
+            <p className="text-mute mb-6">Check back soon — Vapes Near Me runs flash sales weekly.</p>
             <Link href="/category/disposable-vapes" className="btn-primary">
               Browse All Disposables
             </Link>
@@ -91,10 +91,10 @@ export default async function SalePage({
       <section className="bg-soft-100 border-t border-line py-12">
         <div className="container-site max-w-3xl text-center">
           <h2 className="font-display text-2xl font-bold text-ink mb-3 lowercase">
-            why vapehub vapes australia sale prices beat the competition
+            why vapes near me sale prices beat the competition
           </h2>
           <p className="text-body text-sm leading-relaxed">
-            VapeHub Vapes Australia buys direct from authorised distributors in bulk, which means we pass deep discounts to
+            Vapes Near Me buys direct from authorised distributors in bulk, which means we pass deep discounts to
             customers. Every sale item is the same authentic product as the full-price version — never grey-market,
             never expired stock. Same 30-day return guarantee, same same-day Sydney dispatch.
           </p>

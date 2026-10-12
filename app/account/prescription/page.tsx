@@ -17,7 +17,7 @@ export default async function AccountPrescriptionPage() {
           AU Prescription on File
         </h2>
         <p className="text-sm text-mute mt-1">
-          Upload your Australian nicotine prescription once and VapeHub Vapes Australia will keep it on file for every future
+          Upload your Australian nicotine prescription once and Vapes Near Me will keep it on file for every future
           nicotine purchase. Required under the TGA prescription model.
         </p>
       </header>
@@ -29,7 +29,7 @@ export default async function AccountPrescriptionPage() {
             No prescription uploaded
           </p>
           <p className="text-body">
-            You can still browse VapeHub Vapes Australia, but nicotine purchases require a valid AU prescription at checkout.{' '}
+            You can still browse Vapes Near Me, but nicotine purchases require a valid AU prescription at checkout.{' '}
             <Link href="/vaping-laws-australia" className="text-price font-semibold hover:underline">
               Learn more about AU vaping laws →
             </Link>
@@ -102,7 +102,7 @@ export default async function AccountPrescriptionPage() {
               className="mt-0.5 rounded-sm border-line bg-white text-ink focus:ring-ink"
             />
             <span className="text-sm text-body">
-              I confirm this is a valid Australian prescription issued to me, and I understand VapeHub Vapes Australia is required to
+              I confirm this is a valid Australian prescription issued to me, and I understand Vapes Near Me is required to
               record prescription details under the TGA Therapeutic Goods (TGO 110) Order 2021.
             </span>
           </label>

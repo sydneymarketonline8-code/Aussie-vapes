@@ -43,7 +43,7 @@ export default function WholesaleForm() {
       </div>
       <FormError state={state} />
       <SubmitButton>Apply For Wholesale Access</SubmitButton>
-      <p className="text-xs text-mute text-center">VapeHub Vapes Australia typically responds to wholesale applications within 1 business day.</p>
+      <p className="text-xs text-mute text-center">Vapes Near Me typically responds to wholesale applications within 1 business day.</p>
     </form>
   )
 }

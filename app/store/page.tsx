@@ -4,21 +4,21 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import { MapPinIcon, ClockIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
-  title: 'VapeHub Vapes Australia Store Locator — Sydney HQ + Australia-Wide Delivery',
+  title: 'Vapes Near Me Store Locator — Sydney HQ + Australia-Wide Delivery',
   description:
-    "VapeHub Vapes Australia operates from a single Sydney warehouse for fast Australia-wide dispatch. We deliver to every state and territory rather than maintain retail stores.",
+    "Vapes Near Me operates from a single Sydney warehouse for fast Australia-wide dispatch. We deliver to every state and territory rather than maintain retail stores.",
   keywords: [
-    'vapehub vapes australia store',
-    'vapehub vapes australia sydney',
-    'vapehub vapes australia location',
+    'vapes near me store',
+    'vapes near me sydney',
+    'vapes near me location',
     'vape store near me australia',
-    'vapehub vapes australia warehouse',
+    'vapes near me warehouse',
   ],
   alternates: { canonical: '/store' },
 }
 
 const CITIES = [
-  { name: 'Sydney', slug: 'sydney', metro: 'NSW', note: 'VapeHub Vapes Australia HQ — fastest dispatch' },
+  { name: 'Sydney', slug: 'sydney', metro: 'NSW', note: 'Vapes Near Me HQ — fastest dispatch' },
   { name: 'Melbourne', slug: 'melbourne', metro: 'VIC', note: '2-4 business days standard' },
   { name: 'Brisbane', slug: 'brisbane', metro: 'QLD', note: '2-4 business days standard' },
   { name: 'Perth', slug: 'perth', metro: 'WA', note: '4-7 business days standard' },
@@ -30,12 +30,12 @@ export default function StorePage() {
     <>
       <section className="bg-soft-100 border-b border-line">
         <div className="container-site py-10">
-          <Breadcrumb crumbs={[{ label: 'VapeHub Vapes Australia', href: '/' }, { label: 'Store Locator' }]} />
+          <Breadcrumb crumbs={[{ label: 'Vapes Near Me', href: '/' }, { label: 'Store Locator' }]} />
           <h1 className="font-display text-4xl lg:text-5xl font-bold text-ink mt-4 mb-3 lowercase">
-            vapehub vapes australia store locator
+            vapes near me store locator
           </h1>
           <p className="text-body max-w-2xl leading-relaxed">
-            VapeHub Vapes Australia operates as an online-only retailer to bring you the largest range at the lowest prices.
+            Vapes Near Me operates as an online-only retailer to bring you the largest range at the lowest prices.
             We dispatch from a single Sydney warehouse to every Australian state and territory — typically same-day
             on weekday orders before 2pm AEST.
           </p>
@@ -45,7 +45,7 @@ export default function StorePage() {
       <section className="container-site py-14 grid grid-cols-1 lg:grid-cols-2 gap-10">
         <div className="bg-white border border-line rounded-sm p-8 space-y-5">
           <div>
-            <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">VapeHub Vapes Australia HQ</p>
+            <p className="font-display text-xs uppercase tracking-[0.3em] text-price font-bold mb-2">Vapes Near Me HQ</p>
             <h2 className="font-display text-3xl font-bold text-ink uppercase">Sydney Warehouse</h2>
           </div>
 
@@ -53,7 +53,7 @@ export default function StorePage() {
             <li className="flex items-start gap-3"><MapPinIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><span><strong>Sydney, NSW, Australia</strong><br /><span className="text-mute">Pick-up by appointment only (B2B / wholesale orders)</span></span></li>
             <li className="flex items-start gap-3"><ClockIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><span><strong>Dispatch Hours:</strong> Mon-Fri 9am-5pm AEST</span></li>
             <li className="flex items-start gap-3"><PhoneIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><a href="tel:+61468189205" className="hover:text-price"><strong>+61 468 189 205</strong></a></li>
-            <li className="flex items-start gap-3"><EnvelopeIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><a href="mailto:info@vapehubvapesaustralia.com.au" className="hover:text-price"><strong>info@vapehubvapesaustralia.com.au</strong></a></li>
+            <li className="flex items-start gap-3"><EnvelopeIcon className="h-5 w-5 text-ink flex-shrink-0 mt-0.5" /><a href="mailto:info@vapesnearme.com.au" className="hover:text-price"><strong>info@vapesnearme.com.au</strong></a></li>
           </ul>
 
           <div className="pt-5 border-t border-line">
@@ -62,16 +62,16 @@ export default function StorePage() {
         </div>
 
         <div>
-          <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">vapehub vapes australia delivers to</h2>
+          <h2 className="font-display text-2xl font-bold text-ink mb-4 lowercase">vapes near me delivers to</h2>
           <ul className="space-y-3">
             {CITIES.map((c) => (
               <li key={c.slug}>
                 <Link
-                  href={`/vapehub-vapes-australia/${c.slug}`}
+                  href={`/vapes-near-me/${c.slug}`}
                   className="bg-white border border-line rounded-sm p-4 flex items-center justify-between hover:border-ink hover:shadow-sm transition-all"
                 >
                   <div>
-                    <p className="font-display font-bold text-ink">VapeHub Vapes Australia {c.name}, {c.metro}</p>
+                    <p className="font-display font-bold text-ink">Vapes Near Me {c.name}, {c.metro}</p>
                     <p className="text-xs text-mute">{c.note}</p>
                   </div>
                   <span className="text-price font-display text-xs uppercase tracking-widest font-bold">View →</span>
@@ -80,7 +80,7 @@ export default function StorePage() {
             ))}
           </ul>
           <p className="mt-4 text-xs text-mute">
-            VapeHub Vapes Australia also ships to every regional postcode in Australia. Estimate delivery on the{' '}
+            Vapes Near Me also ships to every regional postcode in Australia. Estimate delivery on the{' '}
             <Link href="/shipping" className="text-price font-semibold hover:underline">shipping policy page</Link>.
           </p>
         </div>
